@@ -492,7 +492,7 @@ const HERO = {
   "용어사전":{title:"용어사전",desc:"사내 전용 용어 정의"},
 };
 const DATA = [
-  {id:26,title:"SP4000T — A&ultima 플래그십",category:"제품 모델",models:["A&ultima","SP4000T"],date:"2026.05.21",author:"Ellie",authorInitial:"E",
+  {id:26,title:"SP4000T — A&ultima 플래그십",category:"제품 모델",models:["A&ultima"],date:"2026.05.21",author:"Ellie",authorInitial:"E",
    credits:{PM:"Jay",PL:"Kane",UX:"Ellie",UI:"Luna"},
    desc:"A&ultima 라인의 플래그십 DAP.",
    body:``,
@@ -1031,7 +1031,13 @@ function goList(cat, q) {
    SECTION: js-chip-bar
 ============================================= */
 function getChips(cat) {
-  if(cat==="제품 모델") return [];
+  if(cat==="제품 모델") return [
+    {key:"전체",label:"전체"},
+    {key:"A&ultima",label:"A&ultima"},
+    {key:"PD series",label:"PD series"},
+    {key:"Heritage",label:"Heritage"},
+    {key:"Classic",label:"Classic"}
+  ];
   if(cat==="기능 히스토리") return [
     {key:"전체",label:"전체"},
     {key:"A&ultima",label:"A&ultima"},
