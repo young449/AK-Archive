@@ -492,6 +492,13 @@ const HERO = {
   "용어사전":{title:"용어사전",desc:"사내 전용 용어 정의"},
 };
 const DATA = [
+  {id:26,title:"SP4000T — A&ultima 플래그십",category:"제품 모델",models:["A&ultima","SP4000T"],date:"2026.05.21",author:"Ellie",authorInitial:"E",
+   credits:{PM:"Jay",PL:"Kane",UX:"Ellie",UI:"Luna"},
+   desc:"A&ultima 라인의 플래그십 DAP.",
+   body:``,
+   tags:["SP4000T","AMP","Collection","Favorite","USB설정","재생설정"],
+   files:[],
+   links:[]},
   {id:6,title:"PD5 — PD series 신모델",category:"제품 모델",models:["PD series"],date:"2026.05.20",author:"Ellie",authorInitial:"E",
    credits:{PM:"Luke",PL:"Hoya",UX:"Ellie",UI:"Luna"},
    desc:"Octa-DAC 탑재 및 EnviroTune 기능 도입으로 사운드 퍼포먼스와 환경 적응형 음질을 동시에 구현한 PD series 신모델.",
@@ -534,6 +541,16 @@ Performance Mode: 8개의 DAC를 모두 활성화하여 최상의 오디오 성�
      {src:"image_2.png", alt:"PD5 측면"},
      {src:"image_3.png", alt:"PD5 퍼스펙티브"},
      {src:"image_4.png", alt:"PD5 후면"},
+   ]},
+  {id:25,title:"PD20 — PD series 최신 모델",category:"제품 모델",models:["PD series"],date:"2026.05.21",author:"Luna",authorInitial:"L",
+   credits:{PM:"Luke",PL:"Evan",UX:"Luna",UI:"Luna"},
+   desc:"PD series의 최신 모델.",
+   body:``,
+   tags:["PD20","Audiosound","오디오사운드"],
+   files:[],
+   links:[
+     {label:"UX 시나리오 — Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=8627-2086&t=fhsxj64S8jwIqh1N-1"},
+     {label:"UI — Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9739-17741&t=YVqta9mRIAIVw2Wd-1"},
    ]},
   {id:24,title:"컬렉션 (Collection) — Favorite 기능 확장 재정의",category:"기능 히스토리",models:["A&ultima","SP4000T"],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"기존 Favorite(즐겨찾기)의 노래 단독 저장을 확장, 노래·앨범·아티스트·플레이리스트를 폴더별로 저장·관리하는 컬렉션으로 재정의. SP4000T부터 적용.",
@@ -1093,7 +1110,7 @@ function renderCards(){
       ?`<div class="card-top"><div class="card-models-row">${modelBadges}</div></div>`
       :"";
     // 카드: 모델 배지 → 제목 → 이름 · 날짜 (desc 없음)
-    // 제품 모델은 제목에서 — 이후 제거
+    // 제품 모델만 카드 제목에서 — 이후 제거, 나머지는 전체 제목 유지
     const displayTitle = d.category === "제품 모델" && d.title.includes("—")
       ? d.title.split("—")[0].trim()
       : d.title;
