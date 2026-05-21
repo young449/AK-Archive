@@ -5,7 +5,7 @@
 // =============================================
 
 const DATA_제품 = [
-  {id:26, title:"SP4000T — A&ultima 플래그십", category:"제품 모델", models:["A&ultima","SP4000T"], date:"2026.05.21", author:"Ellie", authorInitial:"E",
+  {id:26, title:"SP4000T — A&ultima 플래그십", category:"제품 모델", models:["A&ultima"], date:"2026.05.21", author:"Ellie", authorInitial:"E",
    credits:{PM:"Jay", PL:"Kane", UX:"Ellie", UI:"Luna"},
    desc:"A&ultima 라인의 플래그십 DAP.",
    body:``,
