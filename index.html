@@ -243,6 +243,9 @@ mark{background:rgba(204,27,56,0.22);color:var(--cr-100);border-radius:2px;paddi
   background:#000;display:block;
   border:1px solid var(--div-1);
 }
+.d-img-grid img:last-child:nth-child(odd){
+  grid-column:1 / -1;
+}
 hr.dv{border:none;border-top:1px solid var(--div-1);margin:20px 0}
 /* 첨부 파일 */
 #d-files-wrap{
@@ -495,10 +498,21 @@ const DATA = [
   {id:26,title:"SP4000T — A&ultima 플래그십",category:"제품 모델",models:["A&ultima"],date:"2026.05.21",author:"Ellie",authorInitial:"E",
    credits:{PM:"Jay",PL:"Kane",UX:"Ellie",UI:"Luna"},
    desc:"A&ultima 라인의 플래그십 DAP.",
-   body:``,
+   body:`■■ Tube Current
+
+진공관 내부 플레이트 전압을 3단계로 조절해, 진공관 앰프 증폭률에 변화를 줍니다. Tube Mode 진공관을 아래 3가지 모드로 변경해 다양한 음색을 즐길 수 있습니다.
+
+- Triode Mode : 자연스럽고 따뜻한 음색
+- Pentode Mode : 힘있고, 단단한 음색
+- Ultra Linear Mode : 전체적으로 균형잡힌 음색`,
    tags:["SP4000T","AMP","Collection","Favorite","USB설정","재생설정"],
    files:[],
-   links:[]},
+   links:[],
+   images:[
+     {src:"SP4000T_1.png", alt:"SP4000T 전면"},
+     {src:"SP4000T_2.png", alt:"SP4000T 후면"},
+     {src:"SP4000T_3.png", alt:"SP4000T 퍼스펙티브"},
+   ]},
   {id:6,title:"PD5 — PD series 신모델",category:"제품 모델",models:["PD series"],date:"2026.05.20",author:"Ellie",authorInitial:"E",
    credits:{PM:"Luke",PL:"Hoya",UX:"Ellie",UI:"Luna"},
    desc:"Octa-DAC 탑재 및 EnviroTune 기능 도입으로 사운드 퍼포먼스와 환경 적응형 음질을 동시에 구현한 PD series 신모델.",
@@ -1087,7 +1101,7 @@ function filterData(){
       if(!d.models.includes(S.chip))return false;
     if(!q)return true;
     return[d.title,d.desc,d.body,d.author,...d.tags,...d.models,d.category].join(" ").toLowerCase().includes(q);
-  });
+  }).sort((a,b)=>b.date.replace(/\./g,"").localeCompare(a.date.replace(/\./g,"")));
 }
 
 function renderCards(){
@@ -1152,7 +1166,11 @@ function openDetail(id){
     ? d.models.filter(m=>!HIDE_IN_HIST.includes(m))
     : d.models;
   document.getElementById("d-models").innerHTML=detailModels.map(m=>`<span class="badge ${DAP_CLS[m]||""}">${m}</span>`).join("");
-  document.getElementById("d-title").textContent=d.title;
+  // 제품 모델은 — 앞 모델명만, 나머지는 전체 제목
+  const displayTitle = d.category === "제품 모델" && d.title.includes("—")
+    ? d.title.split("—")[0].trim()
+    : d.title;
+  document.getElementById("d-title").textContent=displayTitle;
   // 날짜 포맷: 2026.05.18 → 2026. 5. 18.
   const dp=d.date.split(".");
   const fmtDate=dp.length===3?`${dp[0]}. ${parseInt(dp[1])}. ${parseInt(dp[2])}.`:d.date;
