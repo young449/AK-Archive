@@ -8,10 +8,21 @@ const DATA_제품 = [
   {id:26, title:"SP4000T — A&ultima 플래그십", category:"제품 모델", models:["A&ultima"], date:"2026.05.21", author:"Ellie", authorInitial:"E",
    credits:{PM:"Jay", PL:"Kane", UX:"Ellie", UI:"Luna"},
    desc:"A&ultima 라인의 플래그십 DAP.",
-   body:``,
+   body:`■■ Tube Current
+
+진공관 내부 플레이트 전압을 3단계로 조절해, 진공관 앰프 증폭률에 변화를 줍니다. Tube Mode 진공관을 아래 3가지 모드로 변경해 다양한 음색을 즐길 수 있습니다.
+
+- Triode Mode : 자연스럽고 따뜻한 음색
+- Pentode Mode : 힘있고, 단단한 음색
+- Ultra Linear Mode : 전체적으로 균형잡힌 음색`,
    tags:["SP4000T","AMP","Collection","Favorite","USB설정","재생설정"],
    files:[],
-   links:[]},
+   links:[],
+   images:[
+     {src:"SP4000T_1.png", alt:"SP4000T 전면"},
+     {src:"SP4000T_2.png", alt:"SP4000T 후면"},
+     {src:"SP4000T_3.png", alt:"SP4000T 퍼스펙티브"},
+   ]},
 
   {id:1, title:"SP4000 — A&ultima 플래그십", category:"제품 모델", models:["A&ultima"], date:"2024.09.01", author:"Ellie", authorInitial:"E",
    desc:"A&ultima 라인의 최상위 플래그십 DAP. 쿼드 DAC 구성, 최고 수준의 음질 퍼포먼스.",
