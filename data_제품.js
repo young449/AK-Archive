@@ -118,5 +118,11 @@ PD5에는 8개의 DAC가 탑재되어 있으며, 사용자가 DAC 구동 수를 
    ],
    links:[
      {label:"astellnkern.com — PD5", url:"https://www.astellnkern.com"},
+   ],
+   images:[
+     {src:"PD5_1.png", alt:"PD5 전면"},
+     {src:"PD5_2.png", alt:"PD5 측면"},
+     {src:"PD5_3.png", alt:"PD5 퍼스펙티브"},
+     {src:"PD5_4.png", alt:"PD5 후면"},
    ]},
 ];
