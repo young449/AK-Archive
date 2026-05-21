@@ -5,6 +5,14 @@
 // =============================================
 
 const DATA_제품 = [
+  {id:26, title:"SP4000T — A&ultima 플래그십", category:"제품 모델", models:["A&ultima","SP4000T"], date:"2026.05.21", author:"Ellie", authorInitial:"E",
+   credits:{PM:"Jay", PL:"Kane", UX:"Ellie", UI:"Luna"},
+   desc:"A&ultima 라인의 플래그십 DAP.",
+   body:``,
+   tags:["SP4000T","AMP","Collection","Favorite","USB설정","재생설정"],
+   files:[],
+   links:[]},
+
   {id:1, title:"SP4000 — A&ultima 플래그십", category:"제품 모델", models:["A&ultima"], date:"2024.09.01", author:"Ellie", authorInitial:"E",
    desc:"A&ultima 라인의 최상위 플래그십 DAP. 쿼드 DAC 구성, 최고 수준의 음질 퍼포먼스.",
    body:`라인: A&ultima
@@ -19,18 +27,16 @@ const DATA_제품 = [
    files:[],
    links:[{label:"astellnkern.com — SP4000", url:"https://www.astellnkern.com/en/product/view.php?idx=159"}]},
 
-  {id:2, title:"PD20 — PD series 최신 모델", category:"제품 모델", models:["PD series"], date:"2025.03.01", author:"Ellie", authorInitial:"E",
-   desc:"완전히 새로운 오디오 디바이스. 사운드 경험 재정의를 목표로 설계.",
-   body:`라인: PD series
-런칭일: 2025.03.01
-포지셔닝: 미드레인지
-
-주요 특징
-- 완전히 새로운 오디오 아키텍처
-- 3.5mm + 4.4mm 출력`,
-   tags:["미드레인지","디바이스"],
+  {id:2, title:"PD20 — PD series 최신 모델", category:"제품 모델", models:["PD series"], date:"2026.05.21", author:"Luna", authorInitial:"L",
+   credits:{PM:"Luke", PL:"Evan", UX:"Luna", UI:"Luna"},
+   desc:"PD series의 최신 모델.",
+   body:``,
+   tags:["PD20","Audiosound","오디오사운드"],
    files:[],
-   links:[{label:"astellnkern.com — PD20", url:"https://www.astellnkern.com/en/product/view.php?idx=171"}]},
+   links:[
+     {label:"UX 시나리오 — Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=8627-2086&t=fhsxj64S8jwIqh1N-1"},
+     {label:"UI — Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9739-17741&t=YVqta9mRIAIVw2Wd-1"},
+   ]},
 
   {id:3, title:"PD10 — PD series", category:"제품 모델", models:["PD series"], date:"2024.06.01", author:"Ellie", authorInitial:"E",
    desc:"PD series의 기준 모델. 플래그십 기능 일부를 보급형 라인에 적용.",
