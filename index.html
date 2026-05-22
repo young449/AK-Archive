@@ -682,7 +682,6 @@ function renderTagCards(items, tag) {
 
 function openDetailFromTag(id) {
   // 태그 페이지에서 상세로 진입 — 태그 페이지 위에 상세 오버레이
-  S.prevTag = S.tag;
   document.body.className = "is-tag is-tag-detail";
   openDetail(id);
   // detail을 tag-content 위에 표시
@@ -710,16 +709,7 @@ function goHome() {
 }
 
 function goList(cat, q) {
-  // 현재 화면 상태를 히스토리에 저장
-  S.pageHistory.push({
-    bodyClass: document.body.className,
-    cat: S.cat,
-    chip: S.chip,
-    q: S.q,
-    openId: S.openId,
-    tag: S.tag,
-    scrollY: window.scrollY
-  });
+  S.pageHistory.push({type:"list",cat:S.cat,chip:S.chip,q:S.q,scrollY:window.scrollY});
   document.body.className = "is-list";
   S.prevCat=S.cat; S.cat=cat; S.chip="전체"; S.q=q||""; S.openId=null;
   // 항상 list UI 복구 (태그 페이지에서 올 때도 포함)
@@ -870,15 +860,12 @@ function renderCards(){
 ============================================= */
 function openDetail(id){
   const d=DATA.find(x=>x.id===id);if(!d)return;
-  // 현재 화면 상태를 히스토리에 저장
+  // 직전 화면 상태 저장
+  const fromTag = document.body.classList.contains("is-tag");
   S.pageHistory.push({
-    bodyClass: document.body.className,
-    cat: S.cat,
-    chip: S.chip,
-    q: S.q,
-    openId: S.openId,
-    tag: S.tag,
-    scrollY: window.scrollY
+    type: fromTag ? "tag" : "list",
+    cat:S.cat, chip:S.chip, q:S.q, tag:S.tag,
+    scrollY:window.scrollY
   });
   S.prevPage=document.body.className;
   S.openId=id;
@@ -934,11 +921,12 @@ function openDetail(id){
       const icon=`<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9L9 3M9 3H5M9 3v4"/></svg>`;
       if(l.url.startsWith("#search:")){
         const q=l.url.replace("#search:","");
-        return `<button class="dlink" onclick="closeDetail();goList('용어사전','${q}')">${icon}${l.label}</button>`;
+        return `<button class="dlink" onclick="document.getElementById('detail-back').click();setTimeout(()=>goList('용어사전','${q}'),0)">${icon}${l.label}</button>`;
       }
       return `<a class="dlink" href="${l.url}" target="_blank" rel="noopener">${icon}${l.label}</a>`;
     }).join("")
-    :`<span style="font-size:14px;color:var(--n-600)">등록된 링크 없음</span>`;
+    :"";
+  document.getElementById("d-links-wrap").style.display=d.links.length?"":"none";
   const dv=document.getElementById("detail");dv.classList.add("show");dv.removeAttribute("aria-hidden");
   window.scrollTo({top:0,behavior:"smooth"});
 }
@@ -1054,49 +1042,42 @@ document.getElementById("home-logo").addEventListener("click",goHome);
 // 뒤로가기 (목록으로) — 히스토리 스택 팝
 document.getElementById("detail-back").addEventListener("click",()=>{
   const prev = S.pageHistory.pop();
+
+  // 히스토리 없으면 홈으로
   if(!prev){goHome();return;}
 
-  const bodyClass = prev.bodyClass;
-
-  // 태그 상세에서 온 경우 → 태그 페이지 복원
-  if(bodyClass.includes("is-tag")){
-    document.body.className = "is-tag";
-    const detail = document.getElementById("detail");
-    detail.classList.remove("show");
-    detail.setAttribute("aria-hidden","true");
-    detail.style.display="";detail.style.maxWidth="";detail.style.margin="";detail.style.padding="";
-    document.getElementById("tag-content").style.display="";
-    S.openId=null;
-    window.scrollTo({top:prev.scrollY||0,behavior:"smooth"});
-    return;
-  }
-
-  // 홈에서 온 경우
-  if(bodyClass.includes("is-home")){
-    S.openId=null;
-    goHome();
-    return;
-  }
-
-  // 리스트에서 온 경우 → 리스트 화면 복원
-  S.cat=prev.cat;S.chip=prev.chip;S.q=prev.q;S.openId=null;S.tag=prev.tag;
-  document.body.className="is-list";
-  ["card-list","count-row","hero"].forEach(i=>{
-    const el=document.getElementById(i);if(el)el.style.display="";
-  });
-  document.getElementById("chip-bar").style.display="flex";
+  // 상세 닫기 공통 처리
+  S.openId=null;
   const dv=document.getElementById("detail");
   dv.classList.remove("show");dv.setAttribute("aria-hidden","true");
   dv.style.display="";dv.style.maxWidth="";dv.style.margin="";dv.style.padding="";
-  const tc=document.getElementById("tag-content");if(tc)tc.style.display="";
-  document.querySelectorAll(".gnb-tab").forEach(t=>
-    t.classList.toggle("is-active",!!S.cat&&t.dataset.cat===S.cat)
-  );
-  const h=HERO[S.cat]||{title:"검색 결과",desc:""};
-  document.getElementById("hero-title").textContent=S.q?`"${S.q}" 검색 결과`:h.title;
-  document.getElementById("hero-desc").textContent=S.q?"":h.desc;
-  renderChipBar();renderCards();
-  window.scrollTo({top:prev.scrollY||0,behavior:"smooth"});
+
+  if(prev.type==="tag"){
+    // 태그 페이지에서 온 경우
+    document.body.className="is-tag";
+    document.getElementById("tag-content").style.display="";
+    window.scrollTo({top:prev.scrollY||0,behavior:"smooth"});
+
+  } else if(prev.type==="list"){
+    // 리스트에서 온 경우 → 상태 복원 후 재렌더
+    S.cat=prev.cat;S.chip=prev.chip;S.q=prev.q;
+    document.body.className="is-list";
+    ["card-list","count-row","hero"].forEach(i=>{
+      const el=document.getElementById(i);if(el)el.style.display="";
+    });
+    const tc=document.getElementById("tag-content");if(tc)tc.style.display="";
+    document.querySelectorAll(".gnb-tab").forEach(t=>
+      t.classList.toggle("is-active",!!S.cat&&t.dataset.cat===S.cat)
+    );
+    const h=HERO[S.cat]||{title:"검색 결과",desc:""};
+    document.getElementById("hero-title").textContent=S.q?`"${S.q}" 검색 결과`:h.title;
+    document.getElementById("hero-desc").textContent=S.q?"":h.desc;
+    renderChipBar();renderCards();
+    window.scrollTo({top:prev.scrollY||0,behavior:"smooth"});
+
+  } else {
+    goHome();
+  }
 });
 
 // 태그 페이지 뒤로가기 → 기능 히스토리 첫 화면
