@@ -5,7 +5,7 @@
 // =============================================
 
 const DATA_ux = [
-  {id:24, title:"컬렉션 (Collection) — Favorite 기능 확장 재정의", category:"기능 히스토리", models:["A&ultima","SP4000T"], date:"2026.05.18", author:"Ellie", authorInitial:"E",
+  {id:24, title:"Favorite에서 컬렉션으로 기능확장 재정의", category:"기능 히스토리", models:["A&ultima","SP4000T"], showAllModels:true, date:"2026.05.18", author:"Ellie", authorInitial:"E",
    desc:"기존 Favorite(즐겨찾기)의 노래 단독 저장을 확장, 노래·앨범·아티스트·플레이리스트를 폴더별로 저장·관리하는 컬렉션으로 재정의. SP4000T부터 적용.",
    body:`■■ 기능 개요
 
@@ -101,7 +101,7 @@ PD 라인 포함 하위 모델 RC 반영 계획은 현재 미정입니다.`,
      {label:"AK 용어 — Favorite", url:"#search:Favorite"},
    ]},
 
-  {id:27, title:"설정 레이블 추가 및 재배열", category:"기능 히스토리", models:["A&ultima","PD series"], labels:["설정"], date:"2026.05.22", author:"Ellie", authorInitial:"E",
+  {id:27, title:"설정 레이블 추가 및 재배열", category:"기능 히스토리", models:["A&ultima","PD series"], labels:["RC","설정"], date:"2026.05.22", author:"Ellie", authorInitial:"E",
    credits:{UX:"Ellie"},
    desc:"기존 설정 화면에 레이블을 추가해 그룹을 명시하고, 각 그룹의 성격에 맞게 항목 순서도 재배열하였습니다.",
    body:`■■ 기능 개요
