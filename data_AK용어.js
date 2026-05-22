@@ -1,10 +1,10 @@
 // =============================================
-// data_AK 용어.js
+// data_AK용어.js
 // AK 용어 카테고리 데이터
 // =============================================
 
-const DATA_AK 용어 = [
-  {id:11, title:"DAP", category:"AK 용어", models:[], date:"2026.05.18", author:"Ellie", authorInitial:"E",
+const DATA_AK용어 = [
+  {id:11,title:"DAP",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"Digital Audio Player의 약자로, 휴대하며 사용하는 포터블 음향기기입니다.",
    body:`■ 개요
 
@@ -16,10 +16,8 @@ SP4000과 같은 제품이 대표적인 예시이며, 고음질 음원 재생에
 ■ 한 줄 요약
 
 음악 감상 전용으로 만들어진 고음질 휴대용 플레이어`,
-   tags:["포터블","고음질","하드웨어"],
-   links:[]},
-
-  {id:12, title:"디바이스 (Device)", category:"AK 용어", models:[], date:"2026.05.18", author:"Ellie", authorInitial:"E",
+   tags:["포터블","고음질","하드웨어"],links:[]},
+  {id:12,title:"디바이스 (Device)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"거치형(스탠드얼론) 음향기기로, 특정 공간에 고정해두고 사용하는 음향기기입니다.",
    body:`■ 개요
 
@@ -30,10 +28,8 @@ DAP와 달리 이동을 전제로 하지 않고 홈 오디오 환경에서 사�
 ■ 한 줄 요약
 
 집이나 사무실처럼 고정된 환경에서 사용하는 거치형 오디오 플레이어`,
-   tags:["거치형","스탠드얼론","홈오디오"],
-   links:[]},
-
-  {id:13, title:"리모트 (Remote)", category:"AK 용어", models:[], date:"2026.05.18", author:"Ellie", authorInitial:"E",
+   tags:["거치형","스탠드얼론","홈오디오"],links:[]},
+  {id:13,title:"리모트 (Remote)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"DAP 및 디바이스를 원격으로 제어하는 기능으로, 앱을 통해 기기를 조작하는 방식입니다.",
    body:`■ 개요
 
@@ -53,10 +49,8 @@ DAP 및 디바이스를 원격으로 제어하는 기능으로, 앱을 통해 �
 ■ 한 줄 요약
 
 기기를 앱으로 원격 조작하는 기능. 음원 저장(라이브러리)과 스트리밍(에어러블) 두 가지 방식을 지원`,
-   tags:["원격제어","라이브러리","에어러블연동"],
-   links:[]},
-
-  {id:14, title:"로컬 (Local)", category:"AK 용어", models:[], date:"2026.05.18", author:"Ellie", authorInitial:"E",
+   tags:["원격제어","라이브러리","에어러블연동"],links:[]},
+  {id:14,title:"로컬 (Local)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"사용자가 음원 파일을 기기에 직접 저장하여 재생하는 방식입니다.",
    body:`■ 개요
 
@@ -67,10 +61,8 @@ SD 카드, 내부 저장소, USB 등 물리적 저장 매체를 기반으로 동
 ■ 한 줄 요약
 
 파일을 기기에 직접 넣어 재생하는 방식. 인터넷 불필요`,
-   tags:["로컬","오프라인","저장"],
-   links:[]},
-
-  {id:15, title:"에어러블 (airable)", category:"AK 용어", models:[], date:"2026.05.18", author:"Ellie", authorInitial:"E",
+   tags:["로컬","오프라인","저장"],links:[]},
+  {id:15,title:"에어러블 (airable)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"오디오 기기 제조사를 위한 스트리밍·라디오·팟캐스트 콘텐츠 통합 연동 솔루션입니다.",
    body:`■■ 개요
 
@@ -103,10 +95,8 @@ TIDAL, Qobuz, Deezer 같은 여러 스트리밍 서비스를 API 형태로 묶�
 ■■ 한 줄 요약
 
 여러 스트리밍 서비스를 하나의 API로 묶어주는 B2B 미들웨어. 제조사가 개별 서비스와 직접 제휴·개발하는 수고를 덜어줌`,
-   tags:["미들웨어","B2B","TIDAL","Qobuz"],
-   links:[]},
-
-  {id:16, title:"스트리밍 앱 (Streaming App)", category:"AK 용어", models:[], date:"2026.05.18", author:"Ellie", authorInitial:"E",
+   tags:["미들웨어","B2B","TIDAL","Qobuz"],links:[]},
+  {id:16,title:"스트리밍 앱 (Streaming App)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"에어러블에 포함되지 않은 스트리밍 서비스를 APK 설치나 자체 앱 스토어를 통해 직접 설치해 사용하는 방식입니다.",
    body:`■ 개요
 
@@ -124,10 +114,8 @@ TIDAL, Qobuz, Deezer 같은 여러 스트리밍 서비스를 API 형태로 묶�
 ■ 한 줄 요약
 
 에어러블 미지원 서비스(Spotify 등)를 사용하기 위해 앱을 직접 설치하는 방식. 자유도는 높지만 기기 최적화는 낮을 수 있음`,
-   tags:["Spotify","APK","안드로이드앱"],
-   links:[]},
-
-  {id:17, title:"SMB (Server Message Block)", category:"AK 용어", models:[], date:"2026.05.18", author:"Ellie", authorInitial:"E",
+   tags:["Spotify","APK","안드로이드앱"],links:[{label:"상세 페이지 보기",url:"streaming-app.html"}]},
+  {id:17,title:"SMB (Server Message Block)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"네트워크를 통해 다른 기기의 폴더/파일에 접근할 수 있게 해주는 파일 공유 프로토콜입니다.",
    body:`■ 개요
 
@@ -147,10 +135,8 @@ DAP·디바이스에서 SMB를 사용하려면 서버 환경 구축이 먼저 �
 ■ 한 줄 요약
 
 같은 와이파이 네트워크 안에서 PC·NAS 등의 폴더를 DAP에 연결해 음악을 재생하는 방식. 폴더가 안 보이면 SMB 스캔 실행`,
-   tags:["네트워크","파일공유","NAS","SAMBA"],
-   links:[{label:"로컬 메뉴에서 보기", url:"#search:로컬 메뉴"}]},
-
-  {id:18, title:"CUE 시트 (CUE Sheet)", category:"AK 용어", models:[], date:"2026.05.18", author:"Ellie", authorInitial:"E",
+   tags:["네트워크","파일공유","NAS","SAMBA"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
+  {id:18,title:"CUE 시트 (CUE Sheet)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"앨범 단위로 묶인 오디오 파일의 트랙 정보를 담고 있는 메타데이터 텍스트 파일입니다.",
    body:`■ 개요
 
@@ -165,10 +151,8 @@ DAP·디바이스에서 SMB를 사용하려면 서버 환경 구축이 먼저 �
 ■ 한 줄 요약
 
 앨범 전체를 1개 파일로 관리하면서, CUE 파일로 각 트랙을 분리·탐색할 수 있게 해주는 방식`,
-   tags:["메타데이터","트랙분리","앨범단위"],
-   links:[{label:"로컬 메뉴에서 보기", url:"#search:로컬 메뉴"}]},
-
-  {id:19, title:"CD 라이브러리 (CD Library)", category:"AK 용어", models:[], date:"2026.05.18", author:"Ellie", authorInitial:"E",
+   tags:["메타데이터","트랙분리","앨범단위"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
+  {id:19,title:"CD 라이브러리 (CD Library)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"CD에 담긴 음원, 앨범 아트 등의 데이터를 디지털 파일로 복사해 기기에 저장하는 기능입니다.",
    body:`■ 개요
 
@@ -184,10 +168,8 @@ CD에 담긴 음원, 앨범 아트 등의 데이터를 디지털 파일로 복�
 ■ 한 줄 요약
 
 CD를 DAP에 디지털 파일로 옮기는 과정. 이 복사 작업을 '리핑'이라고 함`,
-   tags:["리핑","FLAC","WAV","디지털변환"],
-   links:[{label:"로컬 메뉴에서 보기", url:"#search:로컬 메뉴"}]},
-
-  {id:20, title:"HD 오디오 (HD Audio)", category:"AK 용어", models:[], date:"2026.05.18", author:"Ellie", authorInitial:"E",
+   tags:["리핑","FLAC","WAV","디지털변환"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
+  {id:20,title:"HD 오디오 (HD Audio)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"로컬에 저장된 파일 중 고음질 파일만 필터링해서 보여주는 목록입니다. 이전 명칭: MQS.",
    body:`■ 개요
 
@@ -199,10 +181,8 @@ CD를 DAP에 디지털 파일로 옮기는 과정. 이 복사 작업을 '리핑'
 ■ 한 줄 요약
 
 로컬 파일 중 고음질(HD) 파일만 모아서 보여주는 필터 뷰. 과거 명칭은 MQS`,
-   tags:["고음질","MQS","필터뷰","명칭변경"],
-   links:[{label:"로컬 메뉴에서 보기", url:"#search:로컬 메뉴"}]},
-
-  {id:21, title:"로컬 메뉴 (Local Menu)", category:"AK 용어", models:[], date:"2026.05.18", author:"Ellie", authorInitial:"E",
+   tags:["고음질","MQS","필터뷰","명칭변경"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
+  {id:21,title:"로컬 메뉴 (Local Menu)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"AK DAP·디바이스에서 기기에 직접 저장된 음원 파일을 탐색하고 재생하기 위한 메뉴 영역입니다.",
    body:`■ 개요
 
@@ -217,15 +197,13 @@ CD를 DAP에 디지털 파일로 옮기는 과정. 이 복사 작업을 '리핑'
 | CUE 시트 | 앨범 단위 트랙 탐색 |
 | CD 라이브러리 | CD 리핑 및 저장 |
 | HD 오디오 | 고음질 파일 필터 뷰 |`,
-   tags:["오프라인재생","네트워크공유","고음질필터"],
-   links:[
-     {label:"SMB", url:"#search:SMB"},
-     {label:"CUE 시트", url:"#search:CUE 시트"},
-     {label:"CD 라이브러리", url:"#search:CD 라이브러리"},
-     {label:"HD 오디오", url:"#search:HD 오디오"},
+   tags:["오프라인재생","네트워크공유","고음질필터"],links:[
+     {label:"SMB",url:"#search:SMB"},
+     {label:"CUE 시트",url:"#search:CUE 시트"},
+     {label:"CD 라이브러리",url:"#search:CD 라이브러리"},
+     {label:"HD 오디오",url:"#search:HD 오디오"},
    ]},
-
-  {id:22, title:"컬렉션 (Collection)", category:"AK 용어", models:[], date:"2026.05.18", author:"Ellie", authorInitial:"E",
+  {id:22,title:"컬렉션 (Collection)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"기존 Favorite(즐겨찾기)을 재정의한 북마크형 저장 기능. 노래·앨범·아티스트·플레이리스트를 폴더별로 저장·관리할 수 있습니다.",
    body:`■■ 개요
 
@@ -258,10 +236,8 @@ CD를 DAP에 디지털 파일로 옮기는 과정. 이 복사 작업을 '리핑'
 ■ 한 줄 요약
 
 노래·앨범·아티스트·플리를 폴더별로 즐겨찾기처럼 저장하는 기능. 기존 Favorite을 SP4000T부터 확장 재정의`,
-   tags:["북마크","폴더구조","SP4000T이상"],
-   links:[{label:"UX 히스토리 보기", url:"#search:컬렉션 Favorite 확장"}]},
-
-  {id:23, title:"Favorite (즐겨찾기)", category:"AK 용어", models:[], date:"2026.05.18", author:"Ellie", authorInitial:"E",
+   tags:["북마크","폴더구조","SP4000T이상"],links:[{label:"기능 히스토리 보기",url:"#search:컬렉션 Favorite 확장"}]},
+  {id:23,title:"Favorite (즐겨찾기)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"SP4000T 이전 모델에서 사용하던 노래 단독 즐겨찾기 기능. SP4000T부터 '컬렉션'으로 재정의되었습니다.",
    body:`■ 개요
 
@@ -283,6 +259,5 @@ SP4000T 이전 구형 모델은 Favorite 명칭과 기능이 그대로 유지됩
 ■ 한 줄 요약
 
 노래만 담는 단순 즐겨찾기. SP4000T부터 컬렉션으로 기능 확장되어 대체됨`,
-   tags:["구버전","노래단독","SP4000T이전"],
-   links:[{label:"컬렉션 AK 용어 보기", url:"#search:컬렉션"}]},
+   tags:["구버전","노래단독","SP4000T이전"],links:[{label:"컬렉션 용어사전 보기",url:"#search:컬렉션"}]},
 ];
