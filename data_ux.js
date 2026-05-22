@@ -1,12 +1,11 @@
 // =============================================
 // data_ux.js
-// UX 히스토리 카테고리 데이터
+// UX 히스토리 / 디자인 가이드 카테고리 데이터
 // 항목 추가 시 id는 고유한 숫자로 지정
 // =============================================
 
 const DATA_ux = [
-  {id:24, title:"Favorite에서 컬렉션으로 기능확장 재정의", category:"기능 히스토리", models:["A&ultima","SP4000T"], showAllModels:true, date:"2026.05.18", author:"Ellie", authorInitial:"E",
-   credits:{UX:"Ellie"},
+  {id:24,title:"컬렉션 (Collection) — Favorite 기능 확장 재정의",category:"기능 히스토리",models:["A&ultima","SP4000T"],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"기존 Favorite(즐겨찾기)의 노래 단독 저장을 확장, 노래·앨범·아티스트·플레이리스트를 폴더별로 저장·관리하는 컬렉션으로 재정의. SP4000T부터 적용.",
    body:`■■ 기능 개요
 
@@ -32,12 +31,21 @@ SP4000T부터 '컬렉션(Collection)'으로 재정의하며 기능을 대폭 확
 
 ■■ 폴더 구조 및 정렬 옵션
 
-| 폴더 | 정렬 옵션 |
-| --- | --- |
-| 노래 | 이름순 / 앨범순 / 아티스트순 / 발매순 / 최근 추가순 |
-| 앨범 | 이름순 / 아티스트순 / 발매순 |
-| 아티스트 | 이름순 / 발매순 / 최근 추가순 |
-| 플레이리스트 | 별도 드롭다운 제공 |
+■ 노래 폴더
+
+이름순 / 앨범순 / 아티스트순 / 발매순 / 최근 추가순
+
+■ 앨범 폴더
+
+이름순 / 아티스트순 / 발매순
+
+■ 아티스트 폴더
+
+이름순 / 발매순 / 최근 추가순
+
+■ 플레이리스트 폴더
+
+별도 드롭다운 제공
 
 ■ 공통 사항
 
@@ -91,62 +99,14 @@ AK Connect로 추가된 곡은 컬렉션 추가 불가.
 
 | 모델 | 적용 여부 | RC 계획 |
 | --- | --- | --- |
-| A&ultima | ✅ SP4000T | — |
-| PD series | 순차 반영 예정 | 현재 RC 계획 없음 |
+| SP4000T | ✅ 적용 (기준 모델) | — |
+| A&ultima 라인 전반 | 순차 반영 예정 | 현재 RC 계획 없음 |
+| PD 라인 | 향후 적용 예정 | 현재 RC 계획 없음 |
 
 현재 SP4000T(A&ultima 라인)에 우선 반영되었으며,
 PD 라인 포함 하위 모델 RC 반영 계획은 현재 미정입니다.`,
    tags:["컬렉션","즐겨찾기","기능확장","북마크","토글","중복처리"],
-   links:[
-     {label:"AK 용어 — 컬렉션", url:"#search:컬렉션"},
-     {label:"AK 용어 — Favorite", url:"#search:Favorite"},
-   ]},
-
-  {id:27, title:"설정 레이블 추가 및 재배열", category:"기능 히스토리", models:["A&ultima","PD series"], labels:["RC"], date:"2026.05.22", author:"Ellie", authorInitial:"E",
-   credits:{UX:"Ellie"},
-   desc:"기존 설정 화면에 레이블을 추가해 그룹을 명시하고, 각 그룹의 성격에 맞게 항목 순서도 재배열하였습니다.",
-   body:`■■ 기능 개요
-
-기존 설정 화면은 아이콘만으로 단락이 구분되어, 어떤 기능끼리 묶여 있는지 직관적으로 파악하기 어려웠습니다.
-레이블을 추가해 그룹을 명시하고, 각 그룹의 성격에 맞게 항목 순서도 재배열하였습니다.
-
-
-■■ 변경 전 / 후
-
-| 구분 | 변경 전 | 변경 후 |
-| --- | --- | --- |
-| 그룹 표시 | 아이콘만으로 단락 구분 | 레이블 텍스트로 그룹명 명시 |
-| 그룹명 | 없음 | 네트워크 및 연결 / 음향 설정 / 입출력 설정 / 일반 / 시스템 |
-
-
-■■ 그룹 구성
-
-| 레이블 | 포함 항목 |
-| --- | --- |
-| 네트워크 및 연결 | 무선 네트워크 / 블루투스 / 블루투스 코덱 / AK Connect / AK File Drop / Roon Ready / Qobuz Connect / Airplay |
-| 음향 설정 | 이퀄라이저 / Crossfeed / DAR(Digital Audio Remaster) / DAC 필터 / 좌우 밸런스 / 갭리스 / ReplayGain / 라인아웃 |
-| 입출력 설정 | AMP / CD 리퍼 / USB 모드 / USB 오디오 / USB 설정 / S/PDIF 변환 / High Driving Mode |
-| 일반 | 재생 설정 / 알림 패널 / 볼륨 / 디스플레이 / 자동차 모드 / LED 라이트 / 날짜 및 시간 / 기기 이름 / 언어 / 키보드 / 전원 및 배터리 / 앱 설정 / 다운로드 |
-| 시스템 | 업데이트 / 시스템 정보 / 초기화 |
-
-
-■■ 미반영 이유 및 적용 계획
-
-현재 모델마다 사용하는 칩(Qualcomm 등 펌웨어 환경)이 달라, 설정 화면 하나를 수정하면 모든 모델에 개별 대응이 필요합니다.
-현재 개발팀에서 Compose 환경 구축을 진행 중이며, 당장 리소스 투입이 어려운 상황입니다.
-다음 모델 출시 전 회의를 거쳐 반영 방향을 결정할 예정입니다.
-
-
-■■ 적용 현황 및 RC 계획
-
-| 모델 | 적용 여부 | 계획 |
-| --- | --- | --- |
-| A&ultima | 미적용 | 리소스 부족 |
-| PD series | 미적용 | 리소스 부족 |`,
-   tags:["설정","레이블","재배열","그룹화"],
-   images:[
-     {src:"UI_setting.png", alt:"변경 전 — 설정 UI"},
-     {src:"UX_setting.png", alt:"변경 후 — 설정 UX"},
-   ],
-   links:[]},
+   links:[{label:"용어사전 — 컬렉션",url:"#search:컬렉션"},{label:"용어사전 — Favorite",url:"#search:Favorite"}]},
+  {id:9,title:"버튼 컴포넌트 스펙 v3",category:"디자인 가이드",models:[],date:"2025.03.08",author:"Ellie",authorInitial:"E",desc:"Primary / Secondary / Ghost 3종 버튼 스펙. 상태별 컬러 토큰 정의.",body:`버튼 높이: 40px (기본) / 32px (소형)\n\nPrimary → Crimson 700 (#CC1B38)\nSecondary → Neutrals 600 (#3A3A3A)\nDisabled → Neutrals 600 (#3A3A3A)`,tags:["UI","컴포넌트"],links:[{label:"피그마 — Button v3",url:"https://figma.com"}]},
+  {id:10,title:"컬러 토큰 시스템 — Semantic",category:"디자인 가이드",models:[],date:"2025.04.02",author:"Ellie",authorInitial:"E",desc:"AK Design System Semantic 컬러 토큰 전체 정의.",body:`Background\n  color/bg/primary → Black 100%\n  color/bg/secondary → Neutrals 800\n\nText\n  color/text/default → White 100%\n  color/text/primary → Crimson 700`,tags:["토큰","컬러"],links:[]},
 ];
