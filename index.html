@@ -23,11 +23,9 @@
   --cat-gloss-bg:rgba(255,187,0,0.10);--cat-gloss:#FFBB00;
   --chip-ultima-bg:rgba(204,27,56,0.16);--chip-ultima:var(--cr-200);
   --chip-pd-bg:rgba(0,123,255,0.14);--chip-pd:#6DB8FF;
-  --chip-her-bg:rgba(27,204,163,0.12);--chip-her:#1BCCA3;
+  --chip-her-bg:rgba(255,187,0,0.10);--chip-her:#FFBB00;
   --chip-cl-bg:rgba(149,149,149,0.1);--chip-cl:#A0A0A0;
   --chip-sp4000t-bg:rgba(163,106,255,0.14);--chip-sp4000t:#C49DFF;
-  --chip-rc-bg:rgba(255,160,0,0.14);--chip-rc:#FFB020;
-  --chip-setting-bg:rgba(255,187,0,0.12);--chip-setting:#FFBB00;
   --font:"Pretendard Variable","Pretendard",sans-serif;
   --mono:var(--font);
   --r-xs:4px;--r-sm:6px;--r-lg:16px;--r-xl:999px;
@@ -43,22 +41,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
    항상 표시. 홈에서는 숨김 (body.is-home)
 ============================================= */
 #gnb-wrap{
-  position:sticky;top:0;z-index:200;
+  position:sticky;top:0;z-index:100;
   padding:10px 0;
-  padding-top:40px;
   background:rgba(18,18,18,0.9);
   backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--div-1);
   display:flex;
   justify-content:center;
-}
-/* 홈에서는 GNB를 fixed로 올려서 #home이 100vh 꽉 채움 */
-body.is-home #gnb-wrap{
-  position:fixed;
-  top:0;left:0;right:0;
-  padding-top:40px;
-  background:transparent;
-  backdrop-filter:none;-webkit-backdrop-filter:none;
-  z-index:200;
 }
 
 #gnb-inner{
@@ -66,14 +55,14 @@ body.is-home #gnb-wrap{
   background:var(--n-800);
   border:1px solid var(--div-2);
   border-radius:var(--r-xl);
-  padding:8px 10px;
+  padding:5px 8px;
 }
 #gnb-logo{
   display:flex;align-items:center;gap:9px;
   flex-shrink:0;padding:4px 12px 4px 6px;
   border-radius:var(--r-xl);transition:background 0.14s;
 }
-#gnb-logo:hover{}
+#gnb-logo:hover{background:rgba(204,27,56,0.1)}
 #gnb-logo img{width:22px;height:auto;mix-blend-mode:screen}
 #gnb-logo-text{
   font-family:var(--font);font-size:14px;font-weight:700;
@@ -81,11 +70,11 @@ body.is-home #gnb-wrap{
 }
 .gnb-sep{width:1px;height:16px;background:var(--div-2);flex-shrink:0;margin:0 3px}
 .gnb-tab{
-  padding:10px 16px;font-size:14px;font-weight:500;
+  padding:7px 14px;font-size:14px;font-weight:500;
   color:var(--text-2);border-radius:var(--r-xl);
   transition:color 0.13s,background 0.13s;white-space:nowrap;
 }
-.gnb-tab:hover{color:var(--text-1)}
+.gnb-tab:hover{color:var(--text-1);background:var(--a-w10)}
 .gnb-tab.is-active{
   color:var(--text-1);background:var(--n-700);
   outline:1px solid var(--div-2);
@@ -95,7 +84,7 @@ body.is-home #gnb-wrap{
    SECTION: css-home
    body.is-home일 때만 표시
 ============================================= */
-#home{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 24px;gap:32px;position:relative;overflow:hidden}
+#home{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 24px;gap:32px}
 body.is-home #home{display:flex}
 
 #home-logo{display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;transition:opacity 0.15s;padding:0}
@@ -103,20 +92,16 @@ body.is-home #home{display:flex}
 #home-logo img{width:64px;height:auto;mix-blend-mode:screen}
 #home-logo-text{font-family:var(--font);font-size:14px;font-weight:700;color:var(--text-1);letter-spacing:0.06em}
 
-#home-copy{text-align:center}
-#home-headline{font-size:32px;font-weight:600;color:var(--text-1);line-height:1.3;letter-spacing:-0.02em;margin-bottom:8px}
-#home-subline{font-size:16px;font-weight:400;color:var(--text-2);line-height:1.5}
-
 #home-search-wrap{width:100%;max-width:480px;position:relative}
 #home-search{
   width:100%;height:52px;padding:0 48px 0 50px;
   background:var(--n-800);border:1px solid var(--div-2);
-  border-radius:16px;color:var(--text-1);
+  border-radius:var(--r-xl);color:var(--text-1);
   font-family:var(--font);font-size:16px;outline:none;
   transition:border-color 0.15s,box-shadow 0.15s;
 }
 #home-search::placeholder{color:var(--n-500)}
-#home-search:focus{border:2px solid rgba(204,27,56,0.5);box-shadow:0 0 12px rgba(204,27,56,0.10)}
+#home-search:focus{border-color:var(--cr-700);box-shadow:0 0 0 3px rgba(204,27,56,0.12)}
 .home-si{position:absolute;left:17px;top:50%;transform:translateY(-50%);color:var(--n-500);pointer-events:none}
 #home-clear{
   position:absolute;right:15px;top:50%;transform:translateY(-50%);
@@ -202,8 +187,6 @@ body.is-list #list-page{display:flex}
 .b-her{background:var(--chip-her-bg);color:var(--chip-her)}
 .b-cl{background:var(--chip-cl-bg);color:var(--chip-cl)}
 .b-sp4000t{background:var(--chip-sp4000t-bg);color:var(--chip-sp4000t)}
-.b-rc{background:var(--chip-rc-bg);color:var(--chip-rc)}
-.b-setting{background:var(--chip-setting-bg);color:var(--chip-setting)}
 .b-more{background:var(--a-w06);color:var(--n-400);border:1px solid var(--div-1)}
 .tag{display:inline-flex;align-items:center;padding:3px 8px;border-radius:var(--r-xs);font-size:12px;color:var(--n-400);background:var(--a-w06);border:1px solid var(--div-1)}
 mark{background:rgba(204,27,56,0.22);color:var(--cr-100);border-radius:2px;padding:0 1px}
@@ -262,13 +245,6 @@ mark{background:rgba(204,27,56,0.22);color:var(--cr-100);border-radius:2px;paddi
 }
 .d-img-grid img:last-child:nth-child(odd){
   grid-column:1 / -1;
-}
-.d-img-grid.single{
-  display:flex;
-  justify-content:center;
-}
-.d-img-grid.single img{
-  width:320px;
 }
 hr.dv{border:none;border-top:1px solid var(--div-1);margin:20px 0}
 /* 첨부 파일 */
@@ -350,14 +326,13 @@ hr.dv{border:none;border-top:1px solid var(--div-1);margin:20px 0}
 #d-body table{
   width:100%;border-collapse:collapse;
   margin:10px 0 18px;font-size:14px;
-  white-space:normal;table-layout:fixed;
+  white-space:normal;
 }
 #d-body th,#d-body td{
   padding:10px 14px;
   border:1px solid var(--div-2);
   text-align:left;vertical-align:top;
   color:var(--text-2);
-  word-break:keep-all;overflow-wrap:break-word;
 }
 #d-body th{
   background:var(--n-700);
@@ -365,18 +340,6 @@ hr.dv{border:none;border-top:1px solid var(--div-1);margin:20px 0}
   font-size:14px;
 }
 #d-body tr:nth-child(even) td{background:rgba(255,255,255,0.02)}
-
-/* 2열 테이블: 1열 200px 고정 */
-#d-body table:has(tr > :nth-child(2):last-child) th:first-child,
-#d-body table:has(tr > :nth-child(2):last-child) td:first-child { width:200px; }
-
-/* 3열 테이블: 1열 200px 고정, 2·3열 균등 */
-#d-body table:has(tr > :nth-child(3):last-child) th:first-child,
-#d-body table:has(tr > :nth-child(3):last-child) td:first-child { width:200px; }
-#d-body table:has(tr > :nth-child(3):last-child) th:nth-child(2),
-#d-body table:has(tr > :nth-child(3):last-child) td:nth-child(2),
-#d-body table:has(tr > :nth-child(3):last-child) th:nth-child(3),
-#d-body table:has(tr > :nth-child(3):last-child) td:nth-child(3) { width:auto; }
 
 @media(max-width:640px){
   .gnb-tab:not(.is-active){display:none}
@@ -421,9 +384,6 @@ body.is-tag #tag-page{display:block}
 </head>
 <body class="is-home">
 
-<!-- 웨이브 캔버스: body 최상단 독립 배치, is-home일 때만 표시 -->
-<canvas id="home-wave" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:1;"></canvas>
-
 <!-- =============================================
    SECTION: gnb
    항상 DOM에 존재. is-home일 때만 숨김
@@ -434,6 +394,7 @@ body.is-tag #tag-page{display:block}
       <img src="logo.png" alt="AK"/>
       <span id="gnb-logo-text">AK Archive</span>
     </button>
+    <div class="gnb-sep"></div>
     
     <button class="gnb-tab" data-cat="제품 모델">제품</button>
     <button class="gnb-tab" data-cat="기능 히스토리">UX 히스토리</button>
@@ -446,13 +407,11 @@ body.is-tag #tag-page{display:block}
    검색창만. is-home일 때 표시
 ============================================= -->
 <div id="home">
-  <!-- 텍스트 가독성용 어두운 오버레이 -->
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 50% 40%, rgba(18,18,18,0.88) 0%, rgba(18,18,18,0.5) 50%, transparent 75%);pointer-events:none;z-index:0;"></div>
-  <div id="home-copy" style="position:relative;z-index:1;">
-    <p id="home-headline">AK 팀이 알아야 할 정보,<br>검색으로 바로 찾으세요.</p>
-    <p id="home-subline">제품 스펙 · UX 히스토리 · 용어사전 통합 아카이브</p>
-  </div>
-  <div id="home-search-wrap" style="position:relative;z-index:1;">
+  <button id="home-logo">
+    <img src="logo.png" alt="AK Archive 로고"/>
+    <span id="home-logo-text">AK Archive</span>
+  </button>
+  <div id="home-search-wrap">
     <svg class="home-si" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6">
       <circle cx="8" cy="8" r="5.5"/><path d="M12.5 12.5L16 16"/>
     </svg>
@@ -462,114 +421,6 @@ body.is-tag #tag-page{display:block}
     </button>
   </div>
 </div>
-
-<script>
-/* =============================================
-   SECTION: home-wave
-   홈 화면에만 재생되는 soundwave 배경 애니메이션
-============================================= */
-(function(){
-  const canvas = document.getElementById('home-wave');
-  const ctx = canvas.getContext('2d');
-  let W, H, t = 0, raf = null;
-
-  const smooth = [];
-
-  function resize(){
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-
-  function draw(){
-    ctx.clearRect(0, 0, W, H);
-
-    const barW = 2, gap = 2, unit = barW + gap;
-    const n    = Math.ceil(W / unit) + 1;
-    const cy   = H * 0.60;   // 검색필드 중심
-    const maxH = H * 0.22;   // 각 파동 최대 높이 (두 개니까 절반으로)
-
-    if(smooth.length === 0){
-      for(let i = 0; i < n; i++){
-        const pos = i / (n - 1);
-        const e = 0.55 + 0.45 * Math.pow(Math.sin(pos * Math.PI), 1.5);
-        smooth[i]       = e * 0.5;  // 파동1 (위)
-        smooth[n + i]   = e * 0.5;  // 파동2 (아래)
-      }
-    }
-
-    for(let i = 0; i < n; i++){
-      const pos = i / (n - 1);
-      const envelope = 0.55 + 0.45 * Math.pow(Math.sin(pos * Math.PI), 1.5);
-      const x = i * unit;
-      const alpha = 0.15 + envelope * 0.42;
-
-      // ── 파동 1: 느린 파동 (위쪽으로 뻗음)
-      const wave1 = Math.sin(t * 0.014 + pos * Math.PI * 2.0) * 0.52 +
-                    Math.sin(t * 0.022 + pos * Math.PI * 5.0) * 0.28 + 0.5;
-      const target1 = (0.15 + wave1 * 0.72) * envelope;
-      if(smooth[i] === undefined) smooth[i] = target1;
-      smooth[i] += (target1 - smooth[i]) * 0.06;
-      const bh1 = smooth[i] * maxH;
-
-      // 파동1: cy 위쪽에 피크, 위아래로 자연스럽게 페이드
-      const peak1 = cy - bh1 * 0.5;  // 피크 위치
-      const grad1 = ctx.createLinearGradient(0, cy - bh1, 0, cy + bh1 * 0.3);
-      grad1.addColorStop(0,    `rgba(215,38,58,0)`);
-      grad1.addColorStop(0.35, `rgba(225,45,65,${alpha})`);
-      grad1.addColorStop(1.0,  `rgba(215,38,58,0)`);
-      ctx.fillStyle = grad1;
-      ctx.beginPath();
-      ctx.roundRect(x, cy - bh1, barW, bh1 * 1.3, 1);
-      ctx.fill();
-
-      // ── 파동 2: 위상 다르게, cy 아래쪽에 피크
-      const wave2 = Math.sin(t * 0.018 + pos * Math.PI * 2.8 + 1.2) * 0.52 +
-                    Math.sin(t * 0.026 + pos * Math.PI * 5.6 + 0.8) * 0.28 + 0.5;
-      const target2 = (0.15 + wave2 * 0.72) * envelope;
-      if(smooth[n + i] === undefined) smooth[n + i] = target2;
-      smooth[n + i] += (target2 - smooth[n + i]) * 0.06;
-      const bh2 = smooth[n + i] * maxH;
-
-      // 파동2: cy 아래쪽에 피크, 위아래로 자연스럽게 페이드
-      const grad2 = ctx.createLinearGradient(0, cy - bh2 * 0.3, 0, cy + bh2);
-      grad2.addColorStop(0,    `rgba(215,38,58,0)`);
-      grad2.addColorStop(0.65, `rgba(225,45,65,${alpha})`);
-      grad2.addColorStop(1.0,  `rgba(215,38,58,0)`);
-      ctx.fillStyle = grad2;
-      ctx.beginPath();
-      ctx.roundRect(x, cy - bh2 * 0.3, barW, bh2 * 1.3, 1);
-      ctx.fill();
-    }
-    t++;
-    raf = requestAnimationFrame(draw);
-  }
-
-  function startWave(){
-    if(!raf){
-      canvas.style.display = 'block';
-      resize(); draw();
-    }
-  }
-  function stopWave(){
-    if(raf){ cancelAnimationFrame(raf); raf = null; t = 0; }
-    ctx.clearRect(0, 0, W, H);
-    canvas.style.display = 'none';
-  }
-
-  resize();
-  window.addEventListener('resize', resize);
-
-  // body 클래스 변화 감지 → is-home일 때만 실행
-  const observer = new MutationObserver(() => {
-    if(document.body.classList.contains('is-home')) startWave();
-    else stopWave();
-  });
-  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-
-  // 초기 상태
-  if(document.body.classList.contains('is-home')) startWave();
-})();
-</script>
 
 <!-- =============================================
    SECTION: list-page
@@ -633,18 +484,19 @@ body.is-tag #tag-page{display:block}
 <!-- =============================================
    SECTION: js-data
 ============================================= -->
+<script src="data_UX히스토리.js"></script>
 <script>
-const DAP_CLS = {"A&ultima":"b-ultima","PD series":"b-pd","Heritage":"b-her","Classic":"b-cl","SP4000T":"b-sp4000t","PD5":"b-pd"};
-const LABEL_CLS = {"RC":"b-rc","설정":"b-setting"};
+const DAP_CLS = {"A&ultima":"b-ultima","PD series":"b-pd","Heritage":"b-her","Classic":"b-cl","SP4000T":"b-sp4000t"};
 const CAT_CLS = {"제품 모델":"b-model","기능 히스토리":"b-hist","디자인 가이드":"b-design","용어사전":"b-gloss"};
 const HERO = {
   "전체":{title:"전체",desc:"프로젝트 히스토리, 의사결정 배경, 사내 용어를 키워드 하나로 즉시 탐색"},
-  "제품 모델":{title:"제품",desc:"A&ultima · PD series · Heritage · Classic 라인의 스펙·히스토리"},
-  "기능 히스토리":{title:"UX 히스토리",desc:"기능별 의사결정 배경과 변경 이력"},
+  "제품 모델":{title:"제품 모델",desc:"A&ultima · PD series · Heritage · Classic 라인의 스펙·히스토리"},
+  "기능 히스토리":{title:"기능 히스토리",desc:"기능별 의사결정 배경과 변경 이력"},
   "디자인 가이드":{title:"디자인 가이드",desc:"컴포넌트 스펙, 컬러 토큰, 가이드라인 문서"},
   "용어사전":{title:"용어사전",desc:"사내 전용 용어 정의"},
 };
 const DATA = [
+  ...DATA_UX히스토리,
   {id:26,title:"SP4000T — A&ultima 플래그십",category:"제품 모델",models:["A&ultima"],date:"2026.05.21",author:"Ellie",authorInitial:"E",
    credits:{PM:"Jay",PL:"Kane",UX:"Ellie",UI:"Luna"},
    desc:"A&ultima 라인의 플래그십 DAP.",
@@ -662,9 +514,9 @@ const DATA = [
      {label:"UI — Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9751-56643&t=YVqta9mRIAIVw2Wd-1"},
    ],
    images:[
-     {src:"images/SP4000T/SP4000T_1.png", alt:"SP4000T 전면"},
-     {src:"images/SP4000T/SP4000T_2.png", alt:"SP4000T 후면"},
-     {src:"images/SP4000T/SP4000T_3.png", alt:"SP4000T 퍼스펙티브"},
+     {src:"SP4000T_1.png", alt:"SP4000T 전면"},
+     {src:"SP4000T_2.png", alt:"SP4000T 후면"},
+     {src:"SP4000T_3.png", alt:"SP4000T 퍼스펙티브"},
    ]},
   {id:6,title:"PD5 — PD series 신모델",category:"제품 모델",models:["PD series"],date:"2026.05.20",author:"Ellie",authorInitial:"E",
    credits:{PM:"Luke",PL:"Hoya",UX:"Ellie",UI:"Luna"},
@@ -702,245 +554,20 @@ PD5에는 8개의 DAC가 탑재되어 있으며, 사용자가 DAC 구동 수를 
      {label:"UI — Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=10316-25448&t=3ye5vBYrOr6nuDXZ-1"},
    ],
    images:[
-     {src:"images/PD5/PD5_1.png", alt:"PD5 전면"},
-     {src:"images/PD5/PD5_2.png", alt:"PD5 측면"},
-     {src:"images/PD5/PD5_3.png", alt:"PD5 퍼스펙티브"},
-     {src:"images/PD5/PD5_4.png", alt:"PD5 후면"},
+     {src:"PD5_1.png", alt:"PD5 전면"},
+     {src:"PD5_2.png", alt:"PD5 측면"},
+     {src:"PD5_3.png", alt:"PD5 퍼스펙티브"},
+     {src:"PD5_4.png", alt:"PD5 후면"},
    ]},
   {id:25,title:"PD20 — PD series 최신 모델",category:"제품 모델",models:["PD series"],date:"2026.05.21",author:"Luna",authorInitial:"L",
    credits:{PM:"Luke",PL:"Evan",UX:"Luna",UI:"Luna"},
-   desc:"Dual Wheel System과 Real Octa DAC(CS43198 x8), Hybrid AMP를 탑재한 PD series의 프리미엄 모델. 나만의 사운드를 만드는 아날로그 감성 DAP.",
-   body:`■■ 1. 제품 컨셉
-
-AK 프리미엄 라인업(A&futura + KANN)의 장점을 융합한 신규 모델로, 타 경쟁 제품이 제공하지 못하는 아날로그 감성을 핵심 컨셉으로 발굴하였습니다.
-
-- Guitar AMP의 Tone Control과 Portable Recorder의 조작감에서 영감
-- 나만의 유니크한 사운드를 만드는 재미를 줄 수 있는 DAP
-- 유사 가격대 프리미엄 모델을 뛰어넘는 성능, 독특함, 뛰어난 만듦새로 차별화된 가치 제공
-
-■■ 2. Dual Wheel System
-
-볼륨을 조작하는 Digital Volume Wheel 외에, 나만의 사운드를 만들 수 있는 Sound Master Wheel을 추가로 탑재한 것이 PD20의 핵심 구조입니다.
-
-Sound Master Wheel
-- Bass / Mid / Treble 각 20단계 조절 지원
-- 좌측 물리 슬라이드 버튼(3단)으로 B / M / T 항목 선택
-- 나만의 사운드 커스터마이징 가능
-
-Digital Volume Wheel
-- 전원 버튼 기능 포함
-- 우측 배치
-
-■■ 3. Hybrid AMP
-
-AK Signature AMP System을 적용하여, 두 가지 앰프를 혼합 구동합니다.
-
-| 구분 | 특징 |
-| --- | --- |
-| Discrete Class A AMP | PA10과 동일한 아날로그 감성 사운드 |
-| OPAMP Class AB AMP | 효율적이고 균형 잡힌 출력 |
-
-- 좌측 물리 슬라이드 버튼(3단)으로 A / AB / H(Hybrid) 선택
-- Gain 조절: Low / High (BAL 기준 최대 10Vrms)
-- AMP Current 조절: 1 / 2 / 3단계 (PA10 방식)
-
-■■ 4. Real Octa DAC
-
-AK 최초로 CS43198을 8개 탑재한 Real Octa DAC 구조를 적용하였습니다.
-
-- DAC: CS43198 x8 (Octa Quad 구조)
-- BAL 출력 최대 10Vrms (High Gain 기준)
-
-■■ 5. 탑재 기능 정리
-
-물리 버튼 구성
-- Sound Master Wheel (좌상단) — Bass/Mid/Treble 20단계 조절
-- Digital Volume Wheel (우상단) — 볼륨 + 전원 버튼 포함
-- 3단 슬라이드 버튼 x2 (좌측) — B/M/T 선택 / A/AB/H AMP 선택
-- 2단 슬라이드 버튼 x1 (우측) — Lock On/Off
-- Multi Control 버튼 (우측) — Play/Pause, Next, Previous
-
-오디오 출력
-- 3.5mm (SPDIF 지원) x1
-- 4.4mm Balanced x1
-
-추가 Sound 메뉴 (UI 지원)
-- Gain 조절: Low / High
-- AMP Current 조절: 1 / 2 / 3
-
-■■ 6. Key Buying Factor
-
-1. 나만의 유니크한 사운드를 만들 수 있는 Sound Master 기능 제공
-2. 타 DAP와 다르게 조작(Dual Wheel, Slide Button)의 재미를 느낄 수 있는 구조
-3. Hybrid AMP 적용 및 아날로그 사운드를 느낄 수 있는 Class A AMP (PA10)
-4. CS43198 8개를 탑재한 Real Octa DAC 구조 적용
-5. Full Open Android 지원
-
-■■ 7. 주요 사양 (Brief Spec)
-
-| 항목 | 사양 | 비고 |
-| --- | --- | --- |
-| CPU | MTK8385 Octa-Core | Full Open Android 지원 |
-| DAC | CS43198 x8 | Real Octa 구조 |
-| Display | 6inch 1080 x 2180 | PS10 공용 |
-| Bit / Sample Rate | 32bit / 768kHz, DSD512 | |
-| Audio Output | 3.5mm(SPDIF) x1, 4.4mm x1 | SPDIF 실장 이슈 시 제외 |
-| Output Level | Balanced 10V | High Gain 기준 |
-| DAR | AK4137 | 실장 이슈 시 S/W 대체 |
-| Memory | 256GB | |
-| Bluetooth | LDAC, aptX HD | |
-| Wi-Fi | Dual Wi-Fi (2.4 / 5GHz) | Rear & Bottom Cover Glass 적용 |
-| Battery | 5,770mAh | PS10 공용 |
-| USB | Type C | PD 3.0 충전 |
-| SD Card | micro SD x1 | Max 1.5TB |
-| Material | Aluminum | |
-| 예상 사이즈 | 75.4 x 149.5 x 17.3mm | Wheel LED에 따라 두께 +@ |`,
-   tags:["PD20","DualWheel","OctaDAC","HybridAMP","SoundMaster","FullOpenAndroid","사업계획서"],
-   files:[
-     {label:"PD20_사업계획서_0324.pdf", url:"files/PD20_사업계획서_0324.pdf"},
-   ],
+   desc:"PD series의 최신 모델.",
+   body:``,
+   tags:["PD20","Audiosound","오디오사운드"],
+   files:[],
    links:[
      {label:"UX 시나리오 — Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=8627-2086&t=fhsxj64S8jwIqh1N-1"},
      {label:"UI — Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9739-17741&t=YVqta9mRIAIVw2Wd-1"},
-   ],
-   images:[
-     {src:"images/PD20/PD20_1.png", alt:"PD20 전면"},
-   ]},
-  {id:24,title:"컬렉션 (Collection) — Favorite 기능 확장 재정의",category:"기능 히스토리",models:["A&ultima","SP4000T"],showAllModels:true,date:"2026.05.18",author:"Ellie",authorInitial:"E",
-   desc:"기존 Favorite(즐겨찾기)의 노래 단독 저장을 확장, 노래·앨범·아티스트·플레이리스트를 폴더별로 저장·관리하는 컬렉션으로 재정의. SP4000T부터 적용.",
-   body:`■■ 기능 개요
-
-기존 Favorite(즐겨찾기)은 노래만 저장 가능한 단순 즐겨찾기 기능이었으나,
-SP4000T부터 '컬렉션(Collection)'으로 재정의하며 기능을 대폭 확장하였습니다.
-
-북마크 개념으로 동작하며, 추가/삭제 토글 방식으로 관리됩니다.
-컬렉션 내부에서는 휴지통 아이콘으로 로컬 음원 파일을 직접 삭제할 수 없습니다.
-(플레이리스트·Favorite·현재재생목록에서의 삭제(휴지통) = 해당 폴더 내 삭제 = 공통 컨셉)
-
-
-■■ 변경 전 / 후
-
-| 구분 | 기존 (Favorite) | 변경 후 (Collection) |
-| --- | --- | --- |
-| 명칭 | 즐겨찾기 | 컬렉션 |
-| 저장 대상 | 노래만 | 노래 / 앨범 / 아티스트 / 플레이리스트 |
-| 폴더 구조 | 없음 | 4개 폴더로 분류 |
-| 최근 추가 섹션 | 없음 | 최근 추가된 노래 (최대 20개, 1개월 이내) |
-| 바텀시트 항목 | 컬렉션 추가 | 컬렉션 추가 / 삭제 (토글) |
-| 파일 탭 지원 | — | 미지원 (인터넷 연결 의존성 및 깊은 뎁스 이유) |
-
-
-■■ 폴더 구조 및 정렬 옵션
-
-| 폴더 | 정렬 옵션 |
-| --- | --- |
-| 노래 | 이름순 / 앨범순 / 아티스트순 / 발매순 / 최근 추가순 |
-| 앨범 | 이름순 / 아티스트순 / 발매순 |
-| 아티스트 | 이름순 / 발매순 / 최근 추가순 |
-| 플레이리스트 | 별도 드롭다운 제공 |
-
-■ 공통 사항
-
-- 각 폴더 정렬은 홈 탭 정렬과 독립적으로 동작 (싱크 없음)
-- 편집 기능은 각 화면마다 상이하므로 화면별 개별 확인 필요
-
-
-■■ 최근 추가된 노래 섹션
-
-- 노래만 표시 (앨범·아티스트·플리는 이 섹션에 미포함)
-- 최대 20개, 추가 시점으로부터 1개월 이내 항목만 노출
-- 가장 최근 추가된 항목이 최상단에 배치
-- 재생 시 [컬렉션-노래] 전체가 현재 재생목록에 추가됨
-
-
-■■ 중복 처리 및 토스트 메시지
-
-| 케이스 | 토스트 메시지 |
-| --- | --- |
-| 모두 추가 성공 | 컬렉션에 모두 추가되었습니다. |
-| 일부 중복 포함 | 중복 제외, {n}개 항목이 컬렉션에 추가되었습니다. |
-| 전부 중복 | 이미 컬렉션에 추가된 항목입니다. |
-| 추가 실패 | 컬렉션에 추가에 실패했습니다. |
-| 용량 초과 | 컬렉션이 가득 찼습니다. 최대 1,000개까지 담을 수 있습니다. |
-| 삭제 완료 | 컬렉션에서 삭제했습니다. |
-
-
-■■ AK Connect 연동 시 예외 처리
-
-AK Connect로 추가된 곡은 컬렉션 추가 불가.
-
-| 상태 | 토스트 메시지 |
-| --- | --- |
-| AK Connect 곡만 선택 | AK Connect 곡 추가 불가 |
-| 전부 중복 + AK Connect | 추가할 수 있는 항목이 없습니다. (AK Connect 곡 추가 불가) |
-| 추가 가능 곡 + AK Connect 혼재 | 컬렉션에 모두 추가되었습니다. (AK Connect 곡 추가 불가) |
-| 중복 일부 + AK Connect 혼재 | 중복 제외, {n}개 항목이 컬렉션에 추가되었습니다. (AK Connect 곡 추가 불가) |
-
-
-■■ Music Player 하트 아이콘
-
-| 상태 | 하트 표시 |
-| --- | --- |
-| 단일 노래를 컬렉션에 담은 경우 | ♥ 활성 (filled) |
-| 폴더 자체를 컬렉션에 담은 경우 | 미표시 |
-
-레퍼런스: Apple Music, Spotify
-
-
-■■ 적용 현황 및 RC 계획
-
-| 모델 | 적용 여부 | RC 계획 |
-| --- | --- | --- |
-| A&ultima | ✅ SP4000T | — |
-| PD series | 순차 반영 예정 | 현재 RC 계획 없음 |
-
-현재 SP4000T(A&ultima 라인)에 우선 반영되었으며,
-PD series 포함 하위 모델 RC 반영 계획은 현재 미정입니다.`,
-   tags:["컬렉션","즐겨찾기","기능확장","북마크","토글","중복처리"],
-   links:[{label:"용어사전 — 컬렉션",url:"#search:컬렉션"},{label:"용어사전 — 즐겨찾기",url:"#search:즐겨찾기"}]},
-  {id:27,title:"설정 레이블 추가 및 재배열",category:"기능 히스토리",models:["PD5"],labels:["RC"],date:"2026.05.21",author:"Ellie",authorInitial:"E",
-   desc:"설정 화면의 아이콘 단락 구분 방식에 레이블을 추가하고, 기능 그룹에 맞게 항목을 재배열. PD5 이후 모델부터 순차 적용 예정.",
-   body:`■■ 기능 개요
-
-기존 설정 화면은 아이콘만으로 단락이 구분되어, 어떤 기능끼리 묶여 있는지 직관적으로 파악하기 어려웠습니다.
-레이블을 추가해 그룹을 명시하고, 각 그룹의 성격에 맞게 항목 순서도 재배열하였습니다.
-
-
-■■ 변경 전 / 후
-
-| 구분 | 변경 전 | 변경 후 |
-| --- | --- | --- |
-| 그룹 표시 | 아이콘만으로 단락 구분 | 레이블 텍스트로 그룹명 명시 |
-| 그룹명 | 없음 | 네트워크 및 연결 / 음향 설정 / 입출력 설정 / 일반 / 시스템 |
-
-
-■■ 그룹 구성
-
-| 레이블 | 포함 항목 |
-| --- | --- |
-| 네트워크 및 연결 | 무선 네트워크 / 블루투스 / 블루투스 코덱 / AK Connect / AK File Drop / Roon Ready / Qobuz Connect / Airplay |
-| 음향 설정 | 이퀄라이저 / Crossfeed / DAR(Digital Audio Remaster) / DAC 필터 / 좌우 밸런스 / 갭리스 / ReplayGain / 라인아웃 |
-| 입출력 설정 | AMP / CD 리퍼 / USB 모드 / USB 오디오 / USB 설정 / S/PDIF 변환 / High Driving Mode |
-| 일반 | 재생 설정 / 알림 패널 / 볼륨 / 디스플레이 / 자동차 모드 / LED 라이트 / 날짜 및 시간 / 기기 이름 / 언어 / 키보드 / 전원 및 배터리 / 앱 설정 / 다운로드 |
-| 시스템 | 업데이트 / 시스템 정보 / 초기화 |
-
-
-■■ 미반영 이유 및 적용 계획
-
-현재 모델마다 사용하는 칩(Qualcomm 등 펌웨어 환경)이 달라, 설정 화면 하나를 수정하면 모든 모델에 개별 대응이 필요합니다.
-현재 개발팀에서 Compose 환경 구축을 진행 중이며, 당장 리소스 투입이 어려운 상황입니다.
-다음 모델 출시 전 회의를 거쳐 반영 방향을 결정할 예정입니다.
-
-| 모델 | 적용 여부 | 계획 |
-| --- | --- | --- |
-| A&ultima | 미적용 | 리소스 부족 |
-| PD series | 미적용 | 리소스 부족 |`,
-   tags:["설정","레이블","재배열","Compose","RC","PD5"],
-   files:[],
-   links:[],
-   images:[
-     {src:"images/UX히스토리/setting/UI_setting.png", alt:"변경 전 — 설정 UI"},
-     {src:"images/UX히스토리/setting/UX_setting.png", alt:"변경 후 — 설정 UX"},
    ]},
   {id:9,title:"버튼 컴포넌트 스펙 v3",category:"디자인 가이드",models:[],date:"2025.03.08",author:"Ellie",authorInitial:"E",desc:"Primary / Secondary / Ghost 3종 버튼 스펙. 상태별 컬러 토큰 정의.",body:`버튼 높이: 40px (기본) / 32px (소형)\n\nPrimary → Crimson 700 (#CC1B38)\nSecondary → Neutrals 600 (#3A3A3A)\nDisabled → Neutrals 600 (#3A3A3A)`,tags:["UI","컴포넌트"],links:[{label:"피그마 — Button v3",url:"https://figma.com"}]},
   {id:10,title:"컬러 토큰 시스템 — Semantic",category:"디자인 가이드",models:[],date:"2025.04.02",author:"Ellie",authorInitial:"E",desc:"AK Design System Semantic 컬러 토큰 전체 정의.",body:`Background\n  color/bg/primary → Black 100%\n  color/bg/secondary → Neutrals 800\n\nText\n  color/text/default → White 100%\n  color/text/primary → Crimson 700`,tags:["토큰","컬러"],links:[]},
@@ -1156,7 +783,7 @@ CD를 DAP에 디지털 파일로 옮기는 과정. 이 복사 작업을 '리핑'
 
 노래·앨범·아티스트·플리를 폴더별로 즐겨찾기처럼 저장하는 기능. 기존 Favorite을 SP4000T부터 확장 재정의`,
    tags:["북마크","폴더구조","SP4000T이상"],links:[{label:"기능 히스토리 보기",url:"#search:컬렉션 Favorite 확장"}]},
-  {id:23,title:"즐겨찾기 (Favorite)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:23,title:"Favorite (즐겨찾기)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"SP4000T 이전 모델에서 사용하던 노래 단독 즐겨찾기 기능. SP4000T부터 '컬렉션'으로 재정의되었습니다.",
    body:`■ 개요
 
@@ -1330,7 +957,6 @@ function getChips(cat) {
     {key:"전체",label:"전체"},
     {key:"A&ultima",label:"A&ultima"},
     {key:"PD series",label:"PD series"},
-    {key:"RC",label:"RC"},
     {key:"Heritage",label:"Heritage"},
     {key:"Classic",label:"Classic"}
   ];
@@ -1344,19 +970,7 @@ function renderChipBar() {
   bar.style.cssText="display:flex;align-items:center;gap:6px;margin-bottom:16px;flex-wrap:wrap;";
   // 칩이 없는 탭(디자인 가이드, 용어사전): 검색창만
   chips.forEach(c=>{
-    let cnt;
-    if(c.key==="전체"){
-      cnt=DATA.filter(d=>d.category===S.cat).length;
-    } else if(S.cat==="기능 히스토리"){
-      const isModelChip=["A&ultima","PD series","Heritage","Classic"].includes(c.key);
-      if(isModelChip){
-        cnt=DATA.filter(d=>d.category===S.cat&&d.models.includes(c.key)).length;
-      } else {
-        cnt=DATA.filter(d=>d.category===S.cat&&d.labels&&d.labels.includes(c.key)).length;
-      }
-    } else {
-      cnt=DATA.filter(d=>d.category===S.cat&&d.models.includes(c.key)).length;
-    }
+    const cnt=DATA.filter(d=>d.category===S.cat&&(c.key==="전체"||d.models.includes(c.key))).length;
     const btn=document.createElement("button");
     btn.className="chip-btn"+(S.chip===c.key?" is-active":"");
     btn.dataset.chip=c.key;
@@ -1384,22 +998,10 @@ function filterData(){
   const q=S.q.trim().toLowerCase();
   return DATA.filter(d=>{
     if(S.cat&&d.category!==S.cat)return false;
-    if(S.chip!=="전체"){
-      if(S.cat==="제품 모델"){
-        if(!d.models.includes(S.chip))return false;
-      } else if(S.cat==="기능 히스토리"){
-        // RC, 설정 등 label 필터 (models에 없으면 labels로 확인)
-        const isModelChip = ["A&ultima","PD series","Heritage","Classic"].includes(S.chip);
-        if(isModelChip){
-          if(!d.models.includes(S.chip))return false;
-        } else {
-          // RC 같은 레이블 칩 — d.labels 배열에서 확인
-          if(!d.labels||!d.labels.includes(S.chip))return false;
-        }
-      }
-    }
+    if(S.chip!=="전체"&&(S.cat==="제품 모델"||S.cat==="기능 히스토리"))
+      if(!d.models.includes(S.chip))return false;
     if(!q)return true;
-    return[d.title,d.desc,d.body,d.author,...d.tags,...d.models,...(d.labels||[]),d.category].join(" ").toLowerCase().includes(q);
+    return[d.title,d.desc,d.body,d.author,...d.tags,...d.models,d.category].join(" ").toLowerCase().includes(q);
   }).sort((a,b)=>b.date.replace(/\./g,"").localeCompare(a.date.replace(/\./g,"")));
 }
 
@@ -1416,21 +1018,17 @@ function renderCards(){
   items.forEach(d=>{
     const el=document.createElement("div");
     el.className="card";el.setAttribute("role","listitem");el.setAttribute("tabindex","0");
-    // 상단: 모델 배지 — 기능 히스토리는 A&ultima(빨강) 제거, showAllModels:true인 경우 예외
+    // 상단: 모델 배지 — 기능 히스토리는 A&ultima(빨강)만 제거, 나머지는 표시
     const HIDE_IN_HIST = ["A&ultima"];
-    const visModels = (d.category === "기능 히스토리" && !d.showAllModels)
+    const visModels = d.category === "기능 히스토리"
       ? d.models.filter(m => !HIDE_IN_HIST.includes(m))
       : d.models;
     const vis=visModels.slice(0,MAX_MODELS);
     const hid=visModels.length-vis.length;
     const modelBadges=vis.map(m=>`<span class="badge ${DAP_CLS[m]||'b-more'}">${m}</span>`).join("")
       +(hid>0?`<span class="badge b-more">+${hid}</span>`:"");
-    const topRow=vis.length>0 || (d.labels&&d.labels.length>0&&d.category==="기능 히스토리")
-      ?`<div class="card-top"><div class="card-models-row">${
-        d.category==="기능 히스토리"&&d.labels
-          ? d.labels.map(l=>`<span class="badge ${LABEL_CLS[l]||'b-more'}">${l}</span>`).join("")
-          : ""
-      }${modelBadges}</div></div>`
+    const topRow=vis.length>0
+      ?`<div class="card-top"><div class="card-models-row">${modelBadges}</div></div>`
       :"";
     // 카드: 모델 배지 → 제목 → 이름 · 날짜 (desc 없음)
     // 제품 모델만 카드 제목에서 — 이후 제거, 나머지는 전체 제목 유지
@@ -1463,14 +1061,12 @@ function openDetail(id){
   S.openId=id;
   ["card-list","chip-bar","count-row","hero"].forEach(i=>document.getElementById(i).style.display="none");
   document.getElementById("empty").classList.remove("show");
-  // 모델 배지: 기능 히스토리는 A&ultima(빨강) 제외, showAllModels:true 예외
+  // 모델 배지: 기능 히스토리는 A&ultima(빨강) 제외
   const HIDE_IN_HIST=["A&ultima"];
-  const detailModels = (d.category==="기능 히스토리"&&!d.showAllModels)
+  const detailModels = d.category==="기능 히스토리"
     ? d.models.filter(m=>!HIDE_IN_HIST.includes(m))
     : d.models;
-  document.getElementById("d-models").innerHTML=
-    (d.category==="기능 히스토리"&&d.labels ? d.labels.map(l=>`<span class="badge ${LABEL_CLS[l]||'b-more'}">${l}</span>`).join("") : "")
-    +detailModels.map(m=>`<span class="badge ${DAP_CLS[m]||""}">${m}</span>`).join("");
+  document.getElementById("d-models").innerHTML=detailModels.map(m=>`<span class="badge ${DAP_CLS[m]||""}">${m}</span>`).join("");
   // 제품 모델은 — 앞 모델명만, 나머지는 전체 제목
   const displayTitle = d.category === "제품 모델" && d.title.includes("—")
     ? d.title.split("—")[0].trim()
@@ -1493,7 +1089,7 @@ function openDetail(id){
   // 이미지 그리드
   const imgEl=document.getElementById("d-images");
   if(d.images && d.images.length){
-    imgEl.innerHTML=`<div class="d-img-grid${d.images.length===1?" single":""}">${d.images.map(img=>`<img src="${img.src}" alt="${img.alt}" loading="lazy"/>`).join("")}</div>`;
+    imgEl.innerHTML=`<div class="d-img-grid">${d.images.map(img=>`<img src="${img.src}" alt="${img.alt}" loading="lazy"/>`).join("")}</div>`;
   } else { imgEl.innerHTML=""; }
   // 첨부 파일
   const filesEl=document.getElementById("d-files");
@@ -1627,7 +1223,7 @@ document.getElementById("gnb-logo").addEventListener("click",()=>{
 });
 
 // 홈 로고
-const homeLogo=document.getElementById("home-logo"); if(homeLogo)homeLogo.addEventListener("click",goHome);
+document.getElementById("home-logo").addEventListener("click",goHome);
 
 // 뒤로가기
 document.getElementById("detail-back").addEventListener("click",()=>{
