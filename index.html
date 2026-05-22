@@ -74,14 +74,13 @@ body.is-home #gnb-wrap{
 }
 .gnb-sep{width:1px;height:16px;background:var(--div-2);flex-shrink:0;margin:0 3px}
 .gnb-tab{
-  padding:7px 14px;font-size:14px;font-weight:500;
+  padding:10px 16px;font-size:14px;font-weight:500;
   color:var(--text-2);border-radius:var(--r-xl);
-  transition:color 0.13s,background 0.13s;white-space:nowrap;
+  transition:color 0.13s;white-space:nowrap;
 }
-.gnb-tab:hover{color:var(--text-1);background:var(--a-w10)}
+.gnb-tab:hover{color:var(--text-1)}
 .gnb-tab.is-active{
-  color:var(--text-1);background:var(--n-700);
-  outline:1px solid var(--div-2);
+  color:var(--text-1);
 }
 
 /* =============================================
@@ -710,7 +709,7 @@ function goHome() {
 
 function goList(cat, q) {
   document.body.className = "is-list";
-  S.cat=cat; S.chip="전체"; S.q=q||""; S.openId=null;
+  S.prevCat=S.cat; S.cat=cat; S.chip="전체"; S.q=q||""; S.openId=null;
   // 항상 list UI 복구 (태그 페이지에서 올 때도 포함)
   ["card-list","count-row","hero"].forEach(i=>{
     const el=document.getElementById(i);
@@ -859,6 +858,7 @@ function renderCards(){
 ============================================= */
 function openDetail(id){
   const d=DATA.find(x=>x.id===id);if(!d)return;
+  S.prevPage=document.body.className;
   S.openId=id;
   ["card-list","chip-bar","count-row","hero"].forEach(i=>document.getElementById(i).style.display="none");
   document.getElementById("empty").classList.remove("show");
@@ -1044,7 +1044,8 @@ document.getElementById("detail-back").addEventListener("click",()=>{
     S.openId=null;
     window.scrollTo({top:0,behavior:"smooth"});
   } else {
-    closeDetail();
+    if(S.prevPage==="is-home") goHome();
+    else closeDetail();
   }
 });
 
