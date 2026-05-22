@@ -101,7 +101,7 @@ PD 라인 포함 하위 모델 RC 반영 계획은 현재 미정입니다.`,
      {label:"AK 용어 — Favorite", url:"#search:Favorite"},
    ]},
 
-  {id:27, title:"설정 레이블 추가 및 재배열", category:"기능 히스토리", models:["A&ultima","PD series"], labels:["RC","설정"], date:"2026.05.22", author:"Ellie", authorInitial:"E",
+  {id:27, title:"설정 레이블 추가 및 재배열", category:"기능 히스토리", models:["A&ultima","PD series"], labels:["RC"], date:"2026.05.22", author:"Ellie", authorInitial:"E",
    credits:{UX:"Ellie"},
    desc:"기존 설정 화면에 레이블을 추가해 그룹을 명시하고, 각 그룹의 성격에 맞게 항목 순서도 재배열하였습니다.",
    body:`■■ 기능 개요
