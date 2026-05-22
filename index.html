@@ -72,7 +72,7 @@ body.is-home #gnb-wrap{
   font-family:var(--font);font-size:14px;font-weight:700;
   color:var(--text-1);letter-spacing:0.06em;white-space:nowrap;
 }
-.gnb-sep{width:1px;height:16px;background:var(--div-2);flex-shrink:0;margin:0 3px}
+.gnb-sep{display:none}
 .gnb-tab{
   padding:10px 16px;font-size:14px;font-weight:500;
   color:var(--text-2);border-radius:var(--r-xl);
@@ -403,7 +403,7 @@ body.is-tag #tag-page{display:block}
 <div id="gnb-wrap">
   <div id="gnb-inner">
     <button id="gnb-logo">
-      <img src="logo.png" alt="AK"/>
+      <img src="images/logo.png" alt="AK"/>
       <span id="gnb-logo-text">AK Archive</span>
     </button>
     <div class="gnb-sep"></div>
@@ -615,10 +615,10 @@ const LABEL_CLS = {"RC":"b-rc","설정":"b-setting"};
 const CAT_CLS = {"제품 모델":"b-model","기능 히스토리":"b-hist","디자인 가이드":"b-design","용어사전":"b-gloss"};
 const HERO = {
   "전체":{title:"전체",desc:"프로젝트 히스토리, 의사결정 배경, 사내 용어를 키워드 하나로 즉시 탐색"},
-  "제품 모델":{title:"제품 모델",desc:"A&ultima · PD series · Heritage · Classic 라인의 스펙·히스토리"},
-  "기능 히스토리":{title:"UX 히스토리",desc:"기능별 의사결정 배경과 변경 이력"},
+  "제품 모델":{title:"제품",desc:"모델별 사양과 신기능을 확인하세요."},
+  "기능 히스토리":{title:"UX 히스토리",desc:"기능의 의사결정 배경과 변경 이력을 확인하세요."},
   "디자인 가이드":{title:"디자인 가이드",desc:"컴포넌트 스펙, 컬러 토큰, 가이드라인 문서"},
-  "용어사전":{title:"용어사전",desc:"사내 전용 용어 정의"},
+  "용어사전":{title:"AK 용어",desc:"DAP 시장과 AK 서비스의 주요 용어를 확인하세요."},
 };
 const DATA = [...DATA_product, ...DATA_ux, ...DATA_glossary];
 </script>
