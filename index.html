@@ -1486,7 +1486,7 @@ function openDetail(id){
   // 이미지 그리드
   const imgEl=document.getElementById("d-images");
   if(d.images && d.images.length){
-    imgEl.innerHTML=`<div class="d-img-grid">${d.images.map(img=>`<img src="${img.src}" alt="${img.alt}" loading="lazy"/>`).join("")}</div>`;
+    imgEl.innerHTML=`<div class="d-img-grid${d.images.length===1?" single":""}">${d.images.map(img=>`<img src="${img.src}" alt="${img.alt}" loading="lazy"/>`).join("")}</div>`;
   } else { imgEl.innerHTML=""; }
   // 첨부 파일
   const filesEl=document.getElementById("d-files");
