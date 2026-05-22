@@ -1,11 +1,11 @@
 // =============================================
 // data_UX히스토리.js
-// UX 히스토리 / 디자인 가이드 카테고리 데이터
+// UX 히스토리 카테고리 데이터
 // 항목 추가 시 id는 고유한 숫자로 지정
 // =============================================
 
 const DATA_UX히스토리 = [
-  {id:24,title:"컬렉션 (Collection) — Favorite 기능 확장 재정의",category:"기능 히스토리",models:["A&ultima","SP4000T"],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:24, title:"컬렉션 (Collection) — Favorite 기능 확장 재정의", category:"UX 히스토리", models:["A&ultima","SP4000T"], date:"2026.05.18", author:"Ellie", authorInitial:"E",
    desc:"기존 Favorite(즐겨찾기)의 노래 단독 저장을 확장, 노래·앨범·아티스트·플레이리스트를 폴더별로 저장·관리하는 컬렉션으로 재정의. SP4000T부터 적용.",
    body:`■■ 기능 개요
 
@@ -95,18 +95,14 @@ AK Connect로 추가된 곡은 컬렉션 추가 불가.
 레퍼런스: Apple Music, Spotify
 
 
-■■ 적용 현황 및 RC 계획
-
-| 모델 | 적용 여부 | RC 계획 |
-| --- | --- | --- |
-| SP4000T | ✅ 적용 (기준 모델) | — |
-| A&ultima 라인 전반 | 순차 반영 예정 | 현재 RC 계획 없음 |
-| PD 라인 | 향후 적용 예정 | 현재 RC 계획 없음 |
-
-현재 SP4000T(A&ultima 라인)에 우선 반영되었으며,
-PD 라인 포함 하위 모델 RC 반영 계획은 현재 미정입니다.`,
+`,
+   applyStatus:[
+     {model:"A&ultima", applied:true, appliedModels:["SP4000T"], plan:"SP4000T 기준 모델 적용 완료. 순차 반영 예정"},
+     {model:"PD series", applied:false, appliedModels:[], plan:"현재 RC 계획 없음"},
+   ],
    tags:["컬렉션","즐겨찾기","기능확장","북마크","토글","중복처리"],
-   links:[{label:"용어사전 — 컬렉션",url:"#search:컬렉션"},{label:"용어사전 — Favorite",url:"#search:Favorite"}]},
-  {id:9,title:"버튼 컴포넌트 스펙 v3",category:"디자인 가이드",models:[],date:"2025.03.08",author:"Ellie",authorInitial:"E",desc:"Primary / Secondary / Ghost 3종 버튼 스펙. 상태별 컬러 토큰 정의.",body:`버튼 높이: 40px (기본) / 32px (소형)\n\nPrimary → Crimson 700 (#CC1B38)\nSecondary → Neutrals 600 (#3A3A3A)\nDisabled → Neutrals 600 (#3A3A3A)`,tags:["UI","컴포넌트"],links:[{label:"피그마 — Button v3",url:"https://figma.com"}]},
-  {id:10,title:"컬러 토큰 시스템 — Semantic",category:"디자인 가이드",models:[],date:"2025.04.02",author:"Ellie",authorInitial:"E",desc:"AK Design System Semantic 컬러 토큰 전체 정의.",body:`Background\n  color/bg/primary → Black 100%\n  color/bg/secondary → Neutrals 800\n\nText\n  color/text/default → White 100%\n  color/text/primary → Crimson 700`,tags:["토큰","컬러"],links:[]},
+   links:[
+     {label:"AK 용어 — 컬렉션", url:"#search:컬렉션"},
+     {label:"AK 용어 — Favorite", url:"#search:Favorite"},
+   ]},
 ];
