@@ -397,7 +397,7 @@ body.is-tag #tag-page{display:block}
     <div class="gnb-sep"></div>
     
     <button class="gnb-tab" data-cat="제품 모델">제품</button>
-    <button class="gnb-tab" data-cat="기능 히스토리">UX 히스토리</button>
+    <button class="gnb-tab" data-cat="UX 히스토리">UX 히스토리</button>
     <button class="gnb-tab" data-cat="용어사전">AK 용어</button>
   </div>
 </div>
@@ -487,11 +487,11 @@ body.is-tag #tag-page{display:block}
 <script src="data_UX히스토리.js"></script>
 <script>
 const DAP_CLS = {"A&ultima":"b-ultima","PD series":"b-pd","Heritage":"b-her","Classic":"b-cl","SP4000T":"b-sp4000t"};
-const CAT_CLS = {"제품 모델":"b-model","기능 히스토리":"b-hist","디자인 가이드":"b-design","용어사전":"b-gloss"};
+const CAT_CLS = {"제품 모델":"b-model","UX 히스토리":"b-hist","디자인 가이드":"b-design","용어사전":"b-gloss"};
 const HERO = {
   "전체":{title:"전체",desc:"프로젝트 히스토리, 의사결정 배경, 사내 용어를 키워드 하나로 즉시 탐색"},
   "제품 모델":{title:"제품 모델",desc:"A&ultima · PD series · Heritage · Classic 라인의 스펙·히스토리"},
-  "기능 히스토리":{title:"기능 히스토리",desc:"기능별 의사결정 배경과 변경 이력"},
+  "UX 히스토리":{title:"UX 히스토리",desc:"기능별 의사결정 배경과 변경 이력"},
   "디자인 가이드":{title:"디자인 가이드",desc:"컴포넌트 스펙, 컬러 토큰, 가이드라인 문서"},
   "용어사전":{title:"용어사전",desc:"사내 전용 용어 정의"},
 };
@@ -953,7 +953,7 @@ function getChips(cat) {
     {key:"Heritage",label:"Heritage"},
     {key:"Classic",label:"Classic"}
   ];
-  if(cat==="기능 히스토리") return [
+  if(cat==="UX 히스토리") return [
     {key:"전체",label:"전체"},
     {key:"A&ultima",label:"A&ultima"},
     {key:"PD series",label:"PD series"},
@@ -998,7 +998,7 @@ function filterData(){
   const q=S.q.trim().toLowerCase();
   return DATA.filter(d=>{
     if(S.cat&&d.category!==S.cat)return false;
-    if(S.chip!=="전체"&&(S.cat==="제품 모델"||S.cat==="기능 히스토리"))
+    if(S.chip!=="전체"&&(S.cat==="제품 모델"||S.cat==="UX 히스토리"))
       if(!d.models.includes(S.chip))return false;
     if(!q)return true;
     return[d.title,d.desc,d.body,d.author,...d.tags,...d.models,d.category].join(" ").toLowerCase().includes(q);
@@ -1020,7 +1020,7 @@ function renderCards(){
     el.className="card";el.setAttribute("role","listitem");el.setAttribute("tabindex","0");
     // 상단: 모델 배지 — 기능 히스토리는 A&ultima(빨강)만 제거, 나머지는 표시
     const HIDE_IN_HIST = ["A&ultima"];
-    const visModels = d.category === "기능 히스토리"
+    const visModels = d.category === "UX 히스토리"
       ? d.models.filter(m => !HIDE_IN_HIST.includes(m))
       : d.models;
     const vis=visModels.slice(0,MAX_MODELS);
@@ -1063,7 +1063,7 @@ function openDetail(id){
   document.getElementById("empty").classList.remove("show");
   // 모델 배지: 기능 히스토리는 A&ultima(빨강) 제외
   const HIDE_IN_HIST=["A&ultima"];
-  const detailModels = d.category==="기능 히스토리"
+  const detailModels = d.category==="UX 히스토리"
     ? d.models.filter(m=>!HIDE_IN_HIST.includes(m))
     : d.models;
   document.getElementById("d-models").innerHTML=detailModels.map(m=>`<span class="badge ${DAP_CLS[m]||""}">${m}</span>`).join("");
@@ -1246,7 +1246,7 @@ document.getElementById("detail-back").addEventListener("click",()=>{
 
 // 태그 페이지 뒤로가기 → 기능 히스토리 첫 화면
 document.getElementById("tag-back").addEventListener("click",()=>{
-  goList("기능 히스토리");
+  goList("UX 히스토리");
 });
 
 // ESC
