@@ -264,12 +264,10 @@ mark{background:rgba(204,27,56,0.22);color:var(--cr-100);border-radius:2px;paddi
   grid-column:1 / -1;
 }
 .d-img-grid.single{
-  grid-template-columns:1fr 1fr;
+  display:block;
 }
 .d-img-grid.single img{
-  grid-column:1;
-  max-height:220px;
-  object-fit:contain;
+  width:calc(50% - 4px);
 }
 hr.dv{border:none;border-top:1px solid var(--div-1);margin:20px 0}
 /* 첨부 파일 */
