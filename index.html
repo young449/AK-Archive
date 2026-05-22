@@ -939,8 +939,8 @@ PD series 포함 하위 모델 RC 반영 계획은 현재 미정입니다.`,
    files:[],
    links:[],
    images:[
-     {src:"images/settings/UI_setting.png", alt:"변경 전 — 설정 UI"},
-     {src:"images/settings/UX_setting.png", alt:"변경 후 — 설정 UX"},
+     {src:"images/UX히스토리/setting/UI_setting.png", alt:"변경 전 — 설정 UI"},
+     {src:"images/UX히스토리/setting/UX_setting.png", alt:"변경 후 — 설정 UX"},
    ]},
   {id:9,title:"버튼 컴포넌트 스펙 v3",category:"디자인 가이드",models:[],date:"2025.03.08",author:"Ellie",authorInitial:"E",desc:"Primary / Secondary / Ghost 3종 버튼 스펙. 상태별 컬러 토큰 정의.",body:`버튼 높이: 40px (기본) / 32px (소형)\n\nPrimary → Crimson 700 (#CC1B38)\nSecondary → Neutrals 600 (#3A3A3A)\nDisabled → Neutrals 600 (#3A3A3A)`,tags:["UI","컴포넌트"],links:[{label:"피그마 — Button v3",url:"https://figma.com"}]},
   {id:10,title:"컬러 토큰 시스템 — Semantic",category:"디자인 가이드",models:[],date:"2025.04.02",author:"Ellie",authorInitial:"E",desc:"AK Design System Semantic 컬러 토큰 전체 정의.",body:`Background\n  color/bg/primary → Black 100%\n  color/bg/secondary → Neutrals 800\n\nText\n  color/text/default → White 100%\n  color/text/primary → Crimson 700`,tags:["토큰","컬러"],links:[]},
@@ -1627,7 +1627,7 @@ document.getElementById("gnb-logo").addEventListener("click",()=>{
 });
 
 // 홈 로고
-document.getElementById("home-logo").addEventListener("click",goHome);
+const homeLogo=document.getElementById("home-logo"); if(homeLogo)homeLogo.addEventListener("click",goHome);
 
 // 뒤로가기
 document.getElementById("detail-back").addEventListener("click",()=>{
