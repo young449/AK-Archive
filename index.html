@@ -709,7 +709,8 @@ function goHome() {
 }
 
 function goList(cat, q) {
-  S.pageHistory.push({type:"list",cat:S.cat,chip:S.chip,q:S.q,scrollY:window.scrollY});
+  // 현재 상태를 먼저 저장 (S.cat 변경 전)
+  S.pageHistory.push({type:"list", cat:S.cat, chip:S.chip, q:S.q, scrollY:window.scrollY});
   document.body.className = "is-list";
   S.prevCat=S.cat; S.cat=cat; S.chip="전체"; S.q=q||""; S.openId=null;
   // 항상 list UI 복구 (태그 페이지에서 올 때도 포함)
@@ -860,12 +861,10 @@ function renderCards(){
 ============================================= */
 function openDetail(id){
   const d=DATA.find(x=>x.id===id);if(!d)return;
-  // 직전 화면 상태 저장
-  const fromTag = document.body.classList.contains("is-tag");
+  // 현재 화면 상태 저장 (body 클래스 변경 전)
   S.pageHistory.push({
-    type: fromTag ? "tag" : "list",
-    cat:S.cat, chip:S.chip, q:S.q, tag:S.tag,
-    scrollY:window.scrollY
+    type: document.body.classList.contains("is-tag") ? "tag" : "list",
+    cat:S.cat, chip:S.chip, q:S.q, tag:S.tag, scrollY:window.scrollY
   });
   S.prevPage=document.body.className;
   S.openId=id;
@@ -1039,44 +1038,33 @@ document.getElementById("gnb-logo").addEventListener("click",()=>{
 // 홈 로고
 document.getElementById("home-logo").addEventListener("click",goHome);
 
-// 뒤로가기 (목록으로) — 히스토리 스택 팝
+// 뒤로가기 (목록으로)
 document.getElementById("detail-back").addEventListener("click",()=>{
   const prev = S.pageHistory.pop();
-
-  // 히스토리 없으면 홈으로
   if(!prev){goHome();return;}
 
-  // 상세 닫기 공통 처리
   S.openId=null;
   const dv=document.getElementById("detail");
   dv.classList.remove("show");dv.setAttribute("aria-hidden","true");
   dv.style.display="";dv.style.maxWidth="";dv.style.margin="";dv.style.padding="";
 
   if(prev.type==="tag"){
-    // 태그 페이지에서 온 경우
     document.body.className="is-tag";
     document.getElementById("tag-content").style.display="";
     window.scrollTo({top:prev.scrollY||0,behavior:"smooth"});
-
-  } else if(prev.type==="list"){
-    // 리스트에서 온 경우 → 상태 복원 후 재렌더
+  } else {
+    // list 복원
     S.cat=prev.cat;S.chip=prev.chip;S.q=prev.q;
     document.body.className="is-list";
-    ["card-list","count-row","hero"].forEach(i=>{
-      const el=document.getElementById(i);if(el)el.style.display="";
-    });
+    ["card-list","count-row","hero"].forEach(i=>{const el=document.getElementById(i);if(el)el.style.display="";});
+    document.getElementById("chip-bar").style.display="flex";
     const tc=document.getElementById("tag-content");if(tc)tc.style.display="";
-    document.querySelectorAll(".gnb-tab").forEach(t=>
-      t.classList.toggle("is-active",!!S.cat&&t.dataset.cat===S.cat)
-    );
+    document.querySelectorAll(".gnb-tab").forEach(t=>t.classList.toggle("is-active",!!S.cat&&t.dataset.cat===S.cat));
     const h=HERO[S.cat]||{title:"검색 결과",desc:""};
     document.getElementById("hero-title").textContent=S.q?`"${S.q}" 검색 결과`:h.title;
     document.getElementById("hero-desc").textContent=S.q?"":h.desc;
     renderChipBar();renderCards();
     window.scrollTo({top:prev.scrollY||0,behavior:"smooth"});
-
-  } else {
-    goHome();
   }
 });
 
