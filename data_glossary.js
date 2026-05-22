@@ -4,7 +4,7 @@
 // =============================================
 
 const DATA_glossary = [
-  {id:11,title:"DAP",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:11,title:"DAP (Digital Audio Player)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"Digital Audio Player의 약자로, 휴대하며 사용하는 포터블 음향기기입니다.",
    body:`■ 개요
 
