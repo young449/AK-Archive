@@ -628,7 +628,7 @@ const DATA = [...DATA_product, ...DATA_ux, ...DATA_glossary];
    SECTION: js-app
 ============================================= -->
 <script>
-const S = {cat:"제품 모델",chip:"전체",q:"",openId:null,tag:""};
+const S = {cat:"제품 모델",chip:"전체",q:"",openId:null,tag:"",pageHistory:[]};
 
 /* =============================================
    SECTION: js-tag-page
@@ -682,6 +682,7 @@ function renderTagCards(items, tag) {
 
 function openDetailFromTag(id) {
   // 태그 페이지에서 상세로 진입 — 태그 페이지 위에 상세 오버레이
+  S.prevTag = S.tag;
   document.body.className = "is-tag is-tag-detail";
   openDetail(id);
   // detail을 tag-content 위에 표시
@@ -704,11 +705,21 @@ function goHome() {
   document.getElementById("home-search").value = "";
   document.getElementById("home-clear").classList.remove("show");
   document.querySelectorAll(".gnb-tab").forEach(t=>t.classList.remove("is-active"));
-  S.cat="";S.chip="전체";S.q="";S.openId=null;
+  S.cat="";S.chip="전체";S.q="";S.openId=null;S.pageHistory=[];
   window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function goList(cat, q) {
+  // 현재 화면 상태를 히스토리에 저장
+  S.pageHistory.push({
+    bodyClass: document.body.className,
+    cat: S.cat,
+    chip: S.chip,
+    q: S.q,
+    openId: S.openId,
+    tag: S.tag,
+    scrollY: window.scrollY
+  });
   document.body.className = "is-list";
   S.prevCat=S.cat; S.cat=cat; S.chip="전체"; S.q=q||""; S.openId=null;
   // 항상 list UI 복구 (태그 페이지에서 올 때도 포함)
@@ -859,6 +870,16 @@ function renderCards(){
 ============================================= */
 function openDetail(id){
   const d=DATA.find(x=>x.id===id);if(!d)return;
+  // 현재 화면 상태를 히스토리에 저장
+  S.pageHistory.push({
+    bodyClass: document.body.className,
+    cat: S.cat,
+    chip: S.chip,
+    q: S.q,
+    openId: S.openId,
+    tag: S.tag,
+    scrollY: window.scrollY
+  });
   S.prevPage=document.body.className;
   S.openId=id;
   ["card-list","chip-bar","count-row","hero"].forEach(i=>document.getElementById(i).style.display="none");
@@ -1018,7 +1039,7 @@ document.getElementById("home-clear").addEventListener("click",()=>{hs.value="";
 
 // GNB 탭
 document.querySelectorAll(".gnb-tab").forEach(tab=>{
-  tab.addEventListener("click",()=>{S.chip="전체";S.q="";goList(tab.dataset.cat,"");});
+  tab.addEventListener("click",()=>{S.chip="전체";S.q="";S.pageHistory=[];goList(tab.dataset.cat,"");});
 });
 
 // GNB 로고
@@ -1030,24 +1051,52 @@ document.getElementById("gnb-logo").addEventListener("click",()=>{
 // 홈 로고
 document.getElementById("home-logo").addEventListener("click",goHome);
 
-// 뒤로가기
+// 뒤로가기 (목록으로) — 히스토리 스택 팝
 document.getElementById("detail-back").addEventListener("click",()=>{
-  if(document.body.classList.contains("is-tag")){
-    // 태그 페이지에서 상세 진입한 경우 → 태그 페이지로
-    document.body.className="is-tag";
-    document.getElementById("detail").style.display="";
-    document.getElementById("detail").style.maxWidth="";
-    document.getElementById("detail").style.margin="";
-    document.getElementById("detail").style.padding="";
+  const prev = S.pageHistory.pop();
+  if(!prev){goHome();return;}
+
+  const bodyClass = prev.bodyClass;
+
+  // 태그 상세에서 온 경우 → 태그 페이지 복원
+  if(bodyClass.includes("is-tag")){
+    document.body.className = "is-tag";
+    const detail = document.getElementById("detail");
+    detail.classList.remove("show");
+    detail.setAttribute("aria-hidden","true");
+    detail.style.display="";detail.style.maxWidth="";detail.style.margin="";detail.style.padding="";
     document.getElementById("tag-content").style.display="";
-    document.getElementById("detail").classList.remove("show");
-    document.getElementById("detail").setAttribute("aria-hidden","true");
     S.openId=null;
-    window.scrollTo({top:0,behavior:"smooth"});
-  } else {
-    if(S.prevPage==="is-home") goHome();
-    else closeDetail();
+    window.scrollTo({top:prev.scrollY||0,behavior:"smooth"});
+    return;
   }
+
+  // 홈에서 온 경우
+  if(bodyClass.includes("is-home")){
+    S.openId=null;
+    goHome();
+    return;
+  }
+
+  // 리스트에서 온 경우 → 리스트 화면 복원
+  S.cat=prev.cat;S.chip=prev.chip;S.q=prev.q;S.openId=null;S.tag=prev.tag;
+  document.body.className="is-list";
+  ["card-list","count-row","hero"].forEach(i=>{
+    const el=document.getElementById(i);if(el)el.style.display="";
+  });
+  document.getElementById("chip-bar").style.display="flex";
+  const dv=document.getElementById("detail");
+  dv.classList.remove("show");dv.setAttribute("aria-hidden","true");
+  dv.style.display="";dv.style.maxWidth="";dv.style.margin="";dv.style.padding="";
+  const tc=document.getElementById("tag-content");if(tc)tc.style.display="";
+  document.querySelectorAll(".gnb-tab").forEach(t=>
+    t.classList.toggle("is-active",!!S.cat&&t.dataset.cat===S.cat)
+  );
+  const h=HERO[S.cat]||{title:"검색 결과",desc:""};
+  document.getElementById("hero-title").textContent=S.q?`"${S.q}" 검색 결과`:h.title;
+  document.getElementById("hero-desc").textContent=S.q?"":h.desc;
+  renderChipBar();renderCards();
+  window.scrollTo({top:prev.scrollY||0,behavior:"smooth"});
 });
 
 // 태그 페이지 뒤로가기 → 기능 히스토리 첫 화면
