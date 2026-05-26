@@ -122,8 +122,8 @@ PD 라인 포함 하위 모델 RC 반영 계획은 현재 미정입니다.`,
 | 그룹 표시 | 아이콘만으로 단락 구분 | 레이블 텍스트로 그룹명 명시 |
 | 그룹명 | 없음 | 네트워크 및 연결 / 음향 설정 / 입출력 설정 / 일반 / 시스템 |
 
-!!img:history_setting1.png|변경 전 — 설정 UI!!
-!!img:history_setting2.png|변경 후 — 설정 UX!!
+!!img:images/history/setting1.png|변경 전 — 설정 UI!!
+!!img:images/history/setting2.png|변경 후 — 설정 UX!!
 
 ■■ 그룹 구성
 
