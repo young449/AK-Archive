@@ -330,9 +330,6 @@ mark{background:rgba(204,27,56,0.22);color:var(--cr-100);border-radius:2px;paddi
 .d-img-grid img:last-child:nth-child(odd){
   grid-column:1 / -1;
 }
-.d-img-grid img.is-wide{
-  grid-column:1 / -1;aspect-ratio:16/9;object-fit:cover;
-}
 hr.dv{border:none;border-top:1px solid var(--div-1);margin:20px 0}
 /* 첨부 파일 */
 #d-files-wrap{
@@ -981,10 +978,13 @@ function renderCards(){
     items.forEach(d=>{
       const el=document.createElement("div");
       el.className="card-thumb";el.setAttribute("role","listitem");el.setAttribute("tabindex","0");
-      // 썸네일 이미지: images[0] 사용
-      const thumbSrc = d.images && d.images.length ? d.images[0].src : null;
+      // 썸네일 이미지: _thumb 파일 우선, 없으면 images[0] 사용
+      const thumbImg = d.images && d.images.find(img => img.src.toLowerCase().includes('_thumb'));
+      const thumbFallback = d.images && d.images.length ? d.images[0] : null;
+      const thumbSrc = thumbImg ? thumbImg.src : (thumbFallback ? thumbFallback.src : null);
+      const thumbAlt = thumbImg ? thumbImg.alt : (thumbFallback ? thumbFallback.alt : d.title);
       const imgHtml = thumbSrc
-        ? `<img src="${thumbSrc}" alt="${d.images[0].alt||d.title}" loading="lazy"/>`
+        ? `<img src="${thumbSrc}" alt="${thumbAlt}" loading="lazy"/>`
         : `<div class="card-thumb-img-placeholder"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="6" y="8" width="28" height="22" rx="2"/><path d="M6 24l8-7 6 5 4-3 10 8"/><circle cx="27" cy="15" r="3"/></svg></div>`;
       // 모델 배지
       const vis=d.models.slice(0,MAX_MODELS);
@@ -1090,8 +1090,9 @@ function openDetail(id){
   } else { credEl.innerHTML=""; }
   // 이미지 그리드
   const imgEl=document.getElementById("d-images");
-  if(d.images && d.images.length){
-    imgEl.innerHTML=`<div class="d-img-grid">${d.images.map(img=>{const isWide=img.wide||/(_wide|_4)\./i.test(img.src);return`<img src="${img.src}" alt="${img.alt}" loading="lazy"${isWide?' class="is-wide"':''}/>`;}).join("")}</div>`;
+  const detailImgs = d.images ? d.images.filter(img => !img.src.toLowerCase().includes('_thumb')) : [];
+  if(detailImgs.length){
+    imgEl.innerHTML=`<div class="d-img-grid">${detailImgs.map(img=>`<img src="${img.src}" alt="${img.alt}" loading="lazy"/>`).join("")}</div>`;
   } else { imgEl.innerHTML=""; }
   // 첨부 파일
   const filesEl=document.getElementById("d-files");
