@@ -361,6 +361,33 @@ hr.dv{border:none;border-top:1px solid var(--div-1);margin:20px 0}
 }
 
 /* =============================================
+   SECTION: css-gloss-subtab
+   AK 용어 탭 내 서브탭
+============================================= */
+#gloss-subtab-wrap{
+  display:none;
+  gap:4px;
+  margin-bottom:16px;
+  flex-wrap:wrap;
+}
+#gloss-subtab-wrap.show{display:flex}
+.gloss-stab{
+  padding:7px 16px;
+  border-radius:var(--r-xl);
+  font-size:13px;font-weight:500;
+  color:var(--text-2);
+  background:var(--n-800);
+  border:1px solid var(--div-2);
+  transition:all 0.13s;white-space:nowrap;cursor:pointer;
+}
+.gloss-stab:hover{color:var(--text-1);background:var(--n-700);border-color:var(--n-500)}
+.gloss-stab.is-active{
+  color:var(--cat-gloss);
+  background:var(--cat-gloss-bg);
+  border-color:rgba(255,187,0,0.3);
+}
+
+/* =============================================
    SECTION: css-tag-page
 ============================================= */
 #tag-page{
@@ -558,6 +585,7 @@ body.is-tag #tag-page{display:block}
       <h1 id="hero-title"></h1>
       <p id="hero-desc"></p>
     </div>
+    <div id="gloss-subtab-wrap"></div>
     <div id="chip-bar"></div>
     <div id="count-row"><p id="count-text"><span id="count-num">0</span>개의 항목</p></div>
     <div id="card-list" role="list"></div>
@@ -631,7 +659,7 @@ const DATA = [...DATA_product, ...DATA_ux, ...DATA_glossary];
    SECTION: js-app
 ============================================= -->
 <script>
-const S = {cat:"제품 모델",chip:"전체",q:"",openId:null,tag:""};
+const S = {cat:"제품 모델",chip:"전체",q:"",openId:null,tag:"",glossTab:"전체"};
 
 /* =============================================
    SECTION: js-tag-page
@@ -714,6 +742,7 @@ function goHome() {
 function goList(cat, q) {
   document.body.className = "is-list";
   S.prevCat=S.cat; S.cat=cat; S.chip="전체"; S.q=q||""; S.openId=null;
+  if(cat !== "용어사전") S.glossTab = "전체";
   // 항상 list UI 복구 (태그 페이지에서 올 때도 포함)
   ["card-list","count-row","hero"].forEach(i=>{
     const el=document.getElementById(i);
@@ -734,9 +763,37 @@ function goList(cat, q) {
   const h = HERO[cat]||{title:"검색 결과",desc:""};
   document.getElementById("hero-title").textContent = q ? `"${q}" 검색 결과` : h.title;
   document.getElementById("hero-desc").textContent  = q ? "" : h.desc;
+  renderGlossSubtab();
   renderChipBar();
   renderCards();
   window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* =============================================
+   SECTION: js-gloss-subtab
+   AK 용어 탭 내 서브탭 렌더링
+============================================= */
+const GLOSS_TABS = ["전체","하드웨어","음원 & 파일","서비스 & 연결","기능"];
+
+function renderGlossSubtab() {
+  const wrap = document.getElementById("gloss-subtab-wrap");
+  if(S.cat !== "용어사전"){wrap.classList.remove("show");wrap.innerHTML="";return;}
+  wrap.classList.add("show");
+  wrap.innerHTML = "";
+  GLOSS_TABS.forEach(tab => {
+    const cnt = tab === "전체"
+      ? DATA_glossary.length
+      : DATA_glossary.filter(d => d.glossTab === tab).length;
+    const btn = document.createElement("button");
+    btn.className = "gloss-stab" + (S.glossTab === tab ? " is-active" : "");
+    btn.textContent = `${tab}  ${cnt}`;
+    btn.addEventListener("click", () => {
+      S.glossTab = tab;
+      renderGlossSubtab();
+      renderCards();
+    });
+    wrap.appendChild(btn);
+  });
 }
 
 /* =============================================
@@ -796,6 +853,7 @@ function filterData(){
   const q=S.q.trim().toLowerCase();
   return DATA.filter(d=>{
     if(S.cat&&d.category!==S.cat)return false;
+    if(S.cat==="용어사전" && S.glossTab!=="전체" && d.glossTab!==S.glossTab) return false;
     if(S.chip!=="전체"&&(S.cat==="제품 모델"||S.cat==="기능 히스토리")){
       const inModels = d.models.includes(S.chip);
       const inLabels = d.labels && d.labels.includes(S.chip);
@@ -933,6 +991,7 @@ function closeDetail(rerender=true){
   S.openId=null;
   ["card-list","count-row","hero"].forEach(i=>document.getElementById(i).style.display="");
   document.getElementById("chip-bar").style.display="flex";
+  renderGlossSubtab();
   renderChipBar();
   renderCards();
   window.scrollTo({top:0,behavior:"smooth"});
