@@ -8,13 +8,38 @@ const DATA_product = [
   {id:26, title:"SP4000T — A&ultima 플래그십", category:"제품 모델", models:["A&ultima"], date:"2026.05.21", author:"Ellie", authorInitial:"E",
    credits:{PM:"Jay", PL:"Kane", UX:"Ellie", UI:"Luna"},
    desc:"A&ultima 라인의 플래그십 DAP.",
-   body:`■■ Tube Current
+   body:`■■ 1. Tube Current
 
 진공관 내부 플레이트 전압을 3단계로 조절해, 진공관 앰프 증폭률에 변화를 줍니다. Tube Mode 진공관을 아래 3가지 모드로 변경해 다양한 음색을 즐길 수 있습니다.
 
 - Triode Mode : 자연스럽고 따뜻한 음색
 - Pentode Mode : 힘있고, 단단한 음색
-- Ultra Linear Mode : 전체적으로 균형잡힌 음색`,
+- Ultra Linear Mode : 전체적으로 균형잡힌 음색
+
+
+■■ 2. USB 설정
+
+PC 연결 시 MTP가 활성화되지 않는 경우, 사용자가 수동으로 USB 연결 방식을 선택할 수 있습니다.
+
+■ Use USB for
+
+| 옵션 | 설명 |
+| --- | --- |
+| MTP 연결하기 | PC와 수동으로 MTP 연결 |
+| 충전하기 | 충전 전용 모드 |
+
+- 노출값: MTP 연결하기, 충전하기 중 단일 선택
+- USB 연결 시 알림 패널 노출. 탭 시 [USB 설정]으로 이동.
+
+
+■■ 3. 배터리 보호 모드
+
+기존 배터리 보호 모드는 85% 단일 고정값만 제공했으나, SP4000T에서는 사용자가 충전 상한값을 직접 선택할 수 있도록 개선합니다. (80 / 85 / 90 / 95%)
+
+
+■■ 4. 컬렉션
+
+→ UX 히스토리 [Favorite에서 Collection으로(기능 확장 재정의)] 참고`,
    tags:["SP4000T","AMP","Collection","Favorite","USB설정","재생설정"],
    files:[],
    links:[
