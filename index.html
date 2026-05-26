@@ -830,7 +830,7 @@ function renderCards(){
     const hid=visModels.length-vis.length;
     const modelBadges=labelBadges+vis.map(m=>`<span class="badge ${DAP_CLS[m]||'b-more'}">${m}</span>`).join("")
       +(hid>0?`<span class="badge b-more">+${hid}</span>`:"");
-    const topRow=vis.length>0
+    const topRow=(vis.length>0||labelBadges)
       ?`<div class="card-top"><div class="card-models-row">${modelBadges}</div></div>`
       :"";
     // 카드: 모델 배지 → 제목 → 이름 · 날짜 (desc 없음)
