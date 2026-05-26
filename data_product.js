@@ -55,6 +55,7 @@ SP4000만의 독자 기술로, OPAMP를 병렬 구조로 추가 적용해 구동
      {label:"UI — Figma", url:"https://www.figma.com/design/CZdIQpzaGRVJOXF7ml8b7f/UI_Crimson_Common-Design-2.0-?node-id=28-54118&t=fRtVetOx6sLv1byy-1"},
    ],
    images:[
+     {src:"images/SP4000/SP4000_thumb.png", alt:"SP4000 썸네일"},
      {src:"images/SP4000/SP4000_1.jpg", alt:"SP4000 전면"},
      {src:"images/SP4000/SP4000_2.jpg", alt:"SP4000 후면"},
      {src:"images/SP4000/SP4000_3.jpg", alt:"SP4000 퍼스펙티브"},
