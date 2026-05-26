@@ -234,14 +234,15 @@ body.is-list #list-page{display:flex}
 .card-thumb-img-placeholder svg{opacity:0.15;}
 .card-thumb-body{
   padding:18px 16px 18px;
-  display:flex;flex-direction:column;gap:5px;
+  display:flex;flex-direction:column;gap:0;
 }
-.card-thumb-label{display:flex;gap:5px;align-items:center;flex-wrap:wrap;}
-.card-thumb-label:empty{display:none;}
+.card-thumb-label{display:flex;gap:5px;align-items:center;flex-wrap:wrap;margin-bottom:8px;}
+.card-thumb-label:empty{display:none;margin-bottom:0;}
 .card-thumb-title{
   font-size:15px;font-weight:600;
   color:var(--text-1);line-height:1.35;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  margin-bottom:5px;
 }
 .card-thumb-meta{
   display:flex;align-items:center;gap:5px;
