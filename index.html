@@ -326,13 +326,9 @@ mark{background:rgba(204,27,56,0.22);color:var(--cr-100);border-radius:2px;paddi
   width:100%;border-radius:var(--r-sm);
   background:#000;display:block;
   border:1px solid var(--div-1);
-}
-.d-img-grid.is-product img{
   aspect-ratio:3/2;object-fit:contain;
 }
-.d-img-grid img:last-child:nth-child(odd){
-  grid-column:1 / -1;
-}
+
 hr.dv{border:none;border-top:1px solid var(--div-1);margin:20px 0}
 /* 첨부 파일 */
 #d-files-wrap{
@@ -1095,8 +1091,7 @@ function openDetail(id){
   const imgEl=document.getElementById("d-images");
   const detailImgs = d.images ? d.images.filter(img => !img.src.toLowerCase().includes('_thumb')) : [];
   if(detailImgs.length){
-    const gridCls = d.category === "제품 모델" ? "d-img-grid is-product" : "d-img-grid";
-    imgEl.innerHTML=`<div class="${gridCls}">${detailImgs.map(img=>`<img src="${img.src}" alt="${img.alt}" loading="lazy"/>`).join("")}</div>`;
+    imgEl.innerHTML=`<div class="d-img-grid">${detailImgs.map(img=>`<img src="${img.src}" alt="${img.alt}" loading="lazy"/>`).join("")}</div>`;
   } else { imgEl.innerHTML=""; }
   // 첨부 파일
   const filesEl=document.getElementById("d-files");
