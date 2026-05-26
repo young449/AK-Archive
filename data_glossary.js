@@ -4,7 +4,7 @@
 // =============================================
 
 const DATA_glossary = [
-  {id:11,title:"DAP",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:11,title:"DAP (Digital Audio Player)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"Digital Audio Player의 약자로, 휴대하며 사용하는 포터블 음향기기입니다.",
    body:`■ 개요
 
@@ -260,7 +260,7 @@ SP4000T 이전 구형 모델은 Favorite 명칭과 기능이 그대로 유지됩
 
 노래만 담는 단순 즐겨찾기. SP4000T부터 컬렉션으로 기능 확장되어 대체됨`,
    tags:["구버전","노래단독","SP4000T이전"],links:[{label:"컬렉션 용어사전 보기",url:"#search:컬렉션"}]},
-  {id:24,title:"커런트 (Current)",category:"용어사전",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
+  {id:27,title:"커런트 (Current)",category:"용어사전",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
    desc:"오디오 기기에서 이어폰·헤드폰을 얼마나 안정적으로 구동할 수 있는지를 나타내는 전류 공급 능력입니다.",
    body:`■ 개요
 
@@ -270,7 +270,7 @@ SP4000T 이전 구형 모델은 Favorite 명칭과 기능이 그대로 유지됩
 
 전류 공급 능력이 높을수록 헤드폰을 더 안정적이고 힘 있게 구동할 수 있습니다.`,
    tags:["전류","구동력","헤드폰"],links:[]},
-  {id:25,title:"앰프 (AMP)",category:"용어사전",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
+  {id:28,title:"앰프 (AMP)",category:"용어사전",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
    desc:"작은 오디오 신호를 증폭해 이어폰·헤드폰·스피커를 충분한 출력으로 재생할 수 있게 만드는 장치입니다.",
    body:`■ 개요
 
@@ -298,7 +298,7 @@ DAC → AMP 순서로 동작합니다.
 
 AMP는 오디오 신호를 증폭해 기기를 안정적으로 구동하게 만드는 장치입니다.`,
    tags:["증폭","구동력","DAC"],links:[]},
-  {id:26,title:"이퀄라이저 (EQ)",category:"용어사전",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
+  {id:29,title:"이퀄라이저 (EQ)",category:"용어사전",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
    desc:"특정 주파수 영역을 조절해 원하는 음색으로 바꾸는 기능 또는 설정입니다.",
    body:`■ 개요
 
