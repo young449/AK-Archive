@@ -1,10 +1,12 @@
 // =============================================
-// data_AK용어.js
+// data_glossary.js
 // AK 용어 카테고리 데이터
+// 항목 추가 시 id는 고유한 숫자로 지정
+// glossTab: "하드웨어" | "음원 & 파일" | "서비스 & 연결" | "기능"
 // =============================================
 
 const DATA_glossary = [
-  {id:11,title:"DAP (Digital Audio Player)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:11,title:"DAP (Digital Audio Player)",category:"용어사전",glossTab:"하드웨어",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"Digital Audio Player의 약자로, 휴대하며 사용하는 포터블 음향기기입니다.",
    body:`■ 개요
 
@@ -17,7 +19,7 @@ SP4000과 같은 제품이 대표적인 예시이며, 고음질 음원 재생에
 
 음악 감상 전용으로 만들어진 고음질 휴대용 플레이어`,
    tags:["포터블","고음질","하드웨어"],links:[]},
-  {id:12,title:"디바이스 (Device)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:12,title:"디바이스 (Device)",category:"용어사전",glossTab:"하드웨어",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"거치형(스탠드얼론) 음향기기로, 특정 공간에 고정해두고 사용하는 음향기기입니다.",
    body:`■ 개요
 
@@ -29,7 +31,124 @@ DAP와 달리 이동을 전제로 하지 않고 홈 오디오 환경에서 사�
 
 집이나 사무실처럼 고정된 환경에서 사용하는 거치형 오디오 플레이어`,
    tags:["거치형","스탠드얼론","홈오디오"],links:[]},
-  {id:13,title:"리모트 (Remote)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:28,title:"앰프 (AMP)",category:"용어사전",glossTab:"하드웨어",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
+   desc:"작은 오디오 신호를 증폭해 이어폰·헤드폰·스피커를 충분한 출력으로 재생할 수 있게 만드는 장치입니다.",
+   body:`■ 개요
+
+AMP(Amplifier)는 작은 오디오 신호를 증폭해 이어폰·헤드폰·스피커를 충분한 출력으로 재생할 수 있게 만드는 장치입니다.
+출력이 부족한 기기에서는 볼륨은 커도 소리가 답답하거나 저음이 퍼지고, 해상력이 떨어지는 느낌이 날 수 있습니다.
+
+■ DAC vs AMP
+
+| 구분 | DAC | AMP |
+| --- | --- | --- |
+| 의미 | Digital to Analog Converter | Amplifier |
+| 역할 | 디지털 신호를 소리 신호로 변환 | 소리 신호를 증폭 |
+| 담당 | "소리를 만들어냄" | "소리를 키움" |
+| 영향 | 해상력, 음색 | 출력, 구동력 |
+
+■ 관계
+
+DAC → AMP 순서로 동작합니다.
+
+즉:
+1. DAC가 음악 데이터를 소리 신호로 바꾸고
+2. AMP가 그 신호를 충분히 크게 증폭합니다.
+
+■ 한 줄 요약
+
+AMP는 오디오 신호를 증폭해 기기를 안정적으로 구동하게 만드는 장치입니다.`,
+   tags:["증폭","구동력","DAC"],links:[]},
+  {id:27,title:"커런트 (Current)",category:"용어사전",glossTab:"하드웨어",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
+   desc:"오디오 기기에서 이어폰·헤드폰을 얼마나 안정적으로 구동할 수 있는지를 나타내는 전류 공급 능력입니다.",
+   body:`■ 개요
+
+오디오 기기에서 Current는 전류 공급 능력과 관련된 표현으로, 이어폰·헤드폰을 얼마나 안정적으로 구동할 수 있는지를 설명할 때 사용됩니다.
+
+■ 한 줄 요약
+
+전류 공급 능력이 높을수록 헤드폰을 더 안정적이고 힘 있게 구동할 수 있습니다.`,
+   tags:["전류","구동력","헤드폰"],links:[]},
+  {id:14,title:"로컬 (Local)",category:"용어사전",glossTab:"음원 & 파일",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+   desc:"사용자가 음원 파일을 기기에 직접 저장하여 재생하는 방식입니다.",
+   body:`■ 개요
+
+사용자가 음원 파일을 기기에 직접 저장하여 재생하는 방식입니다.
+
+SD 카드, 내부 저장소, USB 등 물리적 저장 매체를 기반으로 동작하며, 인터넷 연결 없이도 오프라인에서 재생할 수 있습니다.
+
+■ 한 줄 요약
+
+파일을 기기에 직접 넣어 재생하는 방식. 인터넷 불필요`,
+   tags:["로컬","오프라인","저장"],links:[]},
+  {id:21,title:"로컬 메뉴 (Local Menu)",category:"용어사전",glossTab:"음원 & 파일",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+   desc:"AK DAP·디바이스에서 기기에 직접 저장된 음원 파일을 탐색하고 재생하기 위한 메뉴 영역입니다.",
+   body:`■ 개요
+
+로컬 메뉴는 AK DAP·디바이스에서 기기에 직접 저장된 음원 파일을 탐색하고 재생하기 위한 메뉴 영역입니다.
+네트워크 스트리밍과 달리 인터넷 연결 없이도 사용할 수 있으며, SMB 네트워크 공유, CUE 시트, CD 라이브러리, HD 오디오 필터 등 다양한 방식으로 음원에 접근할 수 있습니다.
+
+■ 포함 항목
+
+| 항목 | 설명 |
+| --- | --- |
+| SMB (Server Message Block) | 네트워크 공유 폴더 접근 |
+| CUE 시트 | 앨범 단위 트랙 탐색 |
+| CD 라이브러리 | CD 리핑 및 저장 |
+| HD 오디오 | 고음질 파일 필터 뷰 |`,
+   tags:["오프라인재생","네트워크공유","고음질필터"],links:[
+     {label:"SMB",url:"#search:SMB"},
+     {label:"CUE 시트",url:"#search:CUE 시트"},
+     {label:"CD 라이브러리",url:"#search:CD 라이브러리"},
+     {label:"HD 오디오",url:"#search:HD 오디오"},
+   ]},
+  {id:18,title:"CUE 시트 (CUE Sheet)",category:"용어사전",glossTab:"음원 & 파일",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+   desc:"앨범 단위로 묶인 오디오 파일의 트랙 정보를 담고 있는 메타데이터 텍스트 파일입니다.",
+   body:`■ 개요
+
+앨범 단위로 묶인 오디오 파일의 트랙 정보를 담고 있는 메타데이터 텍스트 파일입니다.
+
+■ CUE 파일의 구조와 역할
+
+- 하나의 큰 오디오 파일 안에서 각 트랙의 시작·끝 위치 정보를 담고 있습니다.
+- CUE 파일 자체에는 음악 데이터가 없으며, 반드시 오디오 파일과 함께 있어야 재생 가능합니다.
+- 파일 형식은 일반 텍스트(.cue)로, 메모장으로도 내용 확인 가능합니다.
+
+■ 한 줄 요약
+
+앨범 전체를 1개 파일로 관리하면서, CUE 파일로 각 트랙을 분리·탐색할 수 있게 해주는 방식`,
+   tags:["메타데이터","트랙분리","앨범단위"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
+  {id:19,title:"CD 라이브러리 (CD Library)",category:"용어사전",glossTab:"음원 & 파일",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+   desc:"CD에 담긴 음원, 앨범 아트 등의 데이터를 디지털 파일로 복사해 기기에 저장하는 기능입니다.",
+   body:`■ 개요
+
+CD에 담긴 음원, 앨범 아트 등의 데이터를 디지털 파일로 복사해 기기에 저장하는 기능입니다.
+이 복사 과정을 리핑(Ripping)이라고 부르며, CD를 DAP·디바이스에서 재생 가능한 파일 형태(FLAC, WAV 등)로 변환해 저장합니다.
+
+■ 리핑 시 가져올 수 있는 것
+
+- 음원 파일 (트랙 데이터)
+- 앨범 이미지 (커버 아트)
+- 트랙 메타데이터 (곡명, 아티스트 등)
+
+■ 한 줄 요약
+
+CD를 DAP에 디지털 파일로 옮기는 과정. 이 복사 작업을 '리핑'이라고 함`,
+   tags:["리핑","FLAC","WAV","디지털변환"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
+  {id:20,title:"HD 오디오 (HD Audio)",category:"용어사전",glossTab:"음원 & 파일",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+   desc:"로컬에 저장된 파일 중 고음질 파일만 필터링해서 보여주는 목록입니다. 이전 명칭: MQS.",
+   body:`■ 개요
+
+로컬에 저장된 파일 중 고음질 파일만 필터링해서 보여주는 목록입니다.
+이전에는 MQS(Mastering Quality Sound)라는 이름으로 불렸으며, 명칭이 HD 오디오로 변경되었습니다.
+
+로컬에 저장된 파일 중 고음질 규격에 해당하는 파일만 추려서 컨셉 리스트 형태로 보여줍니다.
+
+■ 한 줄 요약
+
+로컬 파일 중 고음질(HD) 파일만 모아서 보여주는 필터 뷰. 과거 명칭은 MQS`,
+   tags:["고음질","MQS","필터뷰","명칭변경"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
+  {id:13,title:"리모트 (Remote)",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"DAP 및 디바이스를 원격으로 제어하는 기능으로, 앱을 통해 기기를 조작하는 방식입니다.",
    body:`■ 개요
 
@@ -50,19 +169,7 @@ DAP 및 디바이스를 원격으로 제어하는 기능으로, 앱을 통해 �
 
 기기를 앱으로 원격 조작하는 기능. 음원 저장(라이브러리)과 스트리밍(에어러블) 두 가지 방식을 지원`,
    tags:["원격제어","라이브러리","에어러블연동"],links:[]},
-  {id:14,title:"로컬 (Local)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
-   desc:"사용자가 음원 파일을 기기에 직접 저장하여 재생하는 방식입니다.",
-   body:`■ 개요
-
-사용자가 음원 파일을 기기에 직접 저장하여 재생하는 방식입니다.
-
-SD 카드, 내부 저장소, USB 등 물리적 저장 매체를 기반으로 동작하며, 인터넷 연결 없이도 오프라인에서 재생할 수 있습니다.
-
-■ 한 줄 요약
-
-파일을 기기에 직접 넣어 재생하는 방식. 인터넷 불필요`,
-   tags:["로컬","오프라인","저장"],links:[]},
-  {id:15,title:"에어러블 (airable)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:15,title:"에어러블 (airable)",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"오디오 기기 제조사를 위한 스트리밍·라디오·팟캐스트 콘텐츠 통합 연동 솔루션입니다.",
    body:`■■ 개요
 
@@ -96,7 +203,7 @@ TIDAL, Qobuz, Deezer 같은 여러 스트리밍 서비스를 API 형태로 묶�
 
 여러 스트리밍 서비스를 하나의 API로 묶어주는 B2B 미들웨어. 제조사가 개별 서비스와 직접 제휴·개발하는 수고를 덜어줌`,
    tags:["미들웨어","B2B","TIDAL","Qobuz"],links:[]},
-  {id:16,title:"스트리밍 앱 (Streaming App)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:16,title:"스트리밍 앱 (Streaming App)",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"에어러블에 포함되지 않은 스트리밍 서비스를 APK 설치나 자체 앱 스토어를 통해 직접 설치해 사용하는 방식입니다.",
    body:`■ 개요
 
@@ -115,7 +222,7 @@ TIDAL, Qobuz, Deezer 같은 여러 스트리밍 서비스를 API 형태로 묶�
 
 에어러블 미지원 서비스(Spotify 등)를 사용하기 위해 앱을 직접 설치하는 방식. 자유도는 높지만 기기 최적화는 낮을 수 있음`,
    tags:["Spotify","APK","안드로이드앱"],links:[{label:"상세 페이지 보기",url:"streaming-app.html"}]},
-  {id:17,title:"SMB (Server Message Block)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:17,title:"SMB (Server Message Block)",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"네트워크를 통해 다른 기기의 폴더/파일에 접근할 수 있게 해주는 파일 공유 프로토콜입니다.",
    body:`■ 개요
 
@@ -136,74 +243,17 @@ DAP·디바이스에서 SMB를 사용하려면 서버 환경 구축이 먼저 �
 
 같은 와이파이 네트워크 안에서 PC·NAS 등의 폴더를 DAP에 연결해 음악을 재생하는 방식. 폴더가 안 보이면 SMB 스캔 실행`,
    tags:["네트워크","파일공유","NAS","SAMBA"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
-  {id:18,title:"CUE 시트 (CUE Sheet)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
-   desc:"앨범 단위로 묶인 오디오 파일의 트랙 정보를 담고 있는 메타데이터 텍스트 파일입니다.",
+  {id:29,title:"이퀄라이저 (EQ)",category:"용어사전",glossTab:"기능",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
+   desc:"특정 주파수 영역을 조절해 원하는 음색으로 바꾸는 기능 또는 설정입니다.",
    body:`■ 개요
 
-앨범 단위로 묶인 오디오 파일의 트랙 정보를 담고 있는 메타데이터 텍스트 파일입니다.
-
-■ CUE 파일의 구조와 역할
-
-- 하나의 큰 오디오 파일 안에서 각 트랙의 시작·끝 위치 정보를 담고 있습니다.
-- CUE 파일 자체에는 음악 데이터가 없으며, 반드시 오디오 파일과 함께 있어야 재생 가능합니다.
-- 파일 형식은 일반 텍스트(.cue)로, 메모장으로도 내용 확인 가능합니다.
+EQ(Equalizer)는 특정 주파수 영역을 조절해 원하는 음색으로 바꾸는 기능 또는 설정을 의미합니다.
 
 ■ 한 줄 요약
 
-앨범 전체를 1개 파일로 관리하면서, CUE 파일로 각 트랙을 분리·탐색할 수 있게 해주는 방식`,
-   tags:["메타데이터","트랙분리","앨범단위"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
-  {id:19,title:"CD 라이브러리 (CD Library)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
-   desc:"CD에 담긴 음원, 앨범 아트 등의 데이터를 디지털 파일로 복사해 기기에 저장하는 기능입니다.",
-   body:`■ 개요
-
-CD에 담긴 음원, 앨범 아트 등의 데이터를 디지털 파일로 복사해 기기에 저장하는 기능입니다.
-이 복사 과정을 리핑(Ripping)이라고 부르며, CD를 DAP·디바이스에서 재생 가능한 파일 형태(FLAC, WAV 등)로 변환해 저장합니다.
-
-■ 리핑 시 가져올 수 있는 것
-
-- 음원 파일 (트랙 데이터)
-- 앨범 이미지 (커버 아트)
-- 트랙 메타데이터 (곡명, 아티스트 등)
-
-■ 한 줄 요약
-
-CD를 DAP에 디지털 파일로 옮기는 과정. 이 복사 작업을 '리핑'이라고 함`,
-   tags:["리핑","FLAC","WAV","디지털변환"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
-  {id:20,title:"HD 오디오 (HD Audio)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
-   desc:"로컬에 저장된 파일 중 고음질 파일만 필터링해서 보여주는 목록입니다. 이전 명칭: MQS.",
-   body:`■ 개요
-
-로컬에 저장된 파일 중 고음질 파일만 필터링해서 보여주는 목록입니다.
-이전에는 MQS(Mastering Quality Sound)라는 이름으로 불렸으며, 명칭이 HD 오디오로 변경되었습니다.
-
-로컬에 저장된 파일 중 고음질 규격에 해당하는 파일만 추려서 컨셉 리스트 형태로 보여줍니다.
-
-■ 한 줄 요약
-
-로컬 파일 중 고음질(HD) 파일만 모아서 보여주는 필터 뷰. 과거 명칭은 MQS`,
-   tags:["고음질","MQS","필터뷰","명칭변경"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
-  {id:21,title:"로컬 메뉴 (Local Menu)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
-   desc:"AK DAP·디바이스에서 기기에 직접 저장된 음원 파일을 탐색하고 재생하기 위한 메뉴 영역입니다.",
-   body:`■ 개요
-
-로컬 메뉴는 AK DAP·디바이스에서 기기에 직접 저장된 음원 파일을 탐색하고 재생하기 위한 메뉴 영역입니다.
-네트워크 스트리밍과 달리 인터넷 연결 없이도 사용할 수 있으며, SMB 네트워크 공유, CUE 시트, CD 라이브러리, HD 오디오 필터 등 다양한 방식으로 음원에 접근할 수 있습니다.
-
-■ 포함 항목
-
-| 항목 | 설명 |
-| --- | --- |
-| SMB (Server Message Block) | 네트워크 공유 폴더 접근 |
-| CUE 시트 | 앨범 단위 트랙 탐색 |
-| CD 라이브러리 | CD 리핑 및 저장 |
-| HD 오디오 | 고음질 파일 필터 뷰 |`,
-   tags:["오프라인재생","네트워크공유","고음질필터"],links:[
-     {label:"SMB",url:"#search:SMB"},
-     {label:"CUE 시트",url:"#search:CUE 시트"},
-     {label:"CD 라이브러리",url:"#search:CD 라이브러리"},
-     {label:"HD 오디오",url:"#search:HD 오디오"},
-   ]},
-  {id:22,title:"컬렉션 (Collection)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+EQ는 주파수 대역을 조절해 음악의 음색 밸런스를 바꾸는 기능입니다.`,
+   tags:["주파수","음색","설정"],links:[]},
+  {id:22,title:"컬렉션 (Collection)",category:"용어사전",glossTab:"기능",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"기존 Favorite(즐겨찾기)을 재정의한 북마크형 저장 기능. 노래·앨범·아티스트·플레이리스트를 폴더별로 저장·관리할 수 있습니다.",
    body:`■■ 개요
 
@@ -237,7 +287,7 @@ CD를 DAP에 디지털 파일로 옮기는 과정. 이 복사 작업을 '리핑'
 
 노래·앨범·아티스트·플리를 폴더별로 즐겨찾기처럼 저장하는 기능. 기존 Favorite을 SP4000T부터 확장 재정의`,
    tags:["북마크","폴더구조","SP4000T이상"],links:[{label:"기능 히스토리 보기",url:"#search:컬렉션 Favorite 확장"}]},
-  {id:23,title:"즐겨찾기 (Favorite)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:23,title:"즐겨찾기 (Favorite)",category:"용어사전",glossTab:"기능",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"SP4000T 이전 모델에서 사용하던 노래 단독 즐겨찾기 기능. SP4000T부터 '컬렉션'으로 재정의되었습니다.",
    body:`■ 개요
 
@@ -260,52 +310,4 @@ SP4000T 이전 구형 모델은 Favorite 명칭과 기능이 그대로 유지됩
 
 노래만 담는 단순 즐겨찾기. SP4000T부터 컬렉션으로 기능 확장되어 대체됨`,
    tags:["구버전","노래단독","SP4000T이전"],links:[{label:"컬렉션 용어사전 보기",url:"#search:컬렉션"}]},
-  {id:27,title:"커런트 (Current)",category:"용어사전",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
-   desc:"오디오 기기에서 이어폰·헤드폰을 얼마나 안정적으로 구동할 수 있는지를 나타내는 전류 공급 능력입니다.",
-   body:`■ 개요
-
-오디오 기기에서 Current는 전류 공급 능력과 관련된 표현으로, 이어폰·헤드폰을 얼마나 안정적으로 구동할 수 있는지를 설명할 때 사용됩니다.
-
-■ 한 줄 요약
-
-전류 공급 능력이 높을수록 헤드폰을 더 안정적이고 힘 있게 구동할 수 있습니다.`,
-   tags:["전류","구동력","헤드폰"],links:[]},
-  {id:28,title:"앰프 (AMP)",category:"용어사전",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
-   desc:"작은 오디오 신호를 증폭해 이어폰·헤드폰·스피커를 충분한 출력으로 재생할 수 있게 만드는 장치입니다.",
-   body:`■ 개요
-
-AMP(Amplifier)는 작은 오디오 신호를 증폭해 이어폰·헤드폰·스피커를 충분한 출력으로 재생할 수 있게 만드는 장치입니다.
-출력이 부족한 기기에서는 볼륨은 커도 소리가 답답하거나 저음이 퍼지고, 해상력이 떨어지는 느낌이 날 수 있습니다.
-
-■ DAC vs AMP
-
-| 구분 | DAC | AMP |
-| --- | --- | --- |
-| 의미 | Digital to Analog Converter | Amplifier |
-| 역할 | 디지털 신호를 소리 신호로 변환 | 소리 신호를 증폭 |
-| 담당 | "소리를 만들어냄" | "소리를 키움" |
-| 영향 | 해상력, 음색 | 출력, 구동력 |
-
-■ 관계
-
-DAC → AMP 순서로 동작합니다.
-
-즉:
-1. DAC가 음악 데이터를 소리 신호로 바꾸고
-2. AMP가 그 신호를 충분히 크게 증폭합니다.
-
-■ 한 줄 요약
-
-AMP는 오디오 신호를 증폭해 기기를 안정적으로 구동하게 만드는 장치입니다.`,
-   tags:["증폭","구동력","DAC"],links:[]},
-  {id:29,title:"이퀄라이저 (EQ)",category:"용어사전",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
-   desc:"특정 주파수 영역을 조절해 원하는 음색으로 바꾸는 기능 또는 설정입니다.",
-   body:`■ 개요
-
-EQ(Equalizer)는 특정 주파수 영역을 조절해 원하는 음색으로 바꾸는 기능 또는 설정을 의미합니다.
-
-■ 한 줄 요약
-
-EQ는 주파수 대역을 조절해 음악의 음색 밸런스를 바꾸는 기능입니다.`,
-   tags:["주파수","음색","설정"],links:[]},
 ];
