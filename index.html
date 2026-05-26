@@ -330,6 +330,9 @@ mark{background:rgba(204,27,56,0.22);color:var(--cr-100);border-radius:2px;paddi
 .d-img-grid img:last-child:nth-child(odd){
   grid-column:1 / -1;
 }
+.d-img-grid img.is-wide{
+  grid-column:1 / -1;aspect-ratio:16/9;object-fit:cover;
+}
 hr.dv{border:none;border-top:1px solid var(--div-1);margin:20px 0}
 /* 첨부 파일 */
 #d-files-wrap{
@@ -1087,9 +1090,8 @@ function openDetail(id){
   } else { credEl.innerHTML=""; }
   // 이미지 그리드
   const imgEl=document.getElementById("d-images");
-  const detailImgs = d.images ? d.images.filter(img => !img.src.toLowerCase().includes('_thumb')) : [];
-  if(detailImgs.length){
-    imgEl.innerHTML=`<div class="d-img-grid">${detailImgs.map(img=>`<img src="${img.src}" alt="${img.alt}" loading="lazy"/>`).join("")}</div>`;
+  if(d.images && d.images.length){
+    imgEl.innerHTML=`<div class="d-img-grid">${d.images.map(img=>{const isWide=img.wide||/(_wide|_4)\./i.test(img.src);return`<img src="${img.src}" alt="${img.alt}" loading="lazy"${isWide?' class="is-wide"':''}/>`;}).join("")}</div>`;
   } else { imgEl.innerHTML=""; }
   // 첨부 파일
   const filesEl=document.getElementById("d-files");
