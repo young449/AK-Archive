@@ -194,7 +194,7 @@ Audiodo 오류 화면은 미노출, 팝업으로 즉시 대체.
      {label:"UI — Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9739-17741&t=YVqta9mRIAIVw2Wd-1"},
    ],
    images:[
-     {src:"PD20_Thumb.png", alt:"PD20 썸네일"},
+     {src:"images/PD20/PD20_Thumb.png", alt:"PD20 썸네일"},
    ]},
   {id:6, title:"PD5 — PD series 신모델", category:"제품 모델", models:["PD series"], date:"2026.05.20", author:"Ellie", authorInitial:"E",
    credits:{PM:"Luke", PL:"Hoya", UX:"Ellie", UI:"Luna"},
