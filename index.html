@@ -1111,7 +1111,7 @@ function openDetail(id){
       }
       if(l.url.startsWith("#open:")){
         const oid=Number(l.url.replace("#open:",""));
-        return `<button class="dlink" onclick="openDetail(${oid})">${icon}${l.label}</button>`;
+        return `<button class="dlink" onclick="closeDetail(false);openDetail(${oid})">${icon}${l.label}</button>`;
       }
       return `<a class="dlink" href="${l.url}" target="_blank" rel="noopener">${icon}${l.label}</a>`;
     }).join("")
