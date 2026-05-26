@@ -45,25 +45,7 @@ SP4000만의 독자 기술로, OPAMP를 병렬 구조로 추가 적용해 구동
 - 기존 AK DAP는 정해진 특정 APP만 설치 가능했으나, SP4000은 스마트폰처럼 자유로운 APP 설치 지원
 - YouTube, 스트리밍 서비스 등 소비자 불만 사항 해소
 - 경쟁사(FiiO, Shanling 등 중국 브랜드) 대비 동등 수준의 개방성 확보
-
-
-■■ 4. 주요 사양
-
-| 항목 | 사양 |
-| --- | --- |
-| CPU | C6125 Octa-Core |
-| DAC | AK4191EQ x4 & AK4498EX x4 |
-| OS | Full Open Android |
-| Display | 6" 2180x1920 |
-| Audio Output | 3.5mm (Unbal.), 4.4mm (Bal.) |
-| BAL Output | 8Vrms |
-| PCM | 32bit/1536kHz |
-| DSD | DSD1024 |
-| Memory | NAND 256GB |
-| Bluetooth | LDAC, aptX HD |
-| Wi-Fi | Dual Wi-Fi |
-| Battery | 6,400mAh |
-| 소재 | Cobalt Chrome |`,
+`,
    tags:["A&ultima","SP4000","크림슨","플래그쉽","OctaDAC","FullOpenAndroid","HighDrivingMode"],
    files:[
      {label:"SP4000_사업계획서_0430.pdf", url:"files/SP4000_사업계획서_0430_수정.pdf"},
