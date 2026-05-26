@@ -313,6 +313,11 @@ mark{background:rgba(204,27,56,0.22);color:var(--cr-100);border-radius:2px;paddi
 /* 이미지 그리드 */
 #d-images{margin-top:28px}
 #d-images:empty{display:none}
+/* body 내 인라인 이미지 2단 */
+.body-img-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0;}
+.body-img-col{display:flex;flex-direction:column;gap:6px;}
+.body-img-col img{width:100%;border-radius:8px;display:block;background:#000;border:1px solid var(--div-1);}
+.body-img-caption{font-size:11px;color:var(--tx-3,#888);text-align:center;line-height:1.4;}
 .d-img-grid{
   display:grid;grid-template-columns:1fr 1fr;gap:8px;
 }
@@ -1155,13 +1160,25 @@ function renderBody(text) {
     const line = lines[i];
     const trimmed = line.trim();
 
-    // ── 이미지 마커: !!img:파일명|대체텍스트!!
+    // ── 이미지 마커: !!img:파일명|대체텍스트!! (연속 2개 → 2단 그리드)
     if (/^!!img:.+!!$/.test(trimmed)) {
       closePre();
-      const inner = trimmed.slice(6, -2); // 파일명|대체텍스트
-      const [src, alt=''] = inner.split('|');
-      result.push(`<div class="body-img-wrap"><img src="${src.trim()}" alt="${alt.trim()}" loading="lazy" style="max-width:100%;border-radius:8px;margin:12px 0;display:block;"/></div>`);
-      i++;
+      const parseImg = (raw) => {
+        const inner = raw.trim().slice(6, -2);
+        const [src, alt=''] = inner.split('|');
+        return {src: src.trim(), alt: alt.trim()};
+      };
+      const nextLine = (lines[i+1] || '').trim();
+      if (/^!!img:.+!!$/.test(nextLine)) {
+        const img1 = parseImg(trimmed);
+        const img2 = parseImg(nextLine);
+        result.push(`<div class="body-img-row"><div class="body-img-col"><img src="${img1.src}" alt="${img1.alt}" loading="lazy"/><span class="body-img-caption">${img1.alt}</span></div><div class="body-img-col"><img src="${img2.src}" alt="${img2.alt}" loading="lazy"/><span class="body-img-caption">${img2.alt}</span></div></div>`);
+        i += 2;
+      } else {
+        const {src, alt} = parseImg(trimmed);
+        result.push(`<div class="body-img-wrap"><img src="${src}" alt="${alt}" loading="lazy" style="max-width:100%;border-radius:8px;margin:12px 0;display:block;"/></div>`);
+        i++;
+      }
       continue;
     }
 
