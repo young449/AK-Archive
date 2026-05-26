@@ -6,6 +6,7 @@
 
 const DATA_ux = [
   {id:24,title:"Favorite에서 Collection으로(기능 확장 재정의)",category:"기능 히스토리",models:["A&ultima","SP4000T"],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+   labels:["A&ultima"],
    desc:"기존 Favorite(즐겨찾기)의 노래 단독 저장을 확장, 노래·앨범·아티스트·플레이리스트를 폴더별로 저장·관리하는 컬렉션으로 재정의. SP4000T부터 적용.",
    body:`■■ 기능 개요
 
