@@ -816,8 +816,6 @@ function renderGlossSubtab() {
   wrap.appendChild(sw);
   const inp = sw.querySelector("#gloss-search");
   inp.value = S.q;
-  inp.addEventListener("focus", ()=>{ inp.style.width="205px"; inp.style.borderColor="var(--cr-700)"; });
-  inp.addEventListener("blur",  ()=>{ inp.style.width=""; inp.style.borderColor=""; });
   inp.addEventListener("input", ()=>{ S.q=inp.value; renderCards(); });
 }
 
@@ -848,7 +846,7 @@ function renderChipBar() {
   if(S.cat==="용어사전"){bar.innerHTML="";return;}  // 용어사전: 서브탭에서 처리
   bar.innerHTML="";
   const chips=getChips(S.cat);
-  bar.style.cssText="display:flex;align-items:center;gap:6px;margin-bottom:16px;flex-wrap:wrap;";
+  bar.style.cssText="display:flex;align-items:center;gap:6px;flex-wrap:wrap;";
   // 칩이 없는 탭(디자인 가이드, 용어사전): 검색창만
   chips.forEach(c=>{
     const cnt=DATA.filter(d=>d.category===S.cat&&(c.key==="전체"||d.models.includes(c.key))).length;
