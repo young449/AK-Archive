@@ -5,7 +5,7 @@
 // =============================================
 
 const DATA_ux = [
-  {id:24,title:"Favorite에서 Collection으로(기능 확장 재정의)",category:"기능 히스토리",models:["A&ultima","SP4000T"],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:24,title:"Favorite에서 Collection으로(기능 확장 재정의)",category:"기능 히스토리",labels:["A&ultima"],models:["SP4000T"],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"기존 Favorite(즐겨찾기)의 노래 단독 저장을 확장, 노래·앨범·아티스트·플레이리스트를 폴더별로 저장·관리하는 컬렉션으로 재정의. SP4000T부터 적용.",
    body:`■■ 기능 개요
 
@@ -107,7 +107,7 @@ AK Connect로 추가된 곡은 컬렉션 추가 불가.
 PD 라인 포함 하위 모델 RC 반영 계획은 현재 미정입니다.`,
    tags:["컬렉션","즐겨찾기","기능확장","북마크","토글","중복처리"],
    links:[{label:"용어사전 — 컬렉션",url:"#search:컬렉션"},{label:"용어사전 — Favorite",url:"#search:Favorite"}]},
-  {id:30,title:"설정 레이블 추가 및 재배열",category:"기능 히스토리",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
+  {id:30,title:"설정 레이블 추가 및 재배열",category:"기능 히스토리",labels:["RC"],models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
    desc:"기존 아이콘만으로 구분되던 설정 화면에 레이블을 추가하고, 각 그룹 성격에 맞게 항목 순서를 재배열한 UX 개선.",
    body:`■■ 기능 개요
 
