@@ -966,6 +966,16 @@ function renderBody(text) {
     const line = lines[i];
     const trimmed = line.trim();
 
+    // ── 이미지 마커: !!img:파일명|대체텍스트!!
+    if (/^!!img:.+!!$/.test(trimmed)) {
+      closePre();
+      const inner = trimmed.slice(6, -2); // 파일명|대체텍스트
+      const [src, alt=''] = inner.split('|');
+      result.push(`<div class="body-img-wrap"><img src="${src.trim()}" alt="${alt.trim()}" loading="lazy" style="max-width:100%;border-radius:8px;margin:12px 0;display:block;"/></div>`);
+      i++;
+      continue;
+    }
+
     // ── 소제목: ■ 1개 이상으로 시작 (개수 무관, 전부 같은 스타일)
     if (/^■+/.test(trimmed)) {
       closePre();
