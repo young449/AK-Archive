@@ -5,6 +5,19 @@
 // =============================================
 
 const DATA_product = [
+  {id:27, title:"SP4000", category:"제품 모델", models:["A&ultima"], date:"2026.05.20", author:"Ellie", authorInitial:"E",
+   credits:{PM:"Jay", PL:"Patrick, Kenny", UX:"Luna", UI:"Luna"},
+   desc:"추후업로드",
+   body:`추후업로드`,
+   tags:["A&ultima","SP4000","크림슨","플래그쉽"],
+   files:[],
+   links:[
+     {label:"UX 시나리오 — Figma", url:"https://www.figma.com/design/BWddwuTWmaWdqacRZFGrsa/UX_Crimson_Common?node-id=520-14833&t=4AetULsfsg8ocbzt-1"},
+     {label:"UI — Figma", url:"https://www.figma.com/design/CZdIQpzaGRVJOXF7ml8b7f/UI_Crimson_Common-Design-2.0-?node-id=28-54118&t=fRtVetOx6sLv1byy-1"},
+   ],
+   images:[
+     {src:"images/SP4000/SP4000_Thumb.png", alt:"SP4000 썸네일"},
+   ]},
   {id:26, title:"SP4000T — A&ultima 플래그십", category:"제품 모델", models:["A&ultima"], date:"2026.05.21", author:"Ellie", authorInitial:"E",
    credits:{PM:"Jay", PL:"Kane", UX:"Ellie", UI:"Luna"},
    desc:"A&ultima 라인의 플래그십 DAP.",
