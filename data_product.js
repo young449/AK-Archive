@@ -45,6 +45,7 @@ PC 연결 시 MTP가 활성화되지 않는 경우, 사용자가 수동으로 US
    links:[
      {label:"UX 시나리오 — Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=8669-8484&t=fhsxj64S8jwIqh1N-1"},
      {label:"UI — Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9751-56643&t=YVqta9mRIAIVw2Wd-1"},
+     {label:"UX 히스토리 — Favorite에서 Collection으로(기능 확장 재정의)", url:"#open:24"},
    ],
    images:[
      {src:"images/SP4000T/SP4000T_1.png", alt:"SP4000T 전면"},
