@@ -22,9 +22,9 @@ const DATA_product = [
      {label:"UI — Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9751-56643&t=YVqta9mRIAIVw2Wd-1"},
    ],
    images:[
-     {src:"images/SP4000T/SP4000T_1.png", alt:"SP4000T 전면"},
-     {src:"images/SP4000T/SP4000T_2.png", alt:"SP4000T 후면"},
-     {src:"images/SP4000T/SP4000T_3.png", alt:"SP4000T 퍼스펙티브"},
+     {src:"SP4000T_1.png", alt:"SP4000T 전면"},
+     {src:"SP4000T_2.png", alt:"SP4000T 후면"},
+     {src:"SP4000T_3.png", alt:"SP4000T 퍼스펙티브"},
    ]},
   {id:2, title:"PD20 — PD series 최신 모델", category:"제품 모델", models:["PD series"], date:"2026.05.21", author:"Luna", authorInitial:"L",
    credits:{PM:"Luke", PL:"Evan", UX:"Luna", UI:"Luna"},
@@ -192,6 +192,9 @@ Audiodo 오류 화면은 미노출, 팝업으로 즉시 대체.
    links:[
      {label:"UX 시나리오 — Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=8627-2086&t=fhsxj64S8jwIqh1N-1"},
      {label:"UI — Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9739-17741&t=YVqta9mRIAIVw2Wd-1"},
+   ],
+   images:[
+     {src:"PD20_Thumb.png", alt:"PD20 썸네일"},
    ]},
   {id:6, title:"PD5 — PD series 신모델", category:"제품 모델", models:["PD series"], date:"2026.05.20", author:"Ellie", authorInitial:"E",
    credits:{PM:"Luke", PL:"Hoya", UX:"Ellie", UI:"Luna"},
@@ -232,9 +235,9 @@ PD5에는 8개의 DAC가 탑재되어 있으며, 사용자가 DAC 구동 수를 
      {label:"astellnkern.com — PD5", url:"https://www.astellnkern.com"},
    ],
    images:[
-     {src:"images/PD5/PD5_1.png", alt:"PD5 전면"},
-     {src:"images/PD5/PD5_2.png", alt:"PD5 측면"},
-     {src:"images/PD5/PD5_3.png", alt:"PD5 퍼스펙티브"},
-     {src:"images/PD5/PD5_4.png", alt:"PD5 후면"},
+     {src:"PD5_1.png", alt:"PD5 전면"},
+     {src:"PD5_2.png", alt:"PD5 측면"},
+     {src:"PD5_3.png", alt:"PD5 퍼스펙티브"},
+     {src:"PD5_4.png", alt:"PD5 후면"},
    ]}
 ];
