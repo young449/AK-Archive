@@ -200,6 +200,7 @@ body.is-list #list-page{display:flex}
 .b-rc{background:var(--chip-rc-bg);color:var(--chip-rc)}
 .b-setting{background:rgba(255,187,0,0.12);color:#FFBB00}
 .b-more{background:var(--a-w06);color:var(--n-400);border:1px solid var(--div-1)}
+.badge-divider{display:inline-block;width:1px;height:12px;background:var(--div-1);margin:0 2px;flex-shrink:0}
 .tag{display:inline-flex;align-items:center;padding:3px 8px;border-radius:var(--r-xs);font-size:12px;color:var(--n-400);background:var(--a-w06);border:1px solid var(--div-1)}
 mark{background:rgba(204,27,56,0.22);color:var(--cr-100);border-radius:2px;padding:0 1px}
 
@@ -828,7 +829,8 @@ function renderCards(){
       : d.models;
     const vis=visModels.slice(0,MAX_MODELS);
     const hid=visModels.length-vis.length;
-    const modelBadges=labelBadges+vis.map(m=>`<span class="badge ${DAP_CLS[m]||'b-more'}">${m}</span>`).join("")
+    const divider=(labelBadges&&vis.length>0)?`<span class="badge-divider"></span>`:"";
+    const modelBadges=labelBadges+divider+vis.map(m=>`<span class="badge ${DAP_CLS[m]||'b-more'}">${m}</span>`).join("")
       +(hid>0?`<span class="badge b-more">+${hid}</span>`:"");
     const topRow=(vis.length>0||labelBadges)
       ?`<div class="card-top"><div class="card-models-row">${modelBadges}</div></div>`
