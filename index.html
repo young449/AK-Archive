@@ -372,20 +372,17 @@ hr.dv{border:none;border-top:1px solid var(--div-1);margin:20px 0}
 }
 #gloss-subtab-wrap.show{display:flex}
 .gloss-stab{
-  padding:7px 16px;
+  display:inline-flex;align-items:center;gap:5px;
+  padding:7px 14px;
   border-radius:var(--r-xl);
-  font-size:13px;font-weight:500;
+  font-size:14px;font-weight:500;
   color:var(--text-2);
   background:var(--n-800);
   border:1px solid var(--div-2);
   transition:all 0.13s;white-space:nowrap;cursor:pointer;
 }
 .gloss-stab:hover{color:var(--text-1);background:var(--n-700);border-color:var(--n-500)}
-.gloss-stab.is-active{
-  color:var(--cat-gloss);
-  background:var(--cat-gloss-bg);
-  border-color:rgba(255,187,0,0.3);
-}
+.gloss-stab.is-active{color:#fff;background:var(--cr-700);border-color:var(--cr-700)}
 
 /* =============================================
    SECTION: css-tag-page
@@ -786,7 +783,7 @@ function renderGlossSubtab() {
       : DATA_glossary.filter(d => d.glossTab === tab).length;
     const btn = document.createElement("button");
     btn.className = "gloss-stab" + (S.glossTab === tab ? " is-active" : "");
-    btn.textContent = `${tab}  ${cnt}`;
+    btn.innerHTML = `${tab} <span class="cnt">${cnt}</span>`;
     btn.addEventListener("click", () => {
       S.glossTab = tab;
       renderGlossSubtab();
