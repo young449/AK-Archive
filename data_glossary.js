@@ -4,7 +4,7 @@
 // =============================================
 
 const DATA_glossary = [
-  {id:11,title:"DAP (Digital Audio Player)",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:11,title:"DAP",category:"용어사전",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"Digital Audio Player의 약자로, 휴대하며 사용하는 포터블 음향기기입니다.",
    body:`■ 개요
 
@@ -260,4 +260,52 @@ SP4000T 이전 구형 모델은 Favorite 명칭과 기능이 그대로 유지됩
 
 노래만 담는 단순 즐겨찾기. SP4000T부터 컬렉션으로 기능 확장되어 대체됨`,
    tags:["구버전","노래단독","SP4000T이전"],links:[{label:"컬렉션 용어사전 보기",url:"#search:컬렉션"}]},
+  {id:24,title:"커런트 (Current)",category:"용어사전",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
+   desc:"오디오 기기에서 이어폰·헤드폰을 얼마나 안정적으로 구동할 수 있는지를 나타내는 전류 공급 능력입니다.",
+   body:`■ 개요
+
+오디오 기기에서 Current는 전류 공급 능력과 관련된 표현으로, 이어폰·헤드폰을 얼마나 안정적으로 구동할 수 있는지를 설명할 때 사용됩니다.
+
+■ 한 줄 요약
+
+전류 공급 능력이 높을수록 헤드폰을 더 안정적이고 힘 있게 구동할 수 있습니다.`,
+   tags:["전류","구동력","헤드폰"],links:[]},
+  {id:25,title:"앰프 (AMP)",category:"용어사전",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
+   desc:"작은 오디오 신호를 증폭해 이어폰·헤드폰·스피커를 충분한 출력으로 재생할 수 있게 만드는 장치입니다.",
+   body:`■ 개요
+
+AMP(Amplifier)는 작은 오디오 신호를 증폭해 이어폰·헤드폰·스피커를 충분한 출력으로 재생할 수 있게 만드는 장치입니다.
+출력이 부족한 기기에서는 볼륨은 커도 소리가 답답하거나 저음이 퍼지고, 해상력이 떨어지는 느낌이 날 수 있습니다.
+
+■ DAC vs AMP
+
+| 구분 | DAC | AMP |
+| --- | --- | --- |
+| 의미 | Digital to Analog Converter | Amplifier |
+| 역할 | 디지털 신호를 소리 신호로 변환 | 소리 신호를 증폭 |
+| 담당 | "소리를 만들어냄" | "소리를 키움" |
+| 영향 | 해상력, 음색 | 출력, 구동력 |
+
+■ 관계
+
+DAC → AMP 순서로 동작합니다.
+
+즉:
+1. DAC가 음악 데이터를 소리 신호로 바꾸고
+2. AMP가 그 신호를 충분히 크게 증폭합니다.
+
+■ 한 줄 요약
+
+AMP는 오디오 신호를 증폭해 기기를 안정적으로 구동하게 만드는 장치입니다.`,
+   tags:["증폭","구동력","DAC"],links:[]},
+  {id:26,title:"이퀄라이저 (EQ)",category:"용어사전",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
+   desc:"특정 주파수 영역을 조절해 원하는 음색으로 바꾸는 기능 또는 설정입니다.",
+   body:`■ 개요
+
+EQ(Equalizer)는 특정 주파수 영역을 조절해 원하는 음색으로 바꾸는 기능 또는 설정을 의미합니다.
+
+■ 한 줄 요약
+
+EQ는 주파수 대역을 조절해 음악의 음색 밸런스를 바꾸는 기능입니다.`,
+   tags:["주파수","음색","설정"],links:[]},
 ];
