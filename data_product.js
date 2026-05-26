@@ -7,16 +7,76 @@
 const DATA_product = [
   {id:27, title:"SP4000", category:"제품 모델", models:["A&ultima"], date:"2026.05.19", author:"Ellie", authorInitial:"E",
    credits:{PM:"Jay", PL:"Patrick, Kenny", UX:"Luna", UI:"Luna"},
-   desc:"추후업로드",
-   body:`추후업로드`,
-   tags:["A&ultima","SP4000","크림슨","플래그쉽"],
-   files:[],
+   desc:"SP3000의 후속 A&ultima 플래그십 DAP. Octa DAC, Full Open Android, High Driving Mode 탑재.",
+   body:`■■ 1. Octa DAC 구조
+
+SP3000의 Hexa DAC 구조를 업그레이드해 Octa DAC 구조를 적용한 모델입니다.
+
+- SP3000은 디지털(AK4191EQ) 2개 + 아날로그(AK4499EX) 4개를 Dual & Dual 구조로 연결
+- SP4000은 AK4191EQ x4 & AK4499EX x4로 구성된 Real Quad DAC 구조로 업그레이드
+- 4개의 DAC를 동시에 구동해 신호 처리 성능 향상 및 압도적인 사운드 구현
+
+■ SP3000 vs SP4000 DAC 구조 비교
+
+| 항목 | SP3000 (HEXA DAC) | SP4000 (OCTA DAC) |
+| --- | --- | --- |
+| 구성 | Dual & Dual | Real Quad |
+| DAC | AK4191EQ x2 + AK4499EX x4 | AK4191EQ x4 + AK4499EX x4 |
+| PCM | 32bit/768kHz | 32bit/1536kHz |
+| DSD | DSD512 | DSD1024 |
+| BAL Output | 6.3Vrms | 8Vrms |
+
+
+■■ 2. High Driving Mode
+
+SP4000만의 독자 기술로, OPAMP를 병렬 구조로 추가 적용해 구동 범위를 수평으로 확장하는 방식입니다.
+
+- 기존 KANN 시리즈의 단순 전압 상승(수직 증가) 방식과 달리, OPAMP 2개를 병렬로 운용 (2륜 / 4륜 개념)
+- 출력 상승 시 동반되는 SNR 저하 및 노이즈 상승을 억제
+- 소리의 밀도와 디테일 극대화
+- 설정에서 On / Off 전환 가능. Normal Mode 대비 확실한 사운드 퀄리티 차이 제공
+- High Driving Mode 사용 시 배터리 소모 증가
+
+
+■■ 3. Full Open Android
+
+시장의 지속적인 요구에 따라 SP4000에 Full Open Android를 탑재합니다.
+
+- 기존 AK DAP는 정해진 특정 APP만 설치 가능했으나, SP4000은 스마트폰처럼 자유로운 APP 설치 지원
+- YouTube, 스트리밍 서비스 등 소비자 불만 사항 해소
+- 경쟁사(FiiO, Shanling 등 중국 브랜드) 대비 동등 수준의 개방성 확보
+
+
+■■ 4. 주요 사양
+
+| 항목 | 사양 |
+| --- | --- |
+| CPU | C6125 Octa-Core |
+| DAC | AK4191EQ x4 & AK4498EX x4 |
+| OS | Full Open Android |
+| Display | 6" 2180x1920 |
+| Audio Output | 3.5mm (Unbal.), 4.4mm (Bal.) |
+| BAL Output | 8Vrms |
+| PCM | 32bit/1536kHz |
+| DSD | DSD1024 |
+| Memory | NAND 256GB |
+| Bluetooth | LDAC, aptX HD |
+| Wi-Fi | Dual Wi-Fi |
+| Battery | 6,400mAh |
+| 소재 | Cobalt Chrome |`,
+   tags:["A&ultima","SP4000","크림슨","플래그쉽","OctaDAC","FullOpenAndroid","HighDrivingMode"],
+   files:[
+     {label:"SP4000_사업계획서_0430.pdf", url:"files/SP4000_사업계획서_0430_수정.pdf"},
+   ],
    links:[
      {label:"UX 시나리오 — Figma", url:"https://www.figma.com/design/BWddwuTWmaWdqacRZFGrsa/UX_Crimson_Common?node-id=520-14833&t=4AetULsfsg8ocbzt-1"},
      {label:"UI — Figma", url:"https://www.figma.com/design/CZdIQpzaGRVJOXF7ml8b7f/UI_Crimson_Common-Design-2.0-?node-id=28-54118&t=fRtVetOx6sLv1byy-1"},
    ],
    images:[
-     {src:"images/SP4000/SP4000_thumb.png", alt:"SP4000 썸네일"},
+     {src:"images/SP4000/SP4000_1.jpg", alt:"SP4000 전면"},
+     {src:"images/SP4000/SP4000_2.jpg", alt:"SP4000 후면"},
+     {src:"images/SP4000/SP4000_3.jpg", alt:"SP4000 퍼스펙티브"},
+     {src:"images/SP4000/SP4000_4.jpg", alt:"SP4000 휠 디테일"},
    ]},
   {id:26, title:"SP4000T — A&ultima 플래그십", category:"제품 모델", models:["A&ultima"], date:"2026.05.21", author:"Ellie", authorInitial:"E",
    credits:{PM:"Jay", PL:"Kane", UX:"Ellie", UI:"Luna"},
