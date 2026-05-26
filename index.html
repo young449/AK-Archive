@@ -256,7 +256,7 @@ body.is-list #list-page{display:flex}
 .b-pd{background:var(--chip-pd-bg);color:var(--chip-pd)}
 .b-her{background:var(--chip-her-bg);color:var(--chip-her)}
 .b-cl{background:var(--chip-cl-bg);color:var(--chip-cl)}
-.b-sp4000t{background:var(--chip-sp4000t-bg);color:var(--chip-sp4000t)}
+.b-sp4000t,.b-sp4000{background:var(--chip-sp4000t-bg);color:var(--chip-sp4000t)}
 .b-rc{background:var(--chip-rc-bg);color:var(--chip-rc)}
 .b-more{background:var(--a-w06);color:var(--n-400);border:1px solid var(--div-1)}
 .badge-divider{display:inline-block;width:1px;height:12px;background:var(--div-1);margin:0 2px;flex-shrink:0}
@@ -708,8 +708,8 @@ body.is-tag #tag-page{display:block}
 <script src="data_ux.js"></script>
 <script src="data_glossary.js"></script>
 <script>
-const DAP_CLS = {"A&ultima":"b-ultima","PD series":"b-pd","Heritage":"b-her","Classic":"b-cl","SP4000T":"b-sp4000t"};
-const LABEL_CLS = {"RC":"b-rc","A&ultima":"b-ultima"};
+const DAP_CLS = {"SP4000":"b-sp4000","SP4000T":"b-sp4000t","PD10":"b-pd","PD20":"b-pd","PD5":"b-pd"};
+const LABEL_CLS = {"A&ultima":"b-ultima","PD series":"b-pd","RC":"b-rc","Heritage":"b-her","Classic":"b-cl"};
 const CAT_CLS = {"제품 모델":"b-model","기능 히스토리":"b-hist","디자인 가이드":"b-design","용어사전":"b-gloss"};
 const HERO = {
   "전체":{title:"전체",desc:"프로젝트 히스토리, 의사결정 배경, 사내 용어를 키워드 하나로 즉시 탐색"},
@@ -1007,16 +1007,12 @@ function renderCards(){
   items.forEach(d=>{
     const el=document.createElement("div");
     el.className="card";el.setAttribute("role","listitem");el.setAttribute("tabindex","0");
-    // 상단: 레이블 배지 + 모델 배지
-    const HIDE_IN_HIST = ["A&ultima"];
-    const labelBadges = d.category === "기능 히스토리" && d.labels
+    // 상단: 탭명 배지(labels) + 반영모델 배지(models)
+    const labelBadges = d.labels
       ? d.labels.map(l=>`<span class="badge ${LABEL_CLS[l]||'b-more'}">${l}</span>`).join("")
       : "";
-    const visModels = d.category === "기능 히스토리" && !d.showAllModels
-      ? d.models.filter(m => !HIDE_IN_HIST.includes(m))
-      : d.models;
-    const vis=visModels.slice(0,MAX_MODELS);
-    const hid=visModels.length-vis.length;
+    const vis=d.models.slice(0,MAX_MODELS);
+    const hid=d.models.length-vis.length;
     const divider=(labelBadges&&vis.length>0)?`<span class="badge-divider"></span>`:"";
     const modelBadges=labelBadges+divider+vis.map(m=>`<span class="badge ${DAP_CLS[m]||'b-more'}">${m}</span>`).join("")
       +(hid>0?`<span class="badge b-more">+${hid}</span>`:"");
@@ -1054,14 +1050,10 @@ function openDetail(id){
   document.getElementById("gloss-subtab-wrap").classList.remove("show");
   document.getElementById("empty").classList.remove("show");
   // 모델 배지: 레이블 먼저 + 모델 (기능 히스토리는 A&ultima 제외, showAllModels 예외)
-  const HIDE_IN_HIST=["A&ultima"];
-  const detailLabels = d.category==="기능 히스토리" && d.labels
+  const detailLabels = d.labels
     ? d.labels.map(l=>`<span class="badge ${LABEL_CLS[l]||""}">${l}</span>`).join("")
     : "";
-  const detailModels = d.category==="기능 히스토리" && !d.showAllModels
-    ? d.models.filter(m=>!HIDE_IN_HIST.includes(m))
-    : d.models;
-  document.getElementById("d-models").innerHTML=detailLabels+detailModels.map(m=>`<span class="badge ${DAP_CLS[m]||""}">${m}</span>`).join("");
+  document.getElementById("d-models").innerHTML=detailLabels+d.models.map(m=>`<span class="badge ${DAP_CLS[m]||""}">${m}</span>`).join("");
   // 제품 모델은 — 앞 모델명만, 나머지는 전체 제목
   const displayTitle = d.category === "제품 모델" && d.title.includes("—")
     ? d.title.split("—")[0].trim()
