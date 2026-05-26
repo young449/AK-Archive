@@ -950,6 +950,7 @@ function openDetail(id){
   S.prevPage=document.body.className;
   S.openId=id;
   ["card-list","chip-bar","count-row","hero"].forEach(i=>document.getElementById(i).style.display="none");
+  document.getElementById("gloss-subtab-wrap").classList.remove("show");
   document.getElementById("empty").classList.remove("show");
   // 모델 배지: 레이블 먼저 + 모델 (기능 히스토리는 A&ultima 제외, showAllModels 예외)
   const HIDE_IN_HIST=["A&ultima"];
