@@ -127,15 +127,15 @@ body.is-home #home{display:flex}
 #list-page{display:none;flex-direction:column;min-height:calc(100vh - 62px)}
 body.is-list #list-page{display:flex}
 
-#list-content{flex:1;max-width:960px;margin:0 auto;width:100%;padding:28px 24px 80px}
-#hero{margin-bottom:20px}
-#hero-title{font-size:24px;font-weight:700;color:var(--text-1);margin-bottom:6px}
+#list-content{flex:1;max-width:960px;margin:0 auto;width:100%;padding:40px 24px 80px}
+#hero{margin-bottom:28px}
+#hero-title{font-size:24px;font-weight:700;color:var(--text-1);margin-bottom:8px}
 #hero-desc{font-size:16px;color:var(--text-2)}
 
 /* =============================================
    SECTION: css-chip-bar
 ============================================= */
-#chip-bar{display:flex;align-items:center;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+#chip-bar{display:flex;align-items:center;gap:6px;margin-bottom:20px;flex-wrap:wrap}
 .chip-btn{
   display:inline-flex;align-items:center;gap:5px;
   padding:7px 14px;border-radius:var(--r-xl);
@@ -163,7 +163,7 @@ body.is-list #list-page{display:flex}
 /* =============================================
    SECTION: css-count + card
 ============================================= */
-#count-row{margin-bottom:12px}
+#count-row{margin-bottom:16px}
 #count-text{font-size:14px;color:var(--text-2)}
 #count-num{font-family:var(--mono);color:var(--text-1)}
 #card-list{display:flex;flex-direction:column;gap:12px}
@@ -366,9 +366,10 @@ hr.dv{border:none;border-top:1px solid var(--div-1);margin:20px 0}
 ============================================= */
 #gloss-subtab-wrap{
   display:none;
-  gap:4px;
-  margin-bottom:16px;
+  gap:6px;
+  margin-bottom:20px;
   flex-wrap:wrap;
+  align-items:center;
 }
 #gloss-subtab-wrap.show{display:flex}
 .gloss-stab{
@@ -383,6 +384,15 @@ hr.dv{border:none;border-top:1px solid var(--div-1);margin:20px 0}
 }
 .gloss-stab:hover{color:var(--text-1);background:var(--n-700);border-color:var(--n-500)}
 .gloss-stab.is-active{color:#fff;background:var(--cr-700);border-color:var(--cr-700)}
+#gloss-search{
+  width:170px;height:36px;padding:0 12px 0 32px;
+  background:var(--n-800);border:1px solid var(--div-2);
+  border-radius:var(--r-xl);color:var(--text-1);
+  font-family:var(--font);font-size:14px;outline:none;
+  transition:border-color 0.13s,width 0.2s;
+}
+#gloss-search::placeholder{color:var(--n-500)}
+#gloss-search:focus{border-color:var(--cr-700);width:205px}
 
 /* =============================================
    SECTION: css-tag-page
@@ -802,12 +812,12 @@ function renderGlossSubtab() {
   // 검색창 — 우측 정렬
   const sw = document.createElement("div");
   sw.style.cssText="margin-left:auto;position:relative;flex-shrink:0;";
-  sw.innerHTML=`<svg class="csi" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg><input id="gloss-search" type="search" placeholder="페이지 내 검색" autocomplete="off" style="width:170px;height:36px;padding:0 12px 0 32px;background:var(--n-800);border:1px solid var(--div-2);border-radius:var(--r-xl);color:var(--text-1);font-family:var(--font);font-size:14px;outline:none;transition:border-color 0.13s,width 0.2s;"/>`;
+  sw.innerHTML=`<svg class="csi" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg><input id="gloss-search" type="search" placeholder="페이지 내 검색" autocomplete="off"/>`;
   wrap.appendChild(sw);
   const inp = sw.querySelector("#gloss-search");
   inp.value = S.q;
   inp.addEventListener("focus", ()=>{ inp.style.width="205px"; inp.style.borderColor="var(--cr-700)"; });
-  inp.addEventListener("blur",  ()=>{ inp.style.width="170px"; inp.style.borderColor=""; });
+  inp.addEventListener("blur",  ()=>{ inp.style.width=""; inp.style.borderColor=""; });
   inp.addEventListener("input", ()=>{ S.q=inp.value; renderCards(); });
 }
 
