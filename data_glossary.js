@@ -2,7 +2,7 @@
 // data_glossary.js
 // AK 용어 카테고리 데이터
 // 항목 추가 시 id는 고유한 숫자로 지정
-// glossTab: "하드웨어" | "음원 & 파일" | "서비스 & 연결" | "기능"
+// glossTab: "하드웨어" | "로컬저장소" | "서비스 & 연결" | "기능"
 // =============================================
 
 const DATA_glossary = [
@@ -69,7 +69,7 @@ AMP는 오디오 신호를 증폭해 기기를 안정적으로 구동하게 만�
 
 전류 공급 능력이 높을수록 헤드폰을 더 안정적이고 힘 있게 구동할 수 있습니다.`,
    tags:["전류","구동력","헤드폰"],links:[]},
-  {id:14,title:"로컬 (Local)",category:"용어사전",glossTab:"음원 & 파일",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:14,title:"로컬 (Local)",category:"용어사전",glossTab:"로컬저장소",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"사용자가 음원 파일을 기기에 직접 저장하여 재생하는 방식입니다.",
    body:`■ 개요
 
@@ -81,7 +81,7 @@ SD 카드, 내부 저장소, USB 등 물리적 저장 매체를 기반으로 동
 
 파일을 기기에 직접 넣어 재생하는 방식. 인터넷 불필요`,
    tags:["로컬","오프라인","저장"],links:[]},
-  {id:21,title:"로컬 메뉴 (Local Menu)",category:"용어사전",glossTab:"음원 & 파일",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:21,title:"로컬 메뉴 (Local Menu)",category:"용어사전",glossTab:"로컬저장소",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"AK DAP·디바이스에서 기기에 직접 저장된 음원 파일을 탐색하고 재생하기 위한 메뉴 영역입니다.",
    body:`■ 개요
 
@@ -102,7 +102,7 @@ SD 카드, 내부 저장소, USB 등 물리적 저장 매체를 기반으로 동
      {label:"CD 라이브러리",url:"#search:CD 라이브러리"},
      {label:"HD 오디오",url:"#search:HD 오디오"},
    ]},
-  {id:18,title:"CUE 시트 (CUE Sheet)",category:"용어사전",glossTab:"음원 & 파일",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:18,title:"CUE 시트 (CUE Sheet)",category:"용어사전",glossTab:"로컬저장소",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"앨범 단위로 묶인 오디오 파일의 트랙 정보를 담고 있는 메타데이터 텍스트 파일입니다.",
    body:`■ 개요
 
@@ -118,7 +118,7 @@ SD 카드, 내부 저장소, USB 등 물리적 저장 매체를 기반으로 동
 
 앨범 전체를 1개 파일로 관리하면서, CUE 파일로 각 트랙을 분리·탐색할 수 있게 해주는 방식`,
    tags:["메타데이터","트랙분리","앨범단위"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
-  {id:19,title:"CD 라이브러리 (CD Library)",category:"용어사전",glossTab:"음원 & 파일",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:19,title:"CD 라이브러리 (CD Library)",category:"용어사전",glossTab:"로컬저장소",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"CD에 담긴 음원, 앨범 아트 등의 데이터를 디지털 파일로 복사해 기기에 저장하는 기능입니다.",
    body:`■ 개요
 
@@ -135,7 +135,7 @@ CD에 담긴 음원, 앨범 아트 등의 데이터를 디지털 파일로 복�
 
 CD를 DAP에 디지털 파일로 옮기는 과정. 이 복사 작업을 '리핑'이라고 함`,
    tags:["리핑","FLAC","WAV","디지털변환"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
-  {id:20,title:"HD 오디오 (HD Audio)",category:"용어사전",glossTab:"음원 & 파일",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:20,title:"HD 오디오 (HD Audio)",category:"용어사전",glossTab:"로컬저장소",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"로컬에 저장된 파일 중 고음질 파일만 필터링해서 보여주는 목록입니다. 이전 명칭: MQS.",
    body:`■ 개요
 
