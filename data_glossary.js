@@ -1,1243 +1,313 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>AK Archive</title>
-<link rel="preconnect" href="https://cdn.jsdelivr.net"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"/>
-
-<style>
-:root {
-  --n-900:#121212;--n-800:#1A1A1A;--n-700:#292929;
-  --n-600:#3A3A3A;--n-500:#595959;--n-400:#6C6C6C;--n-300:#949494;
-  --cr-900:#720B1C;--cr-700:#CC1B38;--cr-200:#E7727F;--cr-100:#F09AA3;
-  --a-w100:rgba(255,255,255,1);--a-w50:rgba(255,255,255,0.5);
-  --a-w30:rgba(255,255,255,0.3);--a-w10:rgba(255,255,255,0.1);
-  --a-w06:rgba(255,255,255,0.06);
-  --text-1:var(--a-w100);--text-2:var(--a-w50);--text-3:var(--a-w30);
-  --div-1:var(--n-700);--div-2:var(--n-600);
-  --cat-model-bg:rgba(0,123,255,0.12);--cat-model:#5AABFF;
-  --cat-hist-bg:rgba(204,27,56,0.14);--cat-hist:var(--cr-100);
-  --cat-design-bg:rgba(27,204,163,0.12);--cat-design:#1BCCA3;
-  --cat-gloss-bg:rgba(255,187,0,0.10);--cat-gloss:#FFBB00;
-  --chip-ultima-bg:rgba(204,27,56,0.16);--chip-ultima:var(--cr-200);
-  --chip-pd-bg:rgba(0,123,255,0.14);--chip-pd:#6DB8FF;
-  --chip-her-bg:rgba(255,187,0,0.10);--chip-her:#FFBB00;
-  --chip-cl-bg:rgba(149,149,149,0.1);--chip-cl:#A0A0A0;
-  --chip-sp4000t-bg:rgba(163,106,255,0.14);--chip-sp4000t:#C49DFF;
-  --chip-rc-bg:rgba(27,204,163,0.12);--chip-rc:#1BCCA3;
-  --font:"Pretendard Variable","Pretendard",sans-serif;
-  --mono:var(--font);
-  --r-xs:4px;--r-sm:6px;--r-lg:16px;--r-xl:999px;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:16px}
-body{font-family:var(--font);background:var(--n-900);color:var(--text-1);min-height:100vh;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-button{font-family:inherit;cursor:pointer;border:none;background:none}
-
-/* =============================================
-   SECTION: css-gnb
-   항상 표시. 홈에서는 숨김 (body.is-home)
-============================================= */
-#gnb-wrap{
-  position:sticky;top:0;z-index:200;
-  padding:40px 0 10px;
-  background:rgba(18,18,18,0.9);
-  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-  display:flex;
-  justify-content:center;
-}
-body.is-home #gnb-wrap{
-  position:fixed;top:0;left:0;right:0;
-  background:transparent;backdrop-filter:none;
-  z-index:200;
-}
-
-
-#gnb-inner{
-  display:inline-flex;align-items:center;gap:2px;
-  background:var(--n-800);
-  border:1px solid var(--div-2);
-  border-radius:var(--r-xl);
-  padding:8px 12px;
-}
-#gnb-logo{
-  display:flex;align-items:center;gap:9px;
-  flex-shrink:0;padding:4px 12px 4px 6px;
-  border-radius:var(--r-xl);transition:background 0.14s;
-}
-#gnb-logo:hover{background:transparent}
-#gnb-logo img{width:22px;height:auto;mix-blend-mode:screen}
-#gnb-logo-text{
-  font-family:var(--font);font-size:14px;font-weight:700;
-  color:var(--text-1);letter-spacing:0.06em;white-space:nowrap;
-}
-.gnb-sep{display:none}
-.gnb-tab{
-  padding:12px 20px;font-size:14px;font-weight:500;
-  color:var(--text-2);border-radius:var(--r-xl);
-  transition:color 0.13s;white-space:nowrap;
-}
-.gnb-tab:hover{color:var(--text-1)}
-.gnb-tab.is-active{
-  color:var(--text-1);
-}
-
-/* =============================================
-   SECTION: css-home
-   body.is-home일 때만 표시
-============================================= */
-#home{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 24px;gap:32px;position:relative;overflow:hidden}
-body.is-home #home{display:flex}
-
-#home-logo{display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;transition:opacity 0.15s;padding:0}
-#home-logo:hover{opacity:0.8}
-#home-logo img{width:64px;height:auto;mix-blend-mode:screen}
-#home-logo-text{font-family:var(--font);font-size:14px;font-weight:700;color:var(--text-1);letter-spacing:0.06em}
-
-#home-copy{text-align:center}
-#home-headline{font-size:32px;font-weight:600;color:var(--text-1);line-height:1.3;letter-spacing:-0.02em;margin-bottom:8px}
-#home-subline{font-size:16px;font-weight:400;color:var(--text-2);line-height:1.5}
-
-#home-search-wrap{width:100%;max-width:480px;position:relative}
-#home-search{
-  width:100%;height:52px;padding:0 48px 0 50px;
-  background:var(--n-800);border:1px solid var(--div-2);
-  border-radius:16px;color:var(--text-1);
-  font-family:var(--font);font-size:16px;outline:none;
-  transition:border-color 0.15s,box-shadow 0.15s;
-}
-#home-search::placeholder{color:var(--n-500)}
-#home-search:focus{border:2px solid rgba(204,27,56,0.5);box-shadow:0 0 12px rgba(204,27,56,0.10)}
-.home-si{position:absolute;left:17px;top:50%;transform:translateY(-50%);color:var(--n-500);pointer-events:none}
-#home-clear{
-  position:absolute;right:15px;top:50%;transform:translateY(-50%);
-  width:22px;height:22px;border-radius:50%;
-  background:var(--n-600);color:var(--text-2);
-  display:none;align-items:center;justify-content:center;
-}
-#home-clear.show{display:flex}
-
-/* =============================================
-   SECTION: css-list
-   body.is-list일 때 표시
-============================================= */
-#list-page{display:none;flex-direction:column;min-height:calc(100vh - 62px)}
-body.is-list #list-page{display:flex}
-
-#list-content{flex:1;max-width:960px;margin:0 auto;width:100%;padding:28px 24px 80px}
-#hero{margin-bottom:20px}
-#hero-title{font-size:24px;font-weight:700;color:var(--text-1);margin-bottom:6px}
-#hero-desc{font-size:16px;color:var(--text-2)}
-
-/* =============================================
-   SECTION: css-chip-bar
-============================================= */
-#chip-bar{display:flex;align-items:center;gap:6px;margin-bottom:16px;flex-wrap:wrap}
-.chip-btn{
-  display:inline-flex;align-items:center;gap:5px;
-  padding:7px 14px;border-radius:var(--r-xl);
-  font-size:14px;font-weight:500;
-  color:var(--text-2);background:var(--n-800);
-  border:1px solid var(--div-2);
-  transition:all 0.13s;white-space:nowrap;
-}
-.chip-btn:hover{color:var(--text-1);background:var(--n-700);border-color:var(--n-500)}
-.chip-btn.is-active{color:#fff;background:var(--cr-700);border-color:var(--cr-700)}
-.chip-btn.is-active[data-chip="RC"]{background:var(--chip-rc);border-color:var(--chip-rc);color:#0a2a22}
-.chip-btn .cnt{font-size:12px;font-family:var(--mono);opacity:0.7}
-#chip-search-wrap{position:relative;flex-shrink:0}
-#chip-search{
-  width:170px;height:36px;padding:0 12px 0 32px;
-  background:var(--n-800);border:1px solid var(--div-2);
-  border-radius:var(--r-xl);color:var(--text-1);
-  font-family:var(--font);font-size:14px;outline:none;
-  transition:border-color 0.13s,width 0.2s;
-}
-#chip-search::placeholder{color:var(--n-500)}
-#chip-search:focus{border-color:var(--cr-700);width:205px}
-.csi{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--n-500);pointer-events:none}
-
-/* =============================================
-   SECTION: css-count + card
-============================================= */
-#count-row{margin-bottom:12px}
-#count-text{font-size:14px;color:var(--text-2)}
-#count-num{font-family:var(--mono);color:var(--text-1)}
-#card-list{display:flex;flex-direction:column;gap:12px}
-.card{
-  background:var(--n-800);border:1px solid var(--div-1);
-  border-radius:var(--r-lg);padding:28px 24px;cursor:pointer;
-  display:flex;flex-direction:column;gap:10px;
-  transition:background 0.12s,border-color 0.12s;
-}
-.card:hover{background:var(--n-700);border-color:var(--div-2)}
-.card-top{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.card-top:empty{display:none}
-.card-models-row{display:flex;gap:5px;align-items:center;flex-wrap:nowrap;overflow:hidden}
-.card-title{font-size:18px;font-weight:600;color:var(--text-1);line-height:1.4}
-/* 날짜·작성자 좌정렬 */
-.card-meta{display:flex;align-items:center;gap:6px}
-.card-meta-author{font-size:14px;font-weight:500;color:var(--text-2)}
-.card-meta-sep{font-size:14px;color:var(--n-600)}
-.card-meta-date{font-size:14px;color:var(--n-500)}
-
-/* =============================================
-   SECTION: css-badges
-============================================= */
-.badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:var(--r-xs);font-size:12px;font-weight:500;font-family:var(--mono);letter-spacing:0.02em;white-space:nowrap}
-.b-model{background:var(--cat-model-bg);color:var(--cat-model)}
-.b-hist{background:var(--cat-hist-bg);color:var(--cat-hist)}
-.b-design{background:var(--cat-design-bg);color:var(--cat-design)}
-.b-gloss{background:var(--cat-gloss-bg);color:var(--cat-gloss)}
-.b-ultima{background:var(--chip-ultima-bg);color:var(--chip-ultima)}
-.b-pd{background:var(--chip-pd-bg);color:var(--chip-pd)}
-.b-her{background:var(--chip-her-bg);color:var(--chip-her)}
-.b-cl{background:var(--chip-cl-bg);color:var(--chip-cl)}
-.b-sp4000t{background:var(--chip-sp4000t-bg);color:var(--chip-sp4000t)}
-.b-rc{background:var(--chip-rc-bg);color:var(--chip-rc)}
-.b-setting{background:rgba(255,187,0,0.12);color:#FFBB00}
-.b-more{background:var(--a-w06);color:var(--n-400);border:1px solid var(--div-1)}
-.badge-divider{display:inline-block;width:1px;height:12px;background:var(--div-1);margin:0 2px;flex-shrink:0}
-.tag{display:inline-flex;align-items:center;padding:3px 8px;border-radius:var(--r-xs);font-size:12px;color:var(--n-400);background:var(--a-w06);border:1px solid var(--div-1)}
-mark{background:rgba(204,27,56,0.22);color:var(--cr-100);border-radius:2px;padding:0 1px}
-
-/* =============================================
-   SECTION: css-empty + detail
-============================================= */
-#empty{display:none;flex-direction:column;align-items:center;padding:80px 20px;gap:12px;text-align:center}
-#empty.show{display:flex}
-#empty svg{opacity:0.12}
-#empty p{font-size:16px;font-weight:600;color:var(--text-2)}
-#empty small{font-size:14px;color:var(--n-500)}
-
-#detail{display:none;animation:fup 0.2s ease}
-#detail.show{display:block}
-@keyframes fup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-#detail-back{display:inline-flex;align-items:center;gap:7px;font-size:14px;color:var(--text-2);padding:0;margin-bottom:24px;transition:color 0.13s}
-#detail-back:hover{color:var(--text-1)}
-#d-models{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
-#d-models:empty{display:none}
-#d-title{font-size:24px;font-weight:700;color:var(--text-1);line-height:1.3;margin-bottom:8px}
-/* 작성자 · 날짜 */
-#d-author{display:flex;align-items:center;margin-bottom:0}
-#d-name{font-size:14px;font-weight:500;color:var(--text-2)}
-.d-author-sep{margin:0 8px;font-size:14px;color:var(--n-600)}
-#d-date{font-size:14px;color:var(--n-500)}
-/* 담당자 크레딧 */
-#d-credits{
-  display:inline-flex;align-items:center;gap:0;flex-wrap:wrap;
-  margin-top:0;margin-bottom:20px;
-  padding:8px 14px;
-  background:var(--n-700);border-radius:var(--r-xl);
-  border:1px solid var(--div-2);
-}
-#d-credits:empty{display:none}
-.credit-item{display:inline-flex;align-items:center;gap:6px;padding:0 10px}
-.credit-item:first-child{padding-left:0}
-.credit-item:last-child{padding-right:0}
-.credit-role{
-  font-size:10px;font-weight:700;text-transform:uppercase;
-  letter-spacing:0.12em;color:var(--cr-200);font-family:var(--mono);
-  flex-shrink:0;
-}
-.credit-name{font-size:14px;font-weight:600;color:var(--text-2)}
-.credit-sep{width:1px;height:14px;background:var(--div-2);flex-shrink:0}
-/* 이미지 그리드 */
-#d-images{margin-top:28px}
-#d-images:empty{display:none}
-.d-img-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:8px;
-}
-.d-img-grid img{
-  width:100%;border-radius:var(--r-sm);
-  background:#000;display:block;
-  border:1px solid var(--div-1);
-}
-.d-img-grid img:last-child:nth-child(odd){
-  grid-column:1 / -1;
-}
-hr.dv{border:none;border-top:1px solid var(--div-1);margin:20px 0}
-/* 첨부 파일 */
-#d-files-wrap{
-  margin-top:20px;
-  padding-top:20px;
-  border-top:1px solid var(--div-1);
-}
-#d-files-wrap:has(#d-files:empty){display:none}
-#d-files-label{
-  font-size:11px;font-family:var(--mono);
-  text-transform:uppercase;letter-spacing:0.12em;
-  color:var(--n-500);margin-bottom:10px;
-}
-#d-files{display:flex;flex-direction:column;gap:6px}
-.dfile{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:9px 14px;
-  background:var(--n-700);border:1px solid var(--div-2);
-  border-radius:var(--r-sm);
-  font-size:14px;color:var(--text-2);
-  font-family:var(--font);width:fit-content;
-  text-decoration:none;
-  transition:background 0.12s,color 0.12s,border-color 0.12s;
-}
-.dfile:hover{background:var(--n-600);color:var(--text-1);border-color:var(--n-500)}
-.dfile svg{flex-shrink:0;opacity:0.6}
-/* 참고링크 — Crimson 200, 밑줄 */
-#d-links-wrap{margin-top:20px;padding-top:20px;border-top:1px solid var(--div-1)}
-#d-links-wrap h3,#d-chips-wrap h3{display:none}
-#d-links{display:flex;flex-direction:column;gap:6px}
-.dlink{
-  display:inline-flex;align-items:center;gap:7px;
-  font-size:16px;color:#E7727F;
-  text-decoration:underline;text-underline-offset:3px;
-  text-decoration-color:rgba(231,114,127,0.4);
-  background:none;border:none;cursor:pointer;
-  font-family:var(--font);padding:0;width:fit-content;
-  transition:color 0.12s,text-decoration-color 0.12s;
-}
-.dlink:hover{color:#F09AA3;text-decoration-color:rgba(240,154,163,0.7)}
-.dlink svg{flex-shrink:0;opacity:0.7}
-/* 태그 — Sky Blue 200 */
-#d-chips-wrap{
-  margin-top:20px;
-  padding-top:20px;
-  border-top:1px solid var(--div-1);
-}
-#d-chips-wrap:has(#d-chips:empty){display:none}
-#d-chips-label{
-  font-size:11px;font-family:var(--mono);
-  text-transform:uppercase;letter-spacing:0.12em;
-  color:var(--n-500);margin-bottom:10px;
-}
-#d-chips{display:flex;gap:0;flex-wrap:wrap}
-.tag{
-  display:inline-flex;align-items:center;
-  font-size:15px;color:#21F9FD;
-  background:none;border:none;padding:0;
-  margin-right:16px;margin-bottom:4px;
-  opacity:0.75;
-}
-.tag::before{content:"#";margin-right:1px;opacity:0.6}
-.tag-click{cursor:pointer;transition:opacity 0.12s}
-.tag-click:hover{opacity:1}
-
-#d-body{font-size:16px;line-height:1.85;color:var(--text-2);white-space:pre-wrap;max-width:100%}
-#d-body .body-h2{
-  display:block;
-  font-size:18px;font-weight:700;
-  color:var(--text-1);
-  margin:24px 0 4px;
-  white-space:normal;
-  line-height:1.35;
-}
-#d-body .body-h2:first-child{margin-top:0}
-#d-body .body-h2 + .body-pre{margin-top:0}
-#d-body .body-pre{display:block;white-space:pre-wrap;margin-bottom:2px}
-#d-body table{
-  width:100%;border-collapse:collapse;
-  margin:10px 0 18px;font-size:14px;
-  white-space:normal;
-}
-#d-body th,#d-body td{
-  padding:10px 14px;
-  border:1px solid var(--div-2);
-  text-align:left;vertical-align:top;
-  color:var(--text-2);
-}
-#d-body th{
-  background:var(--n-700);
-  color:var(--text-1);font-weight:600;
-  font-size:14px;
-}
-#d-body tr:nth-child(even) td{background:rgba(255,255,255,0.02)}
-
-@media(max-width:640px){
-  .gnb-tab:not(.is-active){display:none}
-  #list-content{padding:20px 14px 60px}
-  #d-title{font-size:20px}
-}
-
-/* =============================================
-   SECTION: css-gloss-subtab
-   AK 용어 탭 내 서브탭
-============================================= */
-#gloss-subtab-wrap{
-  display:none;
-  gap:4px;
-  margin-bottom:16px;
-  flex-wrap:wrap;
-}
-#gloss-subtab-wrap.show{display:flex}
-.gloss-stab{
-  display:inline-flex;align-items:center;gap:5px;
-  padding:7px 14px;
-  border-radius:var(--r-xl);
-  font-size:14px;font-weight:500;
-  color:var(--text-2);
-  background:var(--n-800);
-  border:1px solid var(--div-2);
-  transition:all 0.13s;white-space:nowrap;cursor:pointer;
-}
-.gloss-stab:hover{color:var(--text-1);background:var(--n-700);border-color:var(--n-500)}
-.gloss-stab.is-active{color:#fff;background:var(--cr-700);border-color:var(--cr-700)}
-
-/* =============================================
-   SECTION: css-tag-page
-============================================= */
-#tag-page{
-  display:none;
-  min-height:calc(100vh - 62px);
-}
-body.is-tag #tag-page{display:block}
-#tag-content{
-  max-width:960px;margin:0 auto;
-  padding:36px 24px 80px;
-}
-#tag-back{
-  display:inline-flex;align-items:center;gap:7px;
-  font-size:14px;color:var(--text-2);
-  background:none;border:none;cursor:pointer;
-  font-family:var(--font);padding:0;margin-bottom:32px;
-  transition:color 0.13s;
-}
-#tag-back:hover{color:var(--text-1)}
-#tag-hero{margin-bottom:28px}
-#tag-hero-label{
-  font-size:11px;font-family:var(--mono);
-  text-transform:uppercase;letter-spacing:0.12em;
-  color:var(--n-500);margin-bottom:8px;
-}
-#tag-hero-title{
-  font-size:28px;font-weight:700;color:#21F9FD;
-  line-height:1.2;margin-bottom:6px;
-}
-#tag-hero-title::before{content:"# ";color:rgba(33,249,253,0.4)}
-#tag-hero-count{font-size:14px;color:var(--n-500)}
-#tag-card-list{display:flex;flex-direction:column;gap:4px}
-</style>
-</head>
-<body class="is-home">
-
-<!-- 웨이브 캔버스: body 최상단 독립 배치, is-home일 때만 표시 -->
-<canvas id="home-wave" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:1;"></canvas>
-
-<!-- =============================================
-   SECTION: gnb
-   항상 DOM에 존재. is-home일 때만 숨김
-============================================= -->
-<div id="gnb-wrap">
-  <div id="gnb-inner">
-    <button id="gnb-logo">
-      <img src="images/logo.png" alt="AK"/>
-      <span id="gnb-logo-text">AK Archive</span>
-    </button>
-    <div class="gnb-sep"></div>
-    
-    <button class="gnb-tab" data-cat="제품 모델">제품</button>
-    <button class="gnb-tab" data-cat="기능 히스토리">UX 히스토리</button>
-    <button class="gnb-tab" data-cat="용어사전">AK 용어</button>
-  </div>
-</div>
-
-<!-- =============================================
-   SECTION: home
-   검색창만. is-home일 때 표시
-============================================= -->
-<div id="home">
-  <!-- 텍스트 가독성용 어두운 오버레이 -->
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 50% 40%, rgba(18,18,18,0.88) 0%, rgba(18,18,18,0.5) 50%, transparent 75%);pointer-events:none;z-index:0;"></div>
-  <div id="home-copy" style="position:relative;z-index:1;">
-    <p id="home-headline">AK 팀이 알아야 할 정보,<br>검색으로 바로 찾으세요.</p>
-    <p id="home-subline">제품 스펙 · UX 히스토리 · 용어사전 통합 아카이브</p>
-  </div>
-  <div id="home-search-wrap" style="position:relative;z-index:1;">
-    <svg class="home-si" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6">
-      <circle cx="8" cy="8" r="5.5"/><path d="M12.5 12.5L16 16"/>
-    </svg>
-    <input id="home-search" type="search" placeholder="키워드로 검색하세요" autocomplete="off"/>
-    <button id="home-clear">
-      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1l8 8M9 1L1 9"/></svg>
-    </button>
-  </div>
-</div>
-
-<script>
-/* =============================================
-   SECTION: home-wave
-   홈 화면에만 재생되는 soundwave 배경 애니메이션
-============================================= */
-(function(){
-  const canvas = document.getElementById('home-wave');
-  const ctx = canvas.getContext('2d');
-  let W, H, t = 0, raf = null;
-
-  const smooth = [];
-
-  function resize(){
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-
-  function draw(){
-    ctx.clearRect(0, 0, W, H);
-
-    const barW = 2, gap = 2, unit = barW + gap;
-    const n    = Math.ceil(W / unit) + 1;
-    const cy   = H * 0.60;   // 검색필드 중심
-    const maxH = H * 0.22;   // 각 파동 최대 높이 (두 개니까 절반으로)
-
-    if(smooth.length === 0){
-      for(let i = 0; i < n; i++){
-        const pos = i / (n - 1);
-        const e = 0.55 + 0.45 * Math.pow(Math.sin(pos * Math.PI), 1.5);
-        smooth[i]       = e * 0.5;  // 파동1 (위)
-        smooth[n + i]   = e * 0.5;  // 파동2 (아래)
-      }
-    }
-
-    for(let i = 0; i < n; i++){
-      const pos = i / (n - 1);
-      const envelope = 0.55 + 0.45 * Math.pow(Math.sin(pos * Math.PI), 1.5);
-      const x = i * unit;
-      const alpha = 0.15 + envelope * 0.42;
-
-      // ── 파동 1: 느린 파동 (위쪽으로 뻗음)
-      const wave1 = Math.sin(t * 0.014 + pos * Math.PI * 2.0) * 0.52 +
-                    Math.sin(t * 0.022 + pos * Math.PI * 5.0) * 0.28 + 0.5;
-      const target1 = (0.15 + wave1 * 0.72) * envelope;
-      if(smooth[i] === undefined) smooth[i] = target1;
-      smooth[i] += (target1 - smooth[i]) * 0.06;
-      const bh1 = smooth[i] * maxH;
-
-      // 파동1: cy 위쪽에 피크, 위아래로 자연스럽게 페이드
-      const peak1 = cy - bh1 * 0.5;  // 피크 위치
-      const grad1 = ctx.createLinearGradient(0, cy - bh1, 0, cy + bh1 * 0.3);
-      grad1.addColorStop(0,    `rgba(215,38,58,0)`);
-      grad1.addColorStop(0.35, `rgba(225,45,65,${alpha})`);
-      grad1.addColorStop(1.0,  `rgba(215,38,58,0)`);
-      ctx.fillStyle = grad1;
-      ctx.beginPath();
-      ctx.roundRect(x, cy - bh1, barW, bh1 * 1.3, 1);
-      ctx.fill();
-
-      // ── 파동 2: 위상 다르게, cy 아래쪽에 피크
-      const wave2 = Math.sin(t * 0.018 + pos * Math.PI * 2.8 + 1.2) * 0.52 +
-                    Math.sin(t * 0.026 + pos * Math.PI * 5.6 + 0.8) * 0.28 + 0.5;
-      const target2 = (0.15 + wave2 * 0.72) * envelope;
-      if(smooth[n + i] === undefined) smooth[n + i] = target2;
-      smooth[n + i] += (target2 - smooth[n + i]) * 0.06;
-      const bh2 = smooth[n + i] * maxH;
-
-      // 파동2: cy 아래쪽에 피크, 위아래로 자연스럽게 페이드
-      const grad2 = ctx.createLinearGradient(0, cy - bh2 * 0.3, 0, cy + bh2);
-      grad2.addColorStop(0,    `rgba(215,38,58,0)`);
-      grad2.addColorStop(0.65, `rgba(225,45,65,${alpha})`);
-      grad2.addColorStop(1.0,  `rgba(215,38,58,0)`);
-      ctx.fillStyle = grad2;
-      ctx.beginPath();
-      ctx.roundRect(x, cy - bh2 * 0.3, barW, bh2 * 1.3, 1);
-      ctx.fill();
-    }
-    t++;
-    raf = requestAnimationFrame(draw);
-  }
-
-  function startWave(){
-    if(!raf){
-      canvas.style.display = 'block';
-      resize(); draw();
-    }
-  }
-  function stopWave(){
-    if(raf){ cancelAnimationFrame(raf); raf = null; t = 0; }
-    ctx.clearRect(0, 0, W, H);
-    canvas.style.display = 'none';
-  }
-
-  resize();
-  window.addEventListener('resize', resize);
-
-  // body 클래스 변화 감지 → is-home일 때만 실행
-  const observer = new MutationObserver(() => {
-    if(document.body.classList.contains('is-home')) startWave();
-    else stopWave();
-  });
-  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-
-  // 초기 상태
-  if(document.body.classList.contains('is-home')) startWave();
-})();
-</script>
-
-<!-- =============================================
-   SECTION: list-page
-   is-list일 때 표시
-============================================= -->
-<div id="list-page">
-  <div id="list-content">
-    <div id="hero">
-      <h1 id="hero-title"></h1>
-      <p id="hero-desc"></p>
-    </div>
-    <div id="gloss-subtab-wrap"></div>
-    <div id="chip-bar"></div>
-    <div id="count-row"><p id="count-text"><span id="count-num">0</span>개의 항목</p></div>
-    <div id="card-list" role="list"></div>
-    <div id="empty">
-      <svg width="42" height="42" viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.3">
-        <circle cx="18" cy="18" r="10"/><path d="M26 26l7 7"/>
-        <path d="M14 18h8M18 14v8" stroke-dasharray="3 2"/>
-      </svg>
-      <p>검색 결과가 없어요</p>
-      <small>다른 키워드로 다시 시도해 보세요</small>
-    </div>
-    <div id="detail" aria-hidden="true">
-      <button id="detail-back">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8.5 2.5L4 7l4.5 4.5"/></svg>
-        목록으로
-      </button>
-      <div id="d-models"></div>
-      <h1 id="d-title"></h1>
-      <div id="d-author"><span id="d-name"></span><span class="d-author-sep">·</span><span id="d-date"></span></div>
-      <hr class="dv"/>
-      <div id="d-credits"></div>
-      <div id="d-body"></div>
-      <div id="d-images"></div>
-      <div id="d-files-wrap"><div id="d-files-label">첨부 파일</div><div id="d-files"></div></div>
-      <div id="d-links-wrap"><h3>참고 링크</h3><div id="d-links"></div></div>
-      <div id="d-chips-wrap"><div id="d-chips-label">Tag</div><div id="d-chips"></div></div>
-    </div>
-  </div>
-</div>
-
-<!-- =============================================
-   SECTION: tag-page
-   태그 클릭 시 결과 페이지. is-tag일 때 표시
-============================================= -->
-<div id="tag-page">
-  <div id="tag-content">
-    <button id="tag-back">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8.5 2.5L4 7l4.5 4.5"/></svg>
-      돌아가기
-    </button>
-    <div id="tag-hero">
-      <div id="tag-hero-label">태그</div>
-      <h2 id="tag-hero-title"></h2>
-      <p id="tag-hero-count"></p>
-    </div>
-    <div id="tag-card-list"></div>
-  </div>
-</div>
-
-<!-- =============================================
-   SECTION: js-data
-============================================= -->
-<script src="data_product.js"></script>
-<script src="data_ux.js"></script>
-<script src="data_glossary.js"></script>
-<script>
-const DAP_CLS = {"A&ultima":"b-ultima","PD series":"b-pd","Heritage":"b-her","Classic":"b-cl","SP4000T":"b-sp4000t"};
-const LABEL_CLS = {"RC":"b-rc","설정":"b-setting","A&ultima":"b-ultima"};
-const CAT_CLS = {"제품 모델":"b-model","기능 히스토리":"b-hist","디자인 가이드":"b-design","용어사전":"b-gloss"};
-const HERO = {
-  "전체":{title:"전체",desc:"프로젝트 히스토리, 의사결정 배경, 사내 용어를 키워드 하나로 즉시 탐색"},
-  "제품 모델":{title:"제품",desc:"모델별 사양과 신기능을 확인하세요."},
-  "기능 히스토리":{title:"UX 히스토리",desc:"기능의 의사결정 배경과 변경 이력을 확인하세요."},
-  "디자인 가이드":{title:"디자인 가이드",desc:"컴포넌트 스펙, 컬러 토큰, 가이드라인 문서"},
-  "용어사전":{title:"AK 용어",desc:"DAP 시장과 AK 서비스의 주요 용어를 확인하세요."},
-};
-const DATA = [...DATA_product, ...DATA_ux, ...DATA_glossary];
-</script>
-
-<!-- =============================================
-   SECTION: js-app
-============================================= -->
-<script>
-const S = {cat:"제품 모델",chip:"전체",q:"",openId:null,tag:"",glossTab:"전체"};
-
-/* =============================================
-   SECTION: js-tag-page
-============================================= */
-function goTag(tag) {
-  S.tag = tag;
-  // 모든 페이지 숨김
-  document.body.className = "is-tag";
-  document.getElementById("gnb-wrap").style.display = "";
-  document.querySelectorAll(".gnb-tab").forEach(t=>t.classList.remove("is-active"));
-  // 태그 히어로
-  document.getElementById("tag-hero-title").textContent = tag;
-  const items = DATA.filter(d => d.tags.includes(tag));
-  document.getElementById("tag-hero-count").textContent = `${items.length}개의 항목`;
-  // 카드 렌더링
-  renderTagCards(items, tag);
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function renderTagCards(items, tag) {
-  const list = document.getElementById("tag-card-list");
-  list.innerHTML = "";
-  if(items.length === 0){
-    list.innerHTML = `<p style="font-size:15px;color:var(--n-500);padding:40px 0">해당 태그를 가진 항목이 없습니다.</p>`;
-    return;
-  }
-  items.forEach(d => {
-    const el = document.createElement("div");
-    el.className = "card";
-    const catCls = CAT_CLS[d.category]||"b-model";
-    const dp = d.date.split(".");
-    const fmtDate = dp.length===3 ? `${dp[0]}. ${parseInt(dp[1])}. ${parseInt(dp[2])}.` : d.date;
-    el.innerHTML = `
-      <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px">
-        <span class="badge ${catCls}">${d.category}</span>
-      </div>
-      <div class="card-title">${d.title}</div>
-      <div class="card-meta">
-        <span class="card-meta-author">${d.author}</span>
-        <span class="card-meta-sep">·</span>
-        <span class="card-meta-date">${fmtDate}</span>
-      </div>
-    `;
-    el.addEventListener("click", () => {
-      S.prevTag = tag;
-      openDetailFromTag(d.id);
-    });
-    list.appendChild(el);
-  });
-}
-
-function openDetailFromTag(id) {
-  // 태그 페이지에서 상세로 진입 — 태그 페이지 위에 상세 오버레이
-  document.body.className = "is-tag is-tag-detail";
-  openDetail(id);
-  // detail을 tag-content 위에 표시
-  const detail = document.getElementById("detail");
-  const tagContent = document.getElementById("tag-content");
-  tagContent.style.display = "none";
-  detail.style.display = "block";
-  detail.style.maxWidth = "960px";
-  detail.style.margin = "0 auto";
-  detail.style.padding = "36px 24px 80px";
-}
-
-
-/* =============================================
-   SECTION: js-page-switch
-   body 클래스로 페이지 전환
-============================================= */
-function goHome() {
-  document.body.className = "is-home";
-  document.getElementById("home-search").value = "";
-  document.getElementById("home-clear").classList.remove("show");
-  document.querySelectorAll(".gnb-tab").forEach(t=>t.classList.remove("is-active"));
-  S.cat="";S.chip="전체";S.q="";S.openId=null;
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function goList(cat, q) {
-  document.body.className = "is-list";
-  S.prevCat=S.cat; S.cat=cat; S.chip="전체"; S.q=q||""; S.openId=null;
-  if(cat !== "용어사전") S.glossTab = "전체";
-  // 항상 list UI 복구 (태그 페이지에서 올 때도 포함)
-  ["card-list","count-row","hero"].forEach(i=>{
-    const el=document.getElementById(i);
-    if(el) el.style.display="";
-  });
-  document.getElementById("chip-bar").style.display="flex";
-  // detail 숨김
-  const dv=document.getElementById("detail");
-  dv.classList.remove("show");dv.setAttribute("aria-hidden","true");
-  dv.style.display=""; dv.style.maxWidth=""; dv.style.margin=""; dv.style.padding="";
-  // tag-content 복구
-  const tc=document.getElementById("tag-content");
-  if(tc) tc.style.display="";
-  // GNB 탭 동기화
-  document.querySelectorAll(".gnb-tab").forEach(t=>
-    t.classList.toggle("is-active", !!cat && t.dataset.cat===cat)
-  );
-  const h = HERO[cat]||{title:"검색 결과",desc:""};
-  document.getElementById("hero-title").textContent = q ? `"${q}" 검색 결과` : h.title;
-  document.getElementById("hero-desc").textContent  = q ? "" : h.desc;
-  renderGlossSubtab();
-  renderChipBar();
-  renderCards();
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-/* =============================================
-   SECTION: js-gloss-subtab
-   AK 용어 탭 내 서브탭 렌더링
-============================================= */
-const GLOSS_TABS = ["전체","하드웨어","음원 & 파일","서비스 & 연결","기능"];
-
-function renderGlossSubtab() {
-  const wrap = document.getElementById("gloss-subtab-wrap");
-  if(S.cat !== "용어사전"){wrap.classList.remove("show");wrap.innerHTML="";return;}
-  wrap.classList.add("show");
-  wrap.innerHTML = "";
-  GLOSS_TABS.forEach(tab => {
-    const cnt = tab === "전체"
-      ? DATA_glossary.length
-      : DATA_glossary.filter(d => d.glossTab === tab).length;
-    const btn = document.createElement("button");
-    btn.className = "gloss-stab" + (S.glossTab === tab ? " is-active" : "");
-    btn.innerHTML = `${tab} <span class="cnt">${cnt}</span>`;
-    btn.addEventListener("click", () => {
-      S.glossTab = tab;
-      renderGlossSubtab();
-      renderCards();
-    });
-    wrap.appendChild(btn);
-  });
-}
-
-/* =============================================
-   SECTION: js-chip-bar
-============================================= */
-function getChips(cat) {
-  if(cat==="제품 모델") return [
-    {key:"전체",label:"전체"},
-    {key:"A&ultima",label:"A&ultima"},
-    {key:"PD series",label:"PD series"},
-    {key:"Heritage",label:"Heritage"},
-    {key:"Classic",label:"Classic"}
-  ];
-  if(cat==="기능 히스토리") return [
-    {key:"전체",label:"전체"},
-    {key:"A&ultima",label:"A&ultima"},
-    {key:"PD series",label:"PD series"},
-    {key:"RC",label:"RC"},
-    {key:"Heritage",label:"Heritage"},
-    {key:"Classic",label:"Classic"}
-  ];
-  return []; // 디자인 가이드, 용어사전: 모델 필터 없음, 검색창만
-}
-
-function renderChipBar() {
-  const bar=document.getElementById("chip-bar");
-  bar.innerHTML="";
-  const chips=getChips(S.cat);
-  bar.style.cssText="display:flex;align-items:center;gap:6px;margin-bottom:16px;flex-wrap:wrap;";
-  // 칩이 없는 탭(디자인 가이드, 용어사전): 검색창만
-  chips.forEach(c=>{
-    const cnt=DATA.filter(d=>d.category===S.cat&&(c.key==="전체"||d.models.includes(c.key))).length;
-    const btn=document.createElement("button");
-    btn.className="chip-btn"+(S.chip===c.key?" is-active":"");
-    btn.dataset.chip=c.key;
-    btn.innerHTML=`${c.label} <span class="cnt">${cnt}</span>`;
-    btn.addEventListener("click",()=>{S.chip=c.key;updateChips();renderCards();});
-    bar.appendChild(btn);
-  });
-  const sw=document.createElement("div");
-  sw.id="chip-search-wrap";
-  sw.style.cssText=chips.length===0?"":"margin-left:auto;position:relative;flex-shrink:0;";
-  sw.innerHTML=`<svg class="csi" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg><input id="chip-search" type="search" placeholder="페이지 내 검색" autocomplete="off"/>`;
-  bar.appendChild(sw);
-  const inp=document.getElementById("chip-search");
-  if(inp){inp.value=S.q;inp.addEventListener("input",()=>{S.q=inp.value;renderCards();});}
-}
-
-function updateChips(){
-  document.querySelectorAll(".chip-btn").forEach(b=>b.classList.toggle("is-active",b.dataset.chip===S.chip));
-}
-
-/* =============================================
-   SECTION: js-filter + render-cards
-============================================= */
-function filterData(){
-  const q=S.q.trim().toLowerCase();
-  return DATA.filter(d=>{
-    if(S.cat&&d.category!==S.cat)return false;
-    if(S.cat==="용어사전" && S.glossTab!=="전체" && d.glossTab!==S.glossTab) return false;
-    if(S.chip!=="전체"&&(S.cat==="제품 모델"||S.cat==="기능 히스토리")){
-      const inModels = d.models.includes(S.chip);
-      const inLabels = d.labels && d.labels.includes(S.chip);
-      if(!inModels && !inLabels) return false;
-    }
-    if(!q)return true;
-    return[d.title,d.desc,d.body,d.author,...d.tags,...d.models,...(d.labels||[]),d.category].join(" ").toLowerCase().includes(q);
-  }).sort((a,b)=>b.date.replace(/\./g,"").localeCompare(a.date.replace(/\./g,"")));
-}
-
-function renderCards(){
-  const list=document.getElementById("card-list");
-  const empty=document.getElementById("empty");
-  list.innerHTML="";
-  const items=filterData();
-  document.getElementById("count-num").textContent=items.length;
-  if(items.length===0){empty.classList.add("show");return;}
-  empty.classList.remove("show");
-  const q=S.q.trim().toLowerCase();
-  const MAX_MODELS=3;
-  items.forEach(d=>{
-    const el=document.createElement("div");
-    el.className="card";el.setAttribute("role","listitem");el.setAttribute("tabindex","0");
-    // 상단: 레이블 배지 + 모델 배지
-    const HIDE_IN_HIST = ["A&ultima"];
-    const labelBadges = d.category === "기능 히스토리" && d.labels
-      ? d.labels.map(l=>`<span class="badge ${LABEL_CLS[l]||'b-more'}">${l}</span>`).join("")
-      : "";
-    const visModels = d.category === "기능 히스토리" && !d.showAllModels
-      ? d.models.filter(m => !HIDE_IN_HIST.includes(m))
-      : d.models;
-    const vis=visModels.slice(0,MAX_MODELS);
-    const hid=visModels.length-vis.length;
-    const divider=(labelBadges&&vis.length>0)?`<span class="badge-divider"></span>`:"";
-    const modelBadges=labelBadges+divider+vis.map(m=>`<span class="badge ${DAP_CLS[m]||'b-more'}">${m}</span>`).join("")
-      +(hid>0?`<span class="badge b-more">+${hid}</span>`:"");
-    const topRow=(vis.length>0||labelBadges)
-      ?`<div class="card-top"><div class="card-models-row">${modelBadges}</div></div>`
-      :"";
-    // 카드: 모델 배지 → 제목 → 이름 · 날짜 (desc 없음)
-    // 제품 모델만 카드 제목에서 — 이후 제거, 나머지는 전체 제목 유지
-    const displayTitle = d.category === "제품 모델" && d.title.includes("—")
-      ? d.title.split("—")[0].trim()
-      : d.title;
-    // 날짜 포맷: 2026.05.18 → 2026. 5. 18.
-    const dp=d.date.split(".");
-    const fmtDate=dp.length===3?`${dp[0]}. ${parseInt(dp[1])}. ${parseInt(dp[2])}.`:d.date;
-    el.innerHTML=`
-      ${topRow}
-      <div class="card-title">${hl(displayTitle,q)}</div>
-      <div class="card-meta">
-        <span class="card-meta-author">${d.author}</span>
-        <span class="card-meta-sep">·</span>
-        <span class="card-meta-date">${fmtDate}</span>
-      </div>
-    `;
-    el.addEventListener("click",()=>openDetail(d.id));
-    el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" ")openDetail(d.id);});
-    list.appendChild(el);
-  });
-}
-
-/* =============================================
-   SECTION: js-detail
-============================================= */
-function openDetail(id){
-  const d=DATA.find(x=>x.id===id);if(!d)return;
-  S.prevPage=document.body.className;
-  S.openId=id;
-  ["card-list","chip-bar","count-row","hero"].forEach(i=>document.getElementById(i).style.display="none");
-  document.getElementById("empty").classList.remove("show");
-  // 모델 배지: 레이블 먼저 + 모델 (기능 히스토리는 A&ultima 제외, showAllModels 예외)
-  const HIDE_IN_HIST=["A&ultima"];
-  const detailLabels = d.category==="기능 히스토리" && d.labels
-    ? d.labels.map(l=>`<span class="badge ${LABEL_CLS[l]||""}">${l}</span>`).join("")
-    : "";
-  const detailModels = d.category==="기능 히스토리" && !d.showAllModels
-    ? d.models.filter(m=>!HIDE_IN_HIST.includes(m))
-    : d.models;
-  document.getElementById("d-models").innerHTML=detailLabels+detailModels.map(m=>`<span class="badge ${DAP_CLS[m]||""}">${m}</span>`).join("");
-  // 제품 모델은 — 앞 모델명만, 나머지는 전체 제목
-  const displayTitle = d.category === "제품 모델" && d.title.includes("—")
-    ? d.title.split("—")[0].trim()
-    : d.title;
-  document.getElementById("d-title").textContent=displayTitle;
-  // 날짜 포맷: 2026.05.18 → 2026. 5. 18.
-  const dp=d.date.split(".");
-  const fmtDate=dp.length===3?`${dp[0]}. ${parseInt(dp[1])}. ${parseInt(dp[2])}.`:d.date;
-  document.getElementById("d-name").textContent=d.author;
-  document.getElementById("d-date").textContent=fmtDate;
-  document.getElementById("d-body").innerHTML=renderBody(d.body);
-  // 담당자 크레딧
-  const credEl=document.getElementById("d-credits");
-  if(d.credits){
-    const roles=Object.entries(d.credits);
-    credEl.innerHTML=roles.map((([role,name],i)=>
-      `${i>0?'<span class="credit-sep"></span>':''}<span class="credit-item"><span class="credit-role">${role}</span><span class="credit-name">${name}</span></span>`
-    )).join("");
-  } else { credEl.innerHTML=""; }
-  // 이미지 그리드
-  const imgEl=document.getElementById("d-images");
-  if(d.images && d.images.length){
-    imgEl.innerHTML=`<div class="d-img-grid">${d.images.map(img=>`<img src="${img.src}" alt="${img.alt}" loading="lazy"/>`).join("")}</div>`;
-  } else { imgEl.innerHTML=""; }
-  // 첨부 파일
-  const filesEl=document.getElementById("d-files");
-  if(d.files && d.files.length){
-    const dlIcon=`<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.5 2v7M3.5 6.5l3 3 3-3"/><path d="M2 11h9"/></svg>`;
-    filesEl.innerHTML=d.files.map(f=>`<a class="dfile" href="${f.url}" target="_blank" rel="noopener" download>${dlIcon}${f.label}</a>`).join("");
-  } else { filesEl.innerHTML=""; }
-  // 태그 — # prefix, 클릭 시 goTag
-  const chipsEl=document.getElementById("d-chips");
-  chipsEl.innerHTML=d.tags.map(t=>`<span class="tag tag-click" data-tag="${t}">${t}</span>`).join("");
-  chipsEl.querySelectorAll(".tag-click").forEach(el=>{
-    el.addEventListener("click",()=>goTag(el.dataset.tag));
-  });
-  document.getElementById("d-links").innerHTML=d.links.length
-    ?d.links.map(l=>{
-      const icon=`<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9L9 3M9 3H5M9 3v4"/></svg>`;
-      if(l.url.startsWith("#search:")){
-        const q=l.url.replace("#search:","");
-        return `<button class="dlink" onclick="closeDetail();goList('용어사전','${q}')">${icon}${l.label}</button>`;
-      }
-      return `<a class="dlink" href="${l.url}" target="_blank" rel="noopener">${icon}${l.label}</a>`;
-    }).join("")
-    :"";
-  document.getElementById("d-links-wrap").style.display=d.links.length?"":"none";
-  const dv=document.getElementById("detail");dv.classList.add("show");dv.removeAttribute("aria-hidden");
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function closeDetail(rerender=true){
-  const dv=document.getElementById("detail");dv.classList.remove("show");dv.setAttribute("aria-hidden","true");
-  if(!rerender)return;
-  S.openId=null;
-  ["card-list","count-row","hero"].forEach(i=>document.getElementById(i).style.display="");
-  document.getElementById("chip-bar").style.display="flex";
-  renderGlossSubtab();
-  renderChipBar();
-  renderCards();
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function hl(text,q){
-  if(!q)return text;
-  return text.replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")})`,"gi"),"<mark>$1</mark>");
-}
-
-/* =============================================
-   SECTION: js-render-body
-   body 텍스트 → HTML 변환
-   - ■ (개수 무관) 으로 시작 → 소제목 H2 (18px)
-   - | 로 시작하는 블록 → 테이블
-   - 일반 텍스트 → pre-wrap 단락
-============================================= */
-function renderBody(text) {
-  const lines = text.split('\n');
-  const result = [];
-  let i = 0;
-  let inPre = false;
-
-  function closePre() {
-    if (inPre) { result.push('</span>'); inPre = false; }
-  }
-  function openPre() {
-    if (!inPre) { result.push('<span class="body-pre">'); inPre = true; }
-  }
-  function escHtml(s) {
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  }
-
-  while (i < lines.length) {
-    const line = lines[i];
-    const trimmed = line.trim();
-
-    // ── 이미지 마커: !!img:파일명|대체텍스트!!
-    if (/^!!img:.+!!$/.test(trimmed)) {
-      closePre();
-      const inner = trimmed.slice(6, -2); // 파일명|대체텍스트
-      const [src, alt=''] = inner.split('|');
-      result.push(`<div class="body-img-wrap"><img src="${src.trim()}" alt="${alt.trim()}" loading="lazy" style="max-width:100%;border-radius:8px;margin:12px 0;display:block;"/></div>`);
-      i++;
-      continue;
-    }
-
-    // ── 소제목: ■ 1개 이상으로 시작 (개수 무관, 전부 같은 스타일)
-    if (/^■+/.test(trimmed)) {
-      closePre();
-      const t = escHtml(trimmed.replace(/^■+\s*/, ''));
-      result.push(`<span class="body-h2">${t}</span>`);
-      i++;
-      // 헤딩 바로 뒤 빈 줄 스킵
-      while (i < lines.length && lines[i].trim() === '') i++;
-      continue;
-    }
-
-    // ── 테이블: | 로 시작하는 연속 줄
-    if (trimmed.startsWith('|')) {
-      closePre();
-      const tableLines = [];
-      while (i < lines.length && lines[i].trim().startsWith('|')) {
-        tableLines.push(lines[i]);
-        i++;
-      }
-      const filtered = tableLines.filter(l => !/^\s*\|[\s\-|:]+\|\s*$/.test(l));
-      let html = '<table>';
-      filtered.forEach((row, idx) => {
-        const cells = row.trim().replace(/^\||\|$/g,'').split('|');
-        const tag = idx === 0 ? 'th' : 'td';
-        html += '<tr>' + cells.map(c => `<${tag}>${c.trim()}</${tag}>`).join('') + '</tr>';
-      });
-      html += '</table>';
-      result.push(html);
-      continue;
-    }
-
-    // ── 일반 텍스트
-    openPre();
-    const escaped = trimmed === '' ? '' : escHtml(line);
-    result.push(escaped + '\n');
-    i++;
-  }
-  closePre();
-  return result.join('');
-}
-
-
-// 홈 검색
-const hs=document.getElementById("home-search");
-hs.addEventListener("input",()=>{
-  const v=hs.value.trim();
-  document.getElementById("home-clear").classList.toggle("show",!!v);
-  if(v)goList("",v);
-});
-hs.addEventListener("keydown",e=>{if(e.key==="Enter"&&hs.value.trim())goList("",hs.value.trim());});
-document.getElementById("home-clear").addEventListener("click",()=>{hs.value="";document.getElementById("home-clear").classList.remove("show");hs.focus();});
-
-// GNB 탭
-document.querySelectorAll(".gnb-tab").forEach(tab=>{
-  tab.addEventListener("click",()=>{S.chip="전체";S.q="";goList(tab.dataset.cat,"");});
-});
-
-// GNB 로고
-document.getElementById("gnb-logo").addEventListener("click",()=>{
-  if(S.openId!==null){closeDetail();return;}
-  goHome();
-});
-
-// 홈 로고
-document.getElementById("home-logo").addEventListener("click",goHome);
-
-// 뒤로가기
-document.getElementById("detail-back").addEventListener("click",()=>{
-  if(document.body.classList.contains("is-tag")){
-    // 태그 페이지에서 상세 진입한 경우 → 태그 페이지로
-    document.body.className="is-tag";
-    document.getElementById("detail").style.display="";
-    document.getElementById("detail").style.maxWidth="";
-    document.getElementById("detail").style.margin="";
-    document.getElementById("detail").style.padding="";
-    document.getElementById("tag-content").style.display="";
-    document.getElementById("detail").classList.remove("show");
-    document.getElementById("detail").setAttribute("aria-hidden","true");
-    S.openId=null;
-    window.scrollTo({top:0,behavior:"smooth"});
-  } else {
-    if(S.prevPage==="is-home") goHome();
-    else closeDetail();
-  }
-});
-
-// 태그 페이지 뒤로가기 → 기능 히스토리 첫 화면
-document.getElementById("tag-back").addEventListener("click",()=>{
-  goList("기능 히스토리");
-});
-
-// ESC
-document.addEventListener("keydown",e=>{
-  if(e.key==="Escape"){
-    if(S.openId!==null) document.getElementById("detail-back").click();
-    else if(document.body.classList.contains("is-tag")) document.getElementById("tag-back").click();
-  }
-});
-</script>
-
-<script>
-(function(){
-  const canvas = document.getElementById('home-wave');
-  const ctx = canvas.getContext('2d');
-  let W, H, t = 0, raf = null;
-
-  const smooth = [];
-
-  function resize(){
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-
-  function draw(){
-    ctx.clearRect(0, 0, W, H);
-
-    const barW = 2, gap = 2, unit = barW + gap;
-    const n    = Math.ceil(W / unit) + 1;
-    const cy   = H * 0.60;   // 검색필드 중심
-    const maxH = H * 0.22;   // 각 파동 최대 높이 (두 개니까 절반으로)
-
-    if(smooth.length === 0){
-      for(let i = 0; i < n; i++){
-        const pos = i / (n - 1);
-        const e = 0.55 + 0.45 * Math.pow(Math.sin(pos * Math.PI), 1.5);
-        smooth[i]       = e * 0.5;  // 파동1 (위)
-        smooth[n + i]   = e * 0.5;  // 파동2 (아래)
-      }
-    }
-
-    for(let i = 0; i < n; i++){
-      const pos = i / (n - 1);
-      const envelope = 0.55 + 0.45 * Math.pow(Math.sin(pos * Math.PI), 1.5);
-      const x = i * unit;
-      const alpha = 0.15 + envelope * 0.42;
-
-      // ── 파동 1: 느린 파동 (위쪽으로 뻗음)
-      const wave1 = Math.sin(t * 0.014 + pos * Math.PI * 2.0) * 0.52 +
-                    Math.sin(t * 0.022 + pos * Math.PI * 5.0) * 0.28 + 0.5;
-      const target1 = (0.15 + wave1 * 0.72) * envelope;
-      if(smooth[i] === undefined) smooth[i] = target1;
-      smooth[i] += (target1 - smooth[i]) * 0.06;
-      const bh1 = smooth[i] * maxH;
-
-      // 파동1: cy 위쪽에 피크, 위아래로 자연스럽게 페이드
-      const peak1 = cy - bh1 * 0.5;  // 피크 위치
-      const grad1 = ctx.createLinearGradient(0, cy - bh1, 0, cy + bh1 * 0.3);
-      grad1.addColorStop(0,    `rgba(215,38,58,0)`);
-      grad1.addColorStop(0.35, `rgba(225,45,65,${alpha})`);
-      grad1.addColorStop(1.0,  `rgba(215,38,58,0)`);
-      ctx.fillStyle = grad1;
-      ctx.beginPath();
-      ctx.roundRect(x, cy - bh1, barW, bh1 * 1.3, 1);
-      ctx.fill();
-
-      // ── 파동 2: 위상 다르게, cy 아래쪽에 피크
-      const wave2 = Math.sin(t * 0.018 + pos * Math.PI * 2.8 + 1.2) * 0.52 +
-                    Math.sin(t * 0.026 + pos * Math.PI * 5.6 + 0.8) * 0.28 + 0.5;
-      const target2 = (0.15 + wave2 * 0.72) * envelope;
-      if(smooth[n + i] === undefined) smooth[n + i] = target2;
-      smooth[n + i] += (target2 - smooth[n + i]) * 0.06;
-      const bh2 = smooth[n + i] * maxH;
-
-      // 파동2: cy 아래쪽에 피크, 위아래로 자연스럽게 페이드
-      const grad2 = ctx.createLinearGradient(0, cy - bh2 * 0.3, 0, cy + bh2);
-      grad2.addColorStop(0,    `rgba(215,38,58,0)`);
-      grad2.addColorStop(0.65, `rgba(225,45,65,${alpha})`);
-      grad2.addColorStop(1.0,  `rgba(215,38,58,0)`);
-      ctx.fillStyle = grad2;
-      ctx.beginPath();
-      ctx.roundRect(x, cy - bh2 * 0.3, barW, bh2 * 1.3, 1);
-      ctx.fill();
-    }
-    t++;
-    raf = requestAnimationFrame(draw);
-  }
-
-  function startWave(){
-    if(!raf){
-      canvas.style.display = 'block';
-      resize(); draw();
-    }
-  }
-  function stopWave(){
-    if(raf){ cancelAnimationFrame(raf); raf = null; t = 0; }
-    ctx.clearRect(0, 0, W, H);
-    canvas.style.display = 'none';
-  }
-
-  resize();
-  window.addEventListener('resize', resize);
-
-  // body 클래스 변화 감지 → is-home일 때만 실행
-  const observer = new MutationObserver(() => {
-    if(document.body.classList.contains('is-home')) startWave();
-    else stopWave();
-  });
-  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-
-  // 초기 상태
-  if(document.body.classList.contains('is-home')) startWave();
-})();
-</script>
-</body>
-</html>
+// =============================================
+// data_glossary.js
+// AK 용어 카테고리 데이터
+// 항목 추가 시 id는 고유한 숫자로 지정
+// glossTab: "하드웨어" | "음원 & 파일" | "서비스 & 연결" | "기능"
+// =============================================
+
+const DATA_glossary = [
+  {id:11,title:"DAP (Digital Audio Player)",category:"용어사전",glossTab:"하드웨어",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+   desc:"Digital Audio Player의 약자로, 휴대하며 사용하는 포터블 음향기기입니다.",
+   body:`■ 개요
+
+Digital Audio Player의 약자로, 휴대하며 사용하는 포터블 음향기기입니다.
+
+SP4000과 같은 제품이 대표적인 예시이며, 고음질 음원 재생에 특화된 전용 플레이어입니다.
+스마트폰과 달리 음악 재생 자체에 최적화된 하드웨어와 DAC(디지털-아날로그 변환기)를 탑재하여 더 높은 음질을 제공합니다.
+
+■ 한 줄 요약
+
+음악 감상 전용으로 만들어진 고음질 휴대용 플레이어`,
+   tags:["포터블","고음질","하드웨어"],links:[]},
+  {id:12,title:"디바이스 (Device)",category:"용어사전",glossTab:"하드웨어",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+   desc:"거치형(스탠드얼론) 음향기기로, 특정 공간에 고정해두고 사용하는 음향기기입니다.",
+   body:`■ 개요
+
+거치형(스탠드얼론) 음향기기로, 특정 공간에 고정해두고 사용하는 음향기기입니다.
+
+DAP와 달리 이동을 전제로 하지 않고 홈 오디오 환경에서 사용합니다. 네트워크 스트리밍, 대용량 저장, 외부 오디오 기기 연결 등 확장성 있는 기능을 제공합니다.
+
+■ 한 줄 요약
+
+집이나 사무실처럼 고정된 환경에서 사용하는 거치형 오디오 플레이어`,
+   tags:["거치형","스탠드얼론","홈오디오"],links:[]},
+  {id:28,title:"앰프 (AMP)",category:"용어사전",glossTab:"하드웨어",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
+   desc:"작은 오디오 신호를 증폭해 이어폰·헤드폰·스피커를 충분한 출력으로 재생할 수 있게 만드는 장치입니다.",
+   body:`■ 개요
+
+AMP(Amplifier)는 작은 오디오 신호를 증폭해 이어폰·헤드폰·스피커를 충분한 출력으로 재생할 수 있게 만드는 장치입니다.
+출력이 부족한 기기에서는 볼륨은 커도 소리가 답답하거나 저음이 퍼지고, 해상력이 떨어지는 느낌이 날 수 있습니다.
+
+■ DAC vs AMP
+
+| 구분 | DAC | AMP |
+| --- | --- | --- |
+| 의미 | Digital to Analog Converter | Amplifier |
+| 역할 | 디지털 신호를 소리 신호로 변환 | 소리 신호를 증폭 |
+| 담당 | "소리를 만들어냄" | "소리를 키움" |
+| 영향 | 해상력, 음색 | 출력, 구동력 |
+
+■ 관계
+
+DAC → AMP 순서로 동작합니다.
+
+즉:
+1. DAC가 음악 데이터를 소리 신호로 바꾸고
+2. AMP가 그 신호를 충분히 크게 증폭합니다.
+
+■ 한 줄 요약
+
+AMP는 오디오 신호를 증폭해 기기를 안정적으로 구동하게 만드는 장치입니다.`,
+   tags:["증폭","구동력","DAC"],links:[]},
+  {id:27,title:"커런트 (Current)",category:"용어사전",glossTab:"하드웨어",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
+   desc:"오디오 기기에서 이어폰·헤드폰을 얼마나 안정적으로 구동할 수 있는지를 나타내는 전류 공급 능력입니다.",
+   body:`■ 개요
+
+오디오 기기에서 Current는 전류 공급 능력과 관련된 표현으로, 이어폰·헤드폰을 얼마나 안정적으로 구동할 수 있는지를 설명할 때 사용됩니다.
+
+■ 한 줄 요약
+
+전류 공급 능력이 높을수록 헤드폰을 더 안정적이고 힘 있게 구동할 수 있습니다.`,
+   tags:["전류","구동력","헤드폰"],links:[]},
+  {id:14,title:"로컬 (Local)",category:"용어사전",glossTab:"음원 & 파일",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+   desc:"사용자가 음원 파일을 기기에 직접 저장하여 재생하는 방식입니다.",
+   body:`■ 개요
+
+사용자가 음원 파일을 기기에 직접 저장하여 재생하는 방식입니다.
+
+SD 카드, 내부 저장소, USB 등 물리적 저장 매체를 기반으로 동작하며, 인터넷 연결 없이도 오프라인에서 재생할 수 있습니다.
+
+■ 한 줄 요약
+
+파일을 기기에 직접 넣어 재생하는 방식. 인터넷 불필요`,
+   tags:["로컬","오프라인","저장"],links:[]},
+  {id:21,title:"로컬 메뉴 (Local Menu)",category:"용어사전",glossTab:"음원 & 파일",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+   desc:"AK DAP·디바이스에서 기기에 직접 저장된 음원 파일을 탐색하고 재생하기 위한 메뉴 영역입니다.",
+   body:`■ 개요
+
+로컬 메뉴는 AK DAP·디바이스에서 기기에 직접 저장된 음원 파일을 탐색하고 재생하기 위한 메뉴 영역입니다.
+네트워크 스트리밍과 달리 인터넷 연결 없이도 사용할 수 있으며, SMB 네트워크 공유, CUE 시트, CD 라이브러리, HD 오디오 필터 등 다양한 방식으로 음원에 접근할 수 있습니다.
+
+■ 포함 항목
+
+| 항목 | 설명 |
+| --- | --- |
+| SMB (Server Message Block) | 네트워크 공유 폴더 접근 |
+| CUE 시트 | 앨범 단위 트랙 탐색 |
+| CD 라이브러리 | CD 리핑 및 저장 |
+| HD 오디오 | 고음질 파일 필터 뷰 |`,
+   tags:["오프라인재생","네트워크공유","고음질필터"],links:[
+     {label:"SMB",url:"#search:SMB"},
+     {label:"CUE 시트",url:"#search:CUE 시트"},
+     {label:"CD 라이브러리",url:"#search:CD 라이브러리"},
+     {label:"HD 오디오",url:"#search:HD 오디오"},
+   ]},
+  {id:18,title:"CUE 시트 (CUE Sheet)",category:"용어사전",glossTab:"음원 & 파일",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+   desc:"앨범 단위로 묶인 오디오 파일의 트랙 정보를 담고 있는 메타데이터 텍스트 파일입니다.",
+   body:`■ 개요
+
+앨범 단위로 묶인 오디오 파일의 트랙 정보를 담고 있는 메타데이터 텍스트 파일입니다.
+
+■ CUE 파일의 구조와 역할
+
+- 하나의 큰 오디오 파일 안에서 각 트랙의 시작·끝 위치 정보를 담고 있습니다.
+- CUE 파일 자체에는 음악 데이터가 없으며, 반드시 오디오 파일과 함께 있어야 재생 가능합니다.
+- 파일 형식은 일반 텍스트(.cue)로, 메모장으로도 내용 확인 가능합니다.
+
+■ 한 줄 요약
+
+앨범 전체를 1개 파일로 관리하면서, CUE 파일로 각 트랙을 분리·탐색할 수 있게 해주는 방식`,
+   tags:["메타데이터","트랙분리","앨범단위"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
+  {id:19,title:"CD 라이브러리 (CD Library)",category:"용어사전",glossTab:"음원 & 파일",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+   desc:"CD에 담긴 음원, 앨범 아트 등의 데이터를 디지털 파일로 복사해 기기에 저장하는 기능입니다.",
+   body:`■ 개요
+
+CD에 담긴 음원, 앨범 아트 등의 데이터를 디지털 파일로 복사해 기기에 저장하는 기능입니다.
+이 복사 과정을 리핑(Ripping)이라고 부르며, CD를 DAP·디바이스에서 재생 가능한 파일 형태(FLAC, WAV 등)로 변환해 저장합니다.
+
+■ 리핑 시 가져올 수 있는 것
+
+- 음원 파일 (트랙 데이터)
+- 앨범 이미지 (커버 아트)
+- 트랙 메타데이터 (곡명, 아티스트 등)
+
+■ 한 줄 요약
+
+CD를 DAP에 디지털 파일로 옮기는 과정. 이 복사 작업을 '리핑'이라고 함`,
+   tags:["리핑","FLAC","WAV","디지털변환"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
+  {id:20,title:"HD 오디오 (HD Audio)",category:"용어사전",glossTab:"음원 & 파일",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+   desc:"로컬에 저장된 파일 중 고음질 파일만 필터링해서 보여주는 목록입니다. 이전 명칭: MQS.",
+   body:`■ 개요
+
+로컬에 저장된 파일 중 고음질 파일만 필터링해서 보여주는 목록입니다.
+이전에는 MQS(Mastering Quality Sound)라는 이름으로 불렸으며, 명칭이 HD 오디오로 변경되었습니다.
+
+로컬에 저장된 파일 중 고음질 규격에 해당하는 파일만 추려서 컨셉 리스트 형태로 보여줍니다.
+
+■ 한 줄 요약
+
+로컬 파일 중 고음질(HD) 파일만 모아서 보여주는 필터 뷰. 과거 명칭은 MQS`,
+   tags:["고음질","MQS","필터뷰","명칭변경"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
+  {id:13,title:"리모트 (Remote)",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+   desc:"DAP 및 디바이스를 원격으로 제어하는 기능으로, 앱을 통해 기기를 조작하는 방식입니다.",
+   body:`■ 개요
+
+DAP 및 디바이스를 원격으로 제어하는 기능으로, 앱을 통해 기기를 조작하는 방식입니다.
+
+크게 두 가지 앱 기능과 연관됩니다.
+
+■ 연관 기능
+
+| 기능 | 설명 |
+| --- | --- |
+| 라이브러리 | MP3 등 음원 파일을 직접 기기에 다운로드하여 저장·재생 |
+| 에어러블 | 구글 플레이스토어에서 스트리밍 앱을 다운로드하여 사용 |
+
+에어러블의 경우, AK(아스텔앤컨)이 DAP·디바이스 사용성에 맞게 디자인한 7종 앱을 기본 제공하며, 그 외 앱은 사용자가 스토어에서 직접 설치해 사용할 수 있습니다.
+
+■ 한 줄 요약
+
+기기를 앱으로 원격 조작하는 기능. 음원 저장(라이브러리)과 스트리밍(에어러블) 두 가지 방식을 지원`,
+   tags:["원격제어","라이브러리","에어러블연동"],links:[]},
+  {id:15,title:"에어러블 (airable)",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+   desc:"오디오 기기 제조사를 위한 스트리밍·라디오·팟캐스트 콘텐츠 통합 연동 솔루션입니다.",
+   body:`■■ 개요
+
+오디오 기기 제조사를 위한 스트리밍·라디오·팟캐스트 콘텐츠 통합 연동 솔루션입니다.
+TIDAL, Qobuz, Deezer 같은 여러 스트리밍 서비스를 API 형태로 묶어 제공하는 미들웨어 역할을 합니다. 제조사는 에어러블 하나만 도입하면 여러 서비스를 한 번에 연동할 수 있고, 각 브랜드의 UX 컨셉에 맞게 UI는 직접 구현합니다.
+
+■ 동작 방식
+
+- 웹 API 기반으로 동작하며, 스마트폰 앱이나 PC에서 리모트로 기기 조작 가능
+- 앱 설치 없이 기기 내장 인터페이스로 스트리밍 사용 가능
+- 하나의 계정으로 여러 디바이스 연동 가능
+- 단, 에어러블이 지원하는 서비스만 사용 가능 (예: Spotify는 에어러블로 불가)
+
+■ AK 기본 제공 7종 서비스
+
+| 서비스 | 구분 |
+| --- | --- |
+| TIDAL | 스트리밍 |
+| Deezer | 스트리밍 |
+| Qobuz | 스트리밍 |
+| Amazon Music | 스트리밍 |
+| HighRes Audio | 고음질 스트리밍 |
+| Spreaker (구 Podcast) | 팟캐스트 |
+| Internet Radio | 인터넷 라디오 |
+
+■■ 왜 필요한가?
+
+에어러블 없이 TIDAL, Qobuz, Deezer 등을 각각 연동하려면 서비스별로 별도 계약·개발·유지보수가 필요합니다. 에어러블은 이 과정을 한 번에 해결해주어 제조사의 비용과 리소스 부담을 크게 줄여줍니다.
+
+■■ 한 줄 요약
+
+여러 스트리밍 서비스를 하나의 API로 묶어주는 B2B 미들웨어. 제조사가 개별 서비스와 직접 제휴·개발하는 수고를 덜어줌`,
+   tags:["미들웨어","B2B","TIDAL","Qobuz"],links:[]},
+  {id:16,title:"스트리밍 앱 (Streaming App)",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+   desc:"에어러블에 포함되지 않은 스트리밍 서비스를 APK 설치나 자체 앱 스토어를 통해 직접 설치해 사용하는 방식입니다.",
+   body:`■ 개요
+
+에어러블에 포함되지 않은 스트리밍 서비스를 APK 설치나 자체 앱 스토어를 통해 직접 설치해 사용하는 방식입니다. 에어러블과 달리 웹 API 기반이 아닌 안드로이드 앱을 직접 실행하는 방식으로, Spotify처럼 에어러블이 지원하지 않는 서비스를 사용할 때 활용합니다.
+
+■ 에어러블 vs 스트리밍 앱 비교
+
+| | 에어러블 | 스트리밍 앱 |
+| --- | --- | --- |
+| 방식 | 웹 API 기반 | 안드로이드 앱 직접 실행 |
+| 설치 | 기기 내장 | APK 또는 앱 스토어 설치 |
+| 서비스 범위 | 지원 서비스로 제한 | 다양한 앱 사용 가능 |
+| 최적화 | DAP에 최적화됨 | 기기 성능에 따라 UI/속도 차이 있음 |
+
+■ 한 줄 요약
+
+에어러블 미지원 서비스(Spotify 등)를 사용하기 위해 앱을 직접 설치하는 방식. 자유도는 높지만 기기 최적화는 낮을 수 있음`,
+   tags:["Spotify","APK","안드로이드앱"],links:[{label:"상세 페이지 보기",url:"streaming-app.html"}]},
+  {id:17,title:"SMB (Server Message Block)",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+   desc:"네트워크를 통해 다른 기기의 폴더/파일에 접근할 수 있게 해주는 파일 공유 프로토콜입니다.",
+   body:`■ 개요
+
+Server Message Block의 약자로, 네트워크를 통해 다른 기기의 폴더/파일에 접근할 수 있게 해주는 파일 공유 프로토콜입니다.
+DAP·디바이스에서 SMB를 사용하려면 서버 환경 구축이 먼저 필요합니다.
+
+■ 환경 구축 방법
+
+- Windows: 기본 SMB 공유 기능 사용 가능
+- Mac: SAMBA(삼바) 별도 설치 및 구축 필요
+
+■ 폴더가 안 보일 때 → SMB 스캔 필요
+
+- SMB 스캔이란, 로컬 DB 리스트에 해당 공유 폴더가 나타나도록 기기가 네트워크를 탐색하는 동작입니다.
+- 접속할 폴더가 목록에 없을 경우 수동으로 스캔을 실행해야 합니다.
+
+■ 한 줄 요약
+
+같은 와이파이 네트워크 안에서 PC·NAS 등의 폴더를 DAP에 연결해 음악을 재생하는 방식. 폴더가 안 보이면 SMB 스캔 실행`,
+   tags:["네트워크","파일공유","NAS","SAMBA"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
+  {id:29,title:"이퀄라이저 (EQ)",category:"용어사전",glossTab:"기능",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
+   desc:"특정 주파수 영역을 조절해 원하는 음색으로 바꾸는 기능 또는 설정입니다.",
+   body:`■ 개요
+
+EQ(Equalizer)는 특정 주파수 영역을 조절해 원하는 음색으로 바꾸는 기능 또는 설정을 의미합니다.
+
+■ 한 줄 요약
+
+EQ는 주파수 대역을 조절해 음악의 음색 밸런스를 바꾸는 기능입니다.`,
+   tags:["주파수","음색","설정"],links:[]},
+  {id:22,title:"컬렉션 (Collection)",category:"용어사전",glossTab:"기능",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+   desc:"기존 Favorite(즐겨찾기)을 재정의한 북마크형 저장 기능. 노래·앨범·아티스트·플레이리스트를 폴더별로 저장·관리할 수 있습니다.",
+   body:`■■ 개요
+
+기존 Favorite(즐겨찾기)의 노래 단독 저장 기능을 SP4000T부터 확장 재정의한 북마크형 저장 기능입니다.
+추가/삭제 토글 방식으로 동작하며(ex. 북마크), 컬렉션 내부에서 휴지통 아이콘으로는 로컬 음원 파일을 직접 삭제할 수 없습니다.
+
+■■ 변경 전 / 후
+
+| 구분 | 기존 Favorite | 컬렉션 (Collection) |
+| --- | --- | --- |
+| 명칭 | 즐겨찾기 | 컬렉션 |
+| 저장 대상 | 노래만 | 노래 / 앨범 / 아티스트 / 플레이리스트 |
+| 폴더 구조 | 없음 | 4개 폴더로 분류 |
+| 최근 추가 | 없음 | 최근 추가된 노래 (최대 20개, 1개월 이내) |
+
+■ 폴더 구조
+
+- 노래: 이름순 / 앨범순 / 아티스트순 / 발매순 / 최근 추가순
+- 앨범: 이름순 / 아티스트순 / 발매순
+- 아티스트: 이름순 / 발매순 / 최근 추가순
+- 플레이리스트: 별도 정렬 제공
+- 각 폴더 정렬은 홈 탭 정렬과 독립적으로 동작
+
+■ 최근 추가된 노래
+
+- 노래만 표시 (앨범·아티스트·플리 제외)
+- 최대 20개, 추가 시점으로부터 1개월 이내 항목만 노출
+- 가장 최근 추가 항목이 최상단 배치
+
+■ 한 줄 요약
+
+노래·앨범·아티스트·플리를 폴더별로 즐겨찾기처럼 저장하는 기능. 기존 Favorite을 SP4000T부터 확장 재정의`,
+   tags:["북마크","폴더구조","SP4000T이상"],links:[{label:"기능 히스토리 보기",url:"#search:컬렉션 Favorite 확장"}]},
+  {id:23,title:"즐겨찾기 (Favorite)",category:"용어사전",glossTab:"기능",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+   desc:"SP4000T 이전 모델에서 사용하던 노래 단독 즐겨찾기 기능. SP4000T부터 '컬렉션'으로 재정의되었습니다.",
+   body:`■ 개요
+
+SP4000T 이전 모델에서 사용하던 노래 단독 즐겨찾기 기능입니다.
+노래만 저장 가능하며, 폴더 구조 없이 단일 리스트로 관리됩니다.
+
+SP4000T부터는 '컬렉션(Collection)'으로 명칭이 변경되고 기능이 대폭 확장되었습니다.
+SP4000T 이전 구형 모델은 Favorite 명칭과 기능이 그대로 유지됩니다.
+
+■ 스펙 요약
+
+| 항목 | 내용 |
+| --- | --- |
+| 저장 대상 | 노래만 |
+| 폴더 구조 | 없음 (단일 리스트) |
+| 적용 모델 | SP4000T 이전 모델 |
+| 이후 버전 | 컬렉션(Collection)으로 대체 |
+
+■ 한 줄 요약
+
+노래만 담는 단순 즐겨찾기. SP4000T부터 컬렉션으로 기능 확장되어 대체됨`,
+   tags:["구버전","노래단독","SP4000T이전"],links:[{label:"컬렉션 용어사전 보기",url:"#search:컬렉션"}]},
+];
