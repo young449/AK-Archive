@@ -1309,6 +1309,8 @@ function renderBody(text) {
   const hc   = document.getElementById("home-clear");
   const ac   = document.getElementById("home-autocomplete");
   const MAX  = 5;
+  const HIST_MAX = 10;
+  const HIST_MAX_SHOW = 5;
   const HIST_KEY = "ak_search_history";
   let focusIdx = -1;
   let acItems  = [];
@@ -1329,7 +1331,7 @@ function renderBody(text) {
     const q2 = q.trim();
     let hist = loadHistory().filter(h => h !== q2);
     hist.unshift(q2);
-    hist = hist.slice(0, MAX);
+    hist = hist.slice(0, HIST_MAX);
     localStorage.setItem(HIST_KEY, JSON.stringify(hist));
   }
   function removeHistory(q) {
@@ -1355,6 +1357,10 @@ function renderBody(text) {
       closeAC();
     });
     ac.appendChild(header);
+
+    const ITEM_H = 46;
+    const scrollWrap = document.createElement("div");
+    scrollWrap.style.cssText = `overflow-y:auto;max-height:${ITEM_H * HIST_MAX_SHOW}px;`;
 
     hist.forEach(q => {
       const item = document.createElement("div");
@@ -1388,9 +1394,10 @@ function renderBody(text) {
         closeAC();
         goList("", q);
       });
-      ac.appendChild(item);
+      scrollWrap.appendChild(item);
     });
 
+    ac.appendChild(scrollWrap);
     ac.classList.add("show");
   }
 
