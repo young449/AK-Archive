@@ -61,11 +61,11 @@ body.is-home #gnb-wrap{
   background:var(--n-800);
   border:1px solid var(--div-2);
   border-radius:var(--r-xl);
-  padding:8px 12px;
+  padding:0;
 }
 #gnb-logo{
   display:flex;align-items:center;gap:9px;
-  flex-shrink:0;padding:4px 12px 4px 6px;
+  flex-shrink:0;padding:12px 12px 12px 12px;
   border-radius:var(--r-xl);transition:background 0.14s;
 }
 #gnb-logo:hover{background:transparent}
@@ -111,8 +111,6 @@ body.is-home #gnb-wrap{
   display:none;
   flex-direction:column;gap:2px;
   padding:4px 0 4px;
-  border-top:1px solid var(--div-1);
-  margin-top:4px;
 }
 .gnb-drawer-tab{
   display:flex;align-items:center;justify-content:center;
@@ -132,19 +130,13 @@ body.is-home #gnb-wrap{
 #gnb-inner.drawer-open #gnb-hamburger{display:none !important;}
 #gnb-inner.drawer-open #gnb-close{display:flex !important;}
 
-/* 드로어 배경 딤 */
-#gnb-drawer-bg{
-  display:none;
-  position:fixed;inset:0;z-index:199;
-  background:rgba(0,0,0,0.45);
-}
-#gnb-drawer-bg.show{display:block;}
+#gnb-drawer-bg{display:none;}
 
 @media(max-width:768px){
   #gnb-wrap{padding:16px 20px 8px;}
   body.is-home #gnb-wrap{padding:16px 20px 8px;}
-  #gnb-inner{padding:6px 8px 6px 10px;width:100%;justify-content:space-between;}
-  #gnb-row{justify-content:space-between;}
+  #gnb-inner{width:100%;}
+  #gnb-row{padding:0 4px 0 0;justify-content:space-between;}
   .gnb-tab{display:none}
   #gnb-hamburger{display:flex}
   #gnb-search-btn{display:flex;}
