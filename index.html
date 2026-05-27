@@ -102,6 +102,9 @@ body.is-home #gnb-wrap{
 
 /* gnb-row: 로고+버튼 한 줄 */
 #gnb-row{display:flex;align-items:center;gap:2px;width:100%;}
+#gnb-row #gnb-logo{flex:none;}
+#gnb-row .gnb-spacer{flex:1;}
+body.is-home #gnb-search-btn{display:none !important;}
 
 /* 드로어 탭 목록 */
 #gnb-drawer-tabs{
@@ -757,6 +760,7 @@ body.is-tag #tag-page{display:block}
       <button class="gnb-tab" data-cat="제품 모델">제품</button>
       <button class="gnb-tab" data-cat="기능 히스토리">UX 히스토리</button>
       <button class="gnb-tab" data-cat="용어사전">AK 용어</button>
+      <div class="gnb-spacer"></div>
       <button id="gnb-search-btn" aria-label="검색">
         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.7">
           <circle cx="7.5" cy="7.5" r="5.5"/><path d="M12 12l4 4"/>
