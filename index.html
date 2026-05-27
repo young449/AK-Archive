@@ -417,10 +417,10 @@ body.is-list #list-page{display:flex}
   gap:16px;
 }
 @media(max-width:720px){
-  #card-list.is-thumb-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+  #card-list.is-thumb-grid{grid-template-columns:repeat(2,1fr);gap:16px;}
 }
 @media(max-width:440px){
-  #card-list.is-thumb-grid{grid-template-columns:1fr;gap:10px;}
+  #card-list.is-thumb-grid{grid-template-columns:1fr;gap:16px;}
 }
 .card-thumb{
   background:var(--n-800);border:1px solid var(--div-1);
@@ -1088,7 +1088,7 @@ function goList(cat, q) {
     const el=document.getElementById(i);
     if(el) el.style.display="";
   });
-  document.getElementById("chip-bar").style.display="flex";
+  document.getElementById("chip-bar").style.display="";
   // detail 숨김
   const dv=document.getElementById("detail");
   dv.classList.remove("show");dv.setAttribute("aria-hidden","true");
