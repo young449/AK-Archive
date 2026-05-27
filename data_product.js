@@ -61,7 +61,7 @@ SP4000만의 독자 기술로, OPAMP를 병렬 구조로 추가 적용해 구동
      {src:"images/SP4000/SP4000_3.jpg", alt:"SP4000 퍼스펙티브"},
      {src:"images/SP4000/SP4000_4.jpg", alt:"SP4000 휠 디테일"},
    ]},
-  {id:26, title:"SP4000T — A&ultima 플래그십", category:"제품 모델", models:["A&ultima"], date:"2026.05.21", author:"Ellie", authorInitial:"E",
+  {id:26, title:"SP4000T", category:"제품 모델", models:["A&ultima"], date:"2026.05.21", author:"Ellie", authorInitial:"E",
    credits:{PM:"Jay", PL:"Kane", UX:"Ellie", UI:"Luna"},
    desc:"A&ultima 라인의 플래그십 DAP.",
    body:`■■ 1. Tube Current
@@ -108,7 +108,7 @@ PC 연결 시 MTP가 활성화되지 않는 경우, 사용자가 수동으로 US
      {src:"images/SP4000T/SP4000T_2.png", alt:"SP4000T 후면"},
      {src:"images/SP4000T/SP4000T_3.png", alt:"SP4000T 퍼스펙티브"},
    ]},
-  {id:2, title:"PD20 — PD series 최신 모델", category:"제품 모델", models:["PD series"], date:"2026.05.20", author:"Ellie", authorInitial:"E",
+  {id:2, title:"PD20", category:"제품 모델", models:["PD series"], date:"2026.05.20", author:"Ellie", authorInitial:"E",
    credits:{PM:"Luke", PL:"Evan", UX:"Luna", UI:"Luna"},
    desc:"PD series의 최신 모델.",
    body:`■■ Sound Master
@@ -278,7 +278,7 @@ Audiodo 오류 화면은 미노출, 팝업으로 즉시 대체.
    images:[
      {src:"images/PD20/PD20_thumb.png", alt:"PD20 썸네일"},
    ]},
-  {id:6, title:"PD5 — PD series 신모델", category:"제품 모델", models:["PD series"], date:"2026.05.22", author:"Ellie", authorInitial:"E",
+  {id:6, title:"PD5", category:"제품 모델", models:["PD series"], date:"2026.05.22", author:"Ellie", authorInitial:"E",
    credits:{PM:"Luke", PL:"Hoya", UX:"Ellie", UI:"Luna"},
    desc:"Octa-DAC 탑재 및 EnviroTune 기능 도입으로 사운드 퍼포먼스와 환경 적응형 음질을 동시에 구현한 PD series 신모델.",
    body:`■■ 1. DAC Mode
