@@ -89,7 +89,7 @@ body.is-home #gnb-wrap{
    SECTION: css-home
    body.is-home일 때만 표시
 ============================================= */
-#home{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 24px;gap:32px;position:relative;overflow:hidden}
+#home{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 24px;gap:32px;position:relative;overflow:visible}
 body.is-home #home{display:flex}
 
 #home-logo{display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;transition:opacity 0.15s;padding:0}
@@ -603,7 +603,7 @@ body.is-tag #tag-page{display:block}
     <p id="home-headline">AK 팀이 알아야 할 정보,<br>검색으로 바로 찾으세요.</p>
     <p id="home-subline">제품 스펙 · UX 히스토리 · 용어사전 통합 아카이브</p>
   </div>
-  <div id="home-search-wrap" style="position:relative;z-index:1;">
+  <div id="home-search-wrap" style="position:relative;z-index:10000;">
     <svg class="home-si" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6">
       <circle cx="8" cy="8" r="5.5"/><path d="M12.5 12.5L16 16"/>
     </svg>
