@@ -1864,6 +1864,10 @@ document.getElementById("chip-mobile-search-btn").addEventListener("click", ()=>
   const hamburger= document.getElementById("gnb-hamburger");
 
   function openDrawer(){
+    // 드로어 패널 top을 GNB 실제 높이에 맞춤
+    const gnbWrap = document.getElementById("gnb-wrap");
+    const gnbRect = gnbWrap.getBoundingClientRect();
+    document.getElementById("mobile-drawer-panel").style.top = (gnbRect.top + window.scrollY) + "px";
     // 드로어 탭 active 상태 동기화
     document.querySelectorAll(".mobile-drawer-tab").forEach(t=>
       t.classList.toggle("is-active", !!S.cat && t.dataset.cat===S.cat)
