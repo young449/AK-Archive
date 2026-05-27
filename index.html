@@ -1357,7 +1357,7 @@ function openDetail(id){
   const d=DATA.find(x=>x.id===id);if(!d)return;
   S.prevPage=document.body.className;
   S.openId=id;
-  ["card-list","chip-bar","count-row","hero"].forEach(i=>document.getElementById(i).style.display="none");
+  ["card-list","chip-bar-outer","count-row","hero"].forEach(i=>document.getElementById(i).style.display="none");
   document.getElementById("gloss-subtab-wrap").classList.remove("show");
   document.getElementById("empty").classList.remove("show");
   // 모델 배지: 레이블 먼저 + 모델 (기능 히스토리는 A&ultima 제외, showAllModels 예외)
@@ -1423,7 +1423,7 @@ function closeDetail(rerender=true){
   if(!rerender)return;
   S.openId=null;
   ["card-list","count-row","hero"].forEach(i=>document.getElementById(i).style.display="");
-  document.getElementById("chip-bar").style.display="flex";
+  document.getElementById("chip-bar-outer").style.display="";
   renderGlossSubtab();
   renderChipBar();
   renderCards();
@@ -1864,10 +1864,7 @@ document.getElementById("chip-mobile-search-btn").addEventListener("click", ()=>
   const hamburger= document.getElementById("gnb-hamburger");
 
   function openDrawer(){
-    // 드로어 패널 top을 GNB 실제 높이에 맞춤
-    const gnbWrap = document.getElementById("gnb-wrap");
-    const gnbRect = gnbWrap.getBoundingClientRect();
-    document.getElementById("mobile-drawer-panel").style.top = (gnbRect.top + window.scrollY) + "px";
+    document.getElementById("mobile-drawer-panel").style.top = "";
     // 드로어 탭 active 상태 동기화
     document.querySelectorAll(".mobile-drawer-tab").forEach(t=>
       t.classList.toggle("is-active", !!S.cat && t.dataset.cat===S.cat)
