@@ -33,7 +33,8 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px}
-body{font-family:var(--font);background:var(--n-900);color:var(--text-1);min-height:100vh;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font);background:var(--n-900);color:var(--text-1);min-height:100vh;-webkit-font-smoothing:antialiased;padding-top:72px;}
+body.is-home{padding-top:0;}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none}
 
@@ -114,13 +115,14 @@ body.has-drawer #gnb-wrap{
 #gnb-inner.drawer-open #gnb-row #gnb-close{display:flex;}
 
 @media(max-width:768px){
+  body{padding-top:88px;}
   #gnb-wrap{padding:16px 24px 8px;}
   #gnb-inner{width:100%;}
   #gnb-row{padding:0 4px 0 0;justify-content:space-between;}
   .gnb-tab{display:none}
   #gnb-hamburger{display:flex}
   #gnb-search-btn{display:flex;}
-  #list-content{padding:120px 16px 80px;}
+  #list-content{padding:24px 16px 80px;}
   #home-headline{font-size:24px;}
   #home-subline{font-size:14px;}
   #home-search-wrap{max-width:100%;}
@@ -293,10 +295,10 @@ body.is-home #home{display:flex}
    SECTION: css-list
    body.is-list일 때 표시
 ============================================= */
-#list-page{display:none;flex-direction:column;min-height:calc(100vh - 62px)}
-body.is-list #list-page{display:flex}
 
-#list-content{flex:1;max-width:960px;margin:0 auto;width:100%;padding:90px 24px 80px}
+
+
+
 #hero{margin-bottom:28px}
 #hero-title{font-size:24px;font-weight:700;color:var(--text-1);margin-bottom:8px}
 #hero-desc{font-size:16px;color:var(--text-2)}
