@@ -145,11 +145,11 @@ body.is-home #gnb-wrap{
   display:flex;align-items:center;
   padding:14px 16px;border-radius:12px;
   font-size:16px;font-weight:500;color:var(--text-2);
-  transition:background 0.12s,color 0.12s;
+  transition:color 0.12s;
   text-align:center;justify-content:center;
 }
-.mobile-drawer-tab:hover{background:var(--n-700);color:var(--text-1)}
-.mobile-drawer-tab.is-active{background:var(--n-700);color:var(--text-1)}
+.mobile-drawer-tab:hover{color:var(--text-1)}
+.mobile-drawer-tab.is-active{color:var(--text-1)}
 
 @media(max-width:768px){
   #gnb-wrap{padding:16px 20px 8px;}
@@ -165,6 +165,8 @@ body.is-home #gnb-wrap{
   #home-search-wrap{max-width:100%;}
   #chip-bar{gap:5px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
   #chip-bar::-webkit-scrollbar{display:none}
+  #gloss-subtab-wrap{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  #gloss-subtab-wrap::-webkit-scrollbar{display:none}
   .chip-btn{padding:6px 12px;font-size:13px;}
   #chip-search-wrap{display:none}
   .card{padding:20px 16px;}
@@ -386,7 +388,7 @@ body.is-list #list-page{display:flex}
 #count-row{margin-bottom:16px}
 #count-text{font-size:14px;color:var(--text-2)}
 #count-num{font-family:var(--mono);color:var(--text-1)}
-#card-list{display:flex;flex-direction:column;gap:20px}
+#card-list{display:flex;flex-direction:column;gap:16px}
 .card{
   background:var(--n-800);border:1px solid var(--div-1);
   border-radius:var(--r-lg);padding:28px 24px;cursor:pointer;
