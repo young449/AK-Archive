@@ -163,9 +163,9 @@ body.is-home #gnb-wrap{
   #home-headline{font-size:24px;}
   #home-subline{font-size:14px;}
   #home-search-wrap{max-width:100%;}
-  #chip-bar{gap:5px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+  #chip-bar{gap:5px !important;flex-wrap:nowrap !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
   #chip-bar::-webkit-scrollbar{display:none}
-  #gloss-subtab-wrap{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  #gloss-subtab-wrap{flex-wrap:nowrap !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
   #gloss-subtab-wrap::-webkit-scrollbar{display:none}
   .chip-btn{padding:6px 12px;font-size:13px;}
   #chip-search-wrap{display:none}
@@ -1130,6 +1130,8 @@ function renderGlossSubtab() {
   bar.style.display="none";
   wrap.classList.add("show");
   wrap.innerHTML = "";
+  wrap.style.removeProperty("flex-wrap");
+  wrap.style.removeProperty("overflow-x");
   GLOSS_TABS.forEach(tab => {
     const cnt = tab === "전체"
       ? DATA_glossary.length
@@ -1144,15 +1146,17 @@ function renderGlossSubtab() {
     });
     wrap.appendChild(btn);
   });
-  // 검색창 — 우측 정렬 (모바일에서는 숨김)
-  const sw = document.createElement("div");
-  sw.id="gloss-search-wrap";
-  sw.style.cssText="margin-left:auto;position:relative;flex-shrink:0;";
-  sw.innerHTML=`<svg class="csi" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg><input id="gloss-search" type="search" placeholder="페이지 내 검색" autocomplete="off"/>`;
-  wrap.appendChild(sw);
-  const inp = sw.querySelector("#gloss-search");
-  inp.value = S.q;
-  inp.addEventListener("input", ()=>{ S.q=inp.value; renderCards(); });
+  if(window.innerWidth > 768){
+    // 검색창 — 우측 정렬 (모바일에서는 숨김)
+    const sw = document.createElement("div");
+    sw.id="gloss-search-wrap";
+    sw.style.cssText="margin-left:auto;position:relative;flex-shrink:0;";
+    sw.innerHTML=`<svg class="csi" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg><input id="gloss-search" type="search" placeholder="페이지 내 검색" autocomplete="off"/>`;
+    wrap.appendChild(sw);
+    const inp = sw.querySelector("#gloss-search");
+    inp.value = S.q;
+    inp.addEventListener("input", ()=>{ S.q=inp.value; renderCards(); });
+  }
 }
 
 /* =============================================
@@ -1179,11 +1183,11 @@ function getChips(cat) {
 
 function renderChipBar() {
   const bar=document.getElementById("chip-bar");
-  if(S.cat==="용어사전"){bar.innerHTML="";return;}  // 용어사전: 서브탭에서 처리
+  if(S.cat==="용어사전"){bar.innerHTML="";return;}
   bar.innerHTML="";
   const chips=getChips(S.cat);
-  bar.style.cssText="";  // 인라인 스타일 초기화 — CSS에서 제어
-  // 칩이 없는 탭(디자인 가이드, 용어사전): 검색창만
+  bar.style.removeProperty("flex-wrap");
+  bar.style.removeProperty("overflow-x");
   chips.forEach(c=>{
     const cnt=DATA.filter(d=>d.category===S.cat&&(c.key==="전체"||d.models.includes(c.key)||(d.labels&&d.labels.includes(c.key)))).length;
     const btn=document.createElement("button");
@@ -1193,13 +1197,16 @@ function renderChipBar() {
     btn.addEventListener("click",()=>{S.chip=c.key;updateChips();renderCards();});
     bar.appendChild(btn);
   });
-  const sw=document.createElement("div");
-  sw.id="chip-search-wrap";
-  sw.style.cssText=chips.length===0?"":"margin-left:auto;position:relative;flex-shrink:0;";
-  sw.innerHTML=`<svg class="csi" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg><input id="chip-search" type="search" placeholder="페이지 내 검색" autocomplete="off"/>`;
-  bar.appendChild(sw);
-  const inp=document.getElementById("chip-search");
-  if(inp){inp.value=S.q;inp.addEventListener("input",()=>{S.q=inp.value;renderCards();});}
+  const isMobile = window.innerWidth <= 768;
+  if(!isMobile){
+    const sw=document.createElement("div");
+    sw.id="chip-search-wrap";
+    sw.style.cssText=chips.length===0?"":"margin-left:auto;position:relative;flex-shrink:0;";
+    sw.innerHTML=`<svg class="csi" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg><input id="chip-search" type="search" placeholder="페이지 내 검색" autocomplete="off"/>`;
+    bar.appendChild(sw);
+    const inp=document.getElementById("chip-search");
+    if(inp){inp.value=S.q;inp.addEventListener("input",()=>{S.q=inp.value;renderCards();});}
+  }
 }
 
 function updateChips(){
