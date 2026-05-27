@@ -51,8 +51,8 @@ SP4000만의 독자 기술로, OPAMP를 병렬 구조로 추가 적용해 구동
      {label:"SP4000_사업계획서_0430.pdf", url:"files/SP4000_사업계획서_0430_수정.pdf"},
    ],
    links:[
-     {label:"UX 시나리오 — Figma", url:"https://www.figma.com/design/BWddwuTWmaWdqacRZFGrsa/UX_Crimson_Common?node-id=520-14833&t=4AetULsfsg8ocbzt-1"},
-     {label:"UI — Figma", url:"https://www.figma.com/design/CZdIQpzaGRVJOXF7ml8b7f/UI_Crimson_Common-Design-2.0-?node-id=28-54118&t=fRtVetOx6sLv1byy-1"},
+     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/BWddwuTWmaWdqacRZFGrsa/UX_Crimson_Common?node-id=520-14833&t=4AetULsfsg8ocbzt-1"},
+     {label:"UI Figma", url:"https://www.figma.com/design/CZdIQpzaGRVJOXF7ml8b7f/UI_Crimson_Common-Design-2.0-?node-id=28-54118&t=fRtVetOx6sLv1byy-1"},
    ],
    images:[
      {src:"images/SP4000/SP4000_thumb.png", alt:"SP4000 썸네일"},
@@ -99,9 +99,9 @@ PC 연결 시 MTP가 활성화되지 않는 경우, 사용자가 수동으로 US
    tags:["SP4000T","AMP","Collection","Favorite","USB설정","재생설정"],
    files:[],
    links:[
-     {label:"UX 시나리오 — Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=8669-8484&t=fhsxj64S8jwIqh1N-1"},
-     {label:"UI — Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9751-56643&t=YVqta9mRIAIVw2Wd-1"},
-     {label:"UX 히스토리 — Favorite에서 Collection으로(기능 확장 재정의)", url:"#open:24"},
+     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=8669-8484&t=fhsxj64S8jwIqh1N-1"},
+     {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9751-56643&t=YVqta9mRIAIVw2Wd-1"},
+     {label:"UX 히스토리 Favorite에서 Collection으로(기능 확장 재정의)", url:"#open:24"},
    ],
    images:[
      {src:"images/SP4000T/SP4000T_1.png", alt:"SP4000T 전면"},
@@ -272,8 +272,8 @@ Audiodo 오류 화면은 미노출, 팝업으로 즉시 대체.
    tags:["PD20","SoundMaster","SoundStudio","퍼스널사운드","이퀄라이저","오디오스피어","청력테스트","물리키","오버레이","듀얼휠"],
    files:[],
    links:[
-     {label:"UX 시나리오 — Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=8627-2086&t=fhsxj64S8jwIqh1N-1"},
-     {label:"UI — Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9739-17741&t=YVqta9mRIAIVw2Wd-1"},
+     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=8627-2086&t=fhsxj64S8jwIqh1N-1"},
+     {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9739-17741&t=YVqta9mRIAIVw2Wd-1"},
    ],
    images:[
      {src:"images/PD20/PD20_thumb.png", alt:"PD20 썸네일"},
@@ -314,7 +314,7 @@ PD5에는 8개의 DAC가 탑재되어 있으며, 사용자가 DAC 구동 수를 
      {label:"PD5_사업계획서_0728.pdf", url:"files/PD5_사업계획서_0728.pdf"},
    ],
    links:[
-     {label:"astellnkern.com — PD5", url:"https://www.astellnkern.com"},
+     {label:"astellnkern.com PD5", url:"https://www.astellnkern.com"},
    ],
    images:[
      {src:"images/PD5/PD5_1.png", alt:"PD5 전면"},
