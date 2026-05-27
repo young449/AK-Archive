@@ -297,7 +297,7 @@ body.is-home #home{display:flex}
 ============================================= */
 #list-page{display:none;flex-direction:column;min-height:calc(100vh - 72px)}
 body.is-list #list-page{display:flex}
-#list-content{flex:1;max-width:960px;margin:0 auto;width:100%;padding:40px 24px 80px}
+#list-content{flex:1;max-width:960px;margin:0 auto;width:100%;padding:80px 24px 80px}
 
 #hero{margin-bottom:28px}
 #hero-title{font-size:24px;font-weight:700;color:var(--text-1);margin-bottom:8px}
@@ -1096,8 +1096,13 @@ function renderGlossSubtab() {
   bar.style.display="none";
   wrap.classList.add("show");
   wrap.innerHTML = "";
-  wrap.style.removeProperty("flex-wrap");
-  wrap.style.removeProperty("overflow-x");
+  if(window.innerWidth <= 768){
+    wrap.style.flexWrap="nowrap";
+    wrap.style.overflowX="auto";
+  } else {
+    wrap.style.flexWrap="";
+    wrap.style.overflowX="";
+  }
   GLOSS_TABS.forEach(tab => {
     const cnt = tab === "전체"
       ? DATA_glossary.length
@@ -1152,8 +1157,14 @@ function renderChipBar() {
   if(S.cat==="용어사전"){bar.innerHTML="";return;}
   bar.innerHTML="";
   const chips=getChips(S.cat);
-  bar.style.removeProperty("flex-wrap");
-  bar.style.removeProperty("overflow-x");
+  const isMobile = window.innerWidth <= 768;
+  if(isMobile){
+    bar.style.flexWrap="nowrap";
+    bar.style.overflowX="auto";
+  } else {
+    bar.style.flexWrap="";
+    bar.style.overflowX="";
+  }
   chips.forEach(c=>{
     const cnt=DATA.filter(d=>d.category===S.cat&&(c.key==="전체"||d.models.includes(c.key)||(d.labels&&d.labels.includes(c.key)))).length;
     const btn=document.createElement("button");
