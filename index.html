@@ -39,39 +39,34 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 
 /* =============================================
    SECTION: css-gnb
-   항상 표시. 홈에서는 숨김 (body.is-home)
 ============================================= */
 #gnb-wrap{
-  position:sticky;top:0;z-index:200;
-  padding:40px 0 10px;
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:16px 0 10px;
   background:rgba(18,18,18,0.9);
   backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-  display:flex;
-  justify-content:center;
+  display:flex;justify-content:center;
 }
-body.is-home #gnb-wrap{
-  position:fixed;top:0;left:0;right:0;
-  background:transparent;backdrop-filter:none;
-  z-index:200;
+body.is-home #gnb-wrap,
+body.has-drawer #gnb-wrap{
+  background:transparent;
+  backdrop-filter:none;-webkit-backdrop-filter:none;
 }
-
-
 #gnb-inner{
   display:inline-flex;align-items:center;gap:2px;
-  background:var(--n-800);
+  background:rgba(26,26,26,0.85);
   border:1px solid var(--div-2);
   border-radius:var(--r-xl);
-  padding:0;
 }
 #gnb-logo{
   display:flex;align-items:center;gap:9px;
-  flex-shrink:0;padding:12px 12px 12px 12px;
+  flex-shrink:0;padding:12px 24px;
   border-radius:var(--r-xl);transition:background 0.14s;
 }
 #gnb-logo:hover{background:transparent}
 #gnb-logo img{width:22px;height:auto;mix-blend-mode:screen}
 #gnb-logo-text{
-  font-family:var(--font);font-size:14px;font-weight:700;
+  font-size:14px;font-weight:700;
   color:var(--text-1);letter-spacing:0.06em;white-space:nowrap;
 }
 .gnb-sep{display:none}
@@ -80,37 +75,26 @@ body.is-home #gnb-wrap{
   color:var(--text-2);border-radius:var(--r-xl);
   transition:color 0.13s;white-space:nowrap;
 }
-.gnb-tab:hover{color:var(--text-1)}
-.gnb-tab.is-active{
-  color:var(--text-1);
-}
+.gnb-tab:hover,.gnb-tab.is-active{color:var(--text-1)}
 
 /* =============================================
    SECTION: css-mobile-gnb
 ============================================= */
 #gnb-hamburger{
   display:none;align-items:center;justify-content:center;
-  width:36px;height:36px;border-radius:var(--r-xl);
+  width:44px;height:44px;border-radius:var(--r-xl);
   color:var(--text-2);transition:color 0.13s;flex-shrink:0;
 }
 #gnb-close{
   display:none;align-items:center;justify-content:center;
-  width:32px;height:32px;border-radius:50%;
+  width:36px;height:36px;border-radius:50%;
   color:var(--text-2);background:var(--n-700);
   transition:background 0.13s,color 0.13s;flex-shrink:0;
 }
 #gnb-close:hover{background:var(--n-600);color:var(--text-1)}
-
-/* gnb-row: 로고+버튼 한 줄 */
-#gnb-row{
-  display:flex;align-items:center;gap:2px;width:100%;
-}
-
-/* 드로어 탭 목록 — 기본 숨김 */
+#gnb-row{display:flex;align-items:center;gap:2px;width:100%;}
 #gnb-drawer-tabs{
-  display:none;
-  flex-direction:column;gap:2px;
-  padding:4px 0 4px;
+  display:none;flex-direction:column;gap:2px;padding:4px 0;
 }
 .gnb-drawer-tab{
   display:flex;align-items:center;justify-content:center;
@@ -118,46 +102,40 @@ body.is-home #gnb-wrap{
   font-size:14px;font-weight:500;color:var(--text-2);
   transition:color 0.12s;
 }
-.gnb-drawer-tab:hover{color:var(--text-1)}
-.gnb-drawer-tab.is-active{color:var(--text-1)}
-
-/* 드로어 열림 상태 */
+.gnb-drawer-tab:hover,.gnb-drawer-tab.is-active{color:var(--text-1)}
 #gnb-inner.drawer-open{
   flex-direction:column;align-items:stretch;
   border-radius:20px;
+  background:rgba(26,26,26,0.55);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
 }
 #gnb-inner.drawer-open #gnb-drawer-tabs{display:flex;}
-#gnb-inner.drawer-open #gnb-hamburger{display:none !important;}
-#gnb-inner.drawer-open #gnb-close{display:flex !important;}
-
-#gnb-drawer-bg{display:none;}
+#gnb-inner.drawer-open #gnb-hamburger{display:none;}
+#gnb-inner.drawer-open #gnb-row #gnb-close{display:flex;}
 
 @media(max-width:768px){
   #gnb-wrap{padding:16px 24px 8px;}
-  body.is-home #gnb-wrap{padding:16px 24px 8px;}
   #gnb-inner{width:100%;}
   #gnb-row{padding:0 4px 0 0;justify-content:space-between;}
   .gnb-tab{display:none}
   #gnb-hamburger{display:flex}
   #gnb-search-btn{display:flex;}
-  #list-content{padding:24px 16px 80px;}
+  #list-content{padding:90px 16px 80px;}
   #home-headline{font-size:24px;}
   #home-subline{font-size:14px;}
   #home-search-wrap{max-width:100%;}
-  #chip-bar{gap:5px !important;flex-wrap:nowrap !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+  #chip-bar{gap:5px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
   #chip-bar::-webkit-scrollbar{display:none}
-  #gloss-subtab-wrap{flex-wrap:nowrap !important;overflow-x:auto !important;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  #gloss-subtab-wrap{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
   #gloss-subtab-wrap::-webkit-scrollbar{display:none}
   .chip-btn{padding:6px 12px;font-size:13px;}
-  #chip-search-wrap{display:none}
-  #gloss-search-wrap{display:none}
+  #chip-search-wrap,#gloss-search-wrap{display:none}
   #chip-mobile-search-btn{display:flex;}
   .card{padding:20px 16px;}
   .card-title{font-size:16px;}
   #d-title{font-size:20px;}
   #d-body{font-size:15px;}
 }
-
 @media(max-width:480px){
   #gnb-logo-text{font-size:13px;}
   #home-headline{font-size:20px;}
@@ -166,7 +144,6 @@ body.is-home #gnb-wrap{
   .card{padding:16px 14px;}
   .card-title{font-size:15px;}
 }
-
 @media(max-width:320px){
   #gnb-logo-text{font-size:12px;}
   #home-headline{font-size:18px;letter-spacing:-0.01em;}
@@ -319,7 +296,7 @@ body.is-home #home{display:flex}
 #list-page{display:none;flex-direction:column;min-height:calc(100vh - 62px)}
 body.is-list #list-page{display:flex}
 
-#list-content{flex:1;max-width:960px;margin:0 auto;width:100%;padding:40px 24px 80px}
+#list-content{flex:1;max-width:960px;margin:0 auto;width:100%;padding:100px 24px 80px}
 #hero{margin-bottom:28px}
 #hero-title{font-size:24px;font-weight:700;color:var(--text-1);margin-bottom:8px}
 #hero-desc{font-size:16px;color:var(--text-2)}
@@ -761,7 +738,7 @@ body.is-tag #tag-page{display:block}
 </div>
 
 <!-- 드로어 배경 딤 -->
-<div id="gnb-drawer-bg"></div>
+
 
 <!-- =============================================
    SECTION: home
@@ -1828,25 +1805,23 @@ document.getElementById("chip-mobile-search-btn").addEventListener("click", ()=>
   const gnbInner  = document.getElementById("gnb-inner");
   const hamburger = document.getElementById("gnb-hamburger");
   const closeBtn  = document.getElementById("gnb-close");
-  const drawerBg  = document.getElementById("gnb-drawer-bg");
 
   function openDrawer(){
     document.querySelectorAll(".gnb-drawer-tab").forEach(t=>
       t.classList.toggle("is-active", !!S.cat && t.dataset.cat===S.cat)
     );
     gnbInner.classList.add("drawer-open");
-    drawerBg.classList.add("show");
+    document.body.classList.add("has-drawer");
     document.body.style.overflow="hidden";
   }
   function closeDrawer(){
     gnbInner.classList.remove("drawer-open");
-    drawerBg.classList.remove("show");
+    document.body.classList.remove("has-drawer");
     document.body.style.overflow="";
   }
 
   hamburger.addEventListener("click", openDrawer);
   closeBtn.addEventListener("click", closeDrawer);
-  drawerBg.addEventListener("click", closeDrawer);
 
   document.querySelectorAll(".gnb-drawer-tab").forEach(tab=>{
     tab.addEventListener("click",()=>{
