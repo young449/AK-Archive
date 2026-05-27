@@ -1033,7 +1033,8 @@ function filterData(){
       const tagModel = [...d.tags,...d.models,...(d.labels||[])].join(" ").toLowerCase();
       if(tagModel.includes(lq)) return 2;
       if((d.desc||"").toLowerCase().includes(lq)) return 1;
-      return 0;
+      if((d.body||"").toLowerCase().includes(lq)) return 0;
+      return -1;
     };
     const diff = score(b) - score(a);
     if(diff !== 0) return diff;
@@ -1057,7 +1058,7 @@ function renderCards(){
     list.classList.add("is-thumb-grid");
     items.forEach(d=>{
       const el=document.createElement("div");
-      el.className="card-thumb";el.setAttribute("role","listitem");el.setAttribute("tabindex","0");
+      el.className="card-thumb";el.setAttribute("role","listitem");el.setAttribute("tabindex","0");el.dataset.id=d.id;
       // 썸네일 이미지: _thumb 파일 우선, 없으면 images[0] 사용
       const thumbImg = d.images && d.images.find(img => img.src.toLowerCase().includes('_thumb'));
       const thumbFallback = d.images && d.images.length ? d.images[0] : null;
@@ -1097,7 +1098,7 @@ function renderCards(){
   list.classList.remove("is-thumb-grid");
   items.forEach(d=>{
     const el=document.createElement("div");
-    el.className="card";el.setAttribute("role","listitem");el.setAttribute("tabindex","0");
+    el.className="card";el.setAttribute("role","listitem");el.setAttribute("tabindex","0");el.dataset.id=d.id;
     // 상단: 탭명 배지(labels) + 반영모델 배지(models)
     const labelBadges = d.labels
       ? d.labels.map(l=>`<span class="badge ${LABEL_CLS[l]||'b-more'}">${l}</span>`).join("")
@@ -1419,14 +1420,14 @@ function renderBody(text) {
   function getMatches(q) {
     const lq = q.toLowerCase();
     const scored = DATA.map(d => {
-      const title = d.title.toLowerCase();
-      const desc  = (d.desc||"").toLowerCase();
-      const body  = (d.body||"").toLowerCase();
-      if (title.includes(lq))   return { d, score: 2 };
-      if (desc.includes(lq))    return { d, score: 1 };
-      if (body.includes(lq))    return { d, score: 0 };
-      const tags  = d.tags.join(" ").toLowerCase();
-      if (tags.includes(lq))    return { d, score: 0 };
+      const title  = d.title.toLowerCase();
+      const tags   = [...d.tags, ...d.models, ...(d.labels||[])].join(" ").toLowerCase();
+      const desc   = (d.desc||"").toLowerCase();
+      const body   = (d.body||"").toLowerCase();
+      if (title.includes(lq))  return { d, score: 3 };
+      if (tags.includes(lq))   return { d, score: 2 };
+      if (desc.includes(lq))   return { d, score: 1 };
+      if (body.includes(lq))   return { d, score: 0 };
       return null;
     }).filter(Boolean);
     scored.sort((a,b) => b.score - a.score || b.d.date.localeCompare(a.d.date));
@@ -1497,11 +1498,7 @@ function renderBody(text) {
     closeAC();
     hs.value = d.title;
     hc.classList.add("show");
-    goList(d.category, "");
-    setTimeout(() => {
-      const found = document.querySelector(`.card[data-id="${d.id}"], .card-thumb[data-id="${d.id}"]`);
-      if (found) found.click();
-    }, 80);
+    openDetail(d.id);
   }
 
   function closeAC() {
