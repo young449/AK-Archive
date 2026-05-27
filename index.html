@@ -110,23 +110,25 @@ body.is-home #gnb-wrap{
 #mobile-drawer-panel{
   position:absolute;top:16px;left:20px;right:20px;
   background:var(--n-800);border:1px solid var(--div-2);
-  border-radius:20px;
+  border-radius:var(--r-xl);
   overflow:hidden;
-  transform:translateY(-12px) scale(0.97);opacity:0;
-  transition:transform 0.22s cubic-bezier(0.34,1.56,0.64,1),opacity 0.18s ease;
+  transform:translateY(-8px) scale(0.98);opacity:0;
+  transition:transform 0.2s cubic-bezier(0.34,1.4,0.64,1),opacity 0.16s ease;
 }
 #mobile-drawer.show #mobile-drawer-panel{
   transform:translateY(0) scale(1);opacity:1;
 }
 #mobile-drawer-header{
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 8px 0 10px;height:52px;
-  border-bottom:1px solid var(--div-1);
+  padding:8px 8px 8px 10px;
 }
-#mobile-drawer-logo{
+#gnb-logo-drawer{
   display:flex;align-items:center;gap:9px;
+  flex-shrink:0;padding:4px 8px 4px 6px;
+  border-radius:var(--r-xl);background:none;border:none;cursor:pointer;
+  font-family:var(--font);
 }
-#mobile-drawer-logo img{width:22px;height:auto;mix-blend-mode:screen}
+#gnb-logo-drawer img{width:22px;height:auto;mix-blend-mode:screen}
 #mobile-drawer-logo-text{
   font-size:14px;font-weight:700;color:var(--text-1);letter-spacing:0.06em;
 }
@@ -138,8 +140,9 @@ body.is-home #gnb-wrap{
 }
 #mobile-drawer-close:hover{background:var(--n-600);color:var(--text-1)}
 #mobile-drawer-tabs{
-  padding:8px 12px 12px;
+  padding:4px 12px 12px;
   display:flex;flex-direction:column;gap:2px;
+  border-top:1px solid var(--div-1);
 }
 .mobile-drawer-tab{
   display:flex;align-items:center;
@@ -780,10 +783,10 @@ body.is-tag #tag-page{display:block}
   <div id="mobile-drawer-bg"></div>
   <div id="mobile-drawer-panel">
     <div id="mobile-drawer-header">
-      <div id="mobile-drawer-logo">
+      <button id="gnb-logo-drawer">
         <img src="images/logo.png" alt="AK"/>
         <span id="mobile-drawer-logo-text">AK Archive</span>
-      </div>
+      </button>
       <button id="mobile-drawer-close" aria-label="메뉴 닫기">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l12 12M13 1L1 13"/></svg>
       </button>
@@ -1880,6 +1883,9 @@ document.getElementById("chip-mobile-search-btn").addEventListener("click", ()=>
   hamburger.addEventListener("click", openDrawer);
   closeBtn.addEventListener("click", closeDrawer);
   bg.addEventListener("click", closeDrawer);
+
+  const logoDrawer = document.getElementById("gnb-logo-drawer");
+  if(logoDrawer) logoDrawer.addEventListener("click", ()=>{ closeDrawer(); goHome(); });
 
   document.querySelectorAll(".mobile-drawer-tab").forEach(tab=>{
     tab.addEventListener("click",()=>{
