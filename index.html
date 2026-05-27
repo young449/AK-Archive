@@ -121,6 +121,58 @@ body.is-home #home{display:flex}
 #home-clear.show{display:flex}
 
 /* =============================================
+   SECTION: css-autocomplete
+============================================= */
+#home-autocomplete{
+  position:absolute;top:calc(100% + 8px);left:0;right:0;
+  background:var(--n-800);border:1px solid var(--div-2);
+  border-radius:14px;overflow:hidden;
+  box-shadow:0 8px 32px rgba(0,0,0,0.45);
+  z-index:300;
+  display:none;
+}
+#home-autocomplete.show{display:block}
+.ac-item{
+  display:flex;align-items:center;gap:10px;
+  padding:13px 18px;cursor:pointer;
+  transition:background 0.1s;
+}
+.ac-item:hover,.ac-item.is-focused{background:var(--n-700)}
+.ac-item-icon{
+  flex-shrink:0;color:var(--n-400);
+}
+.ac-item-content{flex:1;min-width:0}
+.ac-item-title{
+  font-size:15px;font-weight:500;color:var(--text-1);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  line-height:1.35;
+}
+.ac-item-title mark{
+  background:rgba(204,27,56,0.22);color:var(--cr-100);
+  border-radius:2px;padding:0 1px;font-style:normal;
+}
+.ac-item-meta{
+  font-size:12px;color:var(--n-400);margin-top:2px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.ac-item-badge{
+  flex-shrink:0;
+  font-size:11px;font-weight:500;padding:2px 7px;
+  border-radius:var(--r-xs);
+  background:var(--a-w06);color:var(--n-400);
+  border:1px solid var(--div-1);
+}
+.ac-footer{
+  padding:10px 18px;
+  border-top:1px solid var(--div-1);
+  font-size:13px;color:var(--n-400);
+  display:flex;align-items:center;gap:6px;
+  cursor:pointer;transition:background 0.1s;
+}
+.ac-footer:hover{background:var(--n-700)}
+.ac-footer strong{color:var(--text-2);font-weight:500}
+
+/* =============================================
    SECTION: css-list
    body.is-list일 때 표시
 ============================================= */
@@ -541,6 +593,7 @@ body.is-tag #tag-page{display:block}
     <button id="home-clear">
       <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1l8 8M9 1L1 9"/></svg>
     </button>
+    <div id="home-autocomplete" role="listbox" aria-label="검색 자동완성"></div>
   </div>
 </div>
 
@@ -1232,15 +1285,190 @@ function renderBody(text) {
 }
 
 
-// 홈 검색
-const hs=document.getElementById("home-search");
-hs.addEventListener("input",()=>{
-  const v=hs.value.trim();
-  document.getElementById("home-clear").classList.toggle("show",!!v);
-  if(v)goList("",v);
-});
-hs.addEventListener("keydown",e=>{if(e.key==="Enter"&&hs.value.trim())goList("",hs.value.trim());});
-document.getElementById("home-clear").addEventListener("click",()=>{hs.value="";document.getElementById("home-clear").classList.remove("show");hs.focus();});
+// 홈 검색 + 자동완성
+(function(){
+  const hs   = document.getElementById("home-search");
+  const hc   = document.getElementById("home-clear");
+  const ac   = document.getElementById("home-autocomplete");
+  const MAX  = 5;
+  let focusIdx = -1;
+  let acItems  = [];
+
+  const CAT_LABEL = {
+    "제품 모델":"제품",
+    "기능 히스토리":"UX 히스토리",
+    "디자인 가이드":"디자인",
+    "용어사전":"용어"
+  };
+
+  function highlight(text, q) {
+    if (!q) return escHtml(text);
+    const escaped = escHtml(text);
+    const re = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"), "gi");
+    return escaped.replace(re, m => `<mark>${m}</mark>`);
+  }
+
+  function escHtml(s) {
+    return String(s)
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;");
+  }
+
+  function getMatches(q) {
+    const lq = q.toLowerCase();
+    // 제목 우선, 그 다음 desc/body
+    const scored = DATA.map(d => {
+      const title = d.title.toLowerCase();
+      const desc  = (d.desc||"").toLowerCase();
+      const body  = (d.body||"").toLowerCase();
+      if (title.includes(lq))   return { d, score: 2 };
+      if (desc.includes(lq))    return { d, score: 1 };
+      if (body.includes(lq))    return { d, score: 0 };
+      const tags  = d.tags.join(" ").toLowerCase();
+      if (tags.includes(lq))    return { d, score: 0 };
+      return null;
+    }).filter(Boolean);
+    scored.sort((a,b) => b.score - a.score || b.d.date.localeCompare(a.d.date));
+    return scored.slice(0, MAX).map(x => x.d);
+  }
+
+  function renderAC(q) {
+    const matches = getMatches(q);
+    acItems = matches;
+    focusIdx = -1;
+    ac.innerHTML = "";
+
+    if (matches.length === 0) {
+      ac.classList.remove("show");
+      return;
+    }
+
+    matches.forEach((d, i) => {
+      const item = document.createElement("div");
+      item.className = "ac-item";
+      item.setAttribute("role","option");
+      const label = CAT_LABEL[d.category] || d.category;
+      item.innerHTML = `
+        <div class="ac-item-icon">
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6">
+            <circle cx="6.5" cy="6.5" r="4.5"/><path d="M10.5 10.5L14 14"/>
+          </svg>
+        </div>
+        <div class="ac-item-content">
+          <div class="ac-item-title">${highlight(d.title, q)}</div>
+          ${d.desc ? `<div class="ac-item-meta">${escHtml(d.desc.slice(0,50))}${d.desc.length>50?"…":""}</div>` : ""}
+        </div>
+        <span class="ac-item-badge">${label}</span>
+      `;
+      item.addEventListener("mousedown", e => {
+        e.preventDefault();
+        selectItem(d);
+      });
+      ac.appendChild(item);
+    });
+
+    // 하단 "전체 결과 보기" 버튼
+    const total = DATA.filter(d =>
+      [d.title, d.desc, d.body, d.author, ...d.tags, ...d.models, ...(d.labels||[])].join(" ").toLowerCase().includes(q.toLowerCase())
+    ).length;
+    if (total > 0) {
+      const footer = document.createElement("div");
+      footer.className = "ac-footer";
+      footer.innerHTML = `
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="6" cy="6" r="4.5"/><path d="M9.5 9.5L13 13"/>
+        </svg>
+        <span><strong>"${escHtml(q)}"</strong> 전체 결과 ${total}개 보기</span>
+      `;
+      footer.addEventListener("mousedown", e => {
+        e.preventDefault();
+        closeAC();
+        goList("", q);
+      });
+      ac.appendChild(footer);
+    }
+
+    ac.classList.add("show");
+  }
+
+  function selectItem(d) {
+    closeAC();
+    hs.value = d.title;
+    hc.classList.add("show");
+    goList(d.category, "");
+    // 선택한 항목 바로 열기
+    setTimeout(() => {
+      const found = document.querySelector(`.card[data-id="${d.id}"], .card-thumb[data-id="${d.id}"]`);
+      if (found) found.click();
+    }, 80);
+  }
+
+  function closeAC() {
+    ac.classList.remove("show");
+    acItems = [];
+    focusIdx = -1;
+  }
+
+  function setFocus(idx) {
+    const items = ac.querySelectorAll(".ac-item");
+    items.forEach(el => el.classList.remove("is-focused"));
+    if (idx >= 0 && idx < items.length) {
+      items[idx].classList.add("is-focused");
+      focusIdx = idx;
+    } else {
+      focusIdx = -1;
+    }
+  }
+
+  // input 이벤트
+  hs.addEventListener("input", () => {
+    const v = hs.value.trim();
+    hc.classList.toggle("show", !!v);
+    if (v.length >= 1) {
+      renderAC(v);
+    } else {
+      closeAC();
+    }
+  });
+
+  // 키보드 네비게이션
+  hs.addEventListener("keydown", e => {
+    const items = ac.querySelectorAll(".ac-item");
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      if (!ac.classList.contains("show")) { renderAC(hs.value.trim()); return; }
+      setFocus(Math.min(focusIdx + 1, items.length - 1));
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setFocus(Math.max(focusIdx - 1, -1));
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (focusIdx >= 0 && focusIdx < acItems.length) {
+        selectItem(acItems[focusIdx]);
+      } else {
+        const v = hs.value.trim();
+        if (v) { closeAC(); goList("", v); }
+      }
+    } else if (e.key === "Escape") {
+      closeAC();
+    }
+  });
+
+  // 포커스 잃으면 닫기
+  hs.addEventListener("blur", () => {
+    setTimeout(closeAC, 150);
+  });
+
+  // clear 버튼
+  hc.addEventListener("click", () => {
+    hs.value = "";
+    hc.classList.remove("show");
+    closeAC();
+    hs.focus();
+  });
+})();
 
 // GNB 탭
 document.querySelectorAll(".gnb-tab").forEach(tab=>{
