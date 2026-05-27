@@ -170,6 +170,7 @@ body.is-home #gnb-wrap{
   .chip-btn{padding:6px 12px;font-size:13px;}
   #chip-search-wrap{display:none}
   #gloss-search-wrap{display:none}
+  #chip-mobile-search-btn{display:flex;}
   .card{padding:20px 16px;}
   .card-title{font-size:16px;}
   #d-title{font-size:20px;}
@@ -350,7 +351,8 @@ body.is-list #list-page{display:flex}
 /* =============================================
    SECTION: css-chip-bar
 ============================================= */
-#chip-bar{display:flex;align-items:center;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+#chip-bar-outer{display:flex;align-items:center;gap:8px;margin-bottom:20px;}
+#chip-bar{display:flex;align-items:center;gap:6px;flex:1;flex-wrap:wrap;min-width:0;}
 .chip-btn{
   display:inline-flex;align-items:center;gap:5px;
   padding:7px 14px;border-radius:var(--r-xl);
@@ -372,6 +374,16 @@ body.is-list #list-page{display:flex}
 .chip-btn .cnt{font-size:12px;font-family:var(--mono);opacity:0.7}
 .gloss-stab .cnt{font-size:12px;font-family:var(--mono);opacity:0.7}
 #chip-search-wrap{position:relative;flex-shrink:0}
+#chip-mobile-search-btn{
+  display:none;
+  align-items:center;justify-content:center;
+  width:36px;height:36px;
+  border-radius:var(--r-sm);
+  background:var(--n-800);border:1px solid var(--div-2);
+  color:var(--text-2);flex-shrink:0;
+  transition:background 0.13s,color 0.13s;
+}
+#chip-mobile-search-btn:hover{background:var(--n-700);color:var(--text-1)}
 #chip-search{
   width:170px;height:36px;padding:0 12px 0 32px;
   background:var(--n-800);border:1px solid var(--div-2);
@@ -389,7 +401,7 @@ body.is-list #list-page{display:flex}
 #count-row{margin-bottom:16px}
 #count-text{font-size:14px;color:var(--text-2)}
 #count-num{font-family:var(--mono);color:var(--text-1)}
-#card-list{display:flex;flex-direction:column;gap:16px}
+#card-list{display:flex;flex-direction:column;gap:14px}
 .card{
   background:var(--n-800);border:1px solid var(--div-1);
   border-radius:var(--r-lg);padding:28px 24px;cursor:pointer;
@@ -926,7 +938,14 @@ body.is-tag #tag-page{display:block}
       <p id="hero-desc"></p>
     </div>
     <div id="gloss-subtab-wrap"></div>
-    <div id="chip-bar"></div>
+    <div id="chip-bar-outer">
+      <div id="chip-bar"></div>
+      <button id="chip-mobile-search-btn" aria-label="검색">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6">
+          <circle cx="6.5" cy="6.5" r="4.5"/><path d="M10.5 10.5L14 14"/>
+        </svg>
+      </button>
+    </div>
     <div id="count-row"><p id="count-text"><span id="count-num">0</span>개의 항목</p></div>
     <div id="card-list" role="list"></div>
     <div id="empty">
@@ -1089,6 +1108,7 @@ function goList(cat, q) {
     if(el) el.style.display="";
   });
   document.getElementById("chip-bar").style.display="";
+  document.getElementById("chip-bar-outer").style.display="";
   // detail 숨김
   const dv=document.getElementById("detail");
   dv.classList.remove("show");dv.setAttribute("aria-hidden","true");
@@ -1826,6 +1846,15 @@ document.querySelectorAll(".gnb-tab").forEach(tab=>{
     }
   });
 })();
+
+// 칩바 모바일 검색 버튼 → GNB 검색 오버레이 열기
+document.getElementById("chip-mobile-search-btn").addEventListener("click", ()=>{
+  const overlay = document.getElementById("gnb-search-overlay");
+  const input   = document.getElementById("gnb-search-overlay-input");
+  overlay.classList.add("show");
+  input.value = S.q || "";
+  setTimeout(()=>input.focus(), 50);
+});
 
 // 모바일 드로어
 (function(){
