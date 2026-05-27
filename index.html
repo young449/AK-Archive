@@ -108,7 +108,7 @@ body.is-home #gnb-wrap{
   backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
 }
 #mobile-drawer-panel{
-  position:absolute;top:16px;left:16px;right:16px;
+  position:absolute;top:16px;left:20px;right:20px;
   background:var(--n-800);border:1px solid var(--div-2);
   border-radius:20px;
   overflow:hidden;
@@ -120,7 +120,8 @@ body.is-home #gnb-wrap{
 }
 #mobile-drawer-header{
   display:flex;align-items:center;justify-content:space-between;
-  padding:16px 20px;border-bottom:1px solid var(--div-1);
+  padding:0 8px 0 10px;height:52px;
+  border-bottom:1px solid var(--div-1);
 }
 #mobile-drawer-logo{
   display:flex;align-items:center;gap:9px;
@@ -151,8 +152,8 @@ body.is-home #gnb-wrap{
 .mobile-drawer-tab.is-active{background:var(--n-700);color:var(--text-1)}
 
 @media(max-width:768px){
-  #gnb-wrap{padding:16px 16px 8px;}
-  body.is-home #gnb-wrap{padding:16px 16px 8px;}
+  #gnb-wrap{padding:16px 20px 8px;}
+  body.is-home #gnb-wrap{padding:16px 20px 8px;}
   #gnb-inner{padding:6px 8px 6px 10px;width:100%;justify-content:space-between;}
   .gnb-tab{display:none}
   #gnb-hamburger{display:flex}
@@ -162,13 +163,56 @@ body.is-home #gnb-wrap{
   #home-headline{font-size:24px;}
   #home-subline{font-size:14px;}
   #home-search-wrap{max-width:100%;}
-  #chip-bar{gap:5px;}
+  #chip-bar{gap:5px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+  #chip-bar::-webkit-scrollbar{display:none}
   .chip-btn{padding:6px 12px;font-size:13px;}
+  #chip-search-wrap{display:none}
   .card{padding:20px 16px;}
   .card-title{font-size:16px;}
   #d-title{font-size:20px;}
   #d-body{font-size:15px;}
+  #gnb-search-btn{display:flex;}
 }
+
+/* =============================================
+   SECTION: css-gnb-mobile-search
+============================================= */
+#gnb-search-btn{
+  display:none;
+  align-items:center;justify-content:center;
+  width:36px;height:36px;border-radius:var(--r-xl);
+  color:var(--text-2);transition:color 0.13s,background 0.13s;
+  flex-shrink:0;
+}
+#gnb-search-btn:hover{color:var(--text-1);background:var(--a-w10)}
+#gnb-search-overlay{
+  display:none;
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  padding:16px 20px;
+  background:rgba(18,18,18,0.96);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+}
+#gnb-search-overlay.show{display:flex;align-items:center;gap:10px;}
+#gnb-search-overlay-input{
+  flex:1;height:44px;padding:0 16px 0 40px;
+  background:var(--n-700);border:1px solid var(--div-2);
+  border-radius:var(--r-xl);color:var(--text-1);
+  font-family:var(--font);font-size:16px;outline:none;
+  transition:border-color 0.15s;
+}
+#gnb-search-overlay-input:focus{border-color:rgba(204,27,56,0.5);}
+#gnb-search-overlay-input::placeholder{color:var(--n-500)}
+#gnb-search-overlay-icon{
+  position:absolute;left:32px;top:50%;transform:translateY(-50%);
+  color:var(--n-500);pointer-events:none;
+}
+#gnb-search-overlay-cancel{
+  font-size:14px;font-weight:500;color:var(--text-2);
+  background:none;border:none;cursor:pointer;
+  font-family:var(--font);white-space:nowrap;
+  transition:color 0.13s;flex-shrink:0;
+}
+#gnb-search-overlay-cancel:hover{color:var(--text-1)}
 
 @media(max-width:480px){
   #gnb-logo-text{font-size:13px;}
@@ -342,7 +386,7 @@ body.is-list #list-page{display:flex}
 #count-row{margin-bottom:16px}
 #count-text{font-size:14px;color:var(--text-2)}
 #count-num{font-family:var(--mono);color:var(--text-1)}
-#card-list{display:flex;flex-direction:column;gap:12px}
+#card-list{display:flex;flex-direction:column;gap:20px}
 .card{
   background:var(--n-800);border:1px solid var(--div-1);
   border-radius:var(--r-lg);padding:28px 24px;cursor:pointer;
@@ -688,12 +732,30 @@ body.is-tag #tag-page{display:block}
     <button class="gnb-tab" data-cat="기능 히스토리">UX 히스토리</button>
     <button class="gnb-tab" data-cat="용어사전">AK 용어</button>
 
+    <button id="gnb-search-btn" aria-label="검색">
+      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.7">
+        <circle cx="7.5" cy="7.5" r="5.5"/><path d="M12 12l4 4"/>
+      </svg>
+    </button>
     <button id="gnb-hamburger" aria-label="메뉴 열기">
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
         <path d="M2 5h14M2 9h14M2 13h14"/>
       </svg>
     </button>
   </div>
+</div>
+
+<!-- =============================================
+   SECTION: gnb-mobile-search-overlay
+============================================= -->
+<div id="gnb-search-overlay">
+  <div style="position:relative;flex:1;">
+    <svg id="gnb-search-overlay-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
+      <circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/>
+    </svg>
+    <input id="gnb-search-overlay-input" type="search" placeholder="키워드로 검색하세요" autocomplete="off"/>
+  </div>
+  <button id="gnb-search-overlay-cancel">취소</button>
 </div>
 
 <!-- =============================================
@@ -1712,6 +1774,47 @@ function renderBody(text) {
 document.querySelectorAll(".gnb-tab").forEach(tab=>{
   tab.addEventListener("click",()=>{S.chip="전체";S.q="";goList(tab.dataset.cat,"");});
 });
+
+// 모바일 GNB 검색
+(function(){
+  const btn      = document.getElementById("gnb-search-btn");
+  const overlay  = document.getElementById("gnb-search-overlay");
+  const input    = document.getElementById("gnb-search-overlay-input");
+  const cancel   = document.getElementById("gnb-search-overlay-cancel");
+
+  function openSearch(){
+    overlay.classList.add("show");
+    input.value = S.q || "";
+    setTimeout(()=>input.focus(), 50);
+  }
+  function closeSearch(){
+    overlay.classList.remove("show");
+    input.value = "";
+  }
+
+  btn.addEventListener("click", openSearch);
+  cancel.addEventListener("click", closeSearch);
+
+  input.addEventListener("keydown", e=>{
+    if(e.key==="Enter"){
+      const v = input.value.trim();
+      if(v){ closeSearch(); goList("", v); }
+    } else if(e.key==="Escape"){
+      closeSearch();
+    }
+  });
+
+  // 검색 결과 화면에서 chip-search와 연동
+  input.addEventListener("input", ()=>{
+    const v = input.value.trim();
+    if(document.body.classList.contains("is-list")){
+      S.q = v;
+      renderCards();
+      const heroTitle = document.getElementById("hero-title");
+      if(heroTitle) heroTitle.textContent = v ? `"${v}" 검색 결과` : (HERO[S.cat]||{title:"검색 결과"}).title;
+    }
+  });
+})();
 
 // 모바일 드로어
 (function(){
