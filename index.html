@@ -111,6 +111,9 @@ body.is-home #home{display:flex}
 }
 #home-search::placeholder{color:var(--n-500)}
 #home-search:focus{border:2px solid rgba(204,27,56,0.5);box-shadow:0 0 12px rgba(204,27,56,0.10)}
+#home-search::-webkit-search-cancel-button,
+#home-search::-webkit-search-decoration,
+#home-search::-ms-clear{display:none;appearance:none}
 .home-si{position:absolute;left:17px;top:50%;transform:translateY(-50%);color:var(--n-500);pointer-events:none}
 #home-clear{
   position:absolute;right:15px;top:50%;transform:translateY(-50%);
@@ -1537,9 +1540,11 @@ function renderBody(text) {
     }
   });
 
-  // 포커스 시 히스토리 표시
+  // 포커스 시 히스토리 표시 (값 없고 드롭다운 닫혀 있을 때만)
   hs.addEventListener("focus", () => {
-    if (!hs.value.trim()) renderHistory();
+    setTimeout(() => {
+      if (!hs.value.trim() && !ac.classList.contains("show")) renderHistory();
+    }, 0);
   });
 
   // 키보드 네비게이션
@@ -1568,9 +1573,9 @@ function renderBody(text) {
     }
   });
 
-  // 포커스 잃으면 닫기
+  // 포커스 잃으면 닫기 (mousedown 이벤트 처리 후 충분한 여유 확보)
   hs.addEventListener("blur", () => {
-    setTimeout(closeAC, 150);
+    setTimeout(closeAC, 200);
   });
 
   // clear 버튼
