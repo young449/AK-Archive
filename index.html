@@ -169,6 +169,7 @@ body.is-home #gnb-wrap{
   #gloss-subtab-wrap::-webkit-scrollbar{display:none}
   .chip-btn{padding:6px 12px;font-size:13px;}
   #chip-search-wrap{display:none}
+  #gloss-search-wrap{display:none}
   .card{padding:20px 16px;}
   .card-title{font-size:16px;}
   #d-title{font-size:20px;}
@@ -1143,8 +1144,9 @@ function renderGlossSubtab() {
     });
     wrap.appendChild(btn);
   });
-  // 검색창 — 우측 정렬
+  // 검색창 — 우측 정렬 (모바일에서는 숨김)
   const sw = document.createElement("div");
+  sw.id="gloss-search-wrap";
   sw.style.cssText="margin-left:auto;position:relative;flex-shrink:0;";
   sw.innerHTML=`<svg class="csi" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg><input id="gloss-search" type="search" placeholder="페이지 내 검색" autocomplete="off"/>`;
   wrap.appendChild(sw);
@@ -1180,7 +1182,7 @@ function renderChipBar() {
   if(S.cat==="용어사전"){bar.innerHTML="";return;}  // 용어사전: 서브탭에서 처리
   bar.innerHTML="";
   const chips=getChips(S.cat);
-  bar.style.cssText="display:flex;align-items:center;gap:6px;flex-wrap:wrap;";
+  bar.style.cssText="";  // 인라인 스타일 초기화 — CSS에서 제어
   // 칩이 없는 탭(디자인 가이드, 용어사전): 검색창만
   chips.forEach(c=>{
     const cnt=DATA.filter(d=>d.category===S.cat&&(c.key==="전체"||d.models.includes(c.key)||(d.labels&&d.labels.includes(c.key)))).length;
