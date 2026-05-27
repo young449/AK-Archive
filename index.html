@@ -604,7 +604,7 @@ body.is-tag #tag-page{display:block}
     <svg class="home-si" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6">
       <circle cx="8" cy="8" r="5.5"/><path d="M12.5 12.5L16 16"/>
     </svg>
-    <input id="home-search" type="search" placeholder="키워드로 검색하세요" autocomplete="off"/>
+    <input id="home-search" type="text" placeholder="키워드로 검색하세요" autocomplete="off"/>
     <button id="home-clear">
       <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1l8 8M9 1L1 9"/></svg>
     </button>
@@ -1501,6 +1501,11 @@ function renderBody(text) {
     ac.classList.remove("show");
     acItems = [];
     focusIdx = -1;
+    // 홈 상태에서 바로 openDetail 호출하면 레이아웃이 is-home 그대로라
+    // is-list로 먼저 전환 후 상세 진입
+    if (document.body.classList.contains("is-home")) {
+      goList(d.category, "");
+    }
     openDetail(d.id);
   }
 
