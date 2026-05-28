@@ -89,7 +89,7 @@ body.is-home #gnb-wrap{
    SECTION: css-home
    body.is-home일 때만 표시
 ============================================= */
-#home{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 24px;gap:32px;position:relative;overflow:hidden}
+#home{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 24px;gap:32px;position:relative;overflow:visible}
 body.is-home #home{display:flex}
 
 #home-logo{display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;transition:opacity 0.15s;padding:0}
@@ -1419,14 +1419,14 @@ function renderBody(text) {
   function getMatches(q) {
     const lq = q.toLowerCase();
     const scored = DATA.map(d => {
-      const title = d.title.toLowerCase();
-      const desc  = (d.desc||"").toLowerCase();
-      const body  = (d.body||"").toLowerCase();
-      if (title.includes(lq))   return { d, score: 2 };
-      if (desc.includes(lq))    return { d, score: 1 };
-      if (body.includes(lq))    return { d, score: 0 };
-      const tags  = d.tags.join(" ").toLowerCase();
-      if (tags.includes(lq))    return { d, score: 0 };
+      const title    = d.title.toLowerCase();
+      const tagModel = [...d.tags, ...d.models, ...(d.labels||[])].join(" ").toLowerCase();
+      const desc     = (d.desc||"").toLowerCase();
+      const body     = (d.body||"").toLowerCase();
+      if (title.includes(lq))    return { d, score: 3 };
+      if (tagModel.includes(lq)) return { d, score: 2 };
+      if (desc.includes(lq))     return { d, score: 1 };
+      if (body.includes(lq))     return { d, score: 0 };
       return null;
     }).filter(Boolean);
     scored.sort((a,b) => b.score - a.score || b.d.date.localeCompare(a.d.date));
