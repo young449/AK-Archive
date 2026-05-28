@@ -51,14 +51,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 #gnb-wrap{
   position:sticky;top:0;z-index:200;
   padding:40px 0 10px;
-  background:rgba(18,18,18,0.9);
-  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  background:transparent;
   display:flex;
   justify-content:center;
 }
 body.is-home #gnb-wrap{
   position:fixed;top:0;left:0;right:0;
-  background:transparent;backdrop-filter:none;
+  background:transparent;
   z-index:200;
 }
 
@@ -103,7 +102,7 @@ body.is-home #gnb-wrap{
   border-radius:var(--r-xl);
   transition:background 0.13s;
 }
-#gnb-hamburger:hover{background:var(--a-w06)}
+#gnb-hamburger:hover{}
 #gnb-hamburger svg{width:28px;height:28px}
 
 /* =============================================
@@ -144,7 +143,7 @@ body.is-home #gnb-wrap{
   transition:background 0.13s,color 0.13s;
   flex-shrink:0;
 }
-#gnb-drawer-close:hover{background:var(--a-w06);color:var(--text-1)}
+#gnb-drawer-close:hover{color:var(--text-1)}
 #gnb-drawer-close svg{width:28px;height:28px}
 
 #gnb-drawer-nav{
