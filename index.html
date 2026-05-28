@@ -596,6 +596,10 @@ body.is-tag #tag-page{display:block}
 <div id="home">
   <!-- 텍스트 가독성용 어두운 오버레이 -->
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 50% 40%, rgba(18,18,18,0.88) 0%, rgba(18,18,18,0.5) 50%, transparent 75%);pointer-events:none;z-index:0;"></div>
+  <button id="home-logo" style="position:relative;z-index:1;background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:12px;opacity:1;transition:opacity 0.15s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1">
+    <img src="images/logo.png" alt="AK" style="width:64px;height:auto;mix-blend-mode:screen;"/>
+    <span id="home-logo-text">AK Archive</span>
+  </button>
   <div id="home-copy" style="position:relative;z-index:1;">
     <p id="home-headline">AK 팀이 알아야 할 정보,<br>검색으로 바로 찾으세요.</p>
     <p id="home-subline">제품 스펙 · UX 히스토리 · 용어사전 통합 아카이브</p>
@@ -857,8 +861,10 @@ function renderTagCards(items, tag) {
 }
 
 function openDetailFromTag(id) {
+  // 태그 페이지에서 상세로 진입 — 태그 페이지 위에 상세 오버레이
   document.body.className = "is-tag is-tag-detail";
-  openDetail(id, "is-tag");
+  openDetail(id);
+  // detail을 tag-content 위에 표시
   const detail = document.getElementById("detail");
   const tagContent = document.getElementById("tag-content");
   tagContent.style.display = "none";
@@ -1128,9 +1134,9 @@ function renderCards(){
 /* =============================================
    SECTION: js-detail
 ============================================= */
-function openDetail(id, prevPage){
+function openDetail(id){
   const d=DATA.find(x=>x.id===id);if(!d)return;
-  S.prevPage = prevPage !== undefined ? prevPage : document.body.className;
+  S.prevPage=document.body.className;
   S.openId=id;
   ["card-list","chip-bar","count-row","hero"].forEach(i=>document.getElementById(i).style.display="none");
   document.getElementById("gloss-subtab-wrap").classList.remove("show");
@@ -1495,9 +1501,11 @@ function renderBody(text) {
     closeAC();
     hs.value = d.title;
     hc.classList.add("show");
-    S.chip = "전체"; S.q = ""; S.cat = d.category;
-    document.body.className = "is-list";
-    openDetail(d.id, "is-home");
+    goList(d.category, "");
+    setTimeout(() => {
+      const found = document.querySelector(`.card[data-id="${d.id}"], .card-thumb[data-id="${d.id}"]`);
+      if (found) found.click();
+    }, 80);
   }
 
   function closeAC() {
@@ -1622,108 +1630,5 @@ document.addEventListener("keydown",e=>{
 });
 </script>
 
-<script>
-(function(){
-  const canvas = document.getElementById('home-wave');
-  const ctx = canvas.getContext('2d');
-  let W, H, t = 0, raf = null;
-
-  const smooth = [];
-
-  function resize(){
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-
-  function draw(){
-    ctx.clearRect(0, 0, W, H);
-
-    const barW = 2, gap = 2, unit = barW + gap;
-    const n    = Math.ceil(W / unit) + 1;
-    const cy   = H * 0.60;   // 검색필드 중심
-    const maxH = H * 0.22;   // 각 파동 최대 높이 (두 개니까 절반으로)
-
-    if(smooth.length === 0){
-      for(let i = 0; i < n; i++){
-        const pos = i / (n - 1);
-        const e = 0.55 + 0.45 * Math.pow(Math.sin(pos * Math.PI), 1.5);
-        smooth[i]       = e * 0.5;  // 파동1 (위)
-        smooth[n + i]   = e * 0.5;  // 파동2 (아래)
-      }
-    }
-
-    for(let i = 0; i < n; i++){
-      const pos = i / (n - 1);
-      const envelope = 0.55 + 0.45 * Math.pow(Math.sin(pos * Math.PI), 1.5);
-      const x = i * unit;
-      const alpha = 0.15 + envelope * 0.42;
-
-      // ── 파동 1: 느린 파동 (위쪽으로 뻗음)
-      const wave1 = Math.sin(t * 0.014 + pos * Math.PI * 2.0) * 0.52 +
-                    Math.sin(t * 0.022 + pos * Math.PI * 5.0) * 0.28 + 0.5;
-      const target1 = (0.15 + wave1 * 0.72) * envelope;
-      if(smooth[i] === undefined) smooth[i] = target1;
-      smooth[i] += (target1 - smooth[i]) * 0.06;
-      const bh1 = smooth[i] * maxH;
-
-      // 파동1: cy 위쪽에 피크, 위아래로 자연스럽게 페이드
-      const peak1 = cy - bh1 * 0.5;  // 피크 위치
-      const grad1 = ctx.createLinearGradient(0, cy - bh1, 0, cy + bh1 * 0.3);
-      grad1.addColorStop(0,    `rgba(215,38,58,0)`);
-      grad1.addColorStop(0.35, `rgba(225,45,65,${alpha})`);
-      grad1.addColorStop(1.0,  `rgba(215,38,58,0)`);
-      ctx.fillStyle = grad1;
-      ctx.beginPath();
-      ctx.roundRect(x, cy - bh1, barW, bh1 * 1.3, 1);
-      ctx.fill();
-
-      // ── 파동 2: 위상 다르게, cy 아래쪽에 피크
-      const wave2 = Math.sin(t * 0.018 + pos * Math.PI * 2.8 + 1.2) * 0.52 +
-                    Math.sin(t * 0.026 + pos * Math.PI * 5.6 + 0.8) * 0.28 + 0.5;
-      const target2 = (0.15 + wave2 * 0.72) * envelope;
-      if(smooth[n + i] === undefined) smooth[n + i] = target2;
-      smooth[n + i] += (target2 - smooth[n + i]) * 0.06;
-      const bh2 = smooth[n + i] * maxH;
-
-      // 파동2: cy 아래쪽에 피크, 위아래로 자연스럽게 페이드
-      const grad2 = ctx.createLinearGradient(0, cy - bh2 * 0.3, 0, cy + bh2);
-      grad2.addColorStop(0,    `rgba(215,38,58,0)`);
-      grad2.addColorStop(0.65, `rgba(225,45,65,${alpha})`);
-      grad2.addColorStop(1.0,  `rgba(215,38,58,0)`);
-      ctx.fillStyle = grad2;
-      ctx.beginPath();
-      ctx.roundRect(x, cy - bh2 * 0.3, barW, bh2 * 1.3, 1);
-      ctx.fill();
-    }
-    t++;
-    raf = requestAnimationFrame(draw);
-  }
-
-  function startWave(){
-    if(!raf){
-      canvas.style.display = 'block';
-      resize(); draw();
-    }
-  }
-  function stopWave(){
-    if(raf){ cancelAnimationFrame(raf); raf = null; t = 0; }
-    ctx.clearRect(0, 0, W, H);
-    canvas.style.display = 'none';
-  }
-
-  resize();
-  window.addEventListener('resize', resize);
-
-  // body 클래스 변화 감지 → is-home일 때만 실행
-  const observer = new MutationObserver(() => {
-    if(document.body.classList.contains('is-home')) startWave();
-    else stopWave();
-  });
-  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-
-  // 초기 상태
-  if(document.body.classList.contains('is-home')) startWave();
-})();
-</script>
 </body>
 </html>
