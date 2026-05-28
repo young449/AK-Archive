@@ -733,7 +733,8 @@ body.is-tag #detail[style*="block"] {
 /* ── Mobile: < 480px ── */
 @media (max-width: 479px) {
   /* 홈 */
-  #home { gap: 20px; padding: 28px 16px; padding-top: 84px }
+  #home { gap: 20px; padding: 28px 16px; min-height: 100dvh }
+  body.is-home #home { margin-top: -84px }
   #home-headline { font-size: 21px; letter-spacing: -0.025em }
   #home-subline  { font-size: 14px }
   #home-search   {
