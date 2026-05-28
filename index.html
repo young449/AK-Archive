@@ -89,7 +89,7 @@ body.is-home #gnb-wrap{
    SECTION: css-home
    body.is-home일 때만 표시
 ============================================= */
-#home{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 24px;gap:32px;position:relative;overflow:visible}
+#home{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 24px;gap:32px;position:relative;overflow:hidden}
 body.is-home #home{display:flex}
 
 #home-logo{display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;transition:opacity 0.15s;padding:0}
@@ -600,11 +600,11 @@ body.is-tag #tag-page{display:block}
     <p id="home-headline">AK 팀이 알아야 할 정보,<br>검색으로 바로 찾으세요.</p>
     <p id="home-subline">제품 스펙 · UX 히스토리 · 용어사전 통합 아카이브</p>
   </div>
-  <div id="home-search-wrap" style="position:relative;z-index:10000;">
+  <div id="home-search-wrap" style="position:relative;z-index:1;">
     <svg class="home-si" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6">
       <circle cx="8" cy="8" r="5.5"/><path d="M12.5 12.5L16 16"/>
     </svg>
-    <input id="home-search" type="text" placeholder="키워드로 검색하세요" autocomplete="off"/>
+    <input id="home-search" type="search" placeholder="키워드로 검색하세요" autocomplete="off"/>
     <button id="home-clear">
       <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1l8 8M9 1L1 9"/></svg>
     </button>
@@ -1003,7 +1003,7 @@ function renderChipBar() {
   sw.innerHTML=`<svg class="csi" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg><input id="chip-search" type="search" placeholder="페이지 내 검색" autocomplete="off"/>`;
   bar.appendChild(sw);
   const inp=document.getElementById("chip-search");
-  if(inp){inp.value=S.q;inp.addEventListener("input",()=>{S.q=inp.value;renderCards();});}
+  if(inp){inp.value=S.q||"";inp.addEventListener("input",()=>{S.q=inp.value;renderCards();});}
 }
 
 function updateChips(){
@@ -1057,7 +1057,7 @@ function renderCards(){
     list.classList.add("is-thumb-grid");
     items.forEach(d=>{
       const el=document.createElement("div");
-      el.className="card-thumb";el.setAttribute("role","listitem");el.setAttribute("tabindex","0");
+      el.className="card-thumb";el.setAttribute("role","listitem");el.setAttribute("tabindex","0");el.setAttribute("data-id",d.id);
       // 썸네일 이미지: _thumb 파일 우선, 없으면 images[0] 사용
       const thumbImg = d.images && d.images.find(img => img.src.toLowerCase().includes('_thumb'));
       const thumbFallback = d.images && d.images.length ? d.images[0] : null;
@@ -1097,7 +1097,7 @@ function renderCards(){
   list.classList.remove("is-thumb-grid");
   items.forEach(d=>{
     const el=document.createElement("div");
-    el.className="card";el.setAttribute("role","listitem");el.setAttribute("tabindex","0");
+    el.className="card";el.setAttribute("role","listitem");el.setAttribute("tabindex","0");el.setAttribute("data-id",d.id);
     // 상단: 탭명 배지(labels) + 반영모델 배지(models)
     const labelBadges = d.labels
       ? d.labels.map(l=>`<span class="badge ${LABEL_CLS[l]||'b-more'}">${l}</span>`).join("")
@@ -1107,8 +1107,8 @@ function renderCards(){
     const divider=(labelBadges&&vis.length>0)?`<span class="badge-divider"></span>`:"";
     const modelBadges=labelBadges+divider+vis.map(m=>`<span class="badge ${DAP_CLS[m]||'b-more'}">${m}</span>`).join("")
       +(hid>0?`<span class="badge b-more">+${hid}</span>`:"");
-    const topRow=(vis.length>0||labelBadges)
-      ?`<div class="card-top"><div class="card-models-row">${modelBadges}</div></div>`
+    const topRow=(vis.length>0||labelBadges||!S.cat)
+      ?`<div class="card-top"><div class="card-models-row">${!S.cat?`<span class="badge ${CAT_CLS[d.category]||'b-more'}">${d.category}</span>${(vis.length>0||labelBadges)?'<span class="badge-divider"></span>':''}`:''  }${modelBadges}</div></div>`
       :"";
     const dp=d.date.split(".");
     const fmtDate=dp.length===3?`${dp[0]}. ${parseInt(dp[1])}. ${parseInt(dp[2])}.`:d.date;
@@ -1419,14 +1419,14 @@ function renderBody(text) {
   function getMatches(q) {
     const lq = q.toLowerCase();
     const scored = DATA.map(d => {
-      const title    = d.title.toLowerCase();
-      const tagModel = [...d.tags, ...d.models, ...(d.labels||[])].join(" ").toLowerCase();
-      const desc     = (d.desc||"").toLowerCase();
-      const body     = (d.body||"").toLowerCase();
-      if (title.includes(lq))    return { d, score: 3 };
-      if (tagModel.includes(lq)) return { d, score: 2 };
-      if (desc.includes(lq))     return { d, score: 1 };
-      if (body.includes(lq))     return { d, score: 0 };
+      const title = d.title.toLowerCase();
+      const desc  = (d.desc||"").toLowerCase();
+      const body  = (d.body||"").toLowerCase();
+      if (title.includes(lq))   return { d, score: 2 };
+      if (desc.includes(lq))    return { d, score: 1 };
+      if (body.includes(lq))    return { d, score: 0 };
+      const tags  = d.tags.join(" ").toLowerCase();
+      if (tags.includes(lq))    return { d, score: 0 };
       return null;
     }).filter(Boolean);
     scored.sort((a,b) => b.score - a.score || b.d.date.localeCompare(a.d.date));
