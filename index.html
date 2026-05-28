@@ -57,8 +57,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 body.is-home #gnb-wrap{
   position:fixed;top:0;left:0;right:0;
-  background:transparent;
-  z-index:200;
 }
 
 #gnb-inner{
@@ -102,7 +100,6 @@ body.is-home #gnb-wrap{
   border-radius:var(--r-xl);
   transition:background 0.13s;
 }
-#gnb-hamburger:hover{}
 #gnb-hamburger svg{width:24px;height:24px}
 
 /* =============================================
@@ -143,12 +140,11 @@ body.is-home #gnb-wrap{
   transition:background 0.13s,color 0.13s;
   flex-shrink:0;
 }
-#gnb-drawer-close:hover{color:var(--text-1)}
+#gnb-drawer-close:hover{opacity:0.8}
 #gnb-drawer-close svg{width:24px;height:24px}
 
 #gnb-drawer-nav{
   display:flex;flex-direction:column;
-  gap:0;
 }
 .gnb-drawer-item{
   display:flex;align-items:center;
@@ -174,7 +170,8 @@ body.is-home #gnb-wrap{
     padding:28px 16px 10px;
   }
   body.is-home #gnb-wrap{
-    padding:28px 16px 10px;
+    height:0;
+    overflow:visible;
   }
   /* pill이 드로어 컨테이너 역할 — flex-direction: column으로 전환 */
   #gnb-inner{
@@ -211,7 +208,13 @@ body.is-home #gnb-wrap{
    SECTION: css-home
    body.is-home일 때만 표시
 ============================================= */
-#home{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 24px;gap:32px;position:relative;overflow:hidden}
+#home{
+  display:none;flex-direction:column;
+  align-items:center;justify-content:center;
+  min-height:100vh;
+  padding:40px 24px;gap:32px;
+  position:relative;overflow:hidden;
+}
 body.is-home #home{display:flex}
 
 #home-copy{text-align:center;position:relative;z-index:1}
@@ -733,9 +736,7 @@ body.is-tag #detail[style*="block"] {
 /* ── Mobile: < 480px ── */
 @media (max-width: 479px) {
   /* 홈 */
-  #home { gap: 20px; padding: 28px 16px; min-height: 100dvh }
-  body.is-home #home { margin-top: -84px }
-  #home-headline { font-size: 21px; letter-spacing: -0.025em }
+  #home { gap: 20px; padding: 28px 16px; min-height: 100dvh }  #home-headline { font-size: 21px; letter-spacing: -0.025em }
   #home-subline  { font-size: 14px }
   #home-search   {
     height: 46px;
