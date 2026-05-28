@@ -661,11 +661,20 @@ body.is-tag #detail[style*="block"] {
   #hero-title   { font-size: 22px }
   #hero-desc    { font-size: 15px }
 
+  /* chip-bar 가로 스크롤 */
+  #chip-bar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  #chip-bar::-webkit-scrollbar { display: none }
+
   /* chip-bar의 검색 입력 */
-  #chip-search       { width: 150px }
-  #chip-search:focus { width: 180px }
-  #gloss-search       { width: 150px }
-  #gloss-search:focus { width: 180px }
+  #chip-search-wrap { flex: 1; min-width: 0 }
+  #chip-search       { width: 100%; font-size: 13px }
+  #chip-search:focus { width: 100% }
 
   /* 카드 */
   .card { padding: 22px 18px }
@@ -736,7 +745,8 @@ body.is-tag #detail[style*="block"] {
 /* ── Mobile: < 480px ── */
 @media (max-width: 479px) {
   /* 홈 */
-  #home { gap: 20px; padding: 28px 16px; min-height: 100dvh }  #home-headline { font-size: 21px; letter-spacing: -0.025em }
+  #home { gap: 20px; padding: 28px 16px; min-height: 100dvh }
+  #home-headline { font-size: 21px; letter-spacing: -0.025em }
   #home-subline  { font-size: 14px }
   #home-search   {
     height: 46px;
