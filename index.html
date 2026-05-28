@@ -64,7 +64,8 @@ body.is-home #gnb-wrap{
 
 #gnb-inner{
   display:inline-flex;align-items:center;gap:2px;
-  background:var(--n-800);
+  background:rgba(26,26,26,0.72);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border:1px solid var(--div-2);
   border-radius:var(--r-xl);
   padding:8px 12px;
@@ -110,11 +111,10 @@ body.is-home #gnb-wrap{
    모바일 드로어 — pill 내부에서 아래로 확장
 ============================================= */
 
-/* 오버레이: 배경 딤 처리용 */
+/* 오버레이: 클릭 감지용 (딤 없음) */
 #gnb-drawer-overlay{
   display:none;
   position:fixed;inset:0;
-  background:rgba(0,0,0,0.45);
   z-index:199;
 }
 #gnb-drawer-overlay.open{display:block}
@@ -1134,7 +1134,7 @@ const DATA = [...DATA_product, ...DATA_ux, ...DATA_glossary];
    SECTION: js-app
 ============================================= -->
 <script>
-const S = {cat:"제품 모델",chip:"전체",q:"",openId:null,tag:"",glossTab:"전체"};
+const S = {cat:"",chip:"전체",q:"",openId:null,tag:"",glossTab:"전체"};
 
 /* =============================================
    SECTION: js-tag-page
