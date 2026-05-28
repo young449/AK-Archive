@@ -69,6 +69,10 @@ body.is-home #gnb-wrap{
   border-radius:var(--r-xl);
   padding:8px 12px;
 }
+/* 데스크탑: inner-row는 그냥 투명 컨테이너 */
+#gnb-inner-row{
+  display:contents;
+}
 #gnb-logo{
   display:flex;align-items:center;gap:9px;
   flex-shrink:0;padding:4px 12px 4px 6px;
@@ -103,35 +107,30 @@ body.is-home #gnb-wrap{
 
 /* =============================================
    SECTION: css-gnb-drawer
-   모바일 드로어 메뉴
+   모바일 드로어 — pill 내부에서 아래로 확장
 ============================================= */
+
+/* 오버레이: 배경 딤 처리용 */
 #gnb-drawer-overlay{
   display:none;
   position:fixed;inset:0;
-  background:rgba(0,0,0,0.55);
-  z-index:300;
-  backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);
+  background:rgba(0,0,0,0.45);
+  z-index:199;
 }
 #gnb-drawer-overlay.open{display:block}
 
+/* 드로어 nav: 기본 숨김, 열리면 펼침 */
 #gnb-drawer{
-  position:fixed;top:0;left:0;right:0;
-  background:var(--n-800);
-  border-bottom:1px solid var(--div-2);
-  z-index:301;
-  display:flex;flex-direction:column;
-  transform:translateY(-100%);
-  transition:transform 0.26s cubic-bezier(0.32,0,0.15,1);
+  display:none;
+  flex-direction:column;
+  padding:8px 12px 16px;
+  border-top:1px solid var(--div-1);
 }
-#gnb-drawer.open{transform:translateY(0)}
+#gnb-drawer.open{display:flex}
 
-#gnb-drawer-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 8px 0 30px;
-  height:60px;
-  flex-shrink:0;
-  border-bottom:1px solid var(--div-1);
-}
+/* 드로어 헤더: pill 안의 별도 행 — 모바일에서만 표시 */
+#gnb-drawer-header{display:none}
+
 #gnb-drawer-logo{
   display:flex;align-items:center;gap:9px;
   font-size:14px;font-weight:700;
@@ -147,13 +146,11 @@ body.is-home #gnb-wrap{
   flex-shrink:0;
 }
 #gnb-drawer-close:hover{background:var(--a-w06);color:var(--text-1)}
-#gnb-drawer-close svg{width:32px;height:32px}
+#gnb-drawer-close svg{width:28px;height:28px}
 
 #gnb-drawer-nav{
   display:flex;flex-direction:column;
-  padding:12px 12px;
   gap:2px;
-  flex:1;
 }
 .gnb-drawer-item{
   display:flex;align-items:center;
@@ -181,11 +178,21 @@ body.is-home #gnb-wrap{
   body.is-home #gnb-wrap{
     padding:32px 16px 10px;
   }
+  /* pill이 드로어 컨테이너 역할 — flex-direction: column으로 전환 */
   #gnb-inner{
     width:100%;
+    flex-direction:column;
+    align-items:stretch;
+    padding:0;
+    gap:0;
+  }
+  /* pill 상단 행: 로고 + 햄버거/닫기 */
+  #gnb-inner-row{
+    display:flex;
+    align-items:center;
     justify-content:space-between;
-    padding:0 0 0 8px;
     height:60px;
+    padding:0 0 0 8px;
   }
   #gnb-logo{
     height:60px;
@@ -194,9 +201,7 @@ body.is-home #gnb-wrap{
   }
   #gnb-logo img{width:22px}
   #gnb-logo-text{font-size:14px}
-  /* 탭은 드로어로 이동 — 숨김 */
   .gnb-tab{display:none}
-  /* 햄버거 표시 */
   #gnb-hamburger{display:flex}
 }
 
@@ -875,41 +880,39 @@ body.is-tag #tag-page{display:block}
 ============================================= -->
 <div id="gnb-wrap">
   <div id="gnb-inner">
-    <button id="gnb-logo">
-      <img src="images/logo/logo-300.png" alt="AK"/>
-      <span id="gnb-logo-text">AK Archive</span>
-    </button>
-    <button class="gnb-tab" data-cat="제품 모델">제품</button>
-    <button class="gnb-tab" data-cat="기능 히스토리">UX 히스토리</button>
-    <button class="gnb-tab" data-cat="용어사전">AK 용어</button>
-    <button id="gnb-hamburger" aria-label="메뉴 열기">
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <path d="M5 10h22M5 16h22M5 22h22"/>
-      </svg>
-    </button>
+    <!-- pill 상단 행 -->
+    <div id="gnb-inner-row">
+      <button id="gnb-logo">
+        <img src="images/logo/logo-300.png" alt="AK"/>
+        <span id="gnb-logo-text">AK Archive</span>
+      </button>
+      <button class="gnb-tab" data-cat="제품 모델">제품</button>
+      <button class="gnb-tab" data-cat="기능 히스토리">UX 히스토리</button>
+      <button class="gnb-tab" data-cat="용어사전">AK 용어</button>
+      <button id="gnb-hamburger" aria-label="메뉴 열기">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M5 10h22M5 16h22M5 22h22"/>
+        </svg>
+      </button>
+      <button id="gnb-drawer-close" aria-label="메뉴 닫기" style="display:none">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M8 8l16 16M24 8L8 24"/>
+        </svg>
+      </button>
+    </div>
+    <!-- 드로어 nav (pill 내부에서 확장) -->
+    <div id="gnb-drawer">
+      <nav id="gnb-drawer-nav">
+        <button class="gnb-drawer-item" data-cat="제품 모델">제품</button>
+        <button class="gnb-drawer-item" data-cat="기능 히스토리">UX 히스토리</button>
+        <button class="gnb-drawer-item" data-cat="용어사전">AK 용어</button>
+      </nav>
+    </div>
   </div>
 </div>
 
-<!-- 드로어 오버레이 -->
+<!-- 오버레이 (배경 딤) -->
 <div id="gnb-drawer-overlay"></div>
-<div id="gnb-drawer" role="dialog" aria-modal="true" aria-label="내비게이션 메뉴">
-  <div id="gnb-drawer-header">
-    <div id="gnb-drawer-logo">
-      <img src="images/logo/logo-300.png" alt="AK"/>
-      <span>AK Archive</span>
-    </div>
-    <button id="gnb-drawer-close" aria-label="메뉴 닫기">
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <path d="M8 8l16 16M24 8L8 24"/>
-      </svg>
-    </button>
-  </div>
-  <nav id="gnb-drawer-nav">
-    <button class="gnb-drawer-item" data-cat="제품 모델">제품</button>
-    <button class="gnb-drawer-item" data-cat="기능 히스토리">UX 히스토리</button>
-    <button class="gnb-drawer-item" data-cat="용어사전">AK 용어</button>
-  </nav>
-</div>
 
 <!-- =============================================
    SECTION: home
@@ -1907,20 +1910,24 @@ document.querySelectorAll(".gnb-tab").forEach(tab=>{
 
 // ── 드로어 ──
 (function(){
-  const overlay = document.getElementById("gnb-drawer-overlay");
-  const drawer  = document.getElementById("gnb-drawer");
+  const overlay   = document.getElementById("gnb-drawer-overlay");
+  const drawer    = document.getElementById("gnb-drawer");
   const hamburger = document.getElementById("gnb-hamburger");
   const closeBtn  = document.getElementById("gnb-drawer-close");
 
   function openDrawer(){
     overlay.classList.add("open");
     drawer.classList.add("open");
+    hamburger.style.display = "none";
+    closeBtn.style.display  = "flex";
     document.body.style.overflow = "hidden";
     syncDrawerActive();
   }
   function closeDrawer(){
     overlay.classList.remove("open");
     drawer.classList.remove("open");
+    hamburger.style.display = "";
+    closeBtn.style.display  = "none";
     document.body.style.overflow = "";
   }
   function syncDrawerActive(){
@@ -1941,7 +1948,6 @@ document.querySelectorAll(".gnb-tab").forEach(tab=>{
     });
   });
 
-  // goList / goHome 호출 시 드로어 active 상태 동기화
   const _origGoList = goList;
   window.goList = function(cat, q){
     _origGoList(cat, q);
