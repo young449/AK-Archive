@@ -1497,11 +1497,11 @@ function renderBody(text) {
     closeAC();
     hs.value = d.title;
     hc.classList.add("show");
-    goList(d.category, "");
-    setTimeout(() => {
-      const found = document.querySelector(`.card[data-id="${d.id}"], .card-thumb[data-id="${d.id}"]`);
-      if (found) found.click();
-    }, 80);
+    // 목록 경유 없이 바로 해당 카테고리 목록 세팅 후 상세 오픈
+    S.chip = "전체"; S.q = ""; S.cat = d.category;
+    document.body.className = "is-list";
+    S.prevPage = "is-home";
+    openDetail(d.id);
   }
 
   function closeAC() {
