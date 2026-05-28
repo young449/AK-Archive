@@ -1245,38 +1245,9 @@ const GLOSS_TABS = ["전체","하드웨어","음원 & 파일","서비스 & 연�
 function renderGlossSubtab() {
   const wrap = document.getElementById("gloss-subtab-wrap");
   const bar  = document.getElementById("chip-bar");
-  if(S.cat !== "용어사전"){
-    wrap.classList.remove("show");
-    wrap.innerHTML="";
-    bar.style.display="";   // 다른 탭에서는 chip-bar 원래대로
-    return;
-  }
-  // 용어사전: chip-bar 숨기고 서브탭에 검색창 통합
-  bar.style.display="none";
-  wrap.classList.add("show");
-  wrap.innerHTML = "";
-  GLOSS_TABS.forEach(tab => {
-    const cnt = tab === "전체"
-      ? DATA_glossary.length
-      : DATA_glossary.filter(d => d.glossTab === tab).length;
-    const btn = document.createElement("button");
-    btn.className = "gloss-stab" + (S.glossTab === tab ? " is-active" : "");
-    btn.innerHTML = `${tab} <span class="cnt">${cnt}</span>`;
-    btn.addEventListener("click", () => {
-      S.glossTab = tab;
-      renderGlossSubtab();
-      renderCards();
-    });
-    wrap.appendChild(btn);
-  });
-  // 검색창 — 우측 정렬
-  const sw = document.createElement("div");
-  sw.style.cssText="margin-left:auto;position:relative;flex-shrink:0;";
-  sw.innerHTML=`<svg class="csi" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg><input id="gloss-search" type="search" placeholder="페이지 내 검색" autocomplete="off"/>`;
-  wrap.appendChild(sw);
-  const inp = sw.querySelector("#gloss-search");
-  inp.value = S.q;
-  inp.addEventListener("input", ()=>{ S.q=inp.value; renderCards(); });
+  wrap.classList.remove("show");
+  wrap.innerHTML="";
+  bar.style.display="";
 }
 
 /* =============================================
@@ -1298,18 +1269,29 @@ function getChips(cat) {
     {key:"Heritage",label:"Heritage"},
     {key:"Classic",label:"Classic"}
   ];
-  return []; // 디자인 가이드, 용어사전: 모델 필터 없음, 검색창만
+  if(cat==="용어사전") return [
+    {key:"전체",label:"전체"},
+    {key:"하드웨어",label:"하드웨어"},
+    {key:"음원 & 파일",label:"음원 & 파일"},
+    {key:"서비스 & 연결",label:"서비스 & 연결"},
+    {key:"기능",label:"기능"}
+  ];
+  return []; // 디자인 가이드: 검색창만
 }
 
 function renderChipBar() {
   const bar=document.getElementById("chip-bar");
-  if(S.cat==="용어사전"){bar.innerHTML="";return;}  // 용어사전: 서브탭에서 처리
   bar.innerHTML="";
   const chips=getChips(S.cat);
   bar.style.cssText="";
   // 칩이 없는 탭(디자인 가이드, 용어사전): 검색창만
   chips.forEach(c=>{
-    const cnt=DATA.filter(d=>d.category===S.cat&&(c.key==="전체"||d.models.includes(c.key)||(d.labels&&d.labels.includes(c.key)))).length;
+    let cnt;
+    if(S.cat==="용어사전"){
+      cnt = c.key==="전체" ? DATA.filter(d=>d.category==="용어사전").length : DATA.filter(d=>d.category==="용어사전"&&d.glossTab===c.key).length;
+    } else {
+      cnt=DATA.filter(d=>d.category===S.cat&&(c.key==="전체"||d.models.includes(c.key)||(d.labels&&d.labels.includes(c.key)))).length;
+    }
     const btn=document.createElement("button");
     btn.className="chip-btn"+(S.chip===c.key?" is-active":"");
     btn.dataset.chip=c.key;
@@ -1337,7 +1319,7 @@ function filterData(){
   const q=S.q.trim().toLowerCase();
   return DATA.filter(d=>{
     if(S.cat&&d.category!==S.cat)return false;
-    if(S.cat==="용어사전" && S.glossTab!=="전체" && d.glossTab!==S.glossTab) return false;
+    if(S.cat==="용어사전" && S.chip!=="전체" && d.glossTab!==S.chip) return false;
     if(S.chip!=="전체"&&(S.cat==="제품 모델"||S.cat==="기능 히스토리")){
       const inModels = d.models.includes(S.chip);
       const inLabels = d.labels && d.labels.includes(S.chip);
