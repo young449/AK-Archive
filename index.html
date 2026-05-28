@@ -857,10 +857,8 @@ function renderTagCards(items, tag) {
 }
 
 function openDetailFromTag(id) {
-  // 태그 페이지에서 상세로 진입 — 태그 페이지 위에 상세 오버레이
   document.body.className = "is-tag is-tag-detail";
-  openDetail(id);
-  // detail을 tag-content 위에 표시
+  openDetail(id, "is-tag");
   const detail = document.getElementById("detail");
   const tagContent = document.getElementById("tag-content");
   tagContent.style.display = "none";
@@ -1130,9 +1128,9 @@ function renderCards(){
 /* =============================================
    SECTION: js-detail
 ============================================= */
-function openDetail(id){
+function openDetail(id, prevPage){
   const d=DATA.find(x=>x.id===id);if(!d)return;
-  S.prevPage=document.body.className;
+  S.prevPage = prevPage !== undefined ? prevPage : document.body.className;
   S.openId=id;
   ["card-list","chip-bar","count-row","hero"].forEach(i=>document.getElementById(i).style.display="none");
   document.getElementById("gloss-subtab-wrap").classList.remove("show");
@@ -1497,11 +1495,9 @@ function renderBody(text) {
     closeAC();
     hs.value = d.title;
     hc.classList.add("show");
-    // 목록 경유 없이 바로 해당 카테고리 목록 세팅 후 상세 오픈
     S.chip = "전체"; S.q = ""; S.cat = d.category;
     document.body.className = "is-list";
-    S.prevPage = "is-home";
-    openDetail(d.id);
+    openDetail(d.id, "is-home");
   }
 
   function closeAC() {
