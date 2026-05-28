@@ -1,1734 +1,324 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>AK Archive</title>
-<link rel="preconnect" href="https://cdn.jsdelivr.net"/>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"/>
-
-<style>
-:root {
-  --n-900:#121212;--n-800:#1A1A1A;--n-700:#292929;
-  --n-600:#3A3A3A;--n-500:#595959;--n-400:#6C6C6C;--n-300:#949494;
-  --cr-900:#720B1C;--cr-700:#CC1B38;--cr-200:#E7727F;--cr-100:#F09AA3;
-  --a-w100:rgba(255,255,255,1);--a-w50:rgba(255,255,255,0.5);
-  --a-w30:rgba(255,255,255,0.3);--a-w10:rgba(255,255,255,0.1);
-  --a-w06:rgba(255,255,255,0.06);
-  --text-1:var(--a-w100);--text-2:var(--a-w50);--text-3:var(--a-w30);
-  --div-1:var(--n-700);--div-2:var(--n-600);
-  --cat-model-bg:rgba(0,123,255,0.12);--cat-model:#5AABFF;
-  --cat-hist-bg:rgba(204,27,56,0.14);--cat-hist:var(--cr-100);
-  --cat-design-bg:rgba(27,204,163,0.12);--cat-design:#1BCCA3;
-  --cat-gloss-bg:rgba(255,187,0,0.10);--cat-gloss:#FFBB00;
-  --chip-ultima-bg:rgba(204,27,56,0.16);--chip-ultima:var(--cr-200);
-  --chip-pd-bg:rgba(0,123,255,0.14);--chip-pd:#6DB8FF;
-  --chip-her-bg:rgba(255,187,0,0.10);--chip-her:#FFBB00;
-  --chip-cl-bg:rgba(149,149,149,0.1);--chip-cl:#A0A0A0;
-  --chip-sp4000t-bg:rgba(163,106,255,0.14);--chip-sp4000t:#C49DFF;
-  --chip-rc-bg:rgba(27,204,163,0.12);--chip-rc:#1BCCA3;
-  --font:"Pretendard Variable","Pretendard",sans-serif;
-  --mono:var(--font);
-  --r-xs:4px;--r-sm:6px;--r-lg:16px;--r-xl:999px;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:16px}
-body{font-family:var(--font);background:var(--n-900);color:var(--text-1);min-height:100vh;-webkit-font-smoothing:antialiased}
-a{color:inherit;text-decoration:none}
-button{font-family:inherit;cursor:pointer;border:none;background:none}
-
-/* =============================================
-   SECTION: css-gnb
-   항상 표시. 홈에서는 숨김 (body.is-home)
-============================================= */
-#gnb-wrap{
-  position:sticky;top:0;z-index:200;
-  padding:40px 0 10px;
-  background:rgba(18,18,18,0.9);
-  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-  display:flex;
-  justify-content:center;
-}
-body.is-home #gnb-wrap{
-  position:fixed;top:0;left:0;right:0;
-  background:transparent;backdrop-filter:none;
-  z-index:200;
-}
-
-
-#gnb-inner{
-  display:inline-flex;align-items:center;gap:2px;
-  background:var(--n-800);
-  border:1px solid var(--div-2);
-  border-radius:var(--r-xl);
-  padding:8px 12px;
-}
-#gnb-logo{
-  display:flex;align-items:center;gap:9px;
-  flex-shrink:0;padding:4px 12px 4px 6px;
-  border-radius:var(--r-xl);transition:background 0.14s;
-}
-#gnb-logo:hover{background:transparent}
-#gnb-logo img{width:22px;height:auto;mix-blend-mode:screen}
-#gnb-logo-text{
-  font-family:var(--font);font-size:14px;font-weight:700;
-  color:var(--text-1);letter-spacing:0.06em;white-space:nowrap;
-}
-.gnb-sep{display:none}
-.gnb-tab{
-  padding:12px 20px;font-size:14px;font-weight:500;
-  color:var(--text-2);border-radius:var(--r-xl);
-  transition:color 0.13s;white-space:nowrap;
-}
-.gnb-tab:hover{color:var(--text-1)}
-.gnb-tab.is-active{
-  color:var(--text-1);
-}
-
-/* =============================================
-   SECTION: css-home
-   body.is-home일 때만 표시
-============================================= */
-#home{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 24px;gap:32px;position:relative;overflow:hidden}
-body.is-home #home{display:flex}
-
-#home-logo{display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;transition:opacity 0.15s;padding:0}
-#home-logo:hover{opacity:0.8}
-#home-logo img{width:64px;height:auto;mix-blend-mode:screen}
-#home-logo-text{font-family:var(--font);font-size:14px;font-weight:700;color:var(--text-1);letter-spacing:0.06em}
-
-#home-copy{text-align:center}
-#home-headline{font-size:32px;font-weight:600;color:var(--text-1);line-height:1.3;letter-spacing:-0.02em;margin-bottom:8px}
-#home-subline{font-size:16px;font-weight:400;color:var(--text-2);line-height:1.5}
-
-#home-search-wrap{width:100%;max-width:480px;position:relative}
-#home-search{
-  width:100%;height:52px;padding:0 48px 0 50px;
-  background:var(--n-800);border:1px solid var(--div-2);
-  border-radius:16px;color:var(--text-1);
-  font-family:var(--font);font-size:16px;outline:none;
-  transition:border-color 0.15s,box-shadow 0.15s;
-}
-#home-search::placeholder{color:var(--n-500)}
-#home-search:focus{border:2px solid rgba(204,27,56,0.5);box-shadow:0 0 12px rgba(204,27,56,0.10)}
-.home-si{position:absolute;left:17px;top:50%;transform:translateY(-50%);color:var(--n-500);pointer-events:none}
-#home-clear{
-  position:absolute;right:15px;top:50%;transform:translateY(-50%);
-  width:22px;height:22px;border-radius:50%;
-  background:var(--n-600);color:var(--text-2);
-  display:none;align-items:center;justify-content:center;
-}
-#home-clear.show{display:flex}
-
-/* =============================================
-   SECTION: css-autocomplete
-============================================= */
-#home-autocomplete{
-  position:absolute;top:calc(100% + 8px);left:0;right:0;
-  background:var(--n-800);border:1px solid var(--div-2);
-  border-radius:14px;overflow:hidden;
-  box-shadow:0 8px 32px rgba(0,0,0,0.45);
-  z-index:300;
-  display:none;
-}
-#home-autocomplete.show{display:block}
-.ac-item{
-  display:flex;align-items:center;gap:10px;
-  padding:13px 18px;cursor:pointer;
-  transition:background 0.1s;
-}
-.ac-item:hover,.ac-item.is-focused{background:var(--n-700)}
-.ac-item-icon{
-  flex-shrink:0;color:var(--n-400);
-}
-.ac-item-content{flex:1;min-width:0}
-.ac-item-title{
-  font-size:15px;font-weight:500;color:var(--text-1);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-  line-height:1.35;
-}
-.ac-item-title mark{
-  background:rgba(204,27,56,0.22);color:var(--cr-100);
-  border-radius:2px;padding:0 1px;font-style:normal;
-}
-.ac-item-meta{
-  font-size:12px;color:var(--n-400);margin-top:2px;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.ac-item-badge{
-  flex-shrink:0;
-  font-size:11px;font-weight:500;padding:2px 7px;
-  border-radius:var(--r-xs);
-  background:var(--a-w06);color:var(--n-400);
-  border:1px solid var(--div-1);
-}
-.ac-footer{
-  padding:10px 18px;
-  border-top:1px solid var(--div-1);
-  font-size:13px;color:var(--n-400);
-  display:flex;align-items:center;gap:6px;
-  cursor:pointer;transition:background 0.1s;
-}
-.ac-footer:hover{background:var(--n-700)}
-.ac-footer strong{color:var(--text-2);font-weight:500}
-.ac-history-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:10px 18px 6px;
-}
-.ac-history-label{font-size:11px;font-weight:600;color:var(--n-400);letter-spacing:0.06em;text-transform:uppercase}
-.ac-history-clear{font-size:12px;color:var(--n-400);background:none;border:none;cursor:pointer;font-family:var(--font);padding:0;transition:color 0.12s}
-.ac-history-clear:hover{color:var(--text-2)}
-.ac-item-del{
-  flex-shrink:0;width:20px;height:20px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  color:var(--n-500);background:none;border:none;cursor:pointer;
-  font-family:var(--font);opacity:0;transition:opacity 0.1s,background 0.1s;
-}
-.ac-item:hover .ac-item-del{opacity:1}
-.ac-item-del:hover{background:var(--n-600);color:var(--text-2)}
-
-/* =============================================
-   SECTION: css-list
-   body.is-list일 때 표시
-============================================= */
-#list-page{display:none;flex-direction:column;min-height:calc(100vh - 62px)}
-body.is-list #list-page{display:flex}
-
-#list-content{flex:1;max-width:960px;margin:0 auto;width:100%;padding:40px 24px 80px}
-#hero{margin-bottom:28px}
-#hero-title{font-size:24px;font-weight:700;color:var(--text-1);margin-bottom:8px}
-#hero-desc{font-size:16px;color:var(--text-2)}
-
-/* =============================================
-   SECTION: css-chip-bar
-============================================= */
-#chip-bar{display:flex;align-items:center;gap:6px;margin-bottom:20px;flex-wrap:wrap}
-.chip-btn{
-  display:inline-flex;align-items:center;gap:5px;
-  padding:7px 14px;border-radius:var(--r-xl);
-  font-size:14px;font-weight:500;
-  color:var(--text-2);background:var(--n-800);
-  border:1px solid var(--div-2);
-  transition:all 0.13s;white-space:nowrap;
-  flex-shrink:0;
-}
-.chip-btn:hover{color:var(--text-1);background:var(--n-700);border-color:var(--n-500)}
-.chip-btn.is-active{color:#fff;background:var(--cr-700);border-color:var(--cr-700)}
-.chip-btn.is-active[data-chip="A&ultima"]{background:var(--chip-ultima-bg);border-color:var(--chip-ultima);color:var(--chip-ultima)}
-.chip-btn.is-active[data-chip="PD series"]{background:var(--chip-pd-bg);border-color:var(--chip-pd);color:var(--chip-pd)}
-.chip-btn.is-active[data-chip="RC"]{background:var(--chip-rc-bg);border-color:var(--chip-rc);color:var(--chip-rc)}
-.chip-btn.is-active[data-chip="Heritage"]{background:var(--chip-her-bg);border-color:var(--chip-her);color:var(--chip-her)}
-.chip-btn.is-active[data-chip="Classic"]{background:var(--chip-cl-bg);border-color:var(--chip-cl);color:var(--chip-cl)}
-.chip-btn.is-active[data-chip="SP4000"]{background:var(--chip-sp4000t-bg);border-color:var(--chip-sp4000t);color:var(--chip-sp4000t)}
-.chip-btn.is-active[data-chip="SP4000T"]{background:var(--chip-sp4000t-bg);border-color:var(--chip-sp4000t);color:var(--chip-sp4000t)}
-.chip-btn .cnt{font-size:12px;font-family:var(--mono);opacity:0.7}
-.gloss-stab .cnt{font-size:12px;font-family:var(--mono);opacity:0.7}
-#chip-search-wrap{position:relative;flex-shrink:0}
-#chip-search{
-  width:170px;height:36px;padding:0 12px 0 32px;
-  background:var(--n-800);border:1px solid var(--div-2);
-  border-radius:var(--r-xl);color:var(--text-1);
-  font-family:var(--font);font-size:14px;outline:none;
-  transition:border-color 0.13s,width 0.2s;
-}
-#chip-search::placeholder{color:var(--n-500)}
-#chip-search:focus{border-color:var(--cr-700);width:205px}
-.csi{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--n-500);pointer-events:none}
-
-/* =============================================
-   SECTION: css-count + card
-============================================= */
-#count-row{margin-bottom:16px}
-#count-text{font-size:14px;color:var(--text-2)}
-#count-num{font-family:var(--mono);color:var(--text-1)}
-#card-list{display:flex;flex-direction:column;gap:12px}
-.card{
-  background:var(--n-800);border:1px solid var(--div-1);
-  border-radius:var(--r-lg);padding:28px 24px;cursor:pointer;
-  display:flex;flex-direction:column;gap:10px;
-  transition:background 0.12s,border-color 0.12s;
-}
-.card:hover{background:var(--n-700);border-color:var(--div-2)}
-.card-top{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.card-top:empty{display:none}
-.card-models-row{display:flex;gap:5px;align-items:center;flex-wrap:nowrap;overflow:hidden}
-.card-title{font-size:18px;font-weight:600;color:var(--text-1);line-height:1.4}
-/* 날짜·작성자 좌정렬 */
-.card-meta{display:flex;align-items:center;gap:6px}
-.card-meta-author{font-size:14px;font-weight:500;color:var(--text-2)}
-.card-meta-sep{font-size:14px;color:var(--n-600)}
-.card-meta-date{font-size:14px;color:var(--n-500)}
-
-/* =============================================
-   SECTION: css-thumbnail-grid
-   제품 모델 카테고리 전용 썸네일 그리드
-============================================= */
-#card-list.is-thumb-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-}
-@media(max-width:720px){
-  #card-list.is-thumb-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
-}
-@media(max-width:440px){
-  #card-list.is-thumb-grid{grid-template-columns:1fr;gap:10px;}
-}
-.card-thumb{
-  background:var(--n-800);border:1px solid var(--div-1);
-  border-radius:var(--r-lg);cursor:pointer;
-  display:flex;flex-direction:column;gap:0;
-  transition:border-color 0.15s,transform 0.15s;
-  overflow:hidden;
-}
-.card-thumb:hover{border-color:var(--div-2);transform:translateY(-2px);}
-.card-thumb-img{
-  width:100%;aspect-ratio:4/3;
-  background:var(--n-700);
-  overflow:hidden;position:relative;
-  display:flex;align-items:center;justify-content:center;
-}
-.card-thumb-img img{
-  width:100%;height:100%;object-fit:cover;
-  display:block;transition:transform 0.3s ease;
-}
-.card-thumb:hover .card-thumb-img img{transform:scale(1.04);}
-.card-thumb-img-placeholder{
-  width:100%;height:100%;
-  display:flex;align-items:center;justify-content:center;
-  background:var(--n-700);
-}
-.card-thumb-img-placeholder svg{opacity:0.15;}
-.card-thumb-body{
-  padding:18px 16px 18px;
-  display:flex;flex-direction:column;gap:0;
-}
-.card-thumb-label{display:flex;gap:5px;align-items:center;flex-wrap:wrap;margin-bottom:8px;}
-.card-thumb-label:empty{display:none;margin-bottom:0;}
-.card-thumb-title{
-  font-size:15px;font-weight:600;
-  color:var(--text-1);line-height:1.35;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-  margin-bottom:5px;
-}
-.card-thumb-meta{
-  display:flex;align-items:center;gap:5px;
-  font-size:13px;color:var(--n-500);
-}
-.card-thumb-meta-author{color:var(--text-2);font-weight:500;}
-.card-thumb-meta-sep{color:var(--n-600);}
-
-/* =============================================
-   SECTION: css-badges
-============================================= */
-.badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:var(--r-xs);font-size:12px;font-weight:500;font-family:var(--mono);letter-spacing:0.02em;white-space:nowrap}
-.b-model{background:var(--cat-model-bg);color:var(--cat-model)}
-.b-hist{background:var(--cat-hist-bg);color:var(--cat-hist)}
-.b-design{background:var(--cat-design-bg);color:var(--cat-design)}
-.b-gloss{background:var(--cat-gloss-bg);color:var(--cat-gloss)}
-.b-ultima{background:var(--chip-ultima-bg);color:var(--chip-ultima)}
-.b-pd{background:var(--chip-pd-bg);color:var(--chip-pd)}
-.b-her{background:var(--chip-her-bg);color:var(--chip-her)}
-.b-cl{background:var(--chip-cl-bg);color:var(--chip-cl)}
-.b-sp4000t,.b-sp4000{background:var(--chip-sp4000t-bg);color:var(--chip-sp4000t)}
-.b-rc{background:var(--chip-rc-bg);color:var(--chip-rc)}
-.b-more{background:var(--a-w06);color:var(--n-400);border:1px solid var(--div-1)}
-.badge-divider{display:inline-block;width:1px;height:12px;background:var(--div-1);margin:0 2px;flex-shrink:0}
-.tag{display:inline-flex;align-items:center;padding:3px 8px;border-radius:var(--r-xs);font-size:12px;color:var(--n-400);background:var(--a-w06);border:1px solid var(--div-1)}
-mark{background:rgba(204,27,56,0.22);color:var(--cr-100);border-radius:2px;padding:0 1px}
-
-/* =============================================
-   SECTION: css-empty + detail
-============================================= */
-#empty{display:none;flex-direction:column;align-items:center;padding:80px 20px;gap:12px;text-align:center}
-#empty.show{display:flex}
-#empty svg{opacity:0.12}
-#empty p{font-size:16px;font-weight:600;color:var(--text-2)}
-#empty small{font-size:14px;color:var(--n-500)}
-
-#detail{display:none;animation:fup 0.2s ease}
-#detail.show{display:block}
-@keyframes fup{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-#detail-back{display:inline-flex;align-items:center;gap:7px;font-size:14px;color:var(--text-2);padding:0;margin-bottom:24px;transition:color 0.13s}
-#detail-back:hover{color:var(--text-1)}
-#d-models{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
-#d-models:empty{display:none}
-#d-title{font-size:24px;font-weight:700;color:var(--text-1);line-height:1.3;margin-bottom:8px}
-/* 작성자 · 날짜 */
-#d-author{display:flex;align-items:center;margin-bottom:0}
-#d-name{font-size:14px;font-weight:500;color:var(--text-2)}
-.d-author-sep{margin:0 8px;font-size:14px;color:var(--n-600)}
-#d-date{font-size:14px;color:var(--n-500)}
-/* 담당자 크레딧 */
-#d-credits{
-  display:inline-flex;align-items:center;gap:0;flex-wrap:wrap;
-  margin-top:0;margin-bottom:20px;
-  padding:8px 14px;
-  background:var(--n-700);border-radius:var(--r-xl);
-  border:1px solid var(--div-2);
-}
-#d-credits:empty{display:none}
-.credit-item{display:inline-flex;align-items:center;gap:6px;padding:0 10px}
-.credit-item:first-child{padding-left:0}
-.credit-item:last-child{padding-right:0}
-.credit-role{
-  font-size:10px;font-weight:700;text-transform:uppercase;
-  letter-spacing:0.12em;color:var(--cr-200);font-family:var(--mono);
-  flex-shrink:0;
-}
-.credit-name{font-size:14px;font-weight:600;color:var(--text-2)}
-.credit-sep{width:1px;height:14px;background:var(--div-2);flex-shrink:0}
-/* 이미지 그리드 */
-#d-images{margin-top:28px}
-#d-images:empty{display:none}
-/* body 내 인라인 이미지 2단 */
-.body-img-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0;}
-.body-img-col{display:flex;flex-direction:column;gap:6px;}
-.body-img-col img{width:100%;border-radius:8px;display:block;background:#000;border:1px solid var(--div-1);}
-.body-img-caption{font-size:11px;color:var(--tx-3,#888);text-align:center;line-height:1.4;}
-.d-img-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:8px;
-}
-.d-img-grid img{
-  width:100%;border-radius:var(--r-sm);
-  background:#000;display:block;
-  border:1px solid var(--div-1);
-  aspect-ratio:3/2;object-fit:contain;
-}
-
-hr.dv{border:none;border-top:1px solid var(--div-1);margin:20px 0}
-/* 첨부 파일 */
-#d-files-wrap{
-  margin-top:20px;
-  padding-top:20px;
-  border-top:1px solid var(--div-1);
-}
-#d-files-wrap:has(#d-files:empty){display:none}
-#d-files-label{
-  font-size:11px;font-family:var(--mono);
-  text-transform:uppercase;letter-spacing:0.12em;
-  color:var(--n-500);margin-bottom:10px;
-}
-#d-files{display:flex;flex-direction:column;gap:6px}
-.dfile{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:9px 14px;
-  background:var(--n-700);border:1px solid var(--div-2);
-  border-radius:var(--r-sm);
-  font-size:14px;color:var(--text-2);
-  font-family:var(--font);width:fit-content;
-  text-decoration:none;
-  transition:background 0.12s,color 0.12s,border-color 0.12s;
-}
-.dfile:hover{background:var(--n-600);color:var(--text-1);border-color:var(--n-500)}
-.dfile svg{flex-shrink:0;opacity:0.6}
-/* 참고링크 — Crimson 200, 밑줄 */
-#d-links-wrap{margin-top:20px;padding-top:20px;border-top:1px solid var(--div-1)}
-#d-links-wrap h3,#d-chips-wrap h3{display:none}
-#d-links{display:flex;flex-direction:column;gap:6px}
-.dlink{
-  display:inline-flex;align-items:center;gap:7px;
-  font-size:16px;color:#E7727F;
-  text-decoration:underline;text-underline-offset:3px;
-  text-decoration-color:rgba(231,114,127,0.4);
-  background:none;border:none;cursor:pointer;
-  font-family:var(--font);padding:0;width:fit-content;
-  transition:color 0.12s,text-decoration-color 0.12s;
-}
-.dlink:hover{color:#F09AA3;text-decoration-color:rgba(240,154,163,0.7)}
-.dlink svg{flex-shrink:0;opacity:0.7}
-/* 태그 — Sky Blue 200 */
-#d-chips-wrap{
-  margin-top:20px;
-  padding-top:20px;
-  border-top:1px solid var(--div-1);
-}
-#d-chips-wrap:has(#d-chips:empty){display:none}
-#d-chips-label{
-  font-size:11px;font-family:var(--mono);
-  text-transform:uppercase;letter-spacing:0.12em;
-  color:var(--n-500);margin-bottom:10px;
-}
-#d-chips{display:flex;gap:0;flex-wrap:wrap}
-.tag{
-  display:inline-flex;align-items:center;
-  font-size:15px;color:#21F9FD;
-  background:none;border:none;padding:0;
-  margin-right:16px;margin-bottom:4px;
-  opacity:0.75;
-}
-.tag::before{content:"#";margin-right:1px;opacity:0.6}
-.tag-click{cursor:pointer;transition:opacity 0.12s}
-.tag-click:hover{opacity:1}
-
-#d-body{font-size:16px;line-height:1.85;color:var(--text-2);white-space:pre-wrap;max-width:100%}
-#d-body .body-h2{
-  display:block;
-  font-size:18px;font-weight:700;
-  color:var(--text-1);
-  margin:24px 0 4px;
-  white-space:normal;
-  line-height:1.35;
-}
-#d-body .body-h2:first-child{margin-top:0}
-#d-body .body-h2 + .body-pre{margin-top:0}
-#d-body .body-pre{display:block;white-space:pre-wrap;margin-bottom:2px}
-#d-body table{
-  width:100%;border-collapse:collapse;
-  margin:10px 0 18px;font-size:14px;
-  white-space:normal;
-}
-#d-body th,#d-body td{
-  padding:10px 14px;
-  border:1px solid var(--div-2);
-  text-align:left;vertical-align:top;
-  color:var(--text-2);
-}
-#d-body th{
-  background:var(--n-700);
-  color:var(--text-1);font-weight:600;
-  font-size:14px;
-}
-#d-body tr:nth-child(even) td{background:rgba(255,255,255,0.02)}
-
-@media(max-width:640px){
-  .gnb-tab:not(.is-active){display:none}
-  #list-content{padding:20px 14px 60px}
-  #d-title{font-size:20px}
-}
-
-/* =============================================
-   SECTION: css-gloss-subtab
-   AK 용어 탭 내 서브탭
-============================================= */
-#gloss-subtab-wrap{
-  display:none;
-  gap:6px;
-  margin-bottom:20px;
-  flex-wrap:wrap;
-}
-#gloss-subtab-wrap.show{display:flex;align-items:center;}
-.gloss-stab{
-  display:inline-flex;align-items:center;gap:5px;
-  padding:7px 14px;
-  border-radius:var(--r-xl);
-  font-size:14px;font-weight:500;
-  color:var(--text-2);
-  background:var(--n-800);
-  border:1px solid var(--div-2);
-  transition:all 0.13s;white-space:nowrap;cursor:pointer;
-  flex-shrink:0;
-}
-.gloss-stab:hover{color:var(--text-1);background:var(--n-700);border-color:var(--n-500)}
-.gloss-stab.is-active{color:#fff;background:var(--cr-700);border-color:var(--cr-700)}
-#gloss-search{
-  width:170px;height:36px;padding:0 12px 0 32px;
-  background:var(--n-800);border:1px solid var(--div-2);
-  border-radius:var(--r-xl);color:var(--text-1);
-  font-family:var(--font);font-size:14px;outline:none;
-  transition:border-color 0.13s,width 0.2s;
-}
-#gloss-search::placeholder{color:var(--n-500)}
-#gloss-search:focus{border-color:var(--cr-700);width:205px}
-
-/* =============================================
-   SECTION: css-tag-page
-============================================= */
-#tag-page{
-  display:none;
-  min-height:calc(100vh - 62px);
-}
-body.is-tag #tag-page{display:block}
-#tag-content{
-  max-width:960px;margin:0 auto;
-  padding:36px 24px 80px;
-}
-#tag-back{
-  display:inline-flex;align-items:center;gap:7px;
-  font-size:14px;color:var(--text-2);
-  background:none;border:none;cursor:pointer;
-  font-family:var(--font);padding:0;margin-bottom:32px;
-  transition:color 0.13s;
-}
-#tag-back:hover{color:var(--text-1)}
-#tag-hero{margin-bottom:28px}
-#tag-hero-label{
-  font-size:11px;font-family:var(--mono);
-  text-transform:uppercase;letter-spacing:0.12em;
-  color:var(--n-500);margin-bottom:8px;
-}
-#tag-hero-title{
-  font-size:28px;font-weight:700;color:#21F9FD;
-  line-height:1.2;margin-bottom:6px;
-}
-#tag-hero-title::before{content:"# ";color:rgba(33,249,253,0.4)}
-#tag-hero-count{font-size:14px;color:var(--n-500)}
-#tag-card-list{display:flex;flex-direction:column;gap:4px}
-</style>
-</head>
-<body class="is-home">
-
-<!-- 웨이브 캔버스: body 최상단 독립 배치, is-home일 때만 표시 -->
-<canvas id="home-wave" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:1;"></canvas>
-
-<!-- =============================================
-   SECTION: gnb
-   항상 DOM에 존재. is-home일 때만 숨김
-============================================= -->
-<div id="gnb-wrap">
-  <div id="gnb-inner">
-    <button id="gnb-logo">
-      <img src="images/logo.png" alt="AK"/>
-      <span id="gnb-logo-text">AK Archive</span>
-    </button>
-    <div class="gnb-sep"></div>
-    
-    <button class="gnb-tab" data-cat="제품 모델">제품</button>
-    <button class="gnb-tab" data-cat="기능 히스토리">UX 히스토리</button>
-    <button class="gnb-tab" data-cat="용어사전">AK 용어</button>
-  </div>
-</div>
-
-<!-- =============================================
-   SECTION: home
-   검색창만. is-home일 때 표시
-============================================= -->
-<div id="home">
-  <!-- 텍스트 가독성용 어두운 오버레이 -->
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 50% 40%, rgba(18,18,18,0.88) 0%, rgba(18,18,18,0.5) 50%, transparent 75%);pointer-events:none;z-index:0;"></div>
-  <div id="home-copy" style="position:relative;z-index:1;">
-    <p id="home-headline">AK 팀이 알아야 할 정보,<br>검색으로 바로 찾으세요.</p>
-    <p id="home-subline">제품 스펙 · UX 히스토리 · 용어사전 통합 아카이브</p>
-  </div>
-  <div id="home-search-wrap" style="position:relative;z-index:1;">
-    <svg class="home-si" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6">
-      <circle cx="8" cy="8" r="5.5"/><path d="M12.5 12.5L16 16"/>
-    </svg>
-    <input id="home-search" type="search" placeholder="키워드로 검색하세요" autocomplete="off"/>
-    <button id="home-clear">
-      <svg width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1l8 8M9 1L1 9"/></svg>
-    </button>
-    <div id="home-autocomplete" role="listbox" aria-label="검색 자동완성"></div>
-  </div>
-</div>
-
-<script>
-/* =============================================
-   SECTION: home-wave
-   홈 화면에만 재생되는 soundwave 배경 애니메이션
-============================================= */
-(function(){
-  const canvas = document.getElementById('home-wave');
-  const ctx = canvas.getContext('2d');
-  let W, H, t = 0, raf = null;
-
-  const smooth = [];
-
-  function resize(){
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-
-  function draw(){
-    ctx.clearRect(0, 0, W, H);
-
-    const barW = 2, gap = 2, unit = barW + gap;
-    const n    = Math.ceil(W / unit) + 1;
-    const cy   = H * 0.60;   // 검색필드 중심
-    const maxH = H * 0.22;   // 각 파동 최대 높이 (두 개니까 절반으로)
-
-    if(smooth.length === 0){
-      for(let i = 0; i < n; i++){
-        const pos = i / (n - 1);
-        const e = 0.55 + 0.45 * Math.pow(Math.sin(pos * Math.PI), 1.5);
-        smooth[i]       = e * 0.5;  // 파동1 (위)
-        smooth[n + i]   = e * 0.5;  // 파동2 (아래)
-      }
-    }
-
-    for(let i = 0; i < n; i++){
-      const pos = i / (n - 1);
-      const envelope = 0.55 + 0.45 * Math.pow(Math.sin(pos * Math.PI), 1.5);
-      const x = i * unit;
-      const alpha = 0.15 + envelope * 0.42;
-
-      // ── 파동 1: 느린 파동 (위쪽으로 뻗음)
-      const wave1 = Math.sin(t * 0.014 + pos * Math.PI * 2.0) * 0.52 +
-                    Math.sin(t * 0.022 + pos * Math.PI * 5.0) * 0.28 + 0.5;
-      const target1 = (0.15 + wave1 * 0.72) * envelope;
-      if(smooth[i] === undefined) smooth[i] = target1;
-      smooth[i] += (target1 - smooth[i]) * 0.06;
-      const bh1 = smooth[i] * maxH;
-
-      // 파동1: cy 위쪽에 피크, 위아래로 자연스럽게 페이드
-      const peak1 = cy - bh1 * 0.5;  // 피크 위치
-      const grad1 = ctx.createLinearGradient(0, cy - bh1, 0, cy + bh1 * 0.3);
-      grad1.addColorStop(0,    `rgba(215,38,58,0)`);
-      grad1.addColorStop(0.35, `rgba(225,45,65,${alpha})`);
-      grad1.addColorStop(1.0,  `rgba(215,38,58,0)`);
-      ctx.fillStyle = grad1;
-      ctx.beginPath();
-      ctx.roundRect(x, cy - bh1, barW, bh1 * 1.3, 1);
-      ctx.fill();
-
-      // ── 파동 2: 위상 다르게, cy 아래쪽에 피크
-      const wave2 = Math.sin(t * 0.018 + pos * Math.PI * 2.8 + 1.2) * 0.52 +
-                    Math.sin(t * 0.026 + pos * Math.PI * 5.6 + 0.8) * 0.28 + 0.5;
-      const target2 = (0.15 + wave2 * 0.72) * envelope;
-      if(smooth[n + i] === undefined) smooth[n + i] = target2;
-      smooth[n + i] += (target2 - smooth[n + i]) * 0.06;
-      const bh2 = smooth[n + i] * maxH;
-
-      // 파동2: cy 아래쪽에 피크, 위아래로 자연스럽게 페이드
-      const grad2 = ctx.createLinearGradient(0, cy - bh2 * 0.3, 0, cy + bh2);
-      grad2.addColorStop(0,    `rgba(215,38,58,0)`);
-      grad2.addColorStop(0.65, `rgba(225,45,65,${alpha})`);
-      grad2.addColorStop(1.0,  `rgba(215,38,58,0)`);
-      ctx.fillStyle = grad2;
-      ctx.beginPath();
-      ctx.roundRect(x, cy - bh2 * 0.3, barW, bh2 * 1.3, 1);
-      ctx.fill();
-    }
-    t++;
-    raf = requestAnimationFrame(draw);
-  }
-
-  function startWave(){
-    if(!raf){
-      canvas.style.display = 'block';
-      resize(); draw();
-    }
-  }
-  function stopWave(){
-    if(raf){ cancelAnimationFrame(raf); raf = null; t = 0; }
-    ctx.clearRect(0, 0, W, H);
-    canvas.style.display = 'none';
-  }
-
-  resize();
-  window.addEventListener('resize', resize);
-
-  // body 클래스 변화 감지 → is-home일 때만 실행
-  const observer = new MutationObserver(() => {
-    if(document.body.classList.contains('is-home')) startWave();
-    else stopWave();
-  });
-  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-
-  // 초기 상태
-  if(document.body.classList.contains('is-home')) startWave();
-})();
-</script>
-
-<!-- =============================================
-   SECTION: list-page
-   is-list일 때 표시
-============================================= -->
-<div id="list-page">
-  <div id="list-content">
-    <div id="hero">
-      <h1 id="hero-title"></h1>
-      <p id="hero-desc"></p>
-    </div>
-    <div id="gloss-subtab-wrap"></div>
-    <div id="chip-bar"></div>
-    <div id="count-row"><p id="count-text"><span id="count-num">0</span>개의 항목</p></div>
-    <div id="card-list" role="list"></div>
-    <div id="empty">
-      <svg width="42" height="42" viewBox="0 0 42 42" fill="none" stroke="currentColor" stroke-width="1.3">
-        <circle cx="18" cy="18" r="10"/><path d="M26 26l7 7"/>
-        <path d="M14 18h8M18 14v8" stroke-dasharray="3 2"/>
-      </svg>
-      <p>검색 결과가 없어요</p>
-      <small>다른 키워드로 다시 시도해 보세요</small>
-    </div>
-    <div id="detail" aria-hidden="true">
-      <button id="detail-back">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8.5 2.5L4 7l4.5 4.5"/></svg>
-        목록으로
-      </button>
-      <div id="d-models"></div>
-      <h1 id="d-title"></h1>
-      <div id="d-author"><span id="d-name"></span><span class="d-author-sep">·</span><span id="d-date"></span></div>
-      <hr class="dv"/>
-      <div id="d-credits"></div>
-      <div id="d-body"></div>
-      <div id="d-images"></div>
-      <div id="d-files-wrap"><div id="d-files-label">첨부 파일</div><div id="d-files"></div></div>
-      <div id="d-links-wrap"><h3>참고 링크</h3><div id="d-links"></div></div>
-      <div id="d-chips-wrap"><div id="d-chips-label">Tag</div><div id="d-chips"></div></div>
-    </div>
-  </div>
-</div>
-
-<!-- =============================================
-   SECTION: tag-page
-   태그 클릭 시 결과 페이지. is-tag일 때 표시
-============================================= -->
-<div id="tag-page">
-  <div id="tag-content">
-    <button id="tag-back">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M8.5 2.5L4 7l4.5 4.5"/></svg>
-      돌아가기
-    </button>
-    <div id="tag-hero">
-      <div id="tag-hero-label">태그</div>
-      <h2 id="tag-hero-title"></h2>
-      <p id="tag-hero-count"></p>
-    </div>
-    <div id="tag-card-list"></div>
-  </div>
-</div>
-
-<!-- =============================================
-   SECTION: js-data
-============================================= -->
-<script src="data_product.js?v=20260526"></script>
-<script src="data_ux.js?v=20260526"></script>
-<script src="data_glossary.js?v=20260526"></script>
-<script>
-const DAP_CLS = {"A&ultima":"b-ultima","PD series":"b-pd","Heritage":"b-her","Classic":"b-cl","SP4000":"b-sp4000","SP4000T":"b-sp4000t","PD10":"b-pd","PD20":"b-pd","PD5":"b-pd"};
-const LABEL_CLS = {"A&ultima":"b-ultima","PD series":"b-pd","RC":"b-rc","Heritage":"b-her","Classic":"b-cl"};
-const CAT_CLS = {"제품 모델":"b-model","기능 히스토리":"b-hist","디자인 가이드":"b-design","용어사전":"b-gloss"};
-const HERO = {
-  "전체":{title:"전체",desc:"프로젝트 히스토리, 의사결정 배경, 사내 용어를 키워드 하나로 즉시 탐색"},
-  "제품 모델":{title:"제품",desc:"모델별 사양과 신기능을 확인하세요."},
-  "기능 히스토리":{title:"UX 히스토리",desc:"기능의 의사결정 배경과 변경 이력을 확인하세요."},
-  "디자인 가이드":{title:"디자인 가이드",desc:"컴포넌트 스펙, 컬러 토큰, 가이드라인 문서"},
-  "용어사전":{title:"AK 용어",desc:"DAP 시장과 AK 서비스의 주요 용어를 확인하세요."},
-};
-const DATA = [...DATA_product, ...DATA_ux, ...DATA_glossary];
-</script>
-
-<!-- =============================================
-   SECTION: js-app
-============================================= -->
-<script>
-const S = {cat:"제품 모델",chip:"전체",q:"",openId:null,tag:"",glossTab:"전체"};
-
-/* =============================================
-   SECTION: js-tag-page
-============================================= */
-function goTag(tag) {
-  S.tag = tag;
-  // 모든 페이지 숨김
-  document.body.className = "is-tag";
-  document.getElementById("gnb-wrap").style.display = "";
-  document.querySelectorAll(".gnb-tab").forEach(t=>t.classList.remove("is-active"));
-  // 태그 히어로
-  document.getElementById("tag-hero-title").textContent = tag;
-  const items = DATA.filter(d => d.tags.includes(tag));
-  document.getElementById("tag-hero-count").textContent = `${items.length}개의 항목`;
-  // 카드 렌더링
-  renderTagCards(items, tag);
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function renderTagCards(items, tag) {
-  const list = document.getElementById("tag-card-list");
-  list.innerHTML = "";
-  if(items.length === 0){
-    list.innerHTML = `<p style="font-size:15px;color:var(--n-500);padding:40px 0">해당 태그를 가진 항목이 없습니다.</p>`;
-    return;
-  }
-  items.forEach(d => {
-    const el = document.createElement("div");
-    el.className = "card";
-    const catCls = CAT_CLS[d.category]||"b-model";
-    const dp = d.date.split(".");
-    const fmtDate = dp.length===3 ? `${dp[0]}. ${parseInt(dp[1])}. ${parseInt(dp[2])}.` : d.date;
-    el.innerHTML = `
-      <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px">
-        <span class="badge ${catCls}">${d.category}</span>
-      </div>
-      <div class="card-title">${d.title}</div>
-      <div class="card-meta">
-        <span class="card-meta-author">${d.author}</span>
-        <span class="card-meta-sep">·</span>
-        <span class="card-meta-date">${fmtDate}</span>
-      </div>
-    `;
-    el.addEventListener("click", () => {
-      S.prevTag = tag;
-      openDetailFromTag(d.id);
-    });
-    list.appendChild(el);
-  });
-}
-
-function openDetailFromTag(id) {
-  // 태그 페이지에서 상세로 진입 — 태그 페이지 위에 상세 오버레이
-  document.body.className = "is-tag is-tag-detail";
-  openDetail(id);
-  // detail을 tag-content 위에 표시
-  const detail = document.getElementById("detail");
-  const tagContent = document.getElementById("tag-content");
-  tagContent.style.display = "none";
-  detail.style.display = "block";
-  detail.style.maxWidth = "960px";
-  detail.style.margin = "0 auto";
-  detail.style.padding = "36px 24px 80px";
-}
-
-
-/* =============================================
-   SECTION: js-page-switch
-   body 클래스로 페이지 전환
-============================================= */
-function goHome() {
-  document.body.className = "is-home";
-  document.getElementById("home-search").value = "";
-  document.getElementById("home-clear").classList.remove("show");
-  document.querySelectorAll(".gnb-tab").forEach(t=>t.classList.remove("is-active"));
-  S.cat="";S.chip="전체";S.q="";S.openId=null;
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function goList(cat, q) {
-  document.body.className = "is-list";
-  S.prevCat=S.cat; S.cat=cat; S.chip="전체"; S.q=q||""; S.openId=null;
-  if(cat !== "용어사전") S.glossTab = "전체";
-  // 항상 list UI 복구 (태그 페이지에서 올 때도 포함)
-  ["card-list","count-row","hero"].forEach(i=>{
-    const el=document.getElementById(i);
-    if(el) el.style.display="";
-  });
-  document.getElementById("chip-bar").style.display="flex";
-  // detail 숨김
-  const dv=document.getElementById("detail");
-  dv.classList.remove("show");dv.setAttribute("aria-hidden","true");
-  dv.style.display=""; dv.style.maxWidth=""; dv.style.margin=""; dv.style.padding="";
-  // thumb grid 초기화
-  document.getElementById("card-list").classList.remove("is-thumb-grid");
-  // tag-content 복구
-  const tc=document.getElementById("tag-content");
-  if(tc) tc.style.display="";
-  // GNB 탭 동기화
-  document.querySelectorAll(".gnb-tab").forEach(t=>
-    t.classList.toggle("is-active", !!cat && t.dataset.cat===cat)
-  );
-  const h = HERO[cat]||{title:"검색 결과",desc:""};
-  document.getElementById("hero-title").textContent = q ? `"${q}" 검색 결과` : h.title;
-  document.getElementById("hero-desc").textContent  = q ? "" : h.desc;
-  renderGlossSubtab();
-  renderChipBar();
-  renderCards();
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-/* =============================================
-   SECTION: js-gloss-subtab
-   AK 용어 탭 내 서브탭 렌더링
-============================================= */
-const GLOSS_TABS = ["전체","하드웨어","음원 & 파일","서비스 & 연결","기능"];
-
-function renderGlossSubtab() {
-  const wrap = document.getElementById("gloss-subtab-wrap");
-  const bar  = document.getElementById("chip-bar");
-  if(S.cat !== "용어사전"){
-    wrap.classList.remove("show");
-    wrap.innerHTML="";
-    bar.style.display="";   // 다른 탭에서는 chip-bar 원래대로
-    return;
-  }
-  // 용어사전: chip-bar 숨기고 서브탭에 검색창 통합
-  bar.style.display="none";
-  wrap.classList.add("show");
-  wrap.innerHTML = "";
-  GLOSS_TABS.forEach(tab => {
-    const cnt = tab === "전체"
-      ? DATA_glossary.length
-      : DATA_glossary.filter(d => d.glossTab === tab).length;
-    const btn = document.createElement("button");
-    btn.className = "gloss-stab" + (S.glossTab === tab ? " is-active" : "");
-    btn.innerHTML = `${tab} <span class="cnt">${cnt}</span>`;
-    btn.addEventListener("click", () => {
-      S.glossTab = tab;
-      renderGlossSubtab();
-      renderCards();
-    });
-    wrap.appendChild(btn);
-  });
-  // 검색창 — 우측 정렬
-  const sw = document.createElement("div");
-  sw.style.cssText="margin-left:auto;position:relative;flex-shrink:0;";
-  sw.innerHTML=`<svg class="csi" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg><input id="gloss-search" type="search" placeholder="페이지 내 검색" autocomplete="off"/>`;
-  wrap.appendChild(sw);
-  const inp = sw.querySelector("#gloss-search");
-  inp.value = S.q;
-  inp.addEventListener("input", ()=>{ S.q=inp.value; renderCards(); });
-}
-
-/* =============================================
-   SECTION: js-chip-bar
-============================================= */
-function getChips(cat) {
-  if(cat==="제품 모델") return [
-    {key:"전체",label:"전체"},
-    {key:"A&ultima",label:"A&ultima"},
-    {key:"PD series",label:"PD series"},
-    {key:"Heritage",label:"Heritage"},
-    {key:"Classic",label:"Classic"}
-  ];
-  if(cat==="기능 히스토리") return [
-    {key:"전체",label:"전체"},
-    {key:"A&ultima",label:"A&ultima"},
-    {key:"PD series",label:"PD series"},
-    {key:"RC",label:"RC"},
-    {key:"Heritage",label:"Heritage"},
-    {key:"Classic",label:"Classic"}
-  ];
-  return []; // 디자인 가이드, 용어사전: 모델 필터 없음, 검색창만
-}
-
-function renderChipBar() {
-  const bar=document.getElementById("chip-bar");
-  if(S.cat==="용어사전"){bar.innerHTML="";return;}  // 용어사전: 서브탭에서 처리
-  bar.innerHTML="";
-  const chips=getChips(S.cat);
-  bar.style.cssText="display:flex;align-items:center;gap:6px;flex-wrap:wrap;";
-  // 칩이 없는 탭(디자인 가이드, 용어사전): 검색창만
-  chips.forEach(c=>{
-    const cnt=DATA.filter(d=>d.category===S.cat&&(c.key==="전체"||d.models.includes(c.key)||(d.labels&&d.labels.includes(c.key)))).length;
-    const btn=document.createElement("button");
-    btn.className="chip-btn"+(S.chip===c.key?" is-active":"");
-    btn.dataset.chip=c.key;
-    btn.innerHTML=`${c.label} <span class="cnt">${cnt}</span>`;
-    btn.addEventListener("click",()=>{S.chip=c.key;updateChips();renderCards();});
-    bar.appendChild(btn);
-  });
-  const sw=document.createElement("div");
-  sw.id="chip-search-wrap";
-  sw.style.cssText=chips.length===0?"":"margin-left:auto;position:relative;flex-shrink:0;";
-  sw.innerHTML=`<svg class="csi" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg><input id="chip-search" type="search" placeholder="페이지 내 검색" autocomplete="off"/>`;
-  bar.appendChild(sw);
-  const inp=document.getElementById("chip-search");
-  if(inp){inp.value=S.q;inp.addEventListener("input",()=>{S.q=inp.value;renderCards();});}
-}
-
-function updateChips(){
-  document.querySelectorAll(".chip-btn").forEach(b=>b.classList.toggle("is-active",b.dataset.chip===S.chip));
-}
-
-/* =============================================
-   SECTION: js-filter + render-cards
-============================================= */
-function filterData(){
-  const q=S.q.trim().toLowerCase();
-  return DATA.filter(d=>{
-    if(S.cat&&d.category!==S.cat)return false;
-    if(S.cat==="용어사전" && S.glossTab!=="전체" && d.glossTab!==S.glossTab) return false;
-    if(S.chip!=="전체"&&(S.cat==="제품 모델"||S.cat==="기능 히스토리")){
-      const inModels = d.models.includes(S.chip);
-      const inLabels = d.labels && d.labels.includes(S.chip);
-      if(!inModels && !inLabels) return false;
-    }
-    if(!q)return true;
-    return[d.title,d.desc,d.body,d.author,...d.tags,...d.models,...(d.labels||[]),d.category].join(" ").toLowerCase().includes(q);
-  }).sort((a,b)=>{
-    if(!q) return b.date.replace(/\./g,"").localeCompare(a.date.replace(/\./g,""));
-    const score = d => {
-      const lq = q;
-      if(d.title.toLowerCase().includes(lq)) return 3;
-      const tagModel = [...d.tags,...d.models,...(d.labels||[])].join(" ").toLowerCase();
-      if(tagModel.includes(lq)) return 2;
-      if((d.desc||"").toLowerCase().includes(lq)) return 1;
-      if((d.body||"").toLowerCase().includes(lq)) return 0;
-      return -1;
-    };
-    const diff = score(b) - score(a);
-    if(diff !== 0) return diff;
-    return b.date.replace(/\./g,"").localeCompare(a.date.replace(/\./g,""));
-  });
-}
-
-function renderCards(){
-  const list=document.getElementById("card-list");
-  const empty=document.getElementById("empty");
-  list.innerHTML="";
-  const items=filterData();
-  document.getElementById("count-num").textContent=items.length;
-  if(items.length===0){empty.classList.add("show");return;}
-  empty.classList.remove("show");
-  const q=S.q.trim().toLowerCase();
-  const MAX_MODELS=3;
-
-  // 제품 모델: 썸네일 그리드
-  if(S.cat==="제품 모델"){
-    list.classList.add("is-thumb-grid");
-    items.forEach(d=>{
-      const el=document.createElement("div");
-      el.className="card-thumb";el.setAttribute("role","listitem");el.setAttribute("tabindex","0");
-      // 썸네일 이미지: _thumb 파일 우선, 없으면 images[0] 사용
-      const thumbImg = d.images && d.images.find(img => img.src.toLowerCase().includes('_thumb'));
-      const thumbFallback = d.images && d.images.length ? d.images[0] : null;
-      const thumbSrc = thumbImg ? thumbImg.src : (thumbFallback ? thumbFallback.src : null);
-      const thumbAlt = thumbImg ? thumbImg.alt : (thumbFallback ? thumbFallback.alt : d.title);
-      const imgHtml = thumbSrc
-        ? `<img src="${thumbSrc}" alt="${thumbAlt}" loading="lazy"/>`
-        : `<div class="card-thumb-img-placeholder"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="6" y="8" width="28" height="22" rx="2"/><path d="M6 24l8-7 6 5 4-3 10 8"/><circle cx="27" cy="15" r="3"/></svg></div>`;
-      // 모델 배지
-      const vis=d.models.slice(0,MAX_MODELS);
-      const hid=d.models.length-vis.length;
-      const modelBadges=vis.map(m=>`<span class="badge ${DAP_CLS[m]||'b-more'}">${m}</span>`).join("")
-        +(hid>0?`<span class="badge b-more">+${hid}</span>`:"");
-      // 날짜 포맷
-      const dp=d.date.split(".");
-      const fmtDate=dp.length===3?`${dp[0]}. ${parseInt(dp[1])}. ${parseInt(dp[2])}.`:d.date;
-      el.innerHTML=`
-        <div class="card-thumb-img">${imgHtml}</div>
-        <div class="card-thumb-body">
-          <div class="card-thumb-label">${modelBadges}</div>
-          <div class="card-thumb-title">${hl(d.title,q)}</div>
-          <div class="card-thumb-meta">
-            <span class="card-thumb-meta-author">${d.author}</span>
-            <span class="card-thumb-meta-sep">·</span>
-            <span>${fmtDate}</span>
-          </div>
-        </div>
-      `;
-      el.addEventListener("click",()=>openDetail(d.id));
-      el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" ")openDetail(d.id);});
-      list.appendChild(el);
-    });
-    return;
-  }
-
-  // 그 외 카테고리: 기존 카드 리스트
-  list.classList.remove("is-thumb-grid");
-  items.forEach(d=>{
-    const el=document.createElement("div");
-    el.className="card";el.setAttribute("role","listitem");el.setAttribute("tabindex","0");
-    // 상단: 탭명 배지(labels) + 반영모델 배지(models)
-    const labelBadges = d.labels
-      ? d.labels.map(l=>`<span class="badge ${LABEL_CLS[l]||'b-more'}">${l}</span>`).join("")
-      : "";
-    const vis=d.models.slice(0,MAX_MODELS);
-    const hid=d.models.length-vis.length;
-    const divider=(labelBadges&&vis.length>0)?`<span class="badge-divider"></span>`:"";
-    const modelBadges=labelBadges+divider+vis.map(m=>`<span class="badge ${DAP_CLS[m]||'b-more'}">${m}</span>`).join("")
-      +(hid>0?`<span class="badge b-more">+${hid}</span>`:"");
-    const topRow=(vis.length>0||labelBadges)
-      ?`<div class="card-top"><div class="card-models-row">${modelBadges}</div></div>`
-      :"";
-    const dp=d.date.split(".");
-    const fmtDate=dp.length===3?`${dp[0]}. ${parseInt(dp[1])}. ${parseInt(dp[2])}.`:d.date;
-    el.innerHTML=`
-      ${topRow}
-      <div class="card-title">${hl(d.title,q)}</div>
-      <div class="card-meta">
-        <span class="card-meta-author">${d.author}</span>
-        <span class="card-meta-sep">·</span>
-        <span class="card-meta-date">${fmtDate}</span>
-      </div>
-    `;
-    el.addEventListener("click",()=>openDetail(d.id));
-    el.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" ")openDetail(d.id);});
-    list.appendChild(el);
-  });
-}
-
-/* =============================================
-   SECTION: js-detail
-============================================= */
-function openDetail(id){
-  const d=DATA.find(x=>x.id===id);if(!d)return;
-  S.prevPage=document.body.className;
-  S.openId=id;
-  ["card-list","chip-bar","count-row","hero"].forEach(i=>document.getElementById(i).style.display="none");
-  document.getElementById("gloss-subtab-wrap").classList.remove("show");
-  document.getElementById("empty").classList.remove("show");
-  // 모델 배지: 레이블 먼저 + 모델 (기능 히스토리는 A&ultima 제외, showAllModels 예외)
-  const detailLabels = d.labels
-    ? d.labels.map(l=>`<span class="badge ${LABEL_CLS[l]||""}">${l}</span>`).join("")
-    : "";
-  document.getElementById("d-models").innerHTML=detailLabels+d.models.map(m=>`<span class="badge ${DAP_CLS[m]||""}">${m}</span>`).join("");
-  // 제목
-  document.getElementById("d-title").textContent=d.title;
-  // 날짜 포맷: 2026.05.18 → 2026. 5. 18.
-  const dp=d.date.split(".");
-  const fmtDate=dp.length===3?`${dp[0]}. ${parseInt(dp[1])}. ${parseInt(dp[2])}.`:d.date;
-  document.getElementById("d-name").textContent=d.author;
-  document.getElementById("d-date").textContent=fmtDate;
-  document.getElementById("d-body").innerHTML=renderBody(d.body);
-  // 담당자 크레딧
-  const credEl=document.getElementById("d-credits");
-  if(d.credits){
-    const roles=Object.entries(d.credits);
-    credEl.innerHTML=roles.map((([role,name],i)=>
-      `${i>0?'<span class="credit-sep"></span>':''}<span class="credit-item"><span class="credit-role">${role}</span><span class="credit-name">${name}</span></span>`
-    )).join("");
-  } else { credEl.innerHTML=""; }
-  // 이미지 그리드
-  const imgEl=document.getElementById("d-images");
-  const detailImgs = d.images ? d.images.filter(img => !img.src.toLowerCase().includes('_thumb')) : [];
-  if(detailImgs.length){
-    imgEl.innerHTML=`<div class="d-img-grid">${detailImgs.map(img=>`<img src="${img.src}" alt="${img.alt}" loading="lazy"/>`).join("")}</div>`;
-  } else { imgEl.innerHTML=""; }
-  // 첨부 파일
-  const filesEl=document.getElementById("d-files");
-  if(d.files && d.files.length){
-    const dlIcon=`<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.5 2v7M3.5 6.5l3 3 3-3"/><path d="M2 11h9"/></svg>`;
-    filesEl.innerHTML=d.files.map(f=>`<a class="dfile" href="${f.url}" target="_blank" rel="noopener" download>${dlIcon}${f.label}</a>`).join("");
-  } else { filesEl.innerHTML=""; }
-  // 태그 — # prefix, 클릭 시 goTag
-  const chipsEl=document.getElementById("d-chips");
-  chipsEl.innerHTML=d.tags.map(t=>`<span class="tag tag-click" data-tag="${t}">${t}</span>`).join("");
-  chipsEl.querySelectorAll(".tag-click").forEach(el=>{
-    el.addEventListener("click",()=>goTag(el.dataset.tag));
-  });
-  document.getElementById("d-links").innerHTML=d.links.length
-    ?d.links.map(l=>{
-      const icon=`<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9L9 3M9 3H5M9 3v4"/></svg>`;
-      if(l.url.startsWith("#search:")){
-        const q=l.url.replace("#search:","");
-        return `<button class="dlink" onclick="closeDetail();goList('용어사전','${q}')">${icon}${l.label}</button>`;
-      }
-      if(l.url.startsWith("#open:")){
-        const oid=Number(l.url.replace("#open:",""));
-        return `<button class="dlink" onclick="closeDetail(false);openDetail(${oid})">${icon}${l.label}</button>`;
-      }
-      return `<a class="dlink" href="${l.url}" target="_blank" rel="noopener">${icon}${l.label}</a>`;
-    }).join("")
-    :"";
-  document.getElementById("d-links-wrap").style.display=d.links.length?"":"none";
-  const dv=document.getElementById("detail");dv.classList.add("show");dv.removeAttribute("aria-hidden");
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function closeDetail(rerender=true){
-  const dv=document.getElementById("detail");dv.classList.remove("show");dv.setAttribute("aria-hidden","true");
-  if(!rerender)return;
-  S.openId=null;
-  ["card-list","count-row","hero"].forEach(i=>document.getElementById(i).style.display="");
-  document.getElementById("chip-bar").style.display="flex";
-  renderGlossSubtab();
-  renderChipBar();
-  renderCards();
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function hl(text,q){
-  if(!q)return text;
-  return text.replace(new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")})`,"gi"),"<mark>$1</mark>");
-}
-
-/* =============================================
-   SECTION: js-render-body
-   body 텍스트 → HTML 변환
-   - ■ (개수 무관) 으로 시작 → 소제목 H2 (18px)
-   - | 로 시작하는 블록 → 테이블
-   - 일반 텍스트 → pre-wrap 단락
-============================================= */
-function renderBody(text) {
-  const lines = text.split('\n');
-  const result = [];
-  let i = 0;
-  let inPre = false;
-
-  function closePre() {
-    if (inPre) { result.push('</span>'); inPre = false; }
-  }
-  function openPre() {
-    if (!inPre) { result.push('<span class="body-pre">'); inPre = true; }
-  }
-  function escHtml(s) {
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  }
-
-  while (i < lines.length) {
-    const line = lines[i];
-    const trimmed = line.trim();
-
-    // ── 이미지 마커: !!img:파일명|대체텍스트!! (연속 2개 → 2단 그리드)
-    if (/^!!img:.+!!$/.test(trimmed)) {
-      closePre();
-      const parseImg = (raw) => {
-        const inner = raw.trim().slice(6, -2);
-        const [src, alt=''] = inner.split('|');
-        return {src: src.trim(), alt: alt.trim()};
-      };
-      const nextLine = (lines[i+1] || '').trim();
-      if (/^!!img:.+!!$/.test(nextLine)) {
-        const img1 = parseImg(trimmed);
-        const img2 = parseImg(nextLine);
-        result.push(`<div class="body-img-row"><div class="body-img-col"><img src="${img1.src}" alt="${img1.alt}" loading="lazy"/><span class="body-img-caption">${img1.alt}</span></div><div class="body-img-col"><img src="${img2.src}" alt="${img2.alt}" loading="lazy"/><span class="body-img-caption">${img2.alt}</span></div></div>`);
-        i += 2;
-      } else {
-        const {src, alt} = parseImg(trimmed);
-        result.push(`<div class="body-img-wrap"><img src="${src}" alt="${alt}" loading="lazy" style="max-width:100%;border-radius:8px;margin:12px 0;display:block;"/></div>`);
-        i++;
-      }
-      continue;
-    }
-
-    // ── 소제목: ■ 1개 이상으로 시작 (개수 무관, 전부 같은 스타일)
-    if (/^■+/.test(trimmed)) {
-      closePre();
-      const t = escHtml(trimmed.replace(/^■+\s*/, ''));
-      result.push(`<span class="body-h2">${t}</span>`);
-      i++;
-      // 헤딩 바로 뒤 빈 줄 스킵
-      while (i < lines.length && lines[i].trim() === '') i++;
-      continue;
-    }
-
-    // ── 테이블: | 로 시작하는 연속 줄
-    if (trimmed.startsWith('|')) {
-      closePre();
-      const tableLines = [];
-      while (i < lines.length && lines[i].trim().startsWith('|')) {
-        tableLines.push(lines[i]);
-        i++;
-      }
-      const filtered = tableLines.filter(l => !/^\s*\|[\s\-|:]+\|\s*$/.test(l));
-      let html = '<table>';
-      filtered.forEach((row, idx) => {
-        const cells = row.trim().replace(/^\||\|$/g,'').split('|');
-        const tag = idx === 0 ? 'th' : 'td';
-        html += '<tr>' + cells.map(c => `<${tag}>${c.trim()}</${tag}>`).join('') + '</tr>';
-      });
-      html += '</table>';
-      result.push(html);
-      continue;
-    }
-
-    // ── 일반 텍스트
-    openPre();
-    const escaped = trimmed === '' ? '' : escHtml(line);
-    result.push(escaped + '\n');
-    i++;
-  }
-  closePre();
-  return result.join('');
-}
-
-
-// 홈 검색 + 자동완성
-(function(){
-  const hs   = document.getElementById("home-search");
-  const hc   = document.getElementById("home-clear");
-  const ac   = document.getElementById("home-autocomplete");
-  const MAX  = 5;
-  const HIST_MAX = 10;
-  const HIST_MAX_SHOW = 5;
-  const HIST_KEY = "ak_search_history";
-  let focusIdx = -1;
-  let acItems  = [];
-
-  const CAT_LABEL = {
-    "제품 모델":"제품",
-    "기능 히스토리":"UX 히스토리",
-    "디자인 가이드":"디자인",
-    "용어사전":"용어"
-  };
-
-  /* ── 히스토리 유틸 ── */
-  function loadHistory() {
-    try { return JSON.parse(localStorage.getItem(HIST_KEY) || "[]"); } catch(e) { return []; }
-  }
-  function saveHistory(q) {
-    if (!q || q.trim().length === 0) return;
-    const q2 = q.trim();
-    let hist = loadHistory().filter(h => h !== q2);
-    hist.unshift(q2);
-    hist = hist.slice(0, HIST_MAX);
-    localStorage.setItem(HIST_KEY, JSON.stringify(hist));
-  }
-  function removeHistory(q) {
-    const hist = loadHistory().filter(h => h !== q);
-    localStorage.setItem(HIST_KEY, JSON.stringify(hist));
-  }
-  function clearHistory() {
-    localStorage.removeItem(HIST_KEY);
-  }
-
-  /* ── 히스토리 드롭다운 ── */
-  function renderHistory() {
-    const hist = loadHistory();
-    ac.innerHTML = "";
-    if (hist.length === 0) { ac.classList.remove("show"); return; }
-
-    const header = document.createElement("div");
-    header.className = "ac-history-header";
-    header.innerHTML = `<span class="ac-history-label">최근 검색어</span><button class="ac-history-clear">전체 삭제</button>`;
-    header.querySelector(".ac-history-clear").addEventListener("mousedown", e => {
-      e.preventDefault();
-      clearHistory();
-      closeAC();
-    });
-    ac.appendChild(header);
-
-    const ITEM_H = 46;
-    const scrollWrap = document.createElement("div");
-    scrollWrap.style.cssText = `overflow-y:auto;max-height:${ITEM_H * HIST_MAX_SHOW}px;`;
-
-    hist.forEach(q => {
-      const item = document.createElement("div");
-      item.className = "ac-item";
-      item.innerHTML = `
-        <div class="ac-item-icon">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-            <circle cx="7" cy="7" r="5.5"/>
-            <path d="M7 4.5V7l2 1.5"/>
-          </svg>
-        </div>
-        <div class="ac-item-content">
-          <div class="ac-item-title">${escHtml(q)}</div>
-        </div>
-        <button class="ac-item-del" aria-label="삭제">
-          <svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l7 7M8 1L1 8"/></svg>
-        </button>
-      `;
-      item.querySelector(".ac-item-del").addEventListener("mousedown", e => {
-        e.preventDefault();
-        e.stopPropagation();
-        removeHistory(q);
-        renderHistory();
-      });
-      item.addEventListener("mousedown", e => {
-        if (e.target.closest(".ac-item-del")) return;
-        e.preventDefault();
-        hs.value = q;
-        hc.classList.add("show");
-        saveHistory(q);
-        closeAC();
-        goList("", q);
-      });
-      scrollWrap.appendChild(item);
-    });
-
-    ac.appendChild(scrollWrap);
-    ac.classList.add("show");
-  }
-
-  function highlight(text, q) {
-    if (!q) return escHtml(text);
-    const escaped = escHtml(text);
-    const re = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"), "gi");
-    return escaped.replace(re, m => `<mark>${m}</mark>`);
-  }
-
-  function escHtml(s) {
-    return String(s)
-      .replace(/&/g,"&amp;")
-      .replace(/</g,"&lt;")
-      .replace(/>/g,"&gt;")
-      .replace(/"/g,"&quot;");
-  }
-
-  function getMatches(q) {
-    const lq = q.toLowerCase();
-    const scored = DATA.map(d => {
-      const title  = d.title.toLowerCase();
-      const tags   = [...d.tags, ...d.models, ...(d.labels||[])].join(" ").toLowerCase();
-      const desc   = (d.desc||"").toLowerCase();
-      const body   = (d.body||"").toLowerCase();
-      if (title.includes(lq))  return { d, score: 3 };
-      if (tags.includes(lq))   return { d, score: 2 };
-      if (desc.includes(lq))   return { d, score: 1 };
-      if (body.includes(lq))   return { d, score: 0 };
-      return null;
-    }).filter(Boolean);
-    scored.sort((a,b) => b.score - a.score || b.d.date.localeCompare(a.d.date));
-    return scored.slice(0, MAX).map(x => x.d);
-  }
-
-  function renderAC(q) {
-    const matches = getMatches(q);
-    acItems = matches;
-    focusIdx = -1;
-    ac.innerHTML = "";
-
-    if (matches.length === 0) {
-      ac.classList.remove("show");
-      return;
-    }
-
-    matches.forEach((d, i) => {
-      const item = document.createElement("div");
-      item.className = "ac-item";
-      item.setAttribute("role","option");
-      const label = CAT_LABEL[d.category] || d.category;
-      item.innerHTML = `
-        <div class="ac-item-icon">
-          <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.6">
-            <circle cx="6.5" cy="6.5" r="4.5"/><path d="M10.5 10.5L14 14"/>
-          </svg>
-        </div>
-        <div class="ac-item-content">
-          <div class="ac-item-title">${highlight(d.title, q)}</div>
-          ${d.desc ? `<div class="ac-item-meta">${escHtml(d.desc.slice(0,50))}${d.desc.length>50?"…":""}</div>` : ""}
-        </div>
-        <span class="ac-item-badge">${label}</span>
-      `;
-      item.addEventListener("mousedown", e => {
-        e.preventDefault();
-        selectItem(d);
-      });
-      ac.appendChild(item);
-    });
-
-    const total = DATA.filter(d =>
-      [d.title, d.desc, d.body, d.author, ...d.tags, ...d.models, ...(d.labels||[])].join(" ").toLowerCase().includes(q.toLowerCase())
-    ).length;
-    if (total > 0) {
-      const footer = document.createElement("div");
-      footer.className = "ac-footer";
-      footer.innerHTML = `
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-          <circle cx="6" cy="6" r="4.5"/><path d="M9.5 9.5L13 13"/>
-        </svg>
-        <span><strong>"${escHtml(q)}"</strong> 전체 결과 ${total}개 보기</span>
-      `;
-      footer.addEventListener("mousedown", e => {
-        e.preventDefault();
-        saveHistory(q);
-        closeAC();
-        goList("", q);
-      });
-      ac.appendChild(footer);
-    }
-
-    ac.classList.add("show");
-  }
-
-  function selectItem(d) {
-    saveHistory(d.title);
-    closeAC();
-    hs.value = d.title;
-    hc.classList.add("show");
-    goList(d.category, "");
-    setTimeout(() => {
-      const found = document.querySelector(`.card[data-id="${d.id}"], .card-thumb[data-id="${d.id}"]`);
-      if (found) found.click();
-    }, 80);
-  }
-
-  function closeAC() {
-    ac.classList.remove("show");
-    acItems = [];
-    focusIdx = -1;
-  }
-
-  function setFocus(idx) {
-    const items = ac.querySelectorAll(".ac-item");
-    items.forEach(el => el.classList.remove("is-focused"));
-    if (idx >= 0 && idx < items.length) {
-      items[idx].classList.add("is-focused");
-      focusIdx = idx;
-    } else {
-      focusIdx = -1;
-    }
-  }
-
-  // input 이벤트
-  hs.addEventListener("input", () => {
-    const v = hs.value.trim();
-    hc.classList.toggle("show", !!v);
-    if (v.length >= 1) {
-      renderAC(v);
-    } else {
-      renderHistory();
-    }
-  });
-
-  // 포커스 시 히스토리 표시
-  hs.addEventListener("focus", () => {
-    if (!hs.value.trim()) renderHistory();
-  });
-
-  // 키보드 네비게이션
-  hs.addEventListener("keydown", e => {
-    const items = ac.querySelectorAll(".ac-item");
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      if (!ac.classList.contains("show")) {
-        if (hs.value.trim()) renderAC(hs.value.trim());
-        else renderHistory();
-        return;
-      }
-      setFocus(Math.min(focusIdx + 1, items.length - 1));
-    } else if (e.key === "ArrowUp") {
-      e.preventDefault();
-      setFocus(Math.max(focusIdx - 1, -1));
-    } else if (e.key === "Enter") {
-      e.preventDefault();
-      if (focusIdx >= 0 && focusIdx < acItems.length) {
-        selectItem(acItems[focusIdx]);
-      } else {
-        const v = hs.value.trim();
-        if (v) { saveHistory(v); closeAC(); goList("", v); }
-      }
-    } else if (e.key === "Escape") {
-      closeAC();
-    }
-  });
-
-  // 포커스 잃으면 닫기
-  hs.addEventListener("blur", () => {
-    setTimeout(closeAC, 150);
-  });
-
-  // clear 버튼
-  hc.addEventListener("click", () => {
-    hs.value = "";
-    hc.classList.remove("show");
-    closeAC();
-    hs.focus();
-  });
-})();
-
-// GNB 탭
-document.querySelectorAll(".gnb-tab").forEach(tab=>{
-  tab.addEventListener("click",()=>{S.chip="전체";S.q="";goList(tab.dataset.cat,"");});
-});
-
-// GNB 로고
-document.getElementById("gnb-logo").addEventListener("click",()=>{
-  if(S.openId!==null){closeDetail();return;}
-  goHome();
-});
-
-// 홈 로고
-document.getElementById("home-logo").addEventListener("click",goHome);
-
-// 뒤로가기
-document.getElementById("detail-back").addEventListener("click",()=>{
-  if(document.body.classList.contains("is-tag")){
-    // 태그 페이지에서 상세 진입한 경우 → 태그 페이지로
-    document.body.className="is-tag";
-    document.getElementById("detail").style.display="";
-    document.getElementById("detail").style.maxWidth="";
-    document.getElementById("detail").style.margin="";
-    document.getElementById("detail").style.padding="";
-    document.getElementById("tag-content").style.display="";
-    document.getElementById("detail").classList.remove("show");
-    document.getElementById("detail").setAttribute("aria-hidden","true");
-    S.openId=null;
-    window.scrollTo({top:0,behavior:"smooth"});
-  } else {
-    if(S.prevPage==="is-home") goHome();
-    else closeDetail();
-  }
-});
-
-// 태그 페이지 뒤로가기 → 기능 히스토리 첫 화면
-document.getElementById("tag-back").addEventListener("click",()=>{
-  goList("기능 히스토리");
-});
-
-// ESC
-document.addEventListener("keydown",e=>{
-  if(e.key==="Escape"){
-    if(S.openId!==null) document.getElementById("detail-back").click();
-    else if(document.body.classList.contains("is-tag")) document.getElementById("tag-back").click();
-  }
-});
-</script>
-
-<script>
-(function(){
-  const canvas = document.getElementById('home-wave');
-  const ctx = canvas.getContext('2d');
-  let W, H, t = 0, raf = null;
-
-  const smooth = [];
-
-  function resize(){
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
-  }
-
-  function draw(){
-    ctx.clearRect(0, 0, W, H);
-
-    const barW = 2, gap = 2, unit = barW + gap;
-    const n    = Math.ceil(W / unit) + 1;
-    const cy   = H * 0.60;   // 검색필드 중심
-    const maxH = H * 0.22;   // 각 파동 최대 높이 (두 개니까 절반으로)
-
-    if(smooth.length === 0){
-      for(let i = 0; i < n; i++){
-        const pos = i / (n - 1);
-        const e = 0.55 + 0.45 * Math.pow(Math.sin(pos * Math.PI), 1.5);
-        smooth[i]       = e * 0.5;  // 파동1 (위)
-        smooth[n + i]   = e * 0.5;  // 파동2 (아래)
-      }
-    }
-
-    for(let i = 0; i < n; i++){
-      const pos = i / (n - 1);
-      const envelope = 0.55 + 0.45 * Math.pow(Math.sin(pos * Math.PI), 1.5);
-      const x = i * unit;
-      const alpha = 0.15 + envelope * 0.42;
-
-      // ── 파동 1: 느린 파동 (위쪽으로 뻗음)
-      const wave1 = Math.sin(t * 0.014 + pos * Math.PI * 2.0) * 0.52 +
-                    Math.sin(t * 0.022 + pos * Math.PI * 5.0) * 0.28 + 0.5;
-      const target1 = (0.15 + wave1 * 0.72) * envelope;
-      if(smooth[i] === undefined) smooth[i] = target1;
-      smooth[i] += (target1 - smooth[i]) * 0.06;
-      const bh1 = smooth[i] * maxH;
-
-      // 파동1: cy 위쪽에 피크, 위아래로 자연스럽게 페이드
-      const peak1 = cy - bh1 * 0.5;  // 피크 위치
-      const grad1 = ctx.createLinearGradient(0, cy - bh1, 0, cy + bh1 * 0.3);
-      grad1.addColorStop(0,    `rgba(215,38,58,0)`);
-      grad1.addColorStop(0.35, `rgba(225,45,65,${alpha})`);
-      grad1.addColorStop(1.0,  `rgba(215,38,58,0)`);
-      ctx.fillStyle = grad1;
-      ctx.beginPath();
-      ctx.roundRect(x, cy - bh1, barW, bh1 * 1.3, 1);
-      ctx.fill();
-
-      // ── 파동 2: 위상 다르게, cy 아래쪽에 피크
-      const wave2 = Math.sin(t * 0.018 + pos * Math.PI * 2.8 + 1.2) * 0.52 +
-                    Math.sin(t * 0.026 + pos * Math.PI * 5.6 + 0.8) * 0.28 + 0.5;
-      const target2 = (0.15 + wave2 * 0.72) * envelope;
-      if(smooth[n + i] === undefined) smooth[n + i] = target2;
-      smooth[n + i] += (target2 - smooth[n + i]) * 0.06;
-      const bh2 = smooth[n + i] * maxH;
-
-      // 파동2: cy 아래쪽에 피크, 위아래로 자연스럽게 페이드
-      const grad2 = ctx.createLinearGradient(0, cy - bh2 * 0.3, 0, cy + bh2);
-      grad2.addColorStop(0,    `rgba(215,38,58,0)`);
-      grad2.addColorStop(0.65, `rgba(225,45,65,${alpha})`);
-      grad2.addColorStop(1.0,  `rgba(215,38,58,0)`);
-      ctx.fillStyle = grad2;
-      ctx.beginPath();
-      ctx.roundRect(x, cy - bh2 * 0.3, barW, bh2 * 1.3, 1);
-      ctx.fill();
-    }
-    t++;
-    raf = requestAnimationFrame(draw);
-  }
-
-  function startWave(){
-    if(!raf){
-      canvas.style.display = 'block';
-      resize(); draw();
-    }
-  }
-  function stopWave(){
-    if(raf){ cancelAnimationFrame(raf); raf = null; t = 0; }
-    ctx.clearRect(0, 0, W, H);
-    canvas.style.display = 'none';
-  }
-
-  resize();
-  window.addEventListener('resize', resize);
-
-  // body 클래스 변화 감지 → is-home일 때만 실행
-  const observer = new MutationObserver(() => {
-    if(document.body.classList.contains('is-home')) startWave();
-    else stopWave();
-  });
-  observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
-
-  // 초기 상태
-  if(document.body.classList.contains('is-home')) startWave();
-})();
-</script>
-</body>
-</html>
+// =============================================
+// data_product.js
+// 제품 카테고리 데이터
+// 항목 추가 시 id는 고유한 숫자로 지정
+// =============================================
+
+const DATA_product = [
+  {id:27, title:"SP4000", category:"제품 모델", models:["A&ultima"], date:"2026.05.19", author:"Ellie", authorInitial:"E",
+   credits:{PM:"Jay", PL:"Patrick, Kenny", UX:"Luna", UI:"Luna"},
+   desc:"SP3000의 후속 A&ultima 플래그십 DAP. Octa DAC, Full Open Android, High Driving Mode 탑재.",
+   body:`■■ 1. Octa DAC 구조
+
+SP3000의 Hexa DAC 구조를 업그레이드해 Octa DAC 구조를 적용한 모델입니다.
+
+- SP3000은 디지털(AK4191EQ) 2개 + 아날로그(AK4499EX) 4개를 Dual & Dual 구조로 연결
+- SP4000은 AK4191EQ x4 & AK4499EX x4로 구성된 Real Quad DAC 구조로 업그레이드
+- 4개의 DAC를 동시에 구동해 신호 처리 성능 향상 및 압도적인 사운드 구현
+
+■ SP3000 vs SP4000 DAC 구조 비교
+
+| 항목 | SP3000 (HEXA DAC) | SP4000 (OCTA DAC) |
+| --- | --- | --- |
+| 구성 | Dual & Dual | Real Quad |
+| DAC | AK4191EQ x2 + AK4499EX x4 | AK4191EQ x4 + AK4499EX x4 |
+| PCM | 32bit/768kHz | 32bit/1536kHz |
+| DSD | DSD512 | DSD1024 |
+| BAL Output | 6.3Vrms | 8Vrms |
+
+
+■■ 2. High Driving Mode
+
+SP4000만의 독자 기술로, OPAMP를 병렬 구조로 추가 적용해 구동 범위를 수평으로 확장하는 방식입니다.
+
+- 기존 KANN 시리즈의 단순 전압 상승(수직 증가) 방식과 달리, OPAMP 2개를 병렬로 운용 (2륜 / 4륜 개념)
+- 출력 상승 시 동반되는 SNR 저하 및 노이즈 상승을 억제
+- 소리의 밀도와 디테일 극대화
+- 설정에서 On / Off 전환 가능. Normal Mode 대비 확실한 사운드 퀄리티 차이 제공
+- High Driving Mode 사용 시 배터리 소모 증가
+
+
+■■ 3. Full Open Android
+
+시장의 지속적인 요구에 따라 SP4000에 Full Open Android를 탑재합니다.
+
+- 기존 AK DAP는 정해진 특정 APP만 설치 가능했으나, SP4000은 스마트폰처럼 자유로운 APP 설치 지원
+- YouTube, 스트리밍 서비스 등 소비자 불만 사항 해소
+- 경쟁사(FiiO, Shanling 등 중국 브랜드) 대비 동등 수준의 개방성 확보
+`,
+   tags:["A&ultima","SP4000","크림슨","플래그쉽","OctaDAC","FullOpenAndroid","HighDrivingMode"],
+   files:[
+     {label:"SP4000_사업계획서_0430.pdf", url:"files/SP4000_사업계획서_0430_수정.pdf"},
+   ],
+   links:[
+     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/BWddwuTWmaWdqacRZFGrsa/UX_Crimson_Common?node-id=520-14833&t=4AetULsfsg8ocbzt-1"},
+     {label:"UI Figma", url:"https://www.figma.com/design/CZdIQpzaGRVJOXF7ml8b7f/UI_Crimson_Common-Design-2.0-?node-id=28-54118&t=fRtVetOx6sLv1byy-1"},
+   ],
+   images:[
+     {src:"images/SP4000/SP4000_thumb.png", alt:"SP4000 썸네일"},
+     {src:"images/SP4000/SP4000_1.jpg", alt:"SP4000 전면"},
+     {src:"images/SP4000/SP4000_2.jpg", alt:"SP4000 후면"},
+     {src:"images/SP4000/SP4000_3.jpg", alt:"SP4000 퍼스펙티브"},
+     {src:"images/SP4000/SP4000_4.jpg", alt:"SP4000 휠 디테일"},
+   ]},
+  {id:26, title:"SP4000T", category:"제품 모델", models:["A&ultima"], date:"2026.05.21", author:"Ellie", authorInitial:"E",
+   credits:{PM:"Jay", PL:"Kane", UX:"Ellie", UI:"Luna"},
+   desc:"A&ultima 라인의 플래그십 DAP.",
+   body:`■■ 1. Tube Current
+
+진공관 내부 플레이트 전압을 3단계로 조절해, 진공관 앰프 증폭률에 변화를 줍니다. Tube Mode 진공관을 아래 3가지 모드로 변경해 다양한 음색을 즐길 수 있습니다.
+
+- Triode Mode : 자연스럽고 따뜻한 음색
+- Pentode Mode : 힘있고, 단단한 음색
+- Ultra Linear Mode : 전체적으로 균형잡힌 음색
+
+
+■■ 2. USB 설정
+
+PC 연결 시 MTP가 활성화되지 않는 경우, 사용자가 수동으로 USB 연결 방식을 선택할 수 있습니다.
+
+■ Use USB for
+
+| 옵션 | 설명 |
+| --- | --- |
+| MTP 연결하기 | PC와 수동으로 MTP 연결 |
+| 충전하기 | 충전 전용 모드 |
+
+- 노출값: MTP 연결하기, 충전하기 중 단일 선택
+- USB 연결 시 알림 패널 노출. 탭 시 [USB 설정]으로 이동.
+
+
+■■ 3. 배터리 보호 모드
+
+기존 배터리 보호 모드는 85% 단일 고정값만 제공했으나, SP4000T에서는 사용자가 충전 상한값을 직접 선택할 수 있도록 개선합니다. (80 / 85 / 90 / 95%)
+
+
+■■ 4. 컬렉션
+
+→ UX 히스토리 [Favorite에서 Collection으로(기능 확장 재정의)] 참고`,
+   tags:["SP4000T","AMP","Collection","Favorite","USB설정","재생설정"],
+   files:[],
+   links:[
+     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=8669-8484&t=fhsxj64S8jwIqh1N-1"},
+     {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9751-56643&t=YVqta9mRIAIVw2Wd-1"},
+     {label:"UX 히스토리 Favorite에서 Collection으로(기능 확장 재정의)", url:"#open:24"},
+   ],
+   images:[
+     {src:"images/SP4000T/SP4000T_1.png", alt:"SP4000T 전면"},
+     {src:"images/SP4000T/SP4000T_2.png", alt:"SP4000T 후면"},
+     {src:"images/SP4000T/SP4000T_3.png", alt:"SP4000T 퍼스펙티브"},
+   ]},
+  {id:2, title:"PD20", category:"제품 모델", models:["PD series"], date:"2026.05.20", author:"Ellie", authorInitial:"E",
+   credits:{PM:"Luke", PL:"Evan", UX:"Luna", UI:"Luna"},
+   desc:"PD series의 최신 모델.",
+   body:`■■ Sound Master
+
+디바이스 상단의 물리 휠(Sound Master 전용)로 Bass / Mid / Treble 음역대를 독립 조절하는 기능입니다.
+휠 조작 시 해당 모드의 오버레이 팝업이 화면 근처에 즉시 노출되며, 조작 종료 후 N초간 유지되다 자동으로 사라집니다.
+
+■ 오버레이 팝업 동작
+
+- 물리키를 누를 때마다 Bass → Mid → Treble 순환 구조
+- 활성 모드 상태만 노출 (전체 3개 모드 동시 표시 아님)
+- 이전 설정 값을 한 번 보여준 뒤, 수정되는 설정 값 반영
+- 디폴트 값: Bass / 0
+- 팝업 외부 영역 터치 시 팝업 닫힘 (볼륨 오버레이와 동일)
+- 전체 모드 확인은 설정 → 사운드 마스터에서 가능
+
+■ 컨트롤 범위
+
+슬라이드 조작 160단계 (−8.0 ~ 8.0), UI 그래픽 눈금은 80칸으로 표시.
+0은 원음 그대로(보정 없음), 단계가 커질수록 해당 음역대가 강하게 부각됩니다.
+
+■ 화면 Off 상태에서 물리키 조작 시
+
+LCD 화면이 꺼진 상태에서 Sound Master 물리키를 누르면 화면이 켜지며(점등) 팝업이 즉시 노출됩니다.
+약 3초간 조작이 없으면 팝업이 자동으로 사라집니다. 물리키 잠금 상태에서는 동작하지 않습니다.
+
+■ 듀얼 휠 사용 시 표시 우선순위
+
+볼륨 휠과 Sound Master 휠을 연달아 조작할 경우, 화면이 겹치지 않고 **마지막으로 조작한 기능**의 오버레이만 표시됩니다.
+(이전 DAP의 볼륨 최상위 방식과 달리, 스위치 형식으로 변경)
+
+■ 롱키 — Sound Studio 진입
+
+Sound Master 물리키를 길게 누르면 Sound Studio 화면으로 직접 진입합니다.
+
+| 상태 | 동작 |
+| --- | --- |
+| Car Mode / 튜토리얼 / 청력 테스트 중 | 무반응 (토스트 없음) |
+| USB Mode | 해당 시나리오 화면으로 이동 (토스트 O) |
+| 외부 연결 신호 수신 중 (BT 싱크, CD 리퍼, AK Connect, AirPlay, 룬레디, 코부즈 등) | "사운드 스튜디오를 사용할 수 없습니다." 토스트 노출 |
+| 내장앱 스트리밍 | 진입 가능 |
+
+
+■■ Sound Studio
+
+사용자의 청력 데이터를 기반으로 개인 맞춤형 사운드를 설정하고 관리하는 화면입니다.
+홈 메인의 사운드 스튜디오 아이콘 선택 또는 Sound Master 롱키로 진입합니다.
+
+■ 연결 상태에 따른 화면 구분
+
+| 상태 | 설명 |
+| --- | --- |
+| 유선 이어폰 연결됨 | 이어폰 아이콘 + 기기명 + "연결됨" 표시. 번들 이어폰은 [PD20], 그 외는 [외부 기기 / External] |
+| 연결 안 됨 | "연결 안 됨" 표시, 퍼스널 사운드 카드 비활성 |
+
+- 세팅 이어폰은 유선 전용 (BT 연결 미지원)
+- 비활성 상태에서도 카드 접기/펼치기는 가능
+
+■ 사운드 카드 구성 (총 3종)
+
+| 카드 | 설명 |
+| --- | --- |
+| 퍼스널 사운드 | 청력 측정 결과 기반, 좌우 편차 보정으로 최적화된 사운드 제공 |
+| 이퀄라이저 | 주파수 대역별 레벨 직접 설정 |
+| 오디오스피어 | 서라운드 효과 조절로 공간 음향 설정 |
+
+- 퍼스널 사운드를 제외한 카드는 접기/펼치기 제공
+- 카드별 토글 스위치로 On/Off 가능 (EQ 제외)
+- 카드 하단 안내: 퍼스널 사운드 및 이퀄라이저는 32bit/192kHz 이하, 오디오스피어는 32bit/96kHz 이하에서만 적용
+
+
+■■ Personal Sound (퍼스널 사운드)
+
+■ 세부 설정
+
+- 타이틀 + 설명 + 토글 스위치 + 그래프 + 버튼 2개(Profiles / +) 제공
+- 그래프: 좌/우 청력 값(dB, 주파수 대역) 시각화. 선택된 프리셋 세팅 값 실시간 반영
+- 초기(세팅 값 없을 때): 그래프 바 & Name 정보 미제공, "퍼스널 사운드를 추가해 주세요." 문구만 노출
+- 툴팁: i 아이콘 터치 시 기능 설명 노출, 다른 영역 터치 시 자동 닫힘
+
+■ Profiles (바텀 시트)
+
+- 최대 10개 저장, 최대 5개 노출 (그 이상 스크롤)
+- 저장된 프로필 없을 경우 "저장된 프로필 없음" 노출
+- 현재 적용된 프리셋 항목에 ✔ 표시, 탭 시 즉시 적용
+- 이름 편집 / 삭제 팝업 제공
+
+■ 새 프리셋 추가 (+ 버튼)
+
+1. 팝업: "정확한 청력 측정을 위해, 제공된 이어폰을 사용해 주세요." → 확인
+2. 이어폰 미연결 시 하단 토스트: "이어폰이 연결되지 않았습니다."
+3. 튜토리얼 안내 화면 → 테스트 시작
+
+■ 청력 테스트 진행
+
+- 좌/우 각각 5회 × 6세트 반복 (총 30회)
+- 측정 방향에 따라 이미지 활성화 (왼쪽 → 오른쪽 순서)
+- 응답 버튼: [들림] / [안 들림] — 선택 즉시 다음 테스트로 진행
+- 테스트 중 볼륨 조작 불가 팝업 제공
+- 테스트 종료 확인 팝업: 취소 / 종료
+
+■ 오류 중단
+
+예기치 않은 오류(네트워크 끊김 등) 발생 시 "테스트 중단" 팝업 노출.
+Audiodo 오류 화면은 미노출, 팝업으로 즉시 대체.
+- 종료: Sound Studio 메인 복귀
+- 다시 시작: 안내 화면 스킵, 왼쪽 테스트부터 재시작
+
+■ 프로필 저장 (3단계)
+
+이름 → 나이 → 성별 순서로 입력. 각 단계 진행 Bar로 시각 안내.
+성별 옵션: 남자 / 여자 / 논바이너리 / 응답 거부
+
+
+■■ Equalizer (이퀄라이저)
+
+■ 카드 구성
+
+- 접힘: 타이틀 + 설명 + 토글 스위치만 노출
+- 펼침: 그래프 컨트롤 영역 + Profiles / 되돌리기 / 저장 버튼
+
+■ 그래프 컨트롤
+
+| 조작 | 설명 |
+| --- | --- |
+| Dot 3개 (드래그) | 음색 실시간 조정 |
+| 하단 컨트롤 바 | Heavier ↔ Brighter 전체 음색 방향 설정 |
+
+- Gain 범위: −8.0 ~ 8.0 (Sound Master와 동일, 12/11 확정)
+- 디폴트 값: Audiodo 앱과 동일
+- Sound Master 휠로 Gain 연동 조절 가능
+- 초기 EQ명: "이름 없음 / Untitled", 저장 후: "[EQ: 저장명]"
+
+■ 버튼 동작
+
+- Profiles: 저장된 EQ 목록 바텀 시트로 노출 (최대 10개, 5개까지 표시 후 스크롤)
+- 되돌리기: 현재 조정 값을 기본값(Flat Curve)으로 즉시 복원
+- 저장: 현재 EQ 값을 새 프리셋으로 저장하는 팝업 노출
+
+
+■■ Audiosphere (오디오스피어)
+
+서라운드 효과로 공간 음향을 설정하는 카드. 주로 영상 감상용으로 권장합니다.
+
+■ 카드 구성
+
+- 접힘: 타이틀 + 설명 + 토글 스위치만 노출
+- 펼침: 음향 효과 시각화 이미지 + 모드 선택 버튼 4개
+
+■ 공간 음향 모드
+
+| 모드 | 특징 |
+| --- | --- |
+| Subtle | 미세한 공간감 (디폴트) |
+| Balanced | 균형 잡힌 공간감 |
+| Immersive | 몰입감 있는 입체 음향 |
+| Echoic | 잔향감이 강한 공간 음향 |
+
+- 선택 즉시 해당 효과 적용
+- 선택된 모드에 맞게 시각화 이미지 변경`,
+   tags:["PD20","SoundMaster","SoundStudio","퍼스널사운드","이퀄라이저","오디오스피어","청력테스트","물리키","오버레이","듀얼휠"],
+   files:[],
+   links:[
+     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=8627-2086&t=fhsxj64S8jwIqh1N-1"},
+     {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9739-17741&t=YVqta9mRIAIVw2Wd-1"},
+   ],
+   images:[
+     {src:"images/PD20/PD20_thumb.png", alt:"PD20 썸네일"},
+   ]},
+  {id:6, title:"PD5", category:"제품 모델", models:["PD series"], date:"2026.05.22", author:"Ellie", authorInitial:"E",
+   credits:{PM:"Luke", PL:"Hoya", UX:"Ellie", UI:"Luna"},
+   desc:"Octa-DAC 탑재 및 EnviroTune 기능 도입으로 사운드 퍼포먼스와 환경 적응형 음질을 동시에 구현한 PD series 신모델.",
+   body:`■■ 1. DAC Mode
+
+PD5에는 8개의 DAC가 탑재되어 있으며, 사용자가 DAC 구동 수를 직접 선택할 수 있습니다.
+
+| 모드 | 구동 DAC | 출력 (Unbal.) | 출력 (Bal.) |
+| --- | --- | --- | --- |
+| Eco Mode (4x DAC) | 4개 (Quad-DAC) | 3Vrms | 4Vrms |
+| Performance Mode (8x DAC) | 8개 (Octa-DAC) | 4Vrms | 8Vrms |
+
+- Eco Mode: 4개의 DAC로 효율적인 성능과 긴 재생 시간을 제공하며, 낮은 전력 소비로 균형 잡힌 사운드를 구현합니다.
+- Performance Mode: 8개의 DAC를 모두 활성화하여 최상의 오디오 성능을 구현하며, 해상도 / 출력을 향상시킵니다.
+- On/Off 개념이 아닌 모드 전환 방식 (기존 AMP Gain Normal/High 설정과 동일한 컨셉)
+- 알림 패널 빠른 설정 버튼으로 전환 가능
+
+■■ 2. EnviroTune
+
+마이크를 통해 외부 노이즈를 측정하여 최적의 사운드로 자동 조정하는 환경 적응형 기능입니다.
+
+| 상태 | 설명 |
+| --- | --- |
+| Off | EnviroTune 비활성 |
+| Auto | 외부 노이즈를 자동 감지 및 보정 |
+| Manual | 사용자가 직접 세부 설정 조정 (조절 범위는 개발 확인 후 추가 예정) |
+
+- 기능 구현 진행 중 (5월까지 개발 완료 예정)
+- DAC Mode와 동일하게 알림 패널 빠른 설정 버튼으로 접근 가능
+- Manual 모드 세부 설정 항목은 개발 확인 후 추후 업데이트 예정`,
+   tags:["PD시리즈","OctaDAC","EnviroTune","FullOpenAndroid","Pocket-HiFi","사업계획서"],
+   files:[
+     {label:"PD5_사업계획서_0728.pdf", url:"files/PD5_사업계획서_0728.pdf"},
+   ],
+   links:[
+     {label:"astellnkern.com PD5", url:"https://www.astellnkern.com"},
+   ],
+   images:[
+     {src:"images/PD5/PD5_1.png", alt:"PD5 전면"},
+     {src:"images/PD5/PD5_2.png", alt:"PD5 측면"},
+     {src:"images/PD5/PD5_3.png", alt:"PD5 퍼스펙티브"},
+     {src:"images/PD5/PD5_4.png", alt:"PD5 후면"},
+   ]}
+];
