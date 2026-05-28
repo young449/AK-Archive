@@ -104,6 +104,7 @@ PC 연결 시 MTP가 활성화되지 않는 경우, 사용자가 수동으로 US
      {label:"UX 히스토리 Favorite에서 Collection으로(기능 확장 재정의)", url:"#open:24"},
    ],
    images:[
+     {src:"images/SP4000T/SP4000T_thumb.png", alt:"SP4000T 썸네일"},
      {src:"images/SP4000T/SP4000T_1.png", alt:"SP4000T 전면"},
      {src:"images/SP4000T/SP4000T_2.png", alt:"SP4000T 후면"},
      {src:"images/SP4000T/SP4000T_3.png", alt:"SP4000T 퍼스펙티브"},
