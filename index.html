@@ -201,6 +201,10 @@ body.is-home #gnb-wrap{
   #gnb-logo-text{font-size:14px}
   .gnb-tab{display:none}
   #gnb-hamburger{display:flex}
+  /* 드로어 열렸을 때 pill radius 축소 */
+  #gnb-inner.drawer-open{
+    border-radius:20px;
+  }
 }
 
 /* =============================================
@@ -1916,6 +1920,7 @@ document.querySelectorAll(".gnb-tab").forEach(tab=>{
   function openDrawer(){
     overlay.classList.add("open");
     drawer.classList.add("open");
+    document.getElementById("gnb-inner").classList.add("drawer-open");
     hamburger.style.display = "none";
     closeBtn.style.display  = "flex";
     document.body.style.overflow = "hidden";
@@ -1924,6 +1929,7 @@ document.querySelectorAll(".gnb-tab").forEach(tab=>{
   function closeDrawer(){
     overlay.classList.remove("open");
     drawer.classList.remove("open");
+    document.getElementById("gnb-inner").classList.remove("drawer-open");
     hamburger.style.display = "";
     closeBtn.style.display  = "none";
     document.body.style.overflow = "";
