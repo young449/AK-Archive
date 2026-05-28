@@ -180,6 +180,19 @@ body.is-home #gnb-wrap{
     align-items:stretch;
     padding:0;
     gap:0;
+    position:relative;
+  }
+  /* 드로어: pill 아래에 absolute로 띄움 — 콘텐츠 밀림 없음 */
+  #gnb-drawer{
+    position:absolute;
+    top:100%;
+    left:0;right:0;
+    background:rgba(26,26,26,0.95);
+    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+    border:1px solid var(--div-2);
+    border-top:none;
+    border-radius:0 0 20px 20px;
+    z-index:10;
   }
   /* pill 상단 행: 로고 + 햄버거/닫기 */
   #gnb-inner-row{
@@ -198,9 +211,9 @@ body.is-home #gnb-wrap{
   #gnb-logo-text{font-size:14px}
   .gnb-tab{display:none}
   #gnb-hamburger{display:flex}
-  /* 드로어 열렸을 때 pill radius 축소 */
+  /* 드로어 열렸을 때 pill 상단 radius 유지, 하단 각지게 */
   #gnb-inner.drawer-open{
-    border-radius:20px;
+    border-radius:20px 20px 0 0;
   }
 }
 
