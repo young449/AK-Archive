@@ -397,6 +397,34 @@ body.is-list #list-page{display:flex}
     color:var(--n-400);
     pointer-events:none;
   }
+
+  /* 검색 확장 상태 */
+  #chip-bar.search-open #chip-scroll{ display:none; }
+  #chip-bar.search-open::after{ display:none; }
+  #chip-bar.search-open #chip-search-wrap{
+    flex:1;width:auto;border-radius:var(--r-xl);
+    justify-content:flex-start;
+    padding:0 12px 0 36px;
+    position:relative;
+  }
+  #chip-bar.search-open #chip-search-icon{ display:none; }
+  #chip-bar.search-open .csi{
+    display:block;
+    left:12px;
+  }
+  #chip-bar.search-open #chip-search{
+    display:block;
+    width:100%;height:100%;
+    background:transparent;border:none;
+    padding:0;
+  }
+  #chip-search-close{
+    display:none;
+    align-items:center;justify-content:center;
+    width:34px;height:34px;flex-shrink:0;
+    color:var(--text-2);
+  }
+  #chip-bar.search-open #chip-search-close{ display:flex; }
 }
 
 /* =============================================
@@ -1364,6 +1392,29 @@ function renderChipBar() {
   sw.style.cssText="position:relative;flex-shrink:0;";
   sw.innerHTML=`<svg class="csi" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg><input id="chip-search" type="search" placeholder="페이지 내 검색" autocomplete="off"/><span id="chip-search-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5l3 3"/></svg></span>`;
   bar.appendChild(sw);
+
+  // 모바일 검색 닫기 버튼
+  const closeBtn=document.createElement("button");
+  closeBtn.id="chip-search-close";
+  closeBtn.innerHTML=`<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l10 10M14 4L4 14"/></svg>`;
+  bar.appendChild(closeBtn);
+
+  // 아이콘 클릭 → 검색 확장
+  sw.addEventListener("click", ()=>{
+    if(bar.classList.contains("search-open")) return;
+    bar.classList.add("search-open");
+    const inp=document.getElementById("chip-search");
+    if(inp){ inp.focus(); }
+  });
+  // X 클릭 → 검색 닫기
+  closeBtn.addEventListener("click", ()=>{
+    bar.classList.remove("search-open");
+    S.q="";
+    const inp=document.getElementById("chip-search");
+    if(inp) inp.value="";
+    renderCards();
+  });
+
   const inp=document.getElementById("chip-search");
   if(inp){inp.value=S.q||"";inp.addEventListener("input",()=>{S.q=inp.value;renderCards();});}
 }
