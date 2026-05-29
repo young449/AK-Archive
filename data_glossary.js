@@ -71,7 +71,7 @@ SD 카드, 내부 저장소, USB 등 물리적 저장 매체를 기반으로 동
 ■ 한 줄 요약
 
 파일을 기기에 직접 넣어 재생하는 방식. 인터넷 불필요`,
-   tags:["Local","로컬","오프라인","저장"],links:[]},
+   tags:["Local","로컬","내부저장소","SD카드","USB","오프라인"],links:[]},
   {id:21,title:"로컬 메뉴 (Local Menu)",category:"용어사전",glossTab:"로컬저장소",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"AK DAP·디바이스에서 기기에 직접 저장된 음원 파일을 탐색하고 재생하기 위한 메뉴 영역입니다.",
    body:`■ 개요
@@ -87,7 +87,7 @@ SD 카드, 내부 저장소, USB 등 물리적 저장 매체를 기반으로 동
 | CUE 시트 | 앨범 단위 트랙 탐색 |
 | CD 라이브러리 | CD 리핑 및 저장 |
 | HD 오디오 | 고음질 파일 필터 뷰 |`,
-   tags:["로컬 메뉴","Local Menu","오프라인재생","네트워크공유","고음질필터"],links:[
+   tags:["Local Menu","로컬 메뉴"],links:[
      {label:"SMB",url:"#search:SMB"},
      {label:"CUE 시트",url:"#search:CUE 시트"},
      {label:"CD 라이브러리",url:"#search:CD 라이브러리"},
@@ -108,7 +108,7 @@ SD 카드, 내부 저장소, USB 등 물리적 저장 매체를 기반으로 동
 ■ 한 줄 요약
 
 앨범 전체를 1개 파일로 관리하면서, CUE 파일로 각 트랙을 분리·탐색할 수 있게 해주는 방식`,
-   tags:["CUE 시트","CUE Sheet","메타데이터","트랙분리","앨범단위"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
+   tags:["CUE Sheet","CUE 시트","메타데이터","앨범단위","트랙분리",".cue"],links:[{label:"로컬 메뉴 (Local Menu)",url:"#open:21"}]},
   {id:19,title:"CD 라이브러리 (CD Library)",category:"용어사전",glossTab:"로컬저장소",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"CD에 담긴 음원, 앨범 아트 등의 데이터를 디지털 파일로 복사해 기기에 저장하는 기능입니다.",
    body:`■ 개요
@@ -125,7 +125,7 @@ CD에 담긴 음원, 앨범 아트 등의 데이터를 디지털 파일로 복�
 ■ 한 줄 요약
 
 CD를 DAP에 디지털 파일로 옮기는 과정. 이 복사 작업을 '리핑'이라고 함`,
-   tags:["CD 라이브러리","CD Library","리핑","FLAC","WAV","디지털변환"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
+   tags:["CD Library","CD 라이브러리","CDRipping","CD리핑","FLAC","WAV"],links:[{label:"로컬 메뉴 (Local Menu)",url:"#open:21"}]},
   {id:20,title:"HD 오디오 (HD Audio)",category:"용어사전",glossTab:"로컬저장소",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"로컬에 저장된 파일 중 고음질 파일만 필터링해서 보여주는 목록입니다. 이전 명칭: MQS.",
    body:`■ 개요
@@ -138,7 +138,7 @@ CD를 DAP에 디지털 파일로 옮기는 과정. 이 복사 작업을 '리핑'
 ■ 한 줄 요약
 
 로컬 파일 중 고음질(HD) 파일만 모아서 보여주는 필터 뷰. 과거 명칭은 MQS`,
-   tags:["HD 오디오","HD Audio","고음질","MQS","필터뷰","명칭변경"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
+   tags:["HD Audio","HD 오디오","고음질","MQS"],links:[{label:"로컬 메뉴 (Local Menu)",url:"#open:21"}]},
   {id:13,title:"리모트 (Remote)",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"DAP 및 디바이스를 원격으로 제어하는 기능으로, 앱을 통해 기기를 조작하는 방식입니다.",
    body:`■ 개요
