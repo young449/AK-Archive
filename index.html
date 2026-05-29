@@ -325,7 +325,29 @@ body.is-list #list-page{display:flex}
 /* =============================================
    SECTION: css-chip-bar
 ============================================= */
-#chip-bar{display:flex;align-items:center;gap:6px;margin-bottom:20px;flex-wrap:wrap}
+#chip-bar{display:flex;align-items:center;gap:0;margin-bottom:20px;}
+
+/* 탭 스크롤 영역 */
+#chip-scroll{
+  display:flex;align-items:center;gap:6px;
+  flex:1;min-width:0;
+  overflow-x:auto;overflow-y:hidden;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+  padding-right:8px;
+}
+#chip-scroll::-webkit-scrollbar{display:none}
+
+/* 우측 페이드 — chip-bar에 relative + after로 처리 */
+#chip-bar{position:relative;}
+#chip-bar::after{
+  content:"";
+  position:absolute;
+  right:44px;top:0;bottom:0;width:32px;
+  background:linear-gradient(to right, transparent, var(--page-bg, #111));
+  pointer-events:none;
+  z-index:1;
+}
 .chip-btn{
   display:inline-flex;align-items:center;gap:5px;
   padding:7px 14px;border-radius:var(--r-xl);
@@ -731,14 +753,14 @@ body.is-tag #detail[style*="block"] {
   /* 리스트 */
   #list-content { padding: 20px 16px 60px }
   #hero { margin-bottom: 20px }
-  #chip-bar { gap: 4px; margin-bottom: 16px }
+  #chip-bar { margin-bottom: 16px }
+  #chip-scroll { gap: 4px }
   .chip-btn { padding: 6px 12px; font-size: 13px }
   .gloss-stab { padding: 6px 12px; font-size: 13px }
 
-  /* chip-bar 검색 → 전체 폭으로 */
-  #chip-search-wrap { flex: 1; min-width: 0 }
-  #chip-search       { width: 100%; font-size: 13px }
-  #chip-search:focus { width: 100% }
+  /* 검색창 고정, 크기 유지 */
+  #chip-search-wrap { flex-shrink: 0 }
+  #chip-search       { font-size: 13px }
 
   /* 카드 */
   .card { padding: 18px 14px; gap: 8px }
@@ -780,16 +802,8 @@ body.is-tag #detail[style*="block"] {
   #hero-desc    { font-size: 14px }
   #count-text   { font-size: 13px }
 
-  /* chip-bar 세로 스크롤 → 가로 스크롤 */
-  #chip-bar {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-bottom: 4px;
-    margin-bottom: 14px;
-  }
-  #chip-bar::-webkit-scrollbar { display: none }
+  /* chip-scroll은 기본 스크롤, 여기선 margin만 조정 */
+  #chip-bar { margin-bottom: 14px; }
 
   /* 카드 */
   .card { padding: 16px 12px; border-radius: 12px }
@@ -826,16 +840,7 @@ body.is-tag #detail[style*="block"] {
   #d-title       { font-size: 16px }
   #d-body        { font-size: 13px }
 
-  /* chip-bar / gloss-subtab 가로 스크롤 */
-  #chip-bar,
-  #gloss-subtab-wrap{
-    flex-wrap:nowrap;
-    overflow-x:auto;
-    -webkit-overflow-scrolling:touch;
-    scrollbar-width:none;
-  }
-  #chip-bar::-webkit-scrollbar,
-  #gloss-subtab-wrap::-webkit-scrollbar{ display:none; }
+  #chip-bar { margin-bottom: 12px; }
 }
 
 /* =============================================
@@ -1310,6 +1315,10 @@ function renderChipBar() {
   bar.innerHTML="";
   bar.style.cssText="";
   const chips=getChips(S.cat);
+
+  // 탭 스크롤 영역
+  const scroll=document.createElement("div");
+  scroll.id="chip-scroll";
   chips.forEach(c=>{
     let cnt;
     if(S.cat==="용어사전"){
@@ -1326,11 +1335,14 @@ function renderChipBar() {
       if(S.cat==="용어사전") S.glossTab=c.key;
       updateChips();renderCards();
     });
-    bar.appendChild(btn);
+    scroll.appendChild(btn);
   });
+  bar.appendChild(scroll);
+
+  // 검색 버튼 — 우측 고정
   const sw=document.createElement("div");
   sw.id="chip-search-wrap";
-  sw.style.cssText=chips.length===0?"":"margin-left:auto;position:relative;flex-shrink:0;";
+  sw.style.cssText="position:relative;flex-shrink:0;";
   sw.innerHTML=`<svg class="csi" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg><input id="chip-search" type="search" placeholder="페이지 내 검색" autocomplete="off"/>`;
   bar.appendChild(sw);
   const inp=document.getElementById("chip-search");
