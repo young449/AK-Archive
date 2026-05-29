@@ -168,7 +168,7 @@ DAP 및 디바이스를 원격으로 제어하는 기능으로, 앱을 통해 �
 ■ 한 줄 요약
 
 기기를 앱으로 원격 조작하는 기능. 음원 저장(라이브러리)과 스트리밍(에어러블) 두 가지 방식을 지원`,
-   tags:["리모트","Remote","원격제어","라이브러리","에어러블연동"],links:[]},
+   tags:["Remote","리모트","원격제어","DAP","디바이스","라이브러리","에어러블"],links:[]},
   {id:15,title:"에어러블 (airable)",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"오디오 기기 제조사를 위한 스트리밍·라디오·팟캐스트 콘텐츠 통합 연동 솔루션입니다.",
    body:`■■ 개요
@@ -202,7 +202,7 @@ TIDAL, Qobuz, Deezer 같은 여러 스트리밍 서비스를 API 형태로 묶�
 ■■ 한 줄 요약
 
 여러 스트리밍 서비스를 하나의 API로 묶어주는 B2B 미들웨어. 제조사가 개별 서비스와 직접 제휴·개발하는 수고를 덜어줌`,
-   tags:["에어러블","airable","미들웨어","B2B","TIDAL","Qobuz"],links:[]},
+   tags:["airable","에어러블","통합연동솔루션","내장인터페이스","B2B","TIDAL","타이달","Deezer","디저","Qobuz","코부즈","Amazon Music","아마존뮤직","HighRes Audio","하이레스오디오","Podcast","팟캐스트","InternetRadio","인터넷라디오"],links:[]},
   {id:16,title:"스트리밍 앱 (Streaming App)",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"에어러블에 포함되지 않은 스트리밍 서비스를 APK 설치나 자체 앱 스토어를 통해 직접 설치해 사용하는 방식입니다.",
    body:`■ 개요
@@ -221,7 +221,7 @@ TIDAL, Qobuz, Deezer 같은 여러 스트리밍 서비스를 API 형태로 묶�
 ■ 한 줄 요약
 
 에어러블 미지원 서비스(Spotify 등)를 사용하기 위해 앱을 직접 설치하는 방식. 자유도는 높지만 기기 최적화는 낮을 수 있음`,
-   tags:["스트리밍 앱","Streaming App","Spotify","APK","안드로이드앱"],links:[{label:"상세 페이지 보기",url:"streaming-app.html"}]},
+   tags:["Streaming App","스트리밍 앱","APK","Spotify","스포티파이","AppleMusic","애플뮤직","YouTubeMusic","유튜브뮤직"],links:[{label:"상세 페이지 보기",url:"streaming-app.html"}]},
   {id:17,title:"SMB (Server Message Block)",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"네트워크를 통해 다른 기기의 폴더/파일에 접근할 수 있게 해주는 파일 공유 프로토콜입니다.",
    body:`■ 개요
@@ -252,7 +252,7 @@ EQ(Equalizer)는 특정 주파수 영역을 조절해 원하는 음색으로 바
 ■ 한 줄 요약
 
 EQ는 주파수 대역을 조절해 음악의 음색 밸런스를 바꾸는 기능입니다.`,
-   tags:["이퀄라이저","EQ","주파수","음색","설정"],links:[]},
+   tags:["EQ","이퀄라이저","주파수","음색","밸런스"],links:[]},
   {id:22,title:"컬렉션 (Collection)",category:"용어사전",glossTab:"기능",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"기존 Favorite(즐겨찾기)을 재정의한 북마크형 저장 기능. 노래·앨범·아티스트·플레이리스트를 폴더별로 저장·관리할 수 있습니다.",
    body:`■■ 개요
@@ -286,7 +286,7 @@ EQ는 주파수 대역을 조절해 음악의 음색 밸런스를 바꾸는 기�
 ■ 한 줄 요약
 
 노래·앨범·아티스트·플리를 폴더별로 즐겨찾기처럼 저장하는 기능. 기존 Favorite을 SP4000T부터 확장 재정의`,
-   tags:["컬렉션","Collection","북마크","폴더구조","SP4000T이상"],links:[{label:"기능 히스토리 보기",url:"#search:컬렉션 Favorite 확장"}]},
+   tags:["Collection","컬렉션","북마크","노래","앨범","아티스트","플레이리스트","최근추가된노래"],links:[{label:"기능 히스토리 보기",url:"#search:컬렉션 Favorite 확장"}]},
   {id:23,title:"즐겨찾기 (Favorite)",category:"용어사전",glossTab:"기능",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"SP4000T 이전 모델에서 사용하던 노래 단독 즐겨찾기 기능. SP4000T부터 '컬렉션'으로 재정의되었습니다.",
    body:`■ 개요
@@ -309,5 +309,5 @@ SP4000T 이전 구형 모델은 Favorite 명칭과 기능이 그대로 유지됩
 ■ 한 줄 요약
 
 노래만 담는 단순 즐겨찾기. SP4000T부터 컬렉션으로 기능 확장되어 대체됨`,
-   tags:["즐겨찾기","Favorite","구버전","노래단독","SP4000T이전"],links:[{label:"컬렉션 용어사전 보기",url:"#search:컬렉션"}]},
+   tags:["Favorite","즐겨찾기"],links:[{label:"컬렉션 용어사전 보기",url:"#search:컬렉션"}]},
 ];
