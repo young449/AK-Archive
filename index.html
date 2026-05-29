@@ -373,16 +373,26 @@ body.is-list #list-page{display:flex}
 .chip-btn .cnt{font-size:12px;font-family:var(--mono);opacity:0.7}
 .gloss-stab .cnt{font-size:12px;font-family:var(--mono);opacity:0.7}
 #chip-search-wrap{position:relative;flex-shrink:0}
+/* 검색 필드 상태 가이드
+   Default : bg n-800 / border div-2(n-600) / placeholder n-500 / icon n-500
+   Active  : bg n-700 / border n-400       / placeholder n-500 / icon n-400
+*/
 #chip-search{
   width:170px;height:36px;padding:0 12px 0 32px;
   background:var(--n-800);border:1px solid var(--div-2);
   border-radius:var(--r-xl);color:var(--text-1);
   font-family:var(--font);font-size:14px;outline:none;
-  transition:border-color 0.13s,width 0.2s;
+  transition:background 0.13s,border-color 0.13s,width 0.2s;
 }
 #chip-search::placeholder{color:var(--n-500)}
-#chip-search:focus{border-color:var(--cr-700);width:205px}
-.csi{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--n-500);pointer-events:none}
+#chip-search:focus{
+  background:var(--n-700);
+  border-color:var(--n-400);
+  width:205px;
+}
+#chip-search:focus ~ .csi,
+#chip-search:focus + .csi{ color:var(--n-400); }
+.csi{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--n-500);pointer-events:none;transition:color 0.13s;}
 #chip-search-icon{display:none}
 #chip-search-close{display:none}
 
