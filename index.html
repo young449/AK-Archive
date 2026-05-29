@@ -1914,7 +1914,6 @@ document.querySelectorAll(".gnb-tab").forEach(tab=>{
     document.getElementById("gnb-inner").classList.add("drawer-open");
     hamburger.style.display = "none";
     closeBtn.style.display  = "flex";
-    document.body.style.overflow = "hidden";
     syncDrawerActive();
   }
   function closeDrawer(){
@@ -1923,7 +1922,6 @@ document.querySelectorAll(".gnb-tab").forEach(tab=>{
     document.getElementById("gnb-inner").classList.remove("drawer-open");
     hamburger.style.display = "";
     closeBtn.style.display  = "none";
-    document.body.style.overflow = "";
   }
   function syncDrawerActive(){
     document.querySelectorAll(".gnb-drawer-item").forEach(el=>{
