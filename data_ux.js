@@ -5,7 +5,7 @@
 // =============================================
 
 const DATA_ux = [
-  {id:24,title:"Favorite에서 Collection으로(기능 확장 재정의)",category:"기능 히스토리",labels:["A&ultima"],models:["SP4000T"],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:24,title:"Favorite에서 Collection으로(기능 확장 재정의)",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["A&ultima"],models:["SP4000T"],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"기존 Favorite(즐겨찾기)의 노래 단독 저장을 확장, 노래·앨범·아티스트·플레이리스트를 폴더별로 저장·관리하는 컬렉션으로 재정의. SP4000T부터 적용.",
    body:`■■ 기능 개요
 
@@ -105,9 +105,9 @@ AK Connect로 추가된 곡은 컬렉션 추가 불가.
 
 현재 SP4000T(A&ultima 라인)에 우선 반영되었으며,
 PD 라인 포함 하위 모델 RC 반영 계획은 현재 미정입니다.`,
-   tags:["Favorite에서 Collection으로","기능 확장 재정의","컬렉션","즐겨찾기","기능확장","북마크","토글","중복처리"],
+   tags:["컬렉션","즐겨찾기","기능확장","북마크","토글","중복처리"],
    links:[{label:"용어사전 — 컬렉션",url:"#search:컬렉션"},{label:"용어사전 — Favorite",url:"#search:Favorite"}]},
-  {id:30,title:"설정 레이블 추가 및 재배열",category:"기능 히스토리",labels:["RC"],models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
+  {id:30,title:"설정 레이블 추가 및 재배열",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["RC"],models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
    desc:"기존 아이콘만으로 구분되던 설정 화면에 레이블을 추가하고, 각 그룹 성격에 맞게 항목 순서를 재배열한 UX 개선.",
    body:`■■ 기능 개요
 
@@ -144,9 +144,9 @@ PD 라인 포함 하위 모델 RC 반영 계획은 현재 미정입니다.`,
 | --- | --- | --- |
 | A&ultima | 미적용 | 리소스 부족 |
 | PD series | 미적용 | 리소스 부족 |`,
-   tags:["설정 레이블 추가 및 재배열","설정","레이블","재배열","그룹화","UX개선"],
+   tags:["설정","레이블","재배열","그룹화","UX개선"],
    images:[],
    links:[]},
-  {id:9,title:"버튼 컴포넌트 스펙 v3",category:"디자인 가이드",models:[],date:"2025.03.08",author:"Ellie",authorInitial:"E",desc:"Primary / Secondary / Ghost 3종 버튼 스펙. 상태별 컬러 토큰 정의.",body:`버튼 높이: 40px (기본) / 32px (소형)\n\nPrimary → Crimson 700 (#CC1B38)\nSecondary → Neutrals 600 (#3A3A3A)\nDisabled → Neutrals 600 (#3A3A3A)`,tags:["버튼 컴포넌트 스펙 v3","UI","컴포넌트"],links:[{label:"피그마 — Button v3",url:"https://figma.com"}]},
-  {id:10,title:"컬러 토큰 시스템 — Semantic",category:"디자인 가이드",models:[],date:"2025.04.02",author:"Ellie",authorInitial:"E",desc:"AK Design System Semantic 컬러 토큰 전체 정의.",body:`Background\n  color/bg/primary → Black 100%\n  color/bg/secondary → Neutrals 800\n\nText\n  color/text/default → White 100%\n  color/text/primary → Crimson 700`,tags:["컬러 토큰 시스템 — Semantic","토큰","컬러"],links:[]},
+  {id:9,title:"버튼 컴포넌트 스펙 v3",category:"디자인 가이드",models:[],date:"2025.03.08",author:"Ellie",authorInitial:"E",desc:"Primary / Secondary / Ghost 3종 버튼 스펙. 상태별 컬러 토큰 정의.",body:`버튼 높이: 40px (기본) / 32px (소형)\n\nPrimary → Crimson 700 (#CC1B38)\nSecondary → Neutrals 600 (#3A3A3A)\nDisabled → Neutrals 600 (#3A3A3A)`,tags:["UI","컴포넌트"],links:[{label:"피그마 — Button v3",url:"https://figma.com"}]},
+  {id:10,title:"컬러 토큰 시스템 — Semantic",category:"디자인 가이드",models:[],date:"2025.04.02",author:"Ellie",authorInitial:"E",desc:"AK Design System Semantic 컬러 토큰 전체 정의.",body:`Background\n  color/bg/primary → Black 100%\n  color/bg/secondary → Neutrals 800\n\nText\n  color/text/default → White 100%\n  color/text/primary → Crimson 700`,tags:["토큰","컬러"],links:[]},
 ];
