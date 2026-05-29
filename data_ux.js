@@ -99,12 +99,8 @@ AK Connect로 추가된 곡은 컬렉션 추가 불가.
 
 | 모델 | 적용 여부 | RC 계획 |
 | --- | --- | --- |
-| SP4000T | ✅ 적용 (기준 모델) | — |
-| A&ultima 라인 전반 | 순차 반영 예정 | 현재 RC 계획 없음 |
-| PD 라인 | 향후 적용 예정 | 현재 RC 계획 없음 |
-
-현재 SP4000T(A&ultima 라인)에 우선 반영되었으며,
-PD 라인 포함 하위 모델 RC 반영 계획은 현재 미정입니다.`,
+| A&ultima | ✅ SP4000T | — |
+| PD series | 순차 반영 예정 | 현재 RC 계획 없음 |`,
    tags:["Collection","컬렉션","Favorite","즐겨찾기","UX개선"],
    links:[{label:"용어사전 — 컬렉션",url:"#search:컬렉션"},{label:"용어사전 — Favorite",url:"#search:Favorite"}]},
   {id:30,title:"설정 레이블 추가 및 재배열",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["RC"],models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
@@ -140,7 +136,7 @@ PD 라인 포함 하위 모델 RC 반영 계획은 현재 미정입니다.`,
 현재 개발팀에서 Compose 환경 구축을 진행 중이며, 당장 리소스 투입이 어려운 상황입니다.
 다음 모델 출시 전 회의를 거쳐 반영 방향을 결정할 예정입니다.
 
-| 모델 | 적용 여부 | 계획 |
+| 모델 | 적용 여부 | RC 계획 |
 | --- | --- | --- |
 | A&ultima | 미적용 | 리소스 부족 |
 | PD series | 미적용 | 리소스 부족 |`,
