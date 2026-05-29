@@ -18,7 +18,7 @@ SP4000과 같은 제품이 대표적인 예시이며, 고음질 음원 재생에
 ■ 한 줄 요약
 
 음악 감상 전용으로 만들어진 고음질 휴대용 플레이어`,
-   tags:["DAP","Digital Audio Player","포터블","고음질","하드웨어"],links:[]},
+   tags:["DAP","DigitalAudioPlayer","포터블","고음질","하드웨어"],links:[]},
   {id:12,title:"디바이스 (Device)",category:"용어사전",glossTab:"하드웨어",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"거치형(스탠드얼론) 음향기기로, 특정 공간에 고정해두고 사용하는 음향기기입니다.",
    body:`■ 개요
@@ -30,7 +30,7 @@ DAP와 달리 이동을 전제로 하지 않고 홈 오디오 환경에서 사�
 ■ 한 줄 요약
 
 집이나 사무실처럼 고정된 환경에서 사용하는 거치형 오디오 플레이어`,
-   tags:["디바이스","Device","거치형","스탠드얼론","홈오디오"],links:[]},
+   tags:["Device","디바이스","거치형","하드웨어","홈오디오"],links:[]},
   {id:28,title:"앰프 (AMP)",category:"용어사전",glossTab:"하드웨어",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
    desc:"작은 오디오 신호를 증폭해 이어폰·헤드폰·스피커를 충분한 출력으로 재생할 수 있게 만드는 장치입니다.",
    body:`■ 개요
@@ -58,17 +58,30 @@ DAC → AMP 순서로 동작합니다.
 ■ 한 줄 요약
 
 AMP는 오디오 신호를 증폭해 기기를 안정적으로 구동하게 만드는 장치입니다.`,
-   tags:["앰프","AMP","증폭","구동력","DAC"],links:[]},
+   tags:["AMP","앰프","DAC","증폭","구동력"],links:[]},
   {id:27,title:"커런트 (Current)",category:"용어사전",glossTab:"하드웨어",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
-   desc:"오디오 기기에서 이어폰·헤드폰을 얼마나 안정적으로 구동할 수 있는지를 나타내는 전류 공급 능력입니다.",
+   desc:"전선이나 회로를 통해 실제로 흐르는 전기의 양. 오디오에서 소리를 만들고 전달하는 핵심 물리 에너지입니다.",
    body:`■ 개요
 
-오디오 기기에서 Current는 전류 공급 능력과 관련된 표현으로, 이어폰·헤드폰을 얼마나 안정적으로 구동할 수 있는지를 설명할 때 사용됩니다.
+Current(전류)는 전선·회로를 통해 실제로 흐르는 전기의 양을 의미합니다.
+전압(Voltage)이 전기를 밀어내는 '압력'이라면, 전류는 파이프를 흐르는 '물의 양'에 해당합니다. 단위는 암페어(A).
+
+■ 오디오에서 전류가 중요한 이유
+
+스피커·이어폰의 진동판을 앞뒤로 밀고 당겨 소리를 만드는 것은 전압이 아닌 전류입니다.
+전류 공급이 부족한 앰프는 구동이 어려운 헤드폰을 제대로 제어하지 못해 저음이 뭉개지거나 해상력이 낮아집니다.
+또한 음악 신호는 양방향으로 번갈아 흐르는 교류(AC) 형태로, 이 미세한 전류 변화가 소리로 변환됩니다.
+
+■ Current Mode (전류 전송 방식)
+
+일반 오디오는 전압 변화로 신호를 전달하지만, 전류 변화로 신호를 보내는 Current Mode 방식은
+케이블 저항이나 외부 노이즈의 영향을 거의 받지 않아 원음에 가까운 고음질을 구현합니다.
+Questyle의 CMA 기술이 대표적인 예시입니다.
 
 ■ 한 줄 요약
 
-전류 공급 능력이 높을수록 헤드폰을 더 안정적이고 힘 있게 구동할 수 있습니다.`,
-   tags:["커런트","Current","전류","구동력","헤드폰"],links:[]},
+전류는 오디오 신호를 만들고 전달하는 실질적인 에너지. 공급 능력이 높을수록 구동력이 좋고 소리가 안정적입니다.`,
+   tags:["커런트","Current","전류","구동력","앰프"],links:[]},
   {id:14,title:"로컬 (Local)",category:"용어사전",glossTab:"로컬저장소",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"사용자가 음원 파일을 기기에 직접 저장하여 재생하는 방식입니다.",
    body:`■ 개요
@@ -221,7 +234,7 @@ TIDAL, Qobuz, Deezer 같은 여러 스트리밍 서비스를 API 형태로 묶�
 ■ 한 줄 요약
 
 에어러블 미지원 서비스(Spotify 등)를 사용하기 위해 앱을 직접 설치하는 방식. 자유도는 높지만 기기 최적화는 낮을 수 있음`,
-   tags:["Streaming App","스트리밍 앱","APK","Spotify","스포티파이","AppleMusic","애플뮤직","YouTubeMusic","유튜브뮤직"],links:[{label:"상세 페이지 보기",url:"streaming-app.html"}]},
+   tags:["Streaming App","스트리밍 앱","APK","Spotify","스포티파이","AppleMusic","애플뮤직","YouTubeMusic","유튜브뮤직"],links:[]},
   {id:17,title:"SMB (Server Message Block)",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"네트워크를 통해 다른 기기의 폴더/파일에 접근할 수 있게 해주는 파일 공유 프로토콜입니다.",
    body:`■ 개요
@@ -242,7 +255,7 @@ DAP·디바이스에서 SMB를 사용하려면 서버 환경 구축이 먼저 �
 ■ 한 줄 요약
 
 같은 와이파이 네트워크 안에서 PC·NAS 등의 폴더를 DAP에 연결해 음악을 재생하는 방식. 폴더가 안 보이면 SMB 스캔 실행`,
-   tags:["SMB","Server Message Block","네트워크","파일공유","NAS","SAMBA"],links:[{label:"로컬 메뉴에서 보기",url:"#search:로컬 메뉴"}]},
+   tags:["SMB","삼바","NAS","나스","네트워크","와이파이","파일공유"],links:[]},
   {id:29,title:"이퀄라이저 (EQ)",category:"용어사전",glossTab:"기능",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
    desc:"특정 주파수 영역을 조절해 원하는 음색으로 바꾸는 기능 또는 설정입니다.",
    body:`■ 개요
