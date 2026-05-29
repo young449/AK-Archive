@@ -107,24 +107,24 @@ body.is-home #gnb-wrap{
 
 /* =============================================
    SECTION: css-gnb-drawer
-   모바일 드로어 — 콘텐츠 위에 overlay로 덮임
+   모바일 드로어 — pill 아래 fixed overlay
 ============================================= */
 
-/* 오버레이: 딤 배경 */
+/* 배경 딤 */
 #gnb-drawer-overlay{
   display:none;
   position:fixed;inset:0;
   z-index:199;
-  background:rgba(0,0,0,0.45);
 }
 #gnb-drawer-overlay.open{display:block}
 
-/* 드로어: fixed overlay */
+/* 드로어: pill과 동일한 left/right에 fixed로 뜸 */
 #gnb-drawer{
   display:none;
   flex-direction:column;
   position:fixed;
-  top:28px;left:16px;right:16px;
+  top:94px; /* gnb-wrap padding(28px) + pill height(56px) + 간격(10px) */
+  left:16px;right:16px;
   z-index:201;
   background:rgba(26,26,26,0.96);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
@@ -133,24 +133,6 @@ body.is-home #gnb-wrap{
   padding:4px 12px 16px;
 }
 #gnb-drawer.open{display:flex}
-
-/* 드로어 헤더 행: 로고 + 닫기 */
-#gnb-drawer-header-row{
-  display:flex;align-items:center;
-  justify-content:space-between;
-  height:56px;
-  padding:0 0 0 8px;
-}
-#gnb-logo-drawer{
-  display:flex;align-items:center;gap:9px;
-  flex-shrink:0;padding:4px 12px 4px 6px;
-  border-radius:var(--r-xl);
-}
-#gnb-logo-drawer img{width:22px;height:auto;mix-blend-mode:screen}
-#gnb-logo-text-drawer{
-  font-family:var(--font);font-size:14px;font-weight:700;
-  color:var(--text-1);letter-spacing:0.06em;white-space:nowrap;
-}
 
 #gnb-drawer-logo{
   display:flex;align-items:center;gap:9px;
@@ -201,7 +183,10 @@ body.is-home #gnb-wrap{
   }
   #gnb-inner{
     width:100%;
+    flex-direction:column;
+    align-items:stretch;
     padding:0;
+    gap:0;
   }
   #gnb-inner-row{
     display:flex;
@@ -891,7 +876,6 @@ body.is-tag #tag-page{display:block}
 ============================================= -->
 <div id="gnb-wrap">
   <div id="gnb-inner">
-    <!-- pill 상단 행 -->
     <div id="gnb-inner-row">
       <button id="gnb-logo">
         <img src="images/logo/logo-300.png" alt="AK"/>
@@ -905,24 +889,17 @@ body.is-tag #tag-page{display:block}
           <path d="M5 10h22M5 16h22M5 22h22"/>
         </svg>
       </button>
+      <button id="gnb-drawer-close" aria-label="메뉴 닫기" style="display:none">
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M8 8l16 16M24 8L8 24"/>
+        </svg>
+      </button>
     </div>
   </div>
 </div>
 
-<!-- 드로어 overlay (fixed, 콘텐츠 위에 덮임) -->
+<!-- 드로어: pill 아래에 fixed overlay로 뜸, 콘텐츠 밀지 않음 -->
 <div id="gnb-drawer">
-  <!-- 드로어 헤더: 로고 + 닫기 -->
-  <div id="gnb-drawer-header-row">
-    <button id="gnb-logo-drawer">
-      <img src="images/logo/logo-300.png" alt="AK"/>
-      <span id="gnb-logo-text-drawer">AK Archive</span>
-    </button>
-    <button id="gnb-drawer-close" aria-label="메뉴 닫기">
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <path d="M8 8l16 16M24 8L8 24"/>
-      </svg>
-    </button>
-  </div>
   <nav id="gnb-drawer-nav">
     <button class="gnb-drawer-item" data-cat="제품 모델">제품</button>
     <button class="gnb-drawer-item" data-cat="기능 히스토리">UX 히스토리</button>
@@ -930,7 +907,7 @@ body.is-tag #tag-page{display:block}
   </nav>
 </div>
 
-<!-- 오버레이 (배경 딤) -->
+<!-- 오버레이 -->
 <div id="gnb-drawer-overlay"></div>
 
 <!-- =============================================
