@@ -338,15 +338,19 @@ body.is-list #list-page{display:flex}
 }
 #chip-scroll::-webkit-scrollbar{display:none}
 
-/* 우측 페이드 — chip-bar에 relative + after로 처리 */
+/* 우측 페이드 — 모바일에서만 표시 */
 #chip-bar{position:relative;}
-#chip-bar::after{
-  content:"";
-  position:absolute;
-  right:34px;top:0;bottom:0;width:32px;
-  background:linear-gradient(to right, transparent, var(--page-bg, #111));
-  pointer-events:none;
-  z-index:1;
+#chip-bar::after{display:none;}
+@media(max-width:639px){
+  #chip-bar::after{
+    content:"";
+    display:block;
+    position:absolute;
+    right:34px;top:0;bottom:0;width:32px;
+    background:linear-gradient(to right, transparent, var(--page-bg, #111));
+    pointer-events:none;
+    z-index:1;
+  }
 }
 .chip-btn{
   display:inline-flex;align-items:center;gap:5px;
@@ -379,6 +383,8 @@ body.is-list #list-page{display:flex}
 #chip-search::placeholder{color:var(--n-500)}
 #chip-search:focus{border-color:var(--cr-700);width:205px}
 .csi{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--n-500);pointer-events:none}
+#chip-search-icon{display:none}
+#chip-search-close{display:none}
 
 /* 모바일: 검색 input 숨기고 아이콘 버튼만 표시 */
 @media(max-width:639px){
@@ -402,7 +408,8 @@ body.is-list #list-page{display:flex}
   #chip-bar.search-open #chip-scroll{ display:none; }
   #chip-bar.search-open::after{ display:none; }
   #chip-bar.search-open #chip-search-wrap{
-    flex:1;width:auto;border-radius:var(--r-xl);
+    flex:1;width:auto;height:34px;
+    border-radius:var(--r-xl);
     justify-content:flex-start;
     padding:0 12px 0 36px;
     position:relative;
@@ -416,7 +423,7 @@ body.is-list #list-page{display:flex}
     display:block;
     width:100%;height:100%;
     background:transparent;border:none;
-    padding:0;
+    padding:0;font-size:15px;
   }
   #chip-search-close{
     display:none;
