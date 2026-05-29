@@ -209,6 +209,11 @@ body.is-home #gnb-wrap{
     position:fixed;top:0;left:0;right:0;
     z-index:200;
   }
+  /* gnb-wrap이 fixed로 빠진 만큼 body에 padding 보상 */
+  body:has(#gnb-inner.drawer-open) #list-page,
+  body:has(#gnb-inner.drawer-open) #tag-page{
+    padding-top:94px;
+  }
 }
 
 /* =============================================
