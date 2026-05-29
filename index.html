@@ -170,12 +170,18 @@ body.is-home #gnb-wrap{
 
 /* ── 모바일: pill이 좌우로 꽉 참 ── */
 @media (max-width: 639px) {
+  /* 항상 fixed — sticky↔fixed 전환 자체를 없애 레이아웃 이동 방지 */
   #gnb-wrap{
+    position:fixed;top:0;left:0;right:0;
     padding:28px 16px 10px;
+    z-index:200;
   }
   body.is-home #gnb-wrap{
     padding:28px 16px 10px;
   }
+  /* gnb-wrap이 항상 fixed이므로 list/tag 페이지에 항상 padding 보상 */
+  #list-page{ padding-top:94px; }
+  #tag-page{  padding-top:94px; }
   /* pill이 드로어 컨테이너 역할 — flex-direction: column으로 전환 */
   #gnb-inner{
     width:100%;
@@ -201,18 +207,9 @@ body.is-home #gnb-wrap{
   #gnb-logo-text{font-size:14px}
   .gnb-tab{display:none}
   #gnb-hamburger{display:flex}
-  /* 드로어 열렸을 때: pill radius 축소 + gnb-wrap fixed 전환 → 콘텐츠 위에 overlay */
+  /* 드로어 열렸을 때 pill radius 축소 */
   #gnb-inner.drawer-open{
     border-radius:20px;
-  }
-  #gnb-wrap:has(#gnb-inner.drawer-open){
-    position:fixed;top:0;left:0;right:0;
-    z-index:200;
-  }
-  /* gnb-wrap이 fixed로 빠진 만큼 body에 padding 보상 */
-  body:has(#gnb-inner.drawer-open) #list-page,
-  body:has(#gnb-inner.drawer-open) #tag-page{
-    padding-top:94px;
   }
 }
 
