@@ -391,11 +391,35 @@ body.is-list #list-page{display:flex}
   grid-template-columns:repeat(3,1fr);
   gap:16px;
 }
-@media(max-width:767px){
+/* Tablet-S: 2열 */
+@media(max-width:768px){
   #card-list.is-thumb-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
 }
-@media(max-width:400px){
+/* Mobile: 2열 유지, 간격 축소 */
+@media(max-width:480px){
+  #card-list.is-thumb-grid{gap:10px;}
+}
+/* Mobile-XS: 1열 */
+@media(max-width:360px){
   #card-list.is-thumb-grid{grid-template-columns:1fr;gap:10px;}
+}
+
+/* 일반 카드 리스트 (UX 히스토리 / AK 용어) */
+/* Desktop: gap 12px — 기본값 */
+/* Tablet-S */
+@media(max-width:768px){
+  #card-list{gap:10px;}
+  .card{padding:20px 18px;}
+}
+/* Mobile */
+@media(max-width:480px){
+  #card-list{gap:8px;}
+  .card{padding:16px 14px;}
+}
+/* Mobile-XS */
+@media(max-width:360px){
+  #card-list{gap:6px;}
+  .card{padding:14px 12px;}
 }
 .card-thumb{
   background:var(--n-800);border:1px solid var(--div-1);
