@@ -214,11 +214,6 @@ body.is-home #gnb-wrap{
 #home{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 24px;gap:32px;position:relative;overflow:hidden}
 body.is-home #home{display:flex}
 
-#home-logo{display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;transition:opacity 0.15s;padding:0;position:relative;z-index:1}
-#home-logo:hover{opacity:0.8}
-#home-logo img{width:64px;height:auto;mix-blend-mode:screen}
-#home-logo-text{font-family:var(--font);font-size:14px;font-weight:700;color:var(--text-1);letter-spacing:0.06em}
-
 #home-copy{text-align:center;position:relative;z-index:1}
 #home-headline{font-size:32px;font-weight:600;color:var(--text-1);line-height:1.3;letter-spacing:-0.02em;margin-bottom:8px}
 #home-subline{font-size:16px;font-weight:400;color:var(--text-2);line-height:1.5}
@@ -923,10 +918,6 @@ body.is-tag #tag-page{display:block}
 <div id="home">
   <!-- 텍스트 가독성용 어두운 오버레이 -->
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 50% 40%, rgba(18,18,18,0.88) 0%, rgba(18,18,18,0.5) 50%, transparent 75%);pointer-events:none;z-index:0;"></div>
-  <button id="home-logo">
-    <img src="images/logo/logo-300.png" alt="AK"/>
-    <span id="home-logo-text">AK Archive</span>
-  </button>
   <div id="home-copy">
     <p id="home-headline">AK 팀이 알아야 할 정보,<br>검색으로 바로 찾으세요.</p>
     <p id="home-subline">제품 스펙 · UX 히스토리 · 용어사전 통합 아카이브</p>
@@ -1964,9 +1955,6 @@ document.getElementById("gnb-logo").addEventListener("click",()=>{
   if(S.openId!==null){closeDetail();return;}
   goHome();
 });
-
-// 홈 로고
-document.getElementById("home-logo").addEventListener("click",goHome);
 
 // 뒤로가기
 document.getElementById("detail-back").addEventListener("click",()=>{
