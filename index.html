@@ -57,6 +57,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 }
 body.is-home #gnb-wrap{
   position:fixed;top:0;left:0;right:0;
+  background:transparent;
+  z-index:200;
 }
 
 #gnb-inner{
@@ -100,6 +102,7 @@ body.is-home #gnb-wrap{
   border-radius:var(--r-xl);
   transition:background 0.13s;
 }
+#gnb-hamburger:hover{}
 #gnb-hamburger svg{width:24px;height:24px}
 
 /* =============================================
@@ -140,11 +143,12 @@ body.is-home #gnb-wrap{
   transition:background 0.13s,color 0.13s;
   flex-shrink:0;
 }
-#gnb-drawer-close:hover{opacity:0.8}
+#gnb-drawer-close:hover{color:var(--text-1)}
 #gnb-drawer-close svg{width:24px;height:24px}
 
 #gnb-drawer-nav{
   display:flex;flex-direction:column;
+  gap:0;
 }
 .gnb-drawer-item{
   display:flex;align-items:center;
@@ -170,8 +174,7 @@ body.is-home #gnb-wrap{
     padding:28px 16px 10px;
   }
   body.is-home #gnb-wrap{
-    position:absolute;
-    width:100%;
+    padding:28px 16px 10px;
   }
   /* pill이 드로어 컨테이너 역할 — flex-direction: column으로 전환 */
   #gnb-inner{
@@ -180,19 +183,6 @@ body.is-home #gnb-wrap{
     align-items:stretch;
     padding:0;
     gap:0;
-    position:relative;
-  }
-  /* 드로어: pill 아래에 absolute로 띄움 — 콘텐츠 밀림 없음 */
-  #gnb-drawer{
-    position:absolute;
-    top:100%;
-    left:0;right:0;
-    background:rgba(26,26,26,0.95);
-    backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-    border:1px solid var(--div-2);
-    border-top:none;
-    border-radius:0 0 20px 20px;
-    z-index:10;
   }
   /* pill 상단 행: 로고 + 햄버거/닫기 */
   #gnb-inner-row{
@@ -211,9 +201,9 @@ body.is-home #gnb-wrap{
   #gnb-logo-text{font-size:14px}
   .gnb-tab{display:none}
   #gnb-hamburger{display:flex}
-  /* 드로어 열렸을 때 pill 상단 radius 유지, 하단 각지게 */
+  /* 드로어 열렸을 때 pill radius 축소 */
   #gnb-inner.drawer-open{
-    border-radius:20px 20px 0 0;
+    border-radius:20px;
   }
 }
 
@@ -221,14 +211,13 @@ body.is-home #gnb-wrap{
    SECTION: css-home
    body.is-home일 때만 표시
 ============================================= */
-#home{
-  display:none;flex-direction:column;
-  align-items:center;justify-content:center;
-  min-height:100vh;
-  padding:40px 24px;gap:32px;
-  position:relative;overflow:hidden;
-}
+#home{display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 24px;gap:32px;position:relative;overflow:hidden}
 body.is-home #home{display:flex}
+
+#home-logo{display:flex;flex-direction:column;align-items:center;gap:12px;cursor:pointer;transition:opacity 0.15s;padding:0;position:relative;z-index:1}
+#home-logo:hover{opacity:0.8}
+#home-logo img{width:64px;height:auto;mix-blend-mode:screen}
+#home-logo-text{font-family:var(--font);font-size:14px;font-weight:700;color:var(--text-1);letter-spacing:0.06em}
 
 #home-copy{text-align:center;position:relative;z-index:1}
 #home-headline{font-size:32px;font-weight:600;color:var(--text-1);line-height:1.3;letter-spacing:-0.02em;margin-bottom:8px}
@@ -674,20 +663,11 @@ body.is-tag #detail[style*="block"] {
   #hero-title   { font-size: 22px }
   #hero-desc    { font-size: 15px }
 
-  /* chip-bar 가로 스크롤 */
-  #chip-bar {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-bottom: 4px;
-  }
-  #chip-bar::-webkit-scrollbar { display: none }
-
   /* chip-bar의 검색 입력 */
-  #chip-search-wrap { flex: 1; min-width: 0 }
-  #chip-search       { width: 100%; font-size: 13px }
-  #chip-search:focus { width: 100% }
+  #chip-search       { width: 150px }
+  #chip-search:focus { width: 180px }
+  #gloss-search       { width: 150px }
+  #gloss-search:focus { width: 180px }
 
   /* 카드 */
   .card { padding: 22px 18px }
@@ -758,7 +738,8 @@ body.is-tag #detail[style*="block"] {
 /* ── Mobile: < 480px ── */
 @media (max-width: 479px) {
   /* 홈 */
-  #home { gap: 20px; padding: 28px 16px; min-height: 100dvh }
+  #home { gap: 20px; padding: 28px 16px }
+  #home-logo img { width: 52px }
   #home-headline { font-size: 21px; letter-spacing: -0.025em }
   #home-subline  { font-size: 14px }
   #home-search   {
@@ -942,6 +923,10 @@ body.is-tag #tag-page{display:block}
 <div id="home">
   <!-- 텍스트 가독성용 어두운 오버레이 -->
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 50% 40%, rgba(18,18,18,0.88) 0%, rgba(18,18,18,0.5) 50%, transparent 75%);pointer-events:none;z-index:0;"></div>
+  <button id="home-logo">
+    <img src="images/logo/logo-300.png" alt="AK"/>
+    <span id="home-logo-text">AK Archive</span>
+  </button>
   <div id="home-copy">
     <p id="home-headline">AK 팀이 알아야 할 정보,<br>검색으로 바로 찾으세요.</p>
     <p id="home-subline">제품 스펙 · UX 히스토리 · 용어사전 통합 아카이브</p>
@@ -1268,8 +1253,39 @@ const GLOSS_TABS = ["전체","하드웨어","음원 & 파일","서비스 & 연�
 
 function renderGlossSubtab() {
   const wrap = document.getElementById("gloss-subtab-wrap");
-  wrap.classList.remove("show");
-  wrap.innerHTML="";
+  const bar  = document.getElementById("chip-bar");
+  if(S.cat !== "용어사전"){
+    wrap.classList.remove("show");
+    wrap.innerHTML="";
+    bar.style.display="";   // 다른 탭에서는 chip-bar 원래대로
+    return;
+  }
+  // 용어사전: chip-bar 숨기고 서브탭에 검색창 통합
+  bar.style.display="none";
+  wrap.classList.add("show");
+  wrap.innerHTML = "";
+  GLOSS_TABS.forEach(tab => {
+    const cnt = tab === "전체"
+      ? DATA_glossary.length
+      : DATA_glossary.filter(d => d.glossTab === tab).length;
+    const btn = document.createElement("button");
+    btn.className = "gloss-stab" + (S.glossTab === tab ? " is-active" : "");
+    btn.innerHTML = `${tab} <span class="cnt">${cnt}</span>`;
+    btn.addEventListener("click", () => {
+      S.glossTab = tab;
+      renderGlossSubtab();
+      renderCards();
+    });
+    wrap.appendChild(btn);
+  });
+  // 검색창 — 우측 정렬
+  const sw = document.createElement("div");
+  sw.style.cssText="margin-left:auto;position:relative;flex-shrink:0;";
+  sw.innerHTML=`<svg class="csi" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg><input id="gloss-search" type="search" placeholder="페이지 내 검색" autocomplete="off"/>`;
+  wrap.appendChild(sw);
+  const inp = sw.querySelector("#gloss-search");
+  inp.value = S.q;
+  inp.addEventListener("input", ()=>{ S.q=inp.value; renderCards(); });
 }
 
 /* =============================================
@@ -1291,29 +1307,18 @@ function getChips(cat) {
     {key:"Heritage",label:"Heritage"},
     {key:"Classic",label:"Classic"}
   ];
-  if(cat==="용어사전") return [
-    {key:"전체",label:"전체"},
-    {key:"하드웨어",label:"하드웨어"},
-    {key:"음원 & 파일",label:"음원 & 파일"},
-    {key:"서비스 & 연결",label:"서비스 & 연결"},
-    {key:"기능",label:"기능"}
-  ];
-  return []; // 디자인 가이드: 검색창만
+  return []; // 디자인 가이드, 용어사전: 모델 필터 없음, 검색창만
 }
 
 function renderChipBar() {
   const bar=document.getElementById("chip-bar");
+  if(S.cat==="용어사전"){bar.innerHTML="";return;}  // 용어사전: 서브탭에서 처리
   bar.innerHTML="";
   const chips=getChips(S.cat);
   bar.style.cssText="";
   // 칩이 없는 탭(디자인 가이드, 용어사전): 검색창만
   chips.forEach(c=>{
-    let cnt;
-    if(S.cat==="용어사전"){
-      cnt = c.key==="전체" ? DATA.filter(d=>d.category==="용어사전").length : DATA.filter(d=>d.category==="용어사전"&&d.glossTab===c.key).length;
-    } else {
-      cnt=DATA.filter(d=>d.category===S.cat&&(c.key==="전체"||d.models.includes(c.key)||(d.labels&&d.labels.includes(c.key)))).length;
-    }
+    const cnt=DATA.filter(d=>d.category===S.cat&&(c.key==="전체"||d.models.includes(c.key)||(d.labels&&d.labels.includes(c.key)))).length;
     const btn=document.createElement("button");
     btn.className="chip-btn"+(S.chip===c.key?" is-active":"");
     btn.dataset.chip=c.key;
@@ -1341,7 +1346,7 @@ function filterData(){
   const q=S.q.trim().toLowerCase();
   return DATA.filter(d=>{
     if(S.cat&&d.category!==S.cat)return false;
-    if(S.cat==="용어사전" && S.chip!=="전체" && d.glossTab!==S.chip) return false;
+    if(S.cat==="용어사전" && S.glossTab!=="전체" && d.glossTab!==S.glossTab) return false;
     if(S.chip!=="전체"&&(S.cat==="제품 모델"||S.cat==="기능 히스토리")){
       const inModels = d.models.includes(S.chip);
       const inLabels = d.labels && d.labels.includes(S.chip);
@@ -1960,6 +1965,8 @@ document.getElementById("gnb-logo").addEventListener("click",()=>{
   goHome();
 });
 
+// 홈 로고
+document.getElementById("home-logo").addEventListener("click",goHome);
 
 // 뒤로가기
 document.getElementById("detail-back").addEventListener("click",()=>{
