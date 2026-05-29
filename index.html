@@ -397,11 +397,11 @@ body.is-list #list-page{display:flex}
 }
 /* Mobile: 1열 */
 @media(max-width:480px){
-  #card-list.is-thumb-grid{grid-template-columns:1fr;gap:16px;}
+  #card-list.is-thumb-grid{grid-template-columns:1fr;}
 }
 /* Mobile-XS: 1열 */
 @media(max-width:360px){
-  #card-list.is-thumb-grid{grid-template-columns:1fr;gap:16px;}
+  #card-list.is-thumb-grid{grid-template-columns:1fr;}
 }
 
 /* 일반 카드 리스트 (UX 히스토리 / AK 용어) */
@@ -409,17 +409,18 @@ body.is-list #list-page{display:flex}
 /* Tablet-S */
 @media(max-width:768px){
   #card-list{gap:10px;}
+  #card-list.is-thumb-grid{gap:10px;}
   .card{padding:20px 18px;}
 }
 /* Mobile */
 @media(max-width:480px){
   #card-list{gap:8px;}
-  .card{padding:16px 14px;}
+  #card-list.is-thumb-grid{grid-template-columns:1fr;gap:8px;}
 }
 /* Mobile-XS */
 @media(max-width:360px){
   #card-list{gap:6px;}
-  .card{padding:14px 12px;}
+  #card-list.is-thumb-grid{grid-template-columns:1fr;gap:6px;}
 }
 .card-thumb{
   background:var(--n-800);border:1px solid var(--div-1);
@@ -798,8 +799,8 @@ body.is-tag #detail[style*="block"] {
   .card-meta-author,
   .card-meta-date { font-size: 13px }
 
-  /* 썸네일 그리드 → 1열, gap 16px */
-  #card-list.is-thumb-grid { gap: 16px }
+  /* 썸네일 그리드 → 1열, gap 일반 카드와 동일 */
+  #card-list.is-thumb-grid { gap: 8px }
 
   /* 디테일 */
   #detail-back   { font-size: 13px; margin-bottom: 18px }
