@@ -380,6 +380,25 @@ body.is-list #list-page{display:flex}
 #chip-search:focus{border-color:var(--cr-700);width:205px}
 .csi{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--n-500);pointer-events:none}
 
+/* 모바일: 검색 input 숨기고 아이콘 버튼만 표시 */
+@media(max-width:639px){
+  #chip-search{ display:none; }
+  .csi{ display:none; }
+  #chip-search-wrap{
+    display:flex;align-items:center;justify-content:center;
+    width:36px;height:36px;flex-shrink:0;
+    background:var(--n-800);
+    border:1px solid var(--div-2);
+    border-radius:10px;
+    cursor:pointer;
+  }
+  #chip-search-icon{
+    display:flex;align-items:center;justify-content:center;
+    color:var(--n-400);
+    pointer-events:none;
+  }
+}
+
 /* =============================================
    SECTION: css-count + card
 ============================================= */
@@ -1343,7 +1362,7 @@ function renderChipBar() {
   const sw=document.createElement("div");
   sw.id="chip-search-wrap";
   sw.style.cssText="position:relative;flex-shrink:0;";
-  sw.innerHTML=`<svg class="csi" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg><input id="chip-search" type="search" placeholder="페이지 내 검색" autocomplete="off"/>`;
+  sw.innerHTML=`<svg class="csi" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg><input id="chip-search" type="search" placeholder="페이지 내 검색" autocomplete="off"/><span id="chip-search-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5l3 3"/></svg></span>`;
   bar.appendChild(sw);
   const inp=document.getElementById("chip-search");
   if(inp){inp.value=S.q||"";inp.addEventListener("input",()=>{S.q=inp.value;renderCards();});}
