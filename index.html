@@ -107,10 +107,10 @@ body.is-home #gnb-wrap{
 
 /* =============================================
    SECTION: css-gnb-drawer
-   모바일 드로어 — pill 위치부터 시작하는 fixed overlay
+   모바일 드로어 — pill 내부에서 아래로 확장
 ============================================= */
 
-/* 배경 딤 (딤 없음, 클릭 감지용) */
+/* 오버레이: 클릭 감지용 (딤 없음) */
 #gnb-drawer-overlay{
   display:none;
   position:fixed;inset:0;
@@ -118,41 +118,16 @@ body.is-home #gnb-wrap{
 }
 #gnb-drawer-overlay.open{display:block}
 
-/* 드로어: pill과 동일한 위치(top/left/right)에서 fixed overlay로 뜸
-   → pill을 덮으면서 하나의 박스처럼 보임 */
+/* 드로어 nav: 기본 숨김, 열리면 펼침 */
 #gnb-drawer{
   display:none;
   flex-direction:column;
-  position:fixed;
-  top:28px;left:16px;right:16px;
-  z-index:201;
-  background:rgba(26,26,26,0.72);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border:1px solid var(--div-2);
-  border-radius:20px;
-  padding:0;
+  padding:4px 12px 16px;
 }
 #gnb-drawer.open{display:flex}
 
-/* 드로어 상단 행: 로고 + X (pill 상단 행과 동일한 높이/패딩) */
-#gnb-drawer-top{
-  display:flex;align-items:center;
-  justify-content:space-between;
-  height:56px;
-  padding:0 0 0 8px;
-  flex-shrink:0;
-}
-#gnb-drawer-logo-btn{
-  display:flex;align-items:center;gap:9px;
-  flex-shrink:0;
-  height:56px;padding:0 18px 0 12px;
-  color:var(--text-1);
-}
-#gnb-drawer-logo-btn img{width:22px;height:auto;mix-blend-mode:screen}
-#gnb-drawer-logo-btn span{
-  font-family:var(--font);font-size:14px;font-weight:700;
-  color:var(--text-1);letter-spacing:0.06em;white-space:nowrap;
-}
+/* 드로어 헤더: pill 안의 별도 행 — 모바일에서만 표시 */
+#gnb-drawer-header{display:none}
 
 #gnb-drawer-logo{
   display:flex;align-items:center;gap:9px;
@@ -174,7 +149,6 @@ body.is-home #gnb-wrap{
 #gnb-drawer-nav{
   display:flex;flex-direction:column;
   gap:0;
-  padding:4px 12px 16px;
 }
 .gnb-drawer-item{
   display:flex;align-items:center;
@@ -202,6 +176,7 @@ body.is-home #gnb-wrap{
   body.is-home #gnb-wrap{
     padding:28px 16px 10px;
   }
+  /* pill이 드로어 컨테이너 역할 — flex-direction: column으로 전환 */
   #gnb-inner{
     width:100%;
     flex-direction:column;
@@ -209,6 +184,7 @@ body.is-home #gnb-wrap{
     padding:0;
     gap:0;
   }
+  /* pill 상단 행: 로고 + 햄버거/닫기 */
   #gnb-inner-row{
     display:flex;
     align-items:center;
@@ -225,6 +201,14 @@ body.is-home #gnb-wrap{
   #gnb-logo-text{font-size:14px}
   .gnb-tab{display:none}
   #gnb-hamburger{display:flex}
+  /* 드로어 열렸을 때: pill radius 축소 + gnb-wrap fixed 전환 → 콘텐츠 위에 overlay */
+  #gnb-inner.drawer-open{
+    border-radius:20px;
+  }
+  #gnb-wrap:has(#gnb-inner.drawer-open){
+    position:fixed;top:0;left:0;right:0;
+    z-index:200;
+  }
 }
 
 /* =============================================
@@ -897,6 +881,7 @@ body.is-tag #tag-page{display:block}
 ============================================= -->
 <div id="gnb-wrap">
   <div id="gnb-inner">
+    <!-- pill 상단 행 -->
     <div id="gnb-inner-row">
       <button id="gnb-logo">
         <img src="images/logo/logo-300.png" alt="AK"/>
@@ -916,19 +901,18 @@ body.is-tag #tag-page{display:block}
         </svg>
       </button>
     </div>
+    <!-- 드로어 nav (pill 내부에서 확장) -->
+    <div id="gnb-drawer">
+      <nav id="gnb-drawer-nav">
+        <button class="gnb-drawer-item" data-cat="제품 모델">제품</button>
+        <button class="gnb-drawer-item" data-cat="기능 히스토리">UX 히스토리</button>
+        <button class="gnb-drawer-item" data-cat="용어사전">AK 용어</button>
+      </nav>
+    </div>
   </div>
 </div>
 
-<!-- 드로어: pill 아래에 fixed overlay로 뜸, 콘텐츠 밀지 않음 -->
-<div id="gnb-drawer">
-  <nav id="gnb-drawer-nav">
-    <button class="gnb-drawer-item" data-cat="제품 모델">제품</button>
-    <button class="gnb-drawer-item" data-cat="기능 히스토리">UX 히스토리</button>
-    <button class="gnb-drawer-item" data-cat="용어사전">AK 용어</button>
-  </nav>
-</div>
-
-<!-- 오버레이 -->
+<!-- 오버레이 (배경 딤) -->
 <div id="gnb-drawer-overlay"></div>
 
 <!-- =============================================
@@ -1931,6 +1915,7 @@ document.querySelectorAll(".gnb-tab").forEach(tab=>{
   function openDrawer(){
     overlay.classList.add("open");
     drawer.classList.add("open");
+    document.getElementById("gnb-inner").classList.add("drawer-open");
     hamburger.style.display = "none";
     closeBtn.style.display  = "flex";
     syncDrawerActive();
@@ -1938,6 +1923,7 @@ document.querySelectorAll(".gnb-tab").forEach(tab=>{
   function closeDrawer(){
     overlay.classList.remove("open");
     drawer.classList.remove("open");
+    document.getElementById("gnb-inner").classList.remove("drawer-open");
     hamburger.style.display = "";
     closeBtn.style.display  = "none";
   }
