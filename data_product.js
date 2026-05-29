@@ -46,7 +46,7 @@ SP4000만의 독자 기술로, OPAMP를 병렬 구조로 추가 적용해 구동
 - YouTube, 스트리밍 서비스 등 소비자 불만 사항 해소
 - 경쟁사(FiiO, Shanling 등 중국 브랜드) 대비 동등 수준의 개방성 확보
 `,
-   tags:["A&ultima","SP4000","크림슨","플래그쉽","OctaDAC","FullOpenAndroid","HighDrivingMode"],
+   tags:["SP4000","A&ultima","DAC","OctaDAC","HighDrivingMode","하이드라이빙모드","Android","FullOpenAndroid","풀안드로이드","안드로이드"],
    files:[
      {label:"SP4000_사업계획서_0430.pdf", url:"files/SP4000_사업계획서_0430_수정.pdf"},
    ],
@@ -96,7 +96,7 @@ PC 연결 시 MTP가 활성화되지 않는 경우, 사용자가 수동으로 US
 ■■ 4. 컬렉션
 
 → UX 히스토리 [Favorite에서 Collection으로(기능 확장 재정의)] 참고`,
-   tags:["SP4000T","AMP","Collection","Favorite","USB설정","재생설정"],
+   tags:["SP4000T","A&ultima","Tube","TubeCurrent","USB","USB설정","배터리보호모드","Collection","컬렉션","Favorite","즐겨찾기"],
    files:[],
    links:[
      {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=8669-8484&t=fhsxj64S8jwIqh1N-1"},
@@ -309,7 +309,7 @@ PD5에는 8개의 DAC가 탑재되어 있으며, 사용자가 DAC 구동 수를 
 - 기능 구현 진행 중 (5월까지 개발 완료 예정)
 - DAC Mode와 동일하게 알림 패널 빠른 설정 버튼으로 접근 가능
 - Manual 모드 세부 설정 항목은 개발 확인 후 추후 업데이트 예정`,
-   tags:["PD5","PD시리즈","OctaDAC","EnviroTune","FullOpenAndroid","Pocket-HiFi","사업계획서"],
+   tags:["PD5","PDseries","DAC","DACmode","EnviroTune"],
    files:[
      {label:"PD5_사업계획서_0728.pdf", url:"files/PD5_사업계획서_0728.pdf"},
    ],
