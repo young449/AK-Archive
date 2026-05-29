@@ -88,7 +88,6 @@ SD 카드, 내부 저장소, USB 등 물리적 저장 매체를 기반으로 동
 | CD 라이브러리 | CD 리핑 및 저장 |
 | HD 오디오 | 고음질 파일 필터 뷰 |`,
    tags:["Local Menu","로컬 메뉴"],links:[
-     {label:"SMB",url:"#search:SMB"},
      {label:"CUE 시트",url:"#search:CUE 시트"},
      {label:"CD 라이브러리",url:"#search:CD 라이브러리"},
      {label:"HD 오디오",url:"#search:HD 오디오"},
