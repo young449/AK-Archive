@@ -388,7 +388,6 @@ body.is-list #list-page{display:flex}
 #chip-search:focus{
   background:var(--n-700);
   border-color:var(--n-400);
-  width:205px;
 }
 #chip-search:focus ~ .csi,
 #chip-search:focus + .csi{ color:var(--n-400); }
@@ -423,11 +422,14 @@ body.is-list #list-page{display:flex}
     justify-content:flex-start;
     padding:0 12px 0 36px;
     position:relative;
+    background:var(--n-600);
+    border-color:var(--n-300);
   }
   #chip-bar.search-open #chip-search-icon{ display:none; }
   #chip-bar.search-open .csi{
     display:block;
     left:12px;
+    color:var(--n-400);
   }
   #chip-bar.search-open #chip-search{
     display:block;
