@@ -309,7 +309,7 @@ PD5에는 8개의 DAC가 탑재되어 있으며, 사용자가 DAC 구동 수를 
 - 기능 구현 진행 중 (5월까지 개발 완료 예정)
 - DAC Mode와 동일하게 알림 패널 빠른 설정 버튼으로 접근 가능
 - Manual 모드 세부 설정 항목은 개발 확인 후 추후 업데이트 예정`,
-   tags:["PD시리즈","OctaDAC","EnviroTune","FullOpenAndroid","Pocket-HiFi","사업계획서"],
+   tags:["PD5","PD시리즈","OctaDAC","EnviroTune","FullOpenAndroid","Pocket-HiFi","사업계획서"],
    files:[
      {label:"PD5_사업계획서_0728.pdf", url:"files/PD5_사업계획서_0728.pdf"},
    ],
