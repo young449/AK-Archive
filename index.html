@@ -423,8 +423,10 @@ body.is-list #list-page{display:flex}
     display:block;
     width:100%;height:100%;
     background:transparent;border:none;
-    padding:0 36px 0 0;font-size:15px;
+    padding:0 40px 0 0;font-size:15px;
   }
+  #chip-bar.search-open #chip-search::-webkit-search-cancel-button{ display:none; }
+  #chip-bar.search-open #chip-search::-ms-clear{ display:none; }
   #chip-search-close{
     display:none;
     align-items:center;justify-content:center;
@@ -432,7 +434,8 @@ body.is-list #list-page{display:flex}
     background:var(--n-600);
     border-radius:50%;
     color:var(--n-300);
-    position:absolute;right:10px;top:50%;transform:translateY(-50%);
+    position:absolute;right:12px;top:50%;transform:translateY(-50%);
+    z-index:2;
   }
   #chip-search-close svg{ width:12px;height:12px; }
   #chip-bar.search-open #chip-search-close{ display:flex; }
