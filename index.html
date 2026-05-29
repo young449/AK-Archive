@@ -395,9 +395,9 @@ body.is-list #list-page{display:flex}
 @media(max-width:768px){
   #card-list.is-thumb-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
 }
-/* Mobile: 2열 유지, 간격 축소 */
+/* Mobile: 1열 */
 @media(max-width:480px){
-  #card-list.is-thumb-grid{gap:10px;}
+  #card-list.is-thumb-grid{grid-template-columns:1fr;gap:10px;}
 }
 /* Mobile-XS: 1열 */
 @media(max-width:360px){
