@@ -423,7 +423,7 @@ body.is-list #list-page{display:flex}
     display:block;
     width:100%;height:100%;
     background:transparent;border:none;
-    padding:0;font-size:15px;
+    padding:0 36px 0 0;font-size:15px;
   }
   #chip-search-close{
     display:none;
@@ -432,7 +432,7 @@ body.is-list #list-page{display:flex}
     background:var(--n-600);
     border-radius:50%;
     color:var(--n-300);
-    margin-left:6px;
+    position:absolute;right:10px;top:50%;transform:translateY(-50%);
   }
   #chip-search-close svg{ width:12px;height:12px; }
   #chip-bar.search-open #chip-search-close{ display:flex; }
@@ -809,9 +809,9 @@ body.is-tag #detail[style*="block"] {
   .ac-item { padding: 12px 14px }
 
   /* 리스트 */
-  #list-content { padding: 20px 16px 60px }
-  #hero { margin-bottom: 20px }
-  #chip-bar { margin-bottom: 16px }
+  #list-content { padding: 28px 16px 60px }
+  #hero { margin-bottom: 28px }
+  #chip-bar { margin-bottom: 8px }
   #chip-scroll { gap: 4px }
   .chip-btn { padding: 8px 16px; font-size: 14px }
   .gloss-stab { padding: 6px 12px; font-size: 13px }
@@ -1403,13 +1403,13 @@ function renderChipBar() {
   sw.id="chip-search-wrap";
   sw.style.cssText="position:relative;flex-shrink:0;";
   sw.innerHTML=`<svg class="csi" width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg><input id="chip-search" type="search" placeholder="페이지 내 검색" autocomplete="off"/><span id="chip-search-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5l3 3"/></svg></span>`;
-  bar.appendChild(sw);
 
-  // 모바일 검색 닫기 버튼
+  // 닫기 버튼 — sw 안에 위치 (필드 내부처럼 보임)
   const closeBtn=document.createElement("button");
   closeBtn.id="chip-search-close";
-  closeBtn.innerHTML=`<svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l10 10M14 4L4 14"/></svg>`;
-  bar.appendChild(closeBtn);
+  closeBtn.innerHTML=`<svg width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l10 10M14 4L4 14"/></svg>`;
+  sw.appendChild(closeBtn);
+  bar.appendChild(sw);
 
   // 아이콘 클릭 → 검색 확장
   sw.addEventListener("click", ()=>{
@@ -1419,7 +1419,8 @@ function renderChipBar() {
     if(inp){ inp.focus(); }
   });
   // X 클릭 → 검색 닫기
-  closeBtn.addEventListener("click", ()=>{
+  closeBtn.addEventListener("click", (e)=>{
+    e.stopPropagation();
     bar.classList.remove("search-open");
     S.q="";
     const inp=document.getElementById("chip-search");
