@@ -150,7 +150,7 @@ Sound Master 휠로 Gain 연동 조절 가능. 되돌리기(Flat Curve 복원) /
 | Immersive | 몰입감 있는 입체 음향 |
 | Echoic | 잔향감이 강한 공간 음향 |
 `,
-   tags:["PD20","SoundMaster","SoundStudio","퍼스널사운드","이퀄라이저","오디오스피어","청력테스트","물리키","오버레이","듀얼휠"],
+   tags:["PD20","PDseries","SoundMaster","사운드마스터","SoundStudio","사운드스튜디오","PersonalSound","퍼스널사운드","Equalizer","이퀄라이저","Audiosphere","오디오스피어"],
    files:[],
    links:[
      {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=8627-2086&t=fhsxj64S8jwIqh1N-1"},
