@@ -474,15 +474,14 @@ body.is-list #list-page{display:flex}
 .card{
   background:var(--n-800);border:1px solid var(--div-1);
   border-radius:var(--r-lg);padding:28px 24px;cursor:pointer;
-  display:flex;flex-direction:column;gap:10px;
+  display:flex;flex-direction:column;gap:0;
   transition:background 0.12s,border-color 0.12s;
 }
 .card:hover{background:var(--n-700);border-color:var(--div-2)}
-.card-top{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.card-top:empty{display:none}
+.card-top{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
+.card-top:empty{display:none;margin-bottom:0;}
 .card-models-row{display:flex;gap:5px;align-items:center;flex-wrap:nowrap;overflow:hidden}
-.card-title{font-size:18px;font-weight:600;color:var(--text-1);line-height:1.4}
-/* 날짜·작성자 좌정렬 */
+.card-title{font-size:18px;font-weight:600;color:var(--text-1);line-height:1.4;margin-bottom:12px;}
 .card-meta{display:flex;align-items:center;gap:6px}
 .card-meta-author{font-size:14px;font-weight:500;color:var(--text-2)}
 .card-meta-sep{font-size:14px;color:var(--n-600)}
@@ -556,13 +555,13 @@ body.is-list #list-page{display:flex}
   padding:18px 16px;
   display:flex;flex-direction:column;gap:0;
 }
-.card-thumb-label{display:flex;gap:5px;align-items:center;flex-wrap:wrap;margin-bottom:8px;}
+.card-thumb-label{display:flex;gap:5px;align-items:center;flex-wrap:wrap;margin-bottom:10px;}
 .card-thumb-label:empty{display:none;margin-bottom:0;}
 .card-thumb-title{
   font-size:15px;font-weight:600;
   color:var(--text-1);line-height:1.35;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-  margin-bottom:5px;
+  margin-bottom:12px;
 }
 .card-thumb-meta{
   display:flex;align-items:center;gap:5px;
