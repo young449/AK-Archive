@@ -1366,6 +1366,7 @@ function getChips(cat) {
 
 function renderChipBar() {
   const bar=document.getElementById("chip-bar");
+  const wasSearchOpen=bar.classList.contains("search-open");
   bar.innerHTML="";
   bar.style.cssText="";
   const chips=getChips(S.cat);
@@ -1424,6 +1425,12 @@ function renderChipBar() {
 
   const inp=document.getElementById("chip-search");
   if(inp){inp.value=S.q||"";inp.addEventListener("input",()=>{S.q=inp.value;renderCards();});}
+
+  // 재렌더링 후 검색 열린 상태 복원
+  if(wasSearchOpen){
+    bar.classList.add("search-open");
+    if(inp){ inp.focus(); inp.setSelectionRange(inp.value.length, inp.value.length); }
+  }
 }
 
 function updateChips(){
