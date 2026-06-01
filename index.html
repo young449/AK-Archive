@@ -713,9 +713,19 @@ hr.dv{border:none;border-top:1px solid var(--div-1);margin:20px 0}
 .tag-click:hover{opacity:1}
 
 #d-body{font-size:16px;line-height:1.85;color:var(--text-2);white-space:pre-wrap;max-width:100%}
+#d-body .body-h1{
+  display:block;
+  font-size:22px;font-weight:700;
+  color:var(--text-1);
+  margin:36px 0 12px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--div-1);
+  letter-spacing:-0.01em;
+}
+#d-body .body-h1:first-child{margin-top:0}
 #d-body .body-h2{
   display:block;
-  font-size:18px;font-weight:700;
+  font-size:18px;font-weight:500;
   color:var(--text-1);
   margin:24px 0 4px;
   white-space:normal;
@@ -1732,11 +1742,13 @@ function renderBody(text) {
       continue;
     }
 
-    // ── 소제목: ■ 1개 이상으로 시작 (개수 무관, 전부 같은 스타일)
+    // ── 소제목: ■ 개수로 h1/h2/h3 구분
     if (/^■+/.test(trimmed)) {
       closePre();
+      const count = trimmed.match(/^■+/)[0].length;
       const t = escHtml(trimmed.replace(/^■+\s*/, ''));
-      result.push(`<span class="body-h2">${t}</span>`);
+      const cls = count >= 3 ? 'body-h1' : 'body-h2';
+      result.push(`<span class="${cls}">${t}</span>`);
       i++;
       // 헤딩 바로 뒤 빈 줄 스킵
       while (i < lines.length && lines[i].trim() === '') i++;
