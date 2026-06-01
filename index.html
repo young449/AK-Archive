@@ -1679,7 +1679,7 @@ function openDetail(id, prevPage){
   const filesEl=document.getElementById("d-files");
   if(d.files && d.files.length){
     const dlIcon=`<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.5 2v7M3.5 6.5l3 3 3-3"/><path d="M2 11h9"/></svg>`;
-    filesEl.innerHTML=d.files.map(f=>`<a class="dfile" href="${f.url}" target="_blank" rel="noopener" download>${dlIcon}${f.label}</a>`).join("");
+    filesEl.innerHTML=d.files.map(f=>`<a class="dfile" href="${f.url}" target="_blank" rel="noopener">${dlIcon}${f.label}</a>`).join("");
   } else { filesEl.innerHTML=""; }
   // 태그 — # prefix, 클릭 시 goTag
   const chipsEl=document.getElementById("d-chips");
