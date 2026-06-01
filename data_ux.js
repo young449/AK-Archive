@@ -132,7 +132,7 @@ AK Connect로 추가된 곡은 컬렉션 추가 불가.
    tags:["RC","Setting","설정","설정레이블","설정재배열","UX개선"],
    images:[],
    links:[]},
-  {id:31,title:"사용자 리서치: 설문조사 배경 및 진행 개요",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["A&ultima","Research"],models:[],date:"2025.05.01",author:"Ellie",authorInitial:"E",
+  {id:31,title:"사용자 리서치: 설문조사 배경 및 진행 개요",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["Research"],models:[],date:"2025.05.01",author:"Ellie",authorInitial:"E",
    desc:"Astell&Kern DAP 사용자의 UXUI 사용성 개선을 위한 데이터 수집 목적으로 설문조사 → 인터뷰 → UT 3단계 사용자 리서치를 기획·운영.",
    body:`■■ 개요
 
@@ -185,7 +185,7 @@ Astell&Kern DAP 사용자의 UXUI 사용성 개선을 위한 데이터 수집 �
      {label:"피그마 — 설문조사 PT",url:"https://www.figma.com/design/ZyJfraOa2ar1OzIxrnFtZT/PT?node-id=341-1377&t=UACsWYCME5cKHixO-1"},
      {label:"피그마 — 사용자 리서치",url:"https://www.figma.com/design/tLsh1eYPj5t4BKJMRl40uq/-25-%EC%82%AC%EC%9A%A9%EC%9E%90-%EB%A6%AC%EC%84%9C%EC%B9%98?node-id=126-79&t=ZfveNSGhru3yBWKR-1"}
    ]},
-  {id:32,title:"사용자 리서치: 설문조사 결과",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["A&ultima","Research"],models:[],date:"2025.09.30",author:"Ellie",authorInitial:"E",
+  {id:32,title:"사용자 리서치: 설문조사 결과",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["Research"],models:[],date:"2025.09.30",author:"Ellie",authorInitial:"E",
    desc:"AK DAP 사용 행태 조사·음질 설정 개선 2종 설문 결과. 주요 타겟 3~40대 남성, UX/UI 불편 경험 91.5%, 반응 속도 개선 1순위.",
    body:`■■ 설문 진행 개요
 
