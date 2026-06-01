@@ -1707,6 +1707,16 @@ function openDetail(id, prevPage){
   window.scrollTo({top:0,behavior:"smooth"});
 }
 
+function renderGlossSubtab(){
+  const wrap = document.getElementById("gloss-subtab-wrap");
+  if(!wrap) return;
+  if(S.cat === "용어사전") {
+    wrap.classList.add("show");
+  } else {
+    wrap.classList.remove("show");
+  }
+}
+
 function closeDetail(rerender=true){
   const dv=document.getElementById("detail");dv.classList.remove("show");dv.setAttribute("aria-hidden","true");
   if(!rerender)return;
