@@ -143,6 +143,59 @@ AK Connect로 추가된 곡은 컬렉션 추가 불가.
    tags:["RC","Setting","설정","설정레이블","설정재배열","UX개선"],
    images:[],
    links:[]},
+  {id:31,title:"사용자 리서치 — 설문조사 배경 및 진행 개요",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["A&ultima"],models:[],date:"2025.05.01",author:"Ellie",authorInitial:"E",
+   desc:"Astell&Kern DAP 사용자의 UXUI 사용성 개선을 위한 데이터 수집 목적으로 설문조사 → 인터뷰 → UT 3단계 사용자 리서치를 기획·운영.",
+   body:`■■ 개요
+
+Astell&Kern DAP 사용자의 UXUI 사용성 개선을 위한 데이터 수집 목적으로
+설문조사 → 인터뷰 → UT 3단계 사용자 리서치를 기획·운영하였습니다.
+
+
+■■ 리서치 단계별 목표
+
+| 단계 | 목표 |
+| --- | --- |
+| 설문조사 | 사용 패턴·UX 선호도·불편 사항 등 전반적 행태 파악 |
+| 인터뷰 | 문제의 근본 원인, 감성적 피드백, 심층 사용 경험 이해 |
+| UT | 실제 사용 중 문제점·인터페이스 직관성·흐름의 자연스러움 확인 |
+
+
+■■ 설문 구성
+
+총 2종 운영 (각 21문항 / 약 5분 소요)
+
+① DAP 사용 행태 조사 — 사용 이유, 기능 사용 패턴, UXUI 불편 사항 및 개선
+② DAP 음질 설정 — 출력 장치·외장 메모리 사용성
+
+
+■■ 주요 협의 내용 (사업부 미팅)
+
+- 불특정 다수 설문보다 딥한 유저 대상 인터뷰가 더 효율적이라는 사업부 의견 반영
+- 국내 설문/UT 우선 진행, 해외는 이후 전시 기회를 통해 별도 추진
+- SP3000 VIP 10~20명 대상 인터뷰 병행 권고
+- 한국 5% / 해외 95% 사용자 비중 고려, 일본·홍콩 유저 우선 포함 검토
+
+
+■■ 배포 채널 및 리워드
+
+배포 채널: 닥터헤드폰 카페
+
+리워드 (총 10명 추첨):
+- 1등 1명 — AK T9iE (성의 있는 답변 내부 선정)
+- 2등 3명 — Activo 볼케이노 (랜덤 추첨)
+- 3등 6명 — 커피쿠폰 (랜덤 추첨)
+
+
+■■ 운영 조건
+
+- 설문 응답은 익명 처리, 결과는 제품·서비스 개선 목적으로만 사용
+- 두 설문 모두 완료 시 응모 완료
+- 미래 지향적 질문은 엠바고 처리 (인터뷰·UT에서 별도 진행)`,
+   tags:["userresearch","유저리서치","설문조사","opensurvey","오픈서베이"],
+   links:[
+     {label:"피그마 — 설문조사 PT",url:"https://www.figma.com/design/ZyJfraOa2ar1OzIxrnFtZT/PT?node-id=341-1377&t=UACsWYCME5cKHixO-1"},
+     {label:"피그마 — 사용자 리서치",url:"https://www.figma.com/design/tLsh1eYPj5t4BKJMRl40uq/-25-%EC%82%AC%EC%9A%A9%EC%9E%90-%EB%A6%AC%EC%84%9C%EC%B9%98?node-id=126-79&t=ZfveNSGhru3yBWKR-1"}
+   ]},
   {id:9,title:"버튼 컴포넌트 스펙 v3",category:"디자인 가이드",models:[],date:"2025.03.08",author:"Ellie",authorInitial:"E",desc:"Primary / Secondary / Ghost 3종 버튼 스펙. 상태별 컬러 토큰 정의.",body:`버튼 높이: 40px (기본) / 32px (소형)\n\nPrimary → Crimson 700 (#CC1B38)\nSecondary → Neutrals 600 (#3A3A3A)\nDisabled → Neutrals 600 (#3A3A3A)`,tags:["UI","컴포넌트"],links:[{label:"피그마 — Button v3",url:"https://figma.com"}]},
   {id:10,title:"컬러 토큰 시스템 — Semantic",category:"디자인 가이드",models:[],date:"2025.04.02",author:"Ellie",authorInitial:"E",desc:"AK Design System Semantic 컬러 토큰 전체 정의.",body:`Background\n  color/bg/primary → Black 100%\n  color/bg/secondary → Neutrals 800\n\nText\n  color/text/default → White 100%\n  color/text/primary → Crimson 700`,tags:["토큰","컬러"],links:[]},
 ];
