@@ -196,7 +196,7 @@ Astell&Kern DAP 사용자의 UXUI 사용성 개선을 위한 데이터 수집 �
      {label:"피그마 — 설문조사 PT",url:"https://www.figma.com/design/ZyJfraOa2ar1OzIxrnFtZT/PT?node-id=341-1377&t=UACsWYCME5cKHixO-1"},
      {label:"피그마 — 사용자 리서치",url:"https://www.figma.com/design/tLsh1eYPj5t4BKJMRl40uq/-25-%EC%82%AC%EC%9A%A9%EC%9E%90-%EB%A6%AC%EC%84%9C%EC%B9%98?node-id=126-79&t=ZfveNSGhru3yBWKR-1"}
    ]},
-  {id:32,title:"사용자 리서치: 설문조사 결과",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["A&ultima"],models:[],date:"2025.10.20",author:"Ellie",authorInitial:"E",
+  {id:32,title:"사용자 리서치: 설문조사 결과",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["A&ultima"],models:[],date:"2025.09.30",author:"Ellie",authorInitial:"E",
    desc:"AK DAP 사용 행태 조사·음질 설정 개선 2종 설문 결과. 주요 타겟 3~40대 남성, UX/UI 불편 경험 91.5%, 반응 속도 개선 1순위.",
    body:`■■ 설문 진행 개요
 
@@ -217,7 +217,9 @@ Astell&Kern DAP 사용자의 UXUI 사용성 개선을 위한 데이터 수집 �
 → 이번 설문의 주요 타겟층을 30~40대로 설정
 
 
-■■ 설문 ① 사용 행태 조사 결과
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+■■■ 설문 ①  DAP 사용 행태 조사 결과
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 ■ 구매결정요인: 음질은 충족, 사용성은 과제
 
@@ -256,7 +258,9 @@ DAP에서 주로 이용하는 콘텐츠: 스트리밍 서비스(Spotify, Apple M
 3. 디지털 사용성 강화 — 스마트폰 수준의 직관적 인터페이스, 스트리밍 연계
 
 
-■■ 설문 ② 음질 설정 개선 결과
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+■■■ 설문 ②  DAP 음질 설정 개선 결과
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 총판 VOC 기반 외부 연결·외장 메모리·알림 패널·볼륨 4개 영역 정량 조사
 
@@ -270,19 +274,19 @@ DAP에서 주로 이용하는 콘텐츠: 스트리밍 서비스(Spotify, Apple M
 
 - 외장 메모리 사용 중 84% / 불편 경험 74%
 - 총판 인풋(접근성)보다 실제 불편은 탐색 효율 < 접근성 < 스캔/로딩 속도 순
-- → UI 단순화만으로 부족, 성능·탐색 경험 개선 병행 필요
+- UI 단순화만으로 부족, 성능·탐색 경험 개선 병행 필요
 
 ■ 알림 패널
 
 - 커스터마이징 모르거나 사용 안 함 67.4%
 - 커스터마이징 경로 불편 약 81%
-- → 인지는 높으나 경로 불편으로 사용률 저조. 진입 경로 단축 및 노출 강화 필요
+- 인지는 높으나 경로 불편으로 사용률 저조 → 진입 경로 단축 및 노출 강화 필요
 
 ■ 볼륨 제어
 
 - 물리키 조작 선호 66.7%
 - 화면 내 볼륨 버튼 UI 희망 35.3%
-- → 물리키 중심 유지하면서 보조 UI 제공 검토 필요
+- 물리키 중심 유지하면서 보조 UI 제공 검토 필요
 - 전체 화면 볼륨 UI: 불편과 만족 반반 → 화면 덜 가리는 UI·멀티태스킹 지원 필요
 
 ■ 음질 설정 결과 요약
@@ -290,21 +294,23 @@ DAP에서 주로 이용하는 콘텐츠: 스트리밍 서비스(Spotify, Apple M
 핵심: 반응성과 사용 편의성 UX 미흡이 공통 개선 과제
 
 
-■■ 설문조사 시장 반응
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+■■■ 이후 방향성
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+■ 시장 반응
 
 - 목표 응답 2~6시간 만에 완료 → 높은 사용자 관심도 확인
 - 참여 못한 아쉬움 표현 다수
 - "헤비 유저는 내 의견이 제품에 반영된다고 느낄 때 브랜드 신뢰와 애정이 커짐"
 
-
-■■ 다음 단계
+■ 다음 단계
 
 - 정성 리서치(인터뷰) + 행동 기반 검증(UT): 2025년 11~12월 진행 예정
 - SP4000T에 일부 개선안 적용
 - 나머지는 차기 모델('26 하반기~'27) 반영 목표
 
-
-■■ 제안 사항
+■ 제안 사항
 
 1. 데이터 기반 의사결정 문화 정착 — 리서치·VoC 데이터 기반 방향성 수립
 2. 공식 VoC 창구 접근성 확대 — 홈페이지 단순 수집 루트 마련
@@ -312,8 +318,7 @@ DAP에서 주로 이용하는 콘텐츠: 스트리밍 서비스(Spotify, Apple M
 4. 정기 리서치/테스트 예산 배정 — 반기 또는 분기 단위 최소 예산 확보`,
    tags:["userresearch","유저리서치","설문조사결과","opensurvey","오픈서베이","반응속도","UXUI개선"],
    links:[
-     {label:"피그마 — 설문조사 PT",url:"https://www.figma.com/design/ZyJfraOa2ar1OzIxrnFtZT/PT?node-id=341-1377&t=UACsWYCME5cKHixO-1"},
-     {label:"피그마 — 사용자 리서치",url:"https://www.figma.com/design/tLsh1eYPj5t4BKJMRl40uq/-25-%EC%82%AC%EC%9A%A9%EC%9E%90-%EB%A6%AC%EC%84%9C%EC%B9%98?node-id=126-79&t=ZfveNSGhru3yBWKR-1"}
+     {label:"UXUI 설문조사 결과 보고서 PDF",url:"assets/docs/AK_UXUI_설문결과_251020.pdf"}
    ]},
   {id:9,title:"버튼 컴포넌트 스펙 v3",category:"디자인 가이드",models:[],date:"2025.03.08",author:"Ellie",authorInitial:"E",desc:"Primary / Secondary / Ghost 3종 버튼 스펙. 상태별 컬러 토큰 정의.",body:`버튼 높이: 40px (기본) / 32px (소형)\n\nPrimary → Crimson 700 (#CC1B38)\nSecondary → Neutrals 600 (#3A3A3A)\nDisabled → Neutrals 600 (#3A3A3A)`,tags:["UI","컴포넌트"],links:[{label:"피그마 — Button v3",url:"https://figma.com"}]},
   {id:10,title:"컬러 토큰 시스템 — Semantic",category:"디자인 가이드",models:[],date:"2025.04.02",author:"Ellie",authorInitial:"E",desc:"AK Design System Semantic 컬러 토큰 전체 정의.",body:`Background\n  color/bg/primary → Black 100%\n  color/bg/secondary → Neutrals 800\n\nText\n  color/text/default → White 100%\n  color/text/primary → Crimson 700`,tags:["토큰","컬러"],links:[]},
