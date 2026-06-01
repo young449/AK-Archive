@@ -733,6 +733,31 @@ hr.dv{border:none;border-top:1px solid var(--div-1);margin:20px 0}
 }
 #d-body .body-h2:first-child{margin-top:0}
 #d-body .body-h2 + .body-pre{margin-top:0}
+#d-body .body-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:12px 0 18px;
+}
+#d-body .body-grid-item{
+  background:var(--n-800);
+  border:1px solid var(--div-1);
+  border-radius:8px;
+  padding:14px 16px;
+}
+#d-body .body-grid-title{
+  display:block;
+  font-size:14px;font-weight:600;
+  color:var(--text-1);
+  margin-bottom:6px;
+}
+#d-body .body-grid-content{
+  display:block;
+  font-size:14px;
+  color:var(--text-2);
+  line-height:1.7;
+  white-space:pre-wrap;
+}
 #d-body .body-pre{display:block;white-space:pre-wrap;margin-bottom:2px}
 #d-body table{
   width:100%;border-collapse:collapse;
@@ -1719,6 +1744,32 @@ function renderBody(text) {
   while (i < lines.length) {
     const line = lines[i];
     const trimmed = line.trim();
+
+    // ── 그리드 카드: !!grid-start!! ~ !!grid-end!!
+    if (trimmed === '!!grid-start!!') {
+      closePre();
+      i++;
+      const items = [];
+      while (i < lines.length && lines[i].trim() !== '!!grid-end!!') {
+        const gl = lines[i].trim();
+        if (gl.includes('::')) {
+          const sep = gl.indexOf('::');
+          items.push({
+            title: escHtml(gl.slice(0, sep).trim()),
+            content: escHtml(gl.slice(sep + 2).trim())
+          });
+        }
+        i++;
+      }
+      i++; // skip !!grid-end!!
+      let html = '<div class="body-grid">';
+      items.forEach(it => {
+        html += `<div class="body-grid-item"><span class="body-grid-title">${it.title}</span><span class="body-grid-content">${it.content}</span></div>`;
+      });
+      html += '</div>';
+      result.push(html);
+      continue;
+    }
 
     // ── 이미지 마커: !!img:파일명|대체텍스트!! (연속 2개 → 2단 그리드)
     if (/^!!img:.+!!$/.test(trimmed)) {
