@@ -90,7 +90,7 @@ AK Connect로 추가된 곡은 컬렉션 추가 불가.
 | --- | --- | --- |
 | A&ultima | ✅ SP4000T | — |
 | PD series | 순차 반영 예정 | 현재 RC 계획 없음 |`,
-   tags:["Collection","컬렉션","Favorite","즐겨찾기","UX개선"],
+   tags:["RC","Collection","컬렉션","Favorite","즐겨찾기","UX개선"],
    links:[{label:"용어사전 — 컬렉션",url:"#search:컬렉션"},{label:"용어사전 — Favorite",url:"#search:Favorite"}]},
   {id:30,title:"설정 레이블 추가 및 재배열",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["RC"],models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
    desc:"기존 아이콘만으로 구분되던 설정 화면에 레이블을 추가하고, 각 그룹 성격에 맞게 항목 순서를 재배열한 UX 개선.",
@@ -180,7 +180,7 @@ Astell&Kern DAP 사용자의 UXUI 사용성 개선을 위한 데이터 수집 �
 - 설문 응답은 익명 처리, 결과는 제품·서비스 개선 목적으로만 사용
 - 두 설문 모두 완료 시 응모 완료
 - 미래 지향적 질문은 엠바고 처리 (인터뷰·UT에서 별도 진행)`,
-   tags:["userresearch","유저리서치","설문조사","opensurvey","오픈서베이"],
+   tags:["Research","Userresearch","유저리서치","설문조사","opensurvey","오픈서베이"],
    links:[
      {label:"피그마 — 설문조사 PT",url:"https://www.figma.com/design/ZyJfraOa2ar1OzIxrnFtZT/PT?node-id=341-1377&t=UACsWYCME5cKHixO-1"},
      {label:"피그마 — 사용자 리서치",url:"https://www.figma.com/design/tLsh1eYPj5t4BKJMRl40uq/-25-%EC%82%AC%EC%9A%A9%EC%9E%90-%EB%A6%AC%EC%84%9C%EC%B9%98?node-id=126-79&t=ZfveNSGhru3yBWKR-1"}
@@ -281,7 +281,7 @@ DAP에서 주로 이용하는 콘텐츠: 스트리밍 서비스(Spotify, Apple M
 2. 공식 VoC 창구 접근성 확대 — 홈페이지 단순 수집 루트 마련
 3. 내부 유저 그룹 운영 — 베타 테스터/열성 고객 대상 선행 피드백 체계
 4. 정기 리서치/테스트 예산 배정 — 반기 또는 분기 단위 최소 예산 확보`,
-   tags:["userresearch","유저리서치","설문조사결과","opensurvey","오픈서베이","반응속도","UXUI개선"],
+   tags:["Research","Userresearch","유저리서치","설문조사결과","opensurvey","오픈서베이","반응속도","UXUI개선"],
    links:[
      {label:"AK_UXUI_설문결과_251020",url:"docs/AK_UXUI_설문결과_251020.pdf"}
    ]},
