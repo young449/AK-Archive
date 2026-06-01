@@ -283,7 +283,7 @@ DAP에서 주로 이용하는 콘텐츠: 스트리밍 서비스(Spotify, Apple M
 4. 정기 리서치/테스트 예산 배정 — 반기 또는 분기 단위 최소 예산 확보`,
    tags:["Research","Userresearch","유저리서치","설문조사결과","opensurvey","오픈서베이","반응속도","UXUI개선"],
    files:[
-     {label:"AK_UXUI_Survey_251020.pdf",url:"docs/AK_UXUI_Survey_251020.pdf"}
+     {label:"AK_UXUI_Survey_251020.pdf",url:"files/AK_UXUI_Survey_251020.pdf"}
    ],
    links:[]},
   {id:33,title:"사용자 리서치: 인터뷰·UT 결과 및 종합 인사이트",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["Research"],models:[],date:"2026.04.30",author:"Ellie",authorInitial:"E",
@@ -388,7 +388,7 @@ AK 유지되는 강점: 원음 재생 철학과 음질 완성도 / 레퍼런스 
 !!grid-end!!`,
    tags:["Research","Userresearch","유저리서치","인터뷰","UT","사용성테스트","알림패널","설정","반응속도","UXUI개선","opensurvey","오픈서베이"],
    files:[
-     {label:"AK_UXUI_Interview_260423.pdf",url:"docs/AK_UXUI_Interview_260423.pdf"}
+     {label:"AK_UXUI_Interview_260423.pdf",url:"files/AK_UXUI_Interview_260423.pdf"}
    ],
    links:[]},
   {id:9,title:"버튼 컴포넌트 스펙 v3",category:"디자인 가이드",models:[],date:"2025.03.08",author:"Ellie",authorInitial:"E",desc:"Primary / Secondary / Ghost 3종 버튼 스펙. 상태별 컬러 토큰 정의.",body:`버튼 높이: 40px (기본) / 32px (소형)\n\nPrimary → Crimson 700 (#CC1B38)\nSecondary → Neutrals 600 (#3A3A3A)\nDisabled → Neutrals 600 (#3A3A3A)`,tags:["UI","컴포넌트"],links:[{label:"피그마 — Button v3",url:"https://figma.com"}]},
