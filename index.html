@@ -34,7 +34,7 @@
   --chip-cl-bg:rgba(149,149,149,0.1);--chip-cl:#A0A0A0;
   --chip-sp4000t-bg:rgba(163,106,255,0.14);--chip-sp4000t:#C49DFF;
   --chip-rc-bg:rgba(27,204,163,0.12);--chip-rc:#1BCCA3;
-  --chip-research-bg:rgba(99,153,255,0.12);--chip-research:#63A3FF;
+  --chip-research-bg:rgba(33,249,253,0.10);--chip-research:#21F9FD;
   --font:"Pretendard Variable","Pretendard",sans-serif;
   --mono:var(--font);
   --r-xs:4px;--r-sm:6px;--r-lg:16px;--r-xl:999px;
@@ -1758,9 +1758,14 @@ function renderBody(text) {
         const gl = lines[i].trim();
         if (gl.includes('::')) {
           const sep = gl.indexOf('::');
+          const rawContent = gl.slice(sep + 2).trim();
+          // \n → 줄바꿈, / → 줄바꿈
+          const content = escHtml(rawContent)
+            .replace(/\\n/g, '\n')
+            .replace(/\s*\/\s*/g, '\n');
           items.push({
             title: escHtml(gl.slice(0, sep).trim()),
-            content: escHtml(gl.slice(sep + 2).trim())
+            content
           });
         }
         i++;
