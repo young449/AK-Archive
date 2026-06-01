@@ -48,7 +48,7 @@ SP4000만의 독자 기술로, OPAMP를 병렬 구조로 추가 적용해 구동
 `,
    tags:["SP4000","A&ultima","DAC","OctaDAC","HighDrivingMode","하이드라이빙모드","Android","FullOpenAndroid","풀안드로이드","안드로이드"],
    files:[
-     {label:"SP4000_사업계획서_0430.pdf", url:"files/SP4000_사업계획서_0430_수정.pdf"},
+     {label:"SP4000_사업계획서_0430.pdf", url:"files/SP4000_BP_0430.pdf"},
    ],
    links:[
      {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/BWddwuTWmaWdqacRZFGrsa/UX_Crimson_Common?node-id=520-14833&t=4AetULsfsg8ocbzt-1"},
@@ -191,7 +191,7 @@ PD5에는 8개의 DAC가 탑재되어 있으며, 사용자가 DAC 구동 수를 
 - Manual 모드 세부 설정 항목은 개발 확인 후 추후 업데이트 예정`,
    tags:["PD5","PDseries","DAC","DACmode","EnviroTune"],
    files:[
-     {label:"PD5_사업계획서_0728.pdf", url:"files/PD5_사업계획서_0728.pdf"},
+     {label:"PD5_사업계획서_0728.pdf", url:"files/PD5_BP_0728.pdf"},
    ],
    links:[
      {label:"astellnkern.com PD5", url:"https://www.astellnkern.com"},
