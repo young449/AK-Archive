@@ -149,6 +149,11 @@ Sound Master 휠로 Gain 연동 조절 가능. 되돌리기(Flat Curve 복원) /
 | Balanced | 균형 잡힌 공간감 |
 | Immersive | 몰입감 있는 입체 음향 |
 | Echoic | 잔향감이 강한 공간 음향 |
+
+!!img:images/PD20/PD20_1.png|PD20 전면!!
+!!img:images/PD20/PD20_2.png|PD20 후면!!
+!!img:images/PD20/PD20_3.png|PD20 측면!!
+!!img:images/PD20/PD20_4.png|PD20 퍼스펙티브!!
 `,
    tags:["PD20","PDseries","SoundMaster","사운드마스터","SoundStudio","사운드스튜디오","PersonalSound","퍼스널사운드","Equalizer","이퀄라이저","Audiosphere","오디오스피어"],
    files:[],
@@ -158,6 +163,10 @@ Sound Master 휠로 Gain 연동 조절 가능. 되돌리기(Flat Curve 복원) /
    ],
    images:[
      {src:"images/PD20/PD20_thumb.png", alt:"PD20 썸네일"},
+     {src:"images/PD20/PD20_1.png", alt:"PD20 전면"},
+     {src:"images/PD20/PD20_2.png", alt:"PD20 후면"},
+     {src:"images/PD20/PD20_3.png", alt:"PD20 측면"},
+     {src:"images/PD20/PD20_4.png", alt:"PD20 퍼스펙티브"},
    ]},
   {id:28, title:"PD10", category:"제품 모델", models:["PD series"], date:"2026.05.18", author:"Ellie", authorInitial:"E",
    credits:{PM:"Jay", PL:"Kenny", UX:"Luna", UI:"Luna"},
