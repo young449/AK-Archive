@@ -1058,6 +1058,33 @@ body.is-tag #tag-page{display:block}
 #tag-hero-title::before{content:"# ";color:rgba(33,249,253,0.4)}
 #tag-hero-count{font-size:14px;color:var(--n-500)}
 #tag-card-list{display:flex;flex-direction:column;gap:4px}
+
+/* =============================================
+   SECTION: css-img-modal
+============================================= */
+#img-modal{
+  display:none;position:fixed;inset:0;z-index:1000;
+  background:rgba(0,0,0,0.88);
+  align-items:center;justify-content:center;
+  cursor:zoom-out;
+}
+#img-modal.show{display:flex}
+#img-modal img{
+  max-width:92vw;max-height:90vh;
+  border-radius:8px;object-fit:contain;
+  box-shadow:0 8px 48px rgba(0,0,0,0.6);
+  pointer-events:none;
+}
+#img-modal-close{
+  position:fixed;top:20px;right:24px;
+  width:40px;height:40px;border-radius:50%;
+  background:var(--n-700);border:1px solid var(--div-2);
+  color:var(--text-2);
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;z-index:1001;
+  transition:background 0.13s,color 0.13s;
+}
+#img-modal-close:hover{background:var(--n-600);color:var(--text-1)}
 </style>
 </head>
 <body class="is-home">
@@ -1295,6 +1322,14 @@ body.is-tag #tag-page{display:block}
   </div>
 </div>
 
+<!-- 이미지 확대 모달 -->
+<div id="img-modal" onclick="closeImgModal()">
+  <button id="img-modal-close" onclick="closeImgModal()">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 1l12 12M13 1L1 13"/></svg>
+  </button>
+  <img id="img-modal-img" src="" alt=""/>
+</div>
+
 <!-- top 버튼 -->
 <button id="top-btn" aria-label="맨 위로">
   <svg width="24" height="24" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1487,7 +1522,8 @@ function getChips(cat) {
     {key:"하드웨어",label:"하드웨어"},
     {key:"로컬저장소",label:"로컬저장소"},
     {key:"서비스 & 연결",label:"서비스 & 연결"},
-    {key:"기능",label:"기능"}
+    {key:"기능",label:"기능"},
+    {key:"개발",label:"개발"}
   ];
   return [];
 }
@@ -1734,7 +1770,7 @@ function _openDetail(id, prevPage, push){
   const imgEl=document.getElementById("d-images");
   const detailImgs = d.images ? d.images.filter(img => !img.src.toLowerCase().includes('_thumb')) : [];
   if(detailImgs.length){
-    imgEl.innerHTML=`<div class="d-img-grid">${detailImgs.map(img=>`<img src="${img.src}" alt="${img.alt}" loading="lazy"/>`).join("")}</div>`;
+    imgEl.innerHTML=`<div class="d-img-grid">${detailImgs.map(img=>`<img src="${img.src}" alt="${(img.alt||img.caption||"").replace(/"/g,"&quot;")}" loading="lazy" style="cursor:pointer" onclick="openImgModal(this.src)"/>`).join("")}</div>`;
   } else { imgEl.innerHTML=""; }
   // 첨부 파일
   const filesEl=document.getElementById("d-files");
@@ -2307,9 +2343,21 @@ document.getElementById("tag-back").addEventListener("click",()=>{
   });
 })();
 
+
+function openImgModal(src){
+  document.getElementById("img-modal-img").src = src;
+  document.getElementById("img-modal").classList.add("show");
+  document.body.style.overflow = "hidden";
+}
+function closeImgModal(){
+  document.getElementById("img-modal").classList.remove("show");
+  document.body.style.overflow = "";
+}
+
 // ESC
 document.addEventListener("keydown",e=>{
   if(e.key==="Escape"){
+    if(document.getElementById("img-modal").classList.contains("show")){closeImgModal();return;}
     if(S.openId!==null) document.getElementById("detail-back").click();
     else if(document.body.classList.contains("is-tag")) document.getElementById("tag-back").click();
   }
