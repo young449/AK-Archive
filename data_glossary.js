@@ -2,11 +2,11 @@
 // data_glossary.js
 // AK 용어 카테고리 데이터
 // 항목 추가 시 id는 고유한 숫자로 지정
-// glossTab: "하드웨어" | "로컬저장소" | "서비스 & 연결" | "기능" | "개발"
+// glossTab: "HW" | "SW" | "로컬저장소" | "서비스 & 연결" | "기능" | "개발"
 // =============================================
 
 const DATA_glossary = [
-  {id:211,title:"DAP (Digital Audio Player)",category:"용어사전",glossTab:"하드웨어",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:211,title:"DAP (Digital Audio Player)",category:"용어사전",glossTab:"HW",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"Digital Audio Player의 약자로, 휴대하며 사용하는 포터블 음향기기입니다.",
    body:`■ 개요
 
@@ -19,7 +19,7 @@ SP4000과 같은 제품이 대표적인 예시이며, 고음질 음원 재생에
 
 음악 감상 전용으로 만들어진 고음질 휴대용 플레이어`,
    tags:["DAP","DigitalAudioPlayer","포터블","고음질","하드웨어"],links:[]},
-  {id:212,title:"디바이스 (Device)",category:"용어사전",glossTab:"하드웨어",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:212,title:"디바이스 (Device)",category:"용어사전",glossTab:"HW",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"거치형(스탠드얼론) 음향기기로, 특정 공간에 고정해두고 사용하는 음향기기입니다.",
    body:`■ 개요
 
@@ -31,7 +31,7 @@ DAP와 달리 이동을 전제로 하지 않고 홈 오디오 환경에서 사�
 
 집이나 사무실처럼 고정된 환경에서 사용하는 거치형 오디오 플레이어`,
    tags:["Device","디바이스","거치형","하드웨어","홈오디오"],links:[]},
-  {id:228,title:"앰프 (AMP)",category:"용어사전",glossTab:"하드웨어",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
+  {id:228,title:"앰프 (AMP)",category:"용어사전",glossTab:"HW",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
    desc:"작은 오디오 신호를 증폭해 이어폰·헤드폰·스피커를 충분한 출력으로 재생할 수 있게 만드는 장치입니다.",
    body:`■ 개요
 
@@ -54,6 +54,48 @@ DAC → AMP 순서로 동작합니다.
 즉:
 1. DAC가 음악 데이터를 소리 신호로 바꾸고
 2. AMP가 그 신호를 충분히 크게 증폭합니다.
+
+■ Hi-Fi 기본 구성에서의 앰프
+
+Hi-Fi 오디오 시스템은 소스기기 → 앰프 → 스피커 순으로 구성됩니다.
+
+| 구성요소 | 역할 |
+| --- | --- |
+| 소스기기 | 음반이나 데이터를 읽어내어 전기신호를 생성. LP, CD, 네트워크 플레이어 등 |
+| 앰프 | 소스기기로부터 유입된 작은 신호전류를 증폭시켜 스피커를 진동시키도록 만든 전기장치 |
+| 스피커 | 앰프에서 흘려주는 전기를 운동에너지로 전환해서 소리의 파동을 발생시키는 장치 |
+
+■ 앰프의 주요 역할
+
+- 전기신호 증폭 (Amplifier): 신호를 스피커를 구동할 수 있는 크기로 확장
+- 소스기기 선택 (Selector): 입력 소스를 선택
+- 음량·음색 조절 (Control): 볼륨을 통해 음량, 음색을 조절
+
+■ 앰프의 종류
+
+| 종류 | 설명 |
+| --- | --- |
+| 인티앰프 (Integrated Amp) | 프리+파워를 한 개의 바디로 설계한 일체형 앰프 |
+| 프리앰프 (Pre Amp) | 소스를 선택하고 음량·음색을 조절하는 컨트롤 기능 담당 |
+| 파워앰프 (Power Amp) | 신호를 스피커를 구동할 수 있는 크기로 확장하는 증폭 기능 담당 |
+| 진공관앰프 | 열전자 방출로 전자 흐름을 제어. 부드럽고 따뜻한 음색. 소모품으로 수명 존재 |
+| TR앰프 (트랜지스터 앰프) | 반도체 소자 사용. 현대 앰프의 주류 |
+
+■ AMP Class 종류
+
+| Class | 증폭 방식 | 장점 | 단점 |
+| --- | --- | --- | --- |
+| Class A | +/- 신호 일괄 +로 계속 증폭 | 음질 왜곡이 가장 적음 | 전류 소모와 발열 높음 |
+| Class B | +/- 신호 개별 증폭 | 전류 효율 우수, 발열 낮음 | 음질 왜곡 큰 편 |
+| Class AB | +/- 신호 개별 증폭, 일정 출력까지는 + 증폭 | 음질 왜곡 적음 | 전류 효율과 발열이 중간 수준 |
+
+■ 진공관 특징
+
+- 열전자를 방출시켜 전자의 흐름을 제어하는 방식
+- 반드시 뜨겁게 가열되어야 작동
+- 소모품이라 수명이 존재
+- 부드럽고 따뜻한 음색으로 평가받음
+- 구조: Cathode(음극) 가열 → 전자 생성 → Plate(양극)의 + 전압에 이끌림 → Grid 전극으로 흐름 제어
 
 ■ 한 줄 요약
 
@@ -370,4 +412,123 @@ EVM → WS → ES → TP → MP 순으로 진행되는 AK 내부 하드웨어 �
      {src:"images/glossary/dev-process-3.jpg",caption:"프로젝트 개발 프로세스 1"},
      {src:"images/glossary/dev-process-4.jpg",caption:"프로젝트 개발 프로세스 2"},
    ]},
+
+  {id:241,title:"DAC (Digital-to-Analog Converter)",category:"용어사전",glossTab:"HW",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
+   desc:"디지털 신호를 아날로그 신호로 변환하는 장치입니다. DAP에서 음원이 소리로 재생되기까지의 핵심 경로를 담당합니다.",
+   body:`■ 개요
+
+사람이 듣는 소리는 아날로그 신호이므로, 디지털 신호로 만들어진 음원 파일을 그대로 들을 수 없습니다.
+그래서 디지털 신호를 아날로그 신호로 바꿔주는 DAC(Digital-to-Analog Converter)가 필요합니다.
+
+■ Audio Signal Path
+
+DAP에서 오디오 신호는 아래의 경로를 거쳐 사람이 듣게 됩니다.
+
+| 단계 | 구성요소 | 역할 |
+| --- | --- | --- |
+| 1 | 음원 (Source) | 디지털 음원 파일 |
+| 2 | CPU | 신호 전달 (Digital) |
+| 3 | DAC | 신호 변환 (Digital → Analog) |
+| 4 | AMP | 신호 증폭 (Analog) |
+| 5 | 헤드폰 (Receiver) | 소리 출력 |
+
+■ DAC의 중요성
+
+DAC이 소리의 모든 것을 결정하는 것은 아니지만, 중요한 부품이며 성능에 따른 Tier가 존재합니다.
+어떤 DAC가 탑재되었는가에 따라 제품의 가격 차이가 발생합니다.
+DAC 제조사마다 소리 스타일이 다르고, 같은 회사의 DAC라도 성능에 따라 1,000원~6만원대까지 다양한 가격대가 존재합니다.
+
+■ 한 줄 요약
+
+디지털 음원을 아날로그 소리로 변환하는 장치. DAP 음질의 핵심 부품`,
+   tags:["DAC","Digital-to-Analog Converter","오디오신호","하드웨어","변환"],links:[]},
+
+  {id:242,title:"Delta-Sigma DAC",category:"용어사전",glossTab:"HW",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
+   desc:"현재 가장 일반적으로 사용되는 DAC 방식으로, 디지털 신호를 고속 오버샘플링으로 처리해 아날로그로 변환합니다.",
+   body:`■ 개요
+
+현재 시장에서 가장 많이 사용되는 DAC 방식입니다. 1988년 등장 이후 R-2R DAC을 대체하며 주류가 되었습니다.
+
+■ 주요 제조사 및 특징
+
+| 제조사 | 특징 |
+| --- | --- |
+| Asahi KASEI (AKM) | 정교한 사운드. AK Flagship DAC은 A&ultima Flagship 모델에서 세계 최초로 사용 |
+| ESS Technology | 힘 있는 사운드 |
+| Cirrus Logic | - |
+| ROHM Semiconductor | - |
+
+■ 한 줄 요약
+
+현재 가장 널리 쓰이는 DAC 방식. 제조사별로 소리 성격이 다르며, AK는 AKM DAC을 플래그십에 탑재`,
+   tags:["Delta-Sigma","DAC","AKM","ESS","CirrusLogic","하드웨어"],links:[{label:"DAC (Digital-to-Analog Converter)",url:"#open:241"},{label:"R-2R DAC",url:"#open:243"}]},
+
+  {id:243,title:"R-2R DAC",category:"용어사전",glossTab:"HW",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
+   desc:"최초의 DAC 방식으로, 디지털 신호 각 Bit에 저항을 2개씩 붙여 만드는 Ladder 구조의 DAC입니다.",
+   body:`■ 개요
+
+R-2R DAC은 최초의 DAC 방식으로, 디지털 신호 각 Bit에 저항을 2개씩 붙여 만드는 방식입니다.
+
+■ Ladder 구조
+
+일명 Ladder 구조라고 부르는데, 여러 개의 아날로그 저항을 연결한 모습이 사다리를 닮았다고 해서 붙여진 이름입니다.
+- 16bit: 저항 32개 필요
+- 24bit: 저항 48개 필요
+
+■ 특징 및 한계
+
+- 저항의 수준에 따라 품질이 천차만별
+- 저항을 하나하나 작업해야 하는 어려움
+- 저항 편차를 직접 판별해야 하는 비효율성
+- 높은 단가 문제
+- 1988년 Delta-Sigma DAC의 등장으로 점차 쇠퇴
+
+■ AK 적용 사례
+
+AK SE300 모델에 R-2R DAC이 적용되었습니다.
+
+■ 한 줄 요약
+
+저항 사다리(Ladder) 구조로 신호를 변환하는 최초의 DAC 방식. 현재는 Delta-Sigma에 밀려 일부 하이엔드 제품에만 사용`,
+   tags:["R-2R","DAC","Ladder","SE300","하드웨어"],links:[{label:"DAC (Digital-to-Analog Converter)",url:"#open:241"},{label:"Delta-Sigma DAC",url:"#open:242"}]},
+  {id:244,title:"Bandroid",category:"용어사전",glossTab:"SW",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
+   desc:"Astell&Kern에서 사용하는 안드로이드 기반 운영체제입니다. Google Play Store를 제공하지 않으며, AK에서 허용한 앱만 설치할 수 있습니다.",
+   body:`■ 개요
+
+Bandroid는 Astell&Kern에서 사용하는 안드로이드 기반 운영체제입니다.
+일반 Android 제품과 달리 Google Play Store를 제공하지 않으며, Astell&Kern에서 허용한 앱만 설치할 수 있습니다.
+
+■ Android vs Bandroid
+
+| | Android | Bandroid |
+| --- | --- | --- |
+| Google Play Store | 지원 | 미지원 |
+| 앱 설치 | 대부분의 앱 설치 가능 | 허용된 앱만 설치 가능 |
+| APK 설치 | APK 파일 직접 설치 가능 | 허용된 APK 파일만 설치 가능 |
+| 적용 모델 | SP4000, PD10 등 | SP3000, SP2000 등 |
+
+■ AK Open APP Service
+
+Bandroid 제품은 AK Open APP Service를 통해 음악 스트리밍 앱을 설치할 수 있습니다.
+대표적으로 다음과 같은 앱을 지원합니다.
+
+- TIDAL
+- Qobuz
+- Apple Music
+- Spotify
+- YouTube Music
+- FLO
+- Bugs
+
+※ 지원 앱은 제품 및 펌웨어 버전에 따라 달라질 수 있습니다.
+
+■ 왜 Bandroid를 사용할까?
+
+Astell&Kern은 오디오 재생에 최적화된 환경을 제공하기 위해 일반 Android보다 제한된 구조를 사용합니다.
+이를 통해 불필요한 백그라운드 서비스와 시스템 리소스 사용을 줄이고, 음악 재생 중심의 안정적인 사용 환경을 제공합니다.
+
+■ 한 줄 요약
+
+Bandroid는 일반 Android보다 앱 설치가 제한된 Astell&Kern 전용 안드로이드 운영체제입니다.`,
+   tags:["Bandroid","Android","OS","운영체제","AK Open APP","소프트웨어"],links:[]},
 ];
