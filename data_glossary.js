@@ -300,7 +300,7 @@ SP4000T 이전 구형 모델은 Favorite 명칭과 기능이 그대로 유지됩
 
 노래만 담는 단순 즐겨찾기. SP4000T부터 컬렉션으로 기능 확장되어 대체됨`,
    tags:["Favorite","즐겨찾기"],links:[{label:"컬렉션 용어사전 보기",url:"#search:컬렉션"}]},
-  {id:30,title:"개발단계",category:"용어사전",glossTab:"개발",models:[],date:"2026.06.01",author:"Ellie",authorInitial:"E",
+  {id:130,title:"개발단계",category:"용어사전",glossTab:"개발",models:[],date:"2026.06.01",author:"Ellie",authorInitial:"E",
    desc:"AK 제품의 양산 전 개발 과정에서 거치는 이벤트 단계입니다. EVM → WS → ES → TP → MP 순으로 진행됩니다.",
    body:`■ 개요
 
