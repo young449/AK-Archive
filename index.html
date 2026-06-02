@@ -48,6 +48,27 @@ a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none}
 
 /* =============================================
+   SECTION: css-top-btn
+============================================= */
+#top-btn{
+  position:fixed;right:24px;bottom:28px;z-index:500;
+  width:44px;height:44px;border-radius:50%;
+  background:var(--n-700);border:1px solid var(--div-2);
+  color:var(--text-2);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(0,0,0,0.4);
+  opacity:0;pointer-events:none;
+  transform:translateY(8px);
+  transition:opacity 0.2s,transform 0.2s,background 0.13s,color 0.13s;
+}
+#top-btn.show{opacity:1;pointer-events:auto;transform:translateY(0)}
+#top-btn:hover{background:var(--n-600);color:var(--text-1)}
+body.is-home #top-btn{display:none}
+@media(max-width:639px){
+  #top-btn{right:16px;bottom:20px;width:40px;height:40px}
+}
+
+/* =============================================
    SECTION: css-gnb
    항상 표시. 홈에서는 숨김 (body.is-home)
 ============================================= */
@@ -1271,6 +1292,13 @@ body.is-tag #tag-page{display:block}
   </div>
 </div>
 
+<!-- top 버튼 -->
+<button id="top-btn" aria-label="맨 위로">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 10.5L8 5.5L13 10.5"/>
+  </svg>
+</button>
+
 <!-- =============================================
    SECTION: js-data
 ============================================= -->
@@ -2213,6 +2241,17 @@ document.getElementById("detail-back").addEventListener("click",()=>{
 document.getElementById("tag-back").addEventListener("click",()=>{
   goList("기능 히스토리");
 });
+
+// Top 버튼
+(function(){
+  const btn = document.getElementById("top-btn");
+  window.addEventListener("scroll", () => {
+    btn.classList.toggle("show", window.scrollY > 300);
+  }, {passive:true});
+  btn.addEventListener("click", () => {
+    window.scrollTo({top:0, behavior:"smooth"});
+  });
+})();
 
 // ESC
 document.addEventListener("keydown",e=>{
