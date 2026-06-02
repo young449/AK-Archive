@@ -234,9 +234,60 @@ A&futura 프리미엄 라인업의 Identity 연속성을 가지는 모델로, SE
   {id:29, title:"SP3000", category:"제품 모델", models:["A&ultima"], date:"2026.05.15", author:"Ellie", authorInitial:"E",
    credits:{PM:"Jay", PL:"Kane", UX:"Lizzo", UI:"Luna"},
    desc:"A&ultima 플래그십 DAP. Hexa DAC 구조(AK4191EQ x2 & AK4499EX x4)와 아날로그·디지털 신호 처리 분리로 최고 수준의 사운드를 구현한 모델.",
-   body:``,
-   tags:["SP3000","A&ultima","HexaDAC"],
-   files:[],
+   body:`■■ 1. 라인업 상의 의미
+
+AK Flagship SP2000의 후속 모델.
+
+- 최신 오디오 기술이 집약되는 제품으로 기존 SP2000보다 향상된 모델로 A&Ultima 라인업에 위치
+- 타 경쟁제품에서 따라할 수 없는 A&Ultima만의 차별성을 가지는 모델로 Market Leader 위치 유지
+
+
+■■ 2. 상품기획 의도
+
+AK Flagship 모델에 걸맞는 독보적인 기능 구현에 집중.
+
+- 디지털·아날로그 신호 처리의 물리적 분리를 바탕으로 모든 부분에서 압도적인 사양 확보
+- DAP 세계 최초 디지털·아날로그 신호 처리를 물리적으로 분리하는 HEXA DAC 구조 확보
+- DAP 세계 최초 명품 시계에 사용되는 Stainless Steel 904L 소재 적용
+- 퀄컴 최신 CPU, 신규 5.46" LCD, AK4137 컨버터 탑재로 기본 상품성 대폭 강화
+- 고속 충전 외 PD 충전과 무선 충전까지 적용해 차별화 시도
+- Dual Wi-Fi, 2way 블루투스, DSD512 재생 등 기존 모델의 장점은 유지
+
+
+■■ 3. Key Concept : Complete separation for noise
+
+New Sound Frontier SP3000.
+
+- SP2000 이후 출시되는 A&Ultima 3번째 제품으로 CPU를 비롯해 거의 모든 부분을 업그레이드
+- 일반적인 오디오 신호 구조에서 벗어나, 디지털과 아날로그 신호 처리를 물리적으로 분리하는 구조 적용
+- 단순 Dual·Quad DAC 구조가 아닌, 디지털·아날로그 신호 처리를 모든 DAC에서 분리하는 HEXA 구조 적용
+- R채널·L채널에 각각 AK4191(Dual)을 배치하고, AK4499EX를 채널당 2개씩 총 4개(Quad)로 구성
+- 기능뿐만 아니라 소재에서도 DAP 세계 최초 Stainless Steel 904L 적용으로 명품 DAP 포지셔닝
+- 기존 SP2000의 장점 유지 + All to DSD, 출력 상향, 무선 충전 탑재로 제품 경쟁력 강화
+
+
+■■ 4. 주요 사양
+
+| 항목 | 사양 | 비고 |
+| --- | --- | --- |
+| CPU | Qualcomm C6125 Octa-Core | 신규 |
+| DAC | AK4191 Dual & AK4499EX Quad | 디지털·아날로그 신호 처리 분리 |
+| Display | 5.46inch 1080x1920 | 신규 |
+| Bit / Sample rate | 32bit/768kHz, DSD512 | |
+| Output Level | Balanced 8V / Unbalanced 4V | Normal / High Gain mode |
+| Audio Output | 2.5mm, 3.5mm, 4.4mm | |
+| Memory | 256GB | |
+| Network | Dual Wi-Fi (2.4/5GHz), BT (LDAC, aptX HD) | |
+| Battery | 5,000mAh | 목표 재생시간 10hrs |
+| USB | Type-C | |
+| SD Card | micro SD card x1 | Max 1TB |
+| Charging | 고속 충전, 무선 충전, PD 충전 지원 | |
+| Material | Stainless Steel (904L, 316L), Copper | Silver / Copper / Black |
+`,
+   tags:["SP3000","A&ultima","HexaDAC","HEXADAC","StainlessSteel","904L","Complete separation for noise","NewSoundFrontier"],
+   files:[
+     {label:"SP3000_사업계획서_0924.pdf", url:"files/SP3000_BP_0924.pdf"},
+   ],
    links:[
      {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=1376-6056&t=f24YMy1BBxKGLVBr-1"},
      {label:"UI Figma", url:"https://www.figma.com/design/CZdIQpzaGRVJOXF7ml8b7f/UI_Crimson_Common-Design-2.0-?node-id=28-54118&t=5TCq9OF8pi5rx8Pa-1"},
