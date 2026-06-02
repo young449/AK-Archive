@@ -331,7 +331,11 @@ GEQ와 가장 큰 차이는 Q값을 설정할 수 있다는 점으로, 세밀하
 ■ 한 줄 요약
 
 EQ는 주파수 대역을 조절해 음악의 음색 밸런스를 바꾸는 기능. GEQ는 직관적, PEQ는 Q값까지 조절하는 고급 설정`,
-   tags:["EQ","이퀄라이저","주파수","음색","밸런스","GEQ","PEQ","Graphic EQ","Parametric EQ","Q값"],links:[]},
+   tags:["EQ","이퀄라이저","주파수","음색","밸런스","GEQ","PEQ","Graphic EQ","Parametric EQ","Q값"],links:[],
+   images:[
+     {src:"images/glossary/feature-equalizer-1.jpg",caption:"GEQ — Graphic Equalizer (Main 탭)"},
+     {src:"images/glossary/feature-equalizer-2.jpg",caption:"PEQ — Parametric Equalizer (Advanced 탭)"},
+   ]},
   {id:222,title:"컬렉션 (Collection)",category:"용어사전",glossTab:"기능",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"기존 Favorite(즐겨찾기)을 재정의한 북마크형 저장 기능. 노래·앨범·아티스트·플레이리스트를 폴더별로 저장·관리할 수 있습니다.",
    body:`■■ 개요
@@ -558,7 +562,10 @@ AK500N의 음원을 PD10으로 컨트롤하며 AK T1으로 재생
 ■ 한 줄 요약
 
 같은 네트워크 안에서 AK 기기끼리 음원을 공유하고 원격으로 재생을 제어하는 무선 연결 기능`,
-   tags:["AK Connect","DLNA","무선","네트워크","Library","Speaker","Remote"],links:[]},
+   tags:["AK Connect","DLNA","무선","네트워크","Library","Speaker","Remote"],links:[],
+   images:[
+     {src:"images/glossary/service-ak connect-1.jpg",caption:"AK Connect 개요 및 사용 예시"},
+   ]},
   {id:246,title:"크로스피드 (Crossfeed)",category:"용어사전",glossTab:"기능",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
    desc:"헤드폰·이어폰 청취 시 L/R 채널을 인위적으로 섞어 스피커 청취와 같은 자연스러운 스테레오 공간감을 형성하는 기능입니다.",
    body:`■ 개요
@@ -582,5 +589,8 @@ Crossfeed는 인위적으로 반대편 소리를 섞어 스피커 청취와 같�
 ■ 한 줄 요약
 
 헤드폰 청취 시 부자연스러운 좌우 분리감을 줄이고, 스피커처럼 자연스러운 공간감을 만들어주는 기능`,
-   tags:["Crossfeed","크로스피드","공간감","스테레오","헤드폰","이어폰","Shelf Cutoff","Shelf Gain"],links:[]},
+   tags:["Crossfeed","크로스피드","공간감","스테레오","헤드폰","이어폰","Shelf Cutoff","Shelf Gain"],links:[],
+   images:[
+     {src:"images/glossary/feature-crossfeed-1.jpg",caption:"Crossfeed 청음 환경 비교 및 설정"},
+   ]},
 ];
