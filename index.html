@@ -803,6 +803,9 @@ hr.dv{border:none;border-top:1px solid var(--div-1);margin:20px 0}
   font-size:14px;
 }
 #d-body tr:nth-child(even) td{background:rgba(255,255,255,0.02)}
+#d-body table.table-col-equal{table-layout:fixed}
+#d-body table.table-col-equal th,
+#d-body table.table-col-equal td{width:50%}
 
 /* =============================================
    SECTION: css-responsive
@@ -1882,6 +1885,27 @@ function renderBody(text) {
       i++;
       // 헤딩 바로 뒤 빈 줄 스킵
       while (i < lines.length && lines[i].trim() === '') i++;
+      continue;
+    }
+
+    // ── 테이블 equal 마커: !!table-equal!! 바로 다음 표에만 1:1 비율 적용
+    if (trimmed === '!!table-equal!!') {
+      closePre();
+      i++;
+      const tableLines = [];
+      while (i < lines.length && lines[i].trim().startsWith('|')) {
+        tableLines.push(lines[i]);
+        i++;
+      }
+      const filtered = tableLines.filter(l => !/^\s*\|[\s\-|:]+\|\s*$/.test(l));
+      let html = '<table class="table-col-equal">';
+      filtered.forEach((row, idx) => {
+        const cells = row.trim().replace(/^\||\|$/g,'').split('|');
+        const tag = idx === 0 ? 'th' : 'td';
+        html += '<tr>' + cells.map(c => `<${tag}>${c.trim()}</${tag}>`).join('') + '</tr>';
+      });
+      html += '</table>';
+      result.push(html);
       continue;
     }
 
