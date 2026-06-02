@@ -99,7 +99,7 @@ PC 연결 시 MTP가 활성화되지 않는 경우, 사용자가 수동으로 US
    tags:["SP4000T","A&ultima","Tube","TubeCurrent","USB","USB설정","배터리보호모드","Collection","컬렉션","Favorite","즐겨찾기"],
    files:[],
    links:[
-     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=8669-8484&t=fhsxj64S8jwIqh1N-1"},
+     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=9368-9568&t=f24YMy1BBxKGLVBr-1"},
      {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9751-56643&t=YVqta9mRIAIVw2Wd-1"},
      {label:"UX 히스토리 Favorite에서 Collection으로(기능 확장 재정의)", url:"#open:24"},
    ],
@@ -194,7 +194,8 @@ PD5에는 8개의 DAC가 탑재되어 있으며, 사용자가 DAC 구동 수를 
      {label:"PD5_사업계획서_0728.pdf", url:"files/PD5_BP_0728.pdf"},
    ],
    links:[
-     {label:"astellnkern.com PD5", url:"https://www.astellnkern.com"},
+     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=9368-9568&t=f24YMy1BBxKGLVBr-1"},
+     {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=10316-25448&t=33he04t05HBedODK-1"},
    ],
    images:[
      {src:"images/PD5/PD5_1.png", alt:"PD5 전면"},
