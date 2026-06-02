@@ -159,13 +159,77 @@ Sound Master 휠로 Gain 연동 조절 가능. 되돌리기(Flat Curve 복원) /
    images:[
      {src:"images/PD20/PD20_thumb.png", alt:"PD20 썸네일"},
    ]},
-  {id:28, title:"PD10", category:"제품 모델", models:["PD series"], date:"", author:"", authorInitial:"",
-   credits:{PM:"", PL:"", UX:"", UI:""},
-   desc:"",
-   body:``,
-   tags:["PD10","PDseries"],
-   files:[],
-   links:[],
+  {id:28, title:"PD10", category:"제품 모델", models:["PD series"], date:"2026.05.18", author:"Ellie", authorInitial:"E",
+   credits:{PM:"Jay", PL:"Kenny", UX:"Luna", UI:"Luna"},
+   desc:"A&futura SE400에서 PD10으로 재정의된 모델. 검증된 Hexa DAC 구조, Full Android, XLR 크래들을 핵심 컨셉으로 한 PD series DAP.",
+   body:`■■ 1. 라인업 상의 의미
+
+A&futura 프리미엄 라인업의 Identity 연속성을 가지는 모델로, SE300의 후속 모델입니다.
+
+- 새로움에 도전하는 라인업의 Identity 연속성 확보를 위해, OS 변경 기점 모델로 기획
+- 타사 플래그십 모델을 뛰어넘는 사양, 상품 구성, 뛰어난 만듦새로 차별화된 가치 제공
+
+
+■■ 2. 상품기획 의도
+
+인정받은 Hexa DAC 구조, 새로운 OS, 활용도 높은 크래들을 제공해 상품성 극대화.
+
+- SP3000에서 검증된 Hexa DAC 구조에 AKM社 신형 DAC(AK4498EX)를 세계 최초 적용
+- 꾸준한 시장 요구 사항인 Full Android 탑재
+- XLR 출력 지원 충전 크래들을 기본 아이템으로 구성해 제품 활용도 및 확장성 확보
+- 기존 SE300의 느린 속도 개선을 위해 Octa-Core 적용
+
+
+■■ 3. Key Concept : Unlimited Music Life
+
+뛰어난 음질과 제한 없는 확장을 핵심 컨셉으로 합니다.
+
+① 신형 DAC 세계 최초 사용 / 검증된 Hexa 구조 적용
+② 고객 요구를 적극 반영한 Full Android 탑재
+③ 편리함과 확장성이 결합된 XLR 크래들 제공
+
+
+■■ 4. 주요 사양
+
+■ DAP
+
+| 항목 | 사양 | 비고 |
+| --- | --- | --- |
+| CPU | MTK8385 Octa-Core | Full Android 지원 |
+| DAC | AK4191EQ x2 & AK4498EX x4 | Dual & Dual 구조 |
+| Display | 5.5inch 1080x1920 | |
+| Bit / Sample rate | 32bit/768kHz, DSD512 | |
+| Audio Output | 3.5mm(SPDIF) x1, 4.4mm x1 | |
+| Output Level | Balanced 6.3V / Unbalanced 3.3V | |
+| Memory | 256GB | |
+| Bluetooth | LDAC, aptX HD | |
+| Wi-Fi | Dual Wi-Fi (2.4/5GHz) | |
+| Battery | 5,050mAh | 연속 재생 약 10시간 예상 |
+| USB | Type C | |
+| SD Card | micro SD card x1 | Max 1TB |
+| Charging | 5V 2A & PD 3.0 | |
+| Material | Stainless Steel 316L | |
+
+■ XLR 크래들
+
+| 항목 | 사양 | 비고 |
+| --- | --- | --- |
+| Audio Output | XLR Balanced L/R | NEUTRIK |
+| USB 1 | DAP 연결 | 내부 위치 |
+| USB 2 | 충전 연결 | 후면 위치 |
+| USB 3 | CD-Ripper 연결 | 후면 위치 |
+| Pogo Pin | DAP와 크래들 연결 | 내부 위치 |
+| Charging | 5V 2A & PD 3.0 | |
+| Material | Aluminum | |
+`,
+   tags:["PD10","PDseries","HexaDAC","FullAndroid","XLR","크래들","SE400"],
+   files:[
+     {label:"PD10_사업계획서_0404.pdf", url:"files/PD10_BP_0404.pdf"},
+   ],
+   links:[
+     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=4115-1020&t=f24YMy1BBxKGLVBr-1"},
+     {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=10316-25448&t=33he04t05HBedODK-1"},
+   ],
    images:[]},
   {id:29, title:"SP3000", category:"제품 모델", models:["A&ultima"], date:"", author:"", authorInitial:"",
    credits:{PM:"", PL:"", UX:"", UI:""},
