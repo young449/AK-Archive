@@ -537,7 +537,34 @@ Astell&Kern은 오디오 재생에 최적화된 환경을 제공하기 위해 �
 
 Bandroid는 일반 Android보다 앱 설치가 제한된 Astell&Kern 전용 안드로이드 운영체제입니다.`,
    tags:["Bandroid","Android","OS","운영체제","AK Open APP","소프트웨어"],links:[]},
-  {id:245,title:"AK Connect",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
+  {id:246,title:"크로스피드 (Crossfeed)",category:"용어사전",glossTab:"기능",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
+   desc:"헤드폰·이어폰 청취 시 L/R 채널을 인위적으로 섞어 스피커 청취와 같은 자연스러운 스테레오 공간감을 형성하는 기능입니다.",
+   body:`■ 개요
+
+헤드폰·이어폰으로 음악을 들을 때는 L과 R 채널이 명확히 분리되어 공간감이 부자연스럽게 느껴질 수 있습니다.
+스피커로 들을 때는 L, R 소리가 자연스럽게 섞여 들리는 것과 달리, 헤드폰은 좌우 채널이 완전히 분리되기 때문입니다.
+Crossfeed는 인위적으로 반대편 소리를 섞어 스피커 청취와 같은 자연스러운 스테레오 공간감을 형성합니다.
+
+■ 청음 환경 비교
+
+| | 헤드폰·이어폰 | 스피커 | Crossfeed |
+| --- | --- | --- | --- |
+| L/R 분리 | 명확히 구분 | 소리가 섞여서 들림 | 인위적으로 반대편 소리를 섞음 |
+| 공간감 | 부자연스러움 | 자연스러움 | 자연스러운 스테레오 공간감 형성 |
+
+■ 설정 항목
+
+- Shelf Cutoff: 반대편 채널로 보낼 소리의 주파수 구간을 설정
+- Shelf Gain: 얼마나 섞을 것인가에 대한 소리의 양(크기)을 설정 (예: 5.0 dB)
+
+■ 한 줄 요약
+
+헤드폰 청취 시 부자연스러운 좌우 분리감을 줄이고, 스피커처럼 자연스러운 공간감을 만들어주는 기능`,
+   tags:["Crossfeed","크로스피드","공간감","스테레오","헤드폰","이어폰","Shelf Cutoff","Shelf Gain"],links:[],
+   images:[
+     {src:"images/glossary/feature-crossfeed-1.jpg",caption:"Crossfeed 청음 환경 비교 및 설정"},
+   ]},
+  {id:245,title:"AK 커넥트 (AK Connect)",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
    desc:"동일 네트워크에 연결된 AK 기기 간 무선 통신으로 음악 재생 컨트롤이 가능한 기능입니다. DLNA 방식을 사용합니다.",
    body:`■ 개요
 
@@ -565,32 +592,5 @@ AK500N의 음원을 PD10으로 컨트롤하며 AK T1으로 재생
    tags:["AK Connect","DLNA","무선","네트워크","Library","Speaker","Remote"],links:[],
    images:[
      {src:"images/glossary/service-ak connect-1.jpg",caption:"AK Connect 개요 및 사용 예시"},
-   ]},
-  {id:246,title:"크로스피드 (Crossfeed)",category:"용어사전",glossTab:"기능",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
-   desc:"헤드폰·이어폰 청취 시 L/R 채널을 인위적으로 섞어 스피커 청취와 같은 자연스러운 스테레오 공간감을 형성하는 기능입니다.",
-   body:`■ 개요
-
-헤드폰·이어폰으로 음악을 들을 때는 L과 R 채널이 명확히 분리되어 공간감이 부자연스럽게 느껴질 수 있습니다.
-스피커로 들을 때는 L, R 소리가 자연스럽게 섞여 들리는 것과 달리, 헤드폰은 좌우 채널이 완전히 분리되기 때문입니다.
-Crossfeed는 인위적으로 반대편 소리를 섞어 스피커 청취와 같은 자연스러운 스테레오 공간감을 형성합니다.
-
-■ 청음 환경 비교
-
-| | 헤드폰·이어폰 | 스피커 | Crossfeed |
-| --- | --- | --- | --- |
-| L/R 분리 | 명확히 구분 | 소리가 섞여서 들림 | 인위적으로 반대편 소리를 섞음 |
-| 공간감 | 부자연스러움 | 자연스러움 | 자연스러운 스테레오 공간감 형성 |
-
-■ 설정 항목
-
-- Shelf Cutoff: 반대편 채널로 보낼 소리의 주파수 구간을 설정
-- Shelf Gain: 얼마나 섞을 것인가에 대한 소리의 양(크기)을 설정 (예: 5.0 dB)
-
-■ 한 줄 요약
-
-헤드폰 청취 시 부자연스러운 좌우 분리감을 줄이고, 스피커처럼 자연스러운 공간감을 만들어주는 기능`,
-   tags:["Crossfeed","크로스피드","공간감","스테레오","헤드폰","이어폰","Shelf Cutoff","Shelf Gain"],links:[],
-   images:[
-     {src:"images/glossary/feature-crossfeed-1.jpg",caption:"Crossfeed 청음 환경 비교 및 설정"},
    ]},
 ];
