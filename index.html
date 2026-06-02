@@ -51,8 +51,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
    SECTION: css-top-btn
 ============================================= */
 #top-btn{
-  position:fixed;right:24px;bottom:80px;z-index:500;
-  width:44px;height:44px;border-radius:50%;
+  position:fixed;right:36px;bottom:80px;z-index:500;
+  width:52px;height:52px;border-radius:50%;
   background:var(--n-700);border:1px solid var(--div-2);
   color:var(--text-2);
   display:flex;align-items:center;justify-content:center;
@@ -1324,11 +1324,15 @@ const DATA = [...DATA_product, ...DATA_ux, ...DATA_glossary];
 ============================================= -->
 <script>
 const S = {cat:"",chip:"전체",q:"",openId:null,tag:"",glossTab:"전체"};
+// 초기 히스토리 상태 설정 (뒤로가기 기준점)
+history.replaceState({page:"home"}, "");
 
 /* =============================================
    SECTION: js-tag-page
 ============================================= */
-function goTag(tag) {
+function goTag(tag) { _goTag(tag, true); }
+function _goTag(tag, push) {
+  if (push) pushHistory({page:"tag", tag});
   S.tag = tag;
   // 모든 페이지 숨김
   document.body.className = "is-tag";
@@ -1377,7 +1381,7 @@ function renderTagCards(items, tag) {
 
 function openDetailFromTag(id) {
   document.body.className = "is-tag is-tag-detail";
-  openDetail(id, "is-tag");
+  _openDetail(id, "is-tag", true);
   // detail을 tag-content 위에 표시
   const detail = document.getElementById("detail");
   const tagContent = document.getElementById("tag-content");
@@ -1390,10 +1394,32 @@ function openDetailFromTag(id) {
 
 
 /* =============================================
+   SECTION: js-history
+   브라우저 뒤로가기/앞으로가기 지원
+============================================= */
+function pushHistory(state) {
+  history.pushState(state, "");
+}
+function replaceHistory(state) {
+  history.replaceState(state, "");
+}
+
+window.addEventListener("popstate", e => {
+  const st = e.state;
+  if (!st) { _goHome(false); return; }
+  if (st.page === "home")   { _goHome(false); return; }
+  if (st.page === "list")   { _goList(st.cat, st.q, false); return; }
+  if (st.page === "detail") { _openDetail(st.id, st.prevPage, false); return; }
+  if (st.page === "tag")    { _goTag(st.tag, false); return; }
+});
+
+/* =============================================
    SECTION: js-page-switch
    body 클래스로 페이지 전환
 ============================================= */
-function goHome() {
+function goHome() { _goHome(true); }
+function _goHome(push) {
+  if (push) pushHistory({page:"home"});
   document.body.className = "is-home";
   document.getElementById("home-search").value = "";
   document.getElementById("home-clear").classList.remove("show");
@@ -1402,7 +1428,9 @@ function goHome() {
   window.scrollTo({top:0,behavior:"smooth"});
 }
 
-function goList(cat, q) {
+function goList(cat, q) { _goList(cat, q, true); }
+function _goList(cat, q, push) {
+  if (push) pushHistory({page:"list", cat, q:q||""});
   document.body.className = "is-list";
   S.prevCat=S.cat; S.cat=cat; S.chip="전체"; S.q=q||""; S.openId=null;
   if(cat !== "용어사전") S.glossTab = "전체";
@@ -1669,9 +1697,11 @@ function renderCards(){
 /* =============================================
    SECTION: js-detail
 ============================================= */
-function openDetail(id, prevPage){
+function openDetail(id, prevPage){ _openDetail(id, prevPage, true); }
+function _openDetail(id, prevPage, push){
   const d=DATA.find(x=>x.id===id);if(!d)return;
   S.prevPage = prevPage !== undefined ? prevPage : document.body.className;
+  if (push) pushHistory({page:"detail", id, prevPage: S.prevPage});
   S.openId=id;
   ["card-list","chip-bar","count-row","hero"].forEach(i=>document.getElementById(i).style.display="none");
   document.getElementById("gloss-subtab-wrap").classList.remove("show");
