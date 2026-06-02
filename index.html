@@ -1630,7 +1630,7 @@ function renderCards(){
       el.className="card-thumb";el.setAttribute("role","listitem");el.setAttribute("tabindex","0");el.setAttribute("data-id",d.id);
       // 썸네일 이미지: _thumb 파일 우선, 없으면 images[0] 사용
       const thumbImg = d.images && d.images.find(img => img.src.toLowerCase().includes('_thumb'));
-      const thumbFallback = d.images && d.images.length ? d.images[0] : null;
+      const thumbFallback = (!d.noThumb && d.images && d.images.length) ? d.images[0] : null;
       const thumbSrc = thumbImg ? thumbImg.src : (thumbFallback ? thumbFallback.src : null);
       const thumbAlt = thumbImg ? thumbImg.alt : (thumbFallback ? thumbFallback.alt : d.title);
       const imgHtml = thumbSrc
