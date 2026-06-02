@@ -199,6 +199,11 @@ A&futura 프리미엄 라인업의 Identity 연속성을 가지는 모델로, SE
 | DAP | XLR 크래들 |
 | --- | --- |
 | · MTK8385 Octa-Core<br>· AK4191EQ x2 & AK4498EX x4<br>· 5.5" 1080×1920<br>· 32bit / 768kHz / DSD512<br>· BAL 6.3V / UNBAL 3.3V<br>· 3.5mm(SPDIF) + 4.4mm<br>· 256GB / micro SD Max 1TB<br>· BT (LDAC · aptX HD)<br>· Dual Wi-Fi (2.4/5GHz)<br>· 5,050mAh (~10h)<br>· PD 3.0 충전<br>· Stainless Steel 316L | · XLR Balanced L/R 출력 (NEUTRIK)<br>· USB×3 — DAP 연결 / 충전 / CD-Ripper<br>· Pogo Pin 연결<br>· PD 3.0 충전<br>· Aluminum |
+
+!!img:images/PD10/PD10_1.jpg|PD10 전면!!
+!!img:images/PD10/PD10_2.jpg|PD10 후면!!
+!!img:images/PD10/PD10_3.jpg|PD10 퍼스펙티브!!
+!!img:images/PD10/PD10_4.jpg|PD10 라이프스타일!!
 `,
    tags:["PD10","PDseries","HexaDAC","FullAndroid","XLR","크래들","SE400"],
    files:[
@@ -208,7 +213,13 @@ A&futura 프리미엄 라인업의 Identity 연속성을 가지는 모델로, SE
      {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=4115-1020&t=f24YMy1BBxKGLVBr-1"},
      {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=10316-25448&t=33he04t05HBedODK-1"},
    ],
-   images:[]},
+   images:[
+     {src:"images/PD10/PD10_thumb.png", alt:"PD10 썸네일"},
+     {src:"images/PD10/PD10_1.jpg", alt:"PD10 전면"},
+     {src:"images/PD10/PD10_2.jpg", alt:"PD10 후면"},
+     {src:"images/PD10/PD10_3.jpg", alt:"PD10 퍼스펙티브"},
+     {src:"images/PD10/PD10_4.jpg", alt:"PD10 라이프스타일"},
+   ]},
   {id:29, title:"SP3000", category:"제품 모델", models:["A&ultima"], date:"2026.05.15", author:"Ellie", authorInitial:"E",
    credits:{PM:"Jay", PL:"Kane", UX:"Lizzo", UI:"Luna"},
    desc:"A&ultima 플래그십 DAP. Hexa DAC 구조(AK4191EQ x2 & AK4499EX x4)와 아날로그·디지털 신호 처리 분리로 최고 수준의 사운드를 구현한 모델.",
