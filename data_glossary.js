@@ -297,11 +297,41 @@ DAP·디바이스에서 SMB를 사용하려면 서버 환경 구축이 먼저 �
    body:`■ 개요
 
 EQ(Equalizer)는 특정 주파수 영역을 조절해 원하는 음색으로 바꾸는 기능 또는 설정을 의미합니다.
+AK DAP에서는 Graphic EQ(Main)와 Parametric EQ(Advanced) 두 가지 방식을 제공합니다.
+
+■ GEQ — Graphic Equalizer (Main 탭)
+
+각각의 주파수 대역별로 Gain 값만 조절하는 방식입니다.
+슬라이더 형태라 그래픽처럼 음선 곡선을 시각적으로 볼 수 있으며, 단순하고 직관적인 설정이 가능합니다.
+
+- 20-band Frequency (30Hz ~ 18kHz)
+- 각 주파수 대역의 Gain 값 표기
+- 원하는 주파수 대역의 Gain을 높이거나 낮춤
+- 현재 주파수에 설정된 Gain 값 (-5.0 dB ~ 5.0 dB)
+
+■ PEQ — Parametric Equalizer (Advanced 탭)
+
+중심 주파수와 함께 인접 주파수 대역(Q값)을 임의로 설정하여 Gain 값을 조절하는 방식입니다.
+GEQ와 가장 큰 차이는 Q값을 설정할 수 있다는 점으로, 세밀하고 전문적인 설정이 가능합니다.
+
+- 20-band Frequency (30Hz ~ 18kHz)
+- 현재 설정된 Gain 값 (-5.0 dB ~ 5.0 dB)
+- Q값 (Bandwidth, 1.0 ~ 4.0): Q값이 높을수록 대역폭이 좁아지고, Q값이 낮을수록 대역폭이 넓어짐
+- 중심 주파수와 Q값의 설정값을 그래픽으로 표현
+
+■ GEQ vs PEQ 비교
+
+| | GEQ (Graphic EQ) | PEQ (Parametric EQ) |
+| --- | --- | --- |
+| 탭 위치 | Main | Advanced |
+| 조절 항목 | Gain만 | Gain + Q값(대역폭) |
+| 설정 방식 | 슬라이더 | 수치 직접 입력 |
+| 난이도 | 직관적, 간단 | 세밀하고 전문적 |
 
 ■ 한 줄 요약
 
-EQ는 주파수 대역을 조절해 음악의 음색 밸런스를 바꾸는 기능입니다.`,
-   tags:["EQ","이퀄라이저","주파수","음색","밸런스"],links:[]},
+EQ는 주파수 대역을 조절해 음악의 음색 밸런스를 바꾸는 기능. GEQ는 직관적, PEQ는 Q값까지 조절하는 고급 설정`,
+   tags:["EQ","이퀄라이저","주파수","음색","밸런스","GEQ","PEQ","Graphic EQ","Parametric EQ","Q값"],links:[]},
   {id:222,title:"컬렉션 (Collection)",category:"용어사전",glossTab:"기능",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"기존 Favorite(즐겨찾기)을 재정의한 북마크형 저장 기능. 노래·앨범·아티스트·플레이리스트를 폴더별로 저장·관리할 수 있습니다.",
    body:`■■ 개요
@@ -503,4 +533,54 @@ Astell&Kern은 오디오 재생에 최적화된 환경을 제공하기 위해 �
 
 Bandroid는 일반 Android보다 앱 설치가 제한된 Astell&Kern 전용 안드로이드 운영체제입니다.`,
    tags:["Bandroid","Android","OS","운영체제","AK Open APP","소프트웨어"],links:[]},
+  {id:245,title:"AK Connect",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
+   desc:"동일 네트워크에 연결된 AK 기기 간 무선 통신으로 음악 재생 컨트롤이 가능한 기능입니다. DLNA 방식을 사용합니다.",
+   body:`■ 개요
+
+AK Connect는 DLNA(Digital Living Network Alliance) 방식으로, 동일 네트워크에 연결된 AK 기기 간 무선 통신으로 음악 재생 컨트롤이 가능한 기능입니다.
+
+■ 주요 개념
+
+| 역할 | 설명 |
+| --- | --- |
+| Library | 음원이 저장된 기기. 음원을 제공하는 소스 역할 |
+| Speaker | 음원을 재생하는 출력 기기 역할 |
+| Remote | 재생을 원격으로 컨트롤하는 기기 역할 |
+
+■ 사용 예시
+
+Case 1 — PD10(Library) → AK T1(Speaker)
+동일 네트워크에서 PD10에 저장된 음원을 AK T1 스피커로 재생
+
+Case 2 — AK500N(Library) → PD10(Remote) → AK T1(Speaker)
+AK500N의 음원을 PD10으로 컨트롤하며 AK T1으로 재생
+
+■ 한 줄 요약
+
+같은 네트워크 안에서 AK 기기끼리 음원을 공유하고 원격으로 재생을 제어하는 무선 연결 기능`,
+   tags:["AK Connect","DLNA","무선","네트워크","Library","Speaker","Remote"],links:[]},
+  {id:246,title:"크로스피드 (Crossfeed)",category:"용어사전",glossTab:"기능",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
+   desc:"헤드폰·이어폰 청취 시 L/R 채널을 인위적으로 섞어 스피커 청취와 같은 자연스러운 스테레오 공간감을 형성하는 기능입니다.",
+   body:`■ 개요
+
+헤드폰·이어폰으로 음악을 들을 때는 L과 R 채널이 명확히 분리되어 공간감이 부자연스럽게 느껴질 수 있습니다.
+스피커로 들을 때는 L, R 소리가 자연스럽게 섞여 들리는 것과 달리, 헤드폰은 좌우 채널이 완전히 분리되기 때문입니다.
+Crossfeed는 인위적으로 반대편 소리를 섞어 스피커 청취와 같은 자연스러운 스테레오 공간감을 형성합니다.
+
+■ 청음 환경 비교
+
+| | 헤드폰·이어폰 | 스피커 | Crossfeed |
+| --- | --- | --- | --- |
+| L/R 분리 | 명확히 구분 | 소리가 섞여서 들림 | 인위적으로 반대편 소리를 섞음 |
+| 공간감 | 부자연스러움 | 자연스러움 | 자연스러운 스테레오 공간감 형성 |
+
+■ 설정 항목
+
+- Shelf Cutoff: 반대편 채널로 보낼 소리의 주파수 구간을 설정
+- Shelf Gain: 얼마나 섞을 것인가에 대한 소리의 양(크기)을 설정 (예: 5.0 dB)
+
+■ 한 줄 요약
+
+헤드폰 청취 시 부자연스러운 좌우 분리감을 줄이고, 스피커처럼 자연스러운 공간감을 만들어주는 기능`,
+   tags:["Crossfeed","크로스피드","공간감","스테레오","헤드폰","이어폰","Shelf Cutoff","Shelf Gain"],links:[]},
 ];
