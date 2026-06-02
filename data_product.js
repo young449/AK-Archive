@@ -200,10 +200,6 @@ A&futura 프리미엄 라인업의 Identity 연속성을 가지는 모델로, SE
 | --- | --- |
 | · MTK8385 Octa-Core<br>· AK4191EQ x2 & AK4498EX x4<br>· 5.5" 1080×1920<br>· 32bit / 768kHz / DSD512<br>· BAL 6.3V / UNBAL 3.3V<br>· 3.5mm(SPDIF) + 4.4mm<br>· 256GB / micro SD Max 1TB<br>· BT (LDAC · aptX HD)<br>· Dual Wi-Fi (2.4/5GHz)<br>· 5,050mAh (~10h)<br>· PD 3.0 충전<br>· Stainless Steel 316L | · XLR Balanced L/R 출력 (NEUTRIK)<br>· USB×3 — DAP 연결 / 충전 / CD-Ripper<br>· Pogo Pin 연결<br>· PD 3.0 충전<br>· Aluminum |
 
-!!img:images/PD10/PD10_1.jpg|PD10 전면!!
-!!img:images/PD10/PD10_2.jpg|PD10 후면!!
-!!img:images/PD10/PD10_3.jpg|PD10 퍼스펙티브!!
-!!img:images/PD10/PD10_4.jpg|PD10 라이프스타일!!
 `,
    tags:["PD10","PDseries","HexaDAC","FullAndroid","XLR","크래들","SE400"],
    files:[
