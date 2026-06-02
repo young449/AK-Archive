@@ -1069,7 +1069,7 @@ body.is-tag #tag-page{display:block}
   cursor:zoom-out;
 }
 #img-modal.show{display:flex}
-#img-modal img{
+#img-modal-img{
   max-width:92vw;max-height:90vh;
   border-radius:8px;object-fit:contain;
   box-shadow:0 8px 48px rgba(0,0,0,0.6);
@@ -2343,15 +2343,15 @@ document.getElementById("tag-back").addEventListener("click",()=>{
   });
 })();
 
-
+// 이미지 모달
 function openImgModal(src){
-  document.getElementById("img-modal-img").src = src;
+  document.getElementById("img-modal-img").src=src;
   document.getElementById("img-modal").classList.add("show");
-  document.body.style.overflow = "hidden";
+  document.body.style.overflow="hidden";
 }
 function closeImgModal(){
   document.getElementById("img-modal").classList.remove("show");
-  document.body.style.overflow = "";
+  document.body.style.overflow="";
 }
 
 // ESC
