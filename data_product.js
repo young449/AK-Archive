@@ -364,7 +364,7 @@ SP3000 동일 Hexa DAC 구조에 휴대성을 더한 다른 매력의 플래그�
      {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=3146-19766&t=33he04t05HBedODK-1"},
    ],
    images:[]},
-  {id:6, title:"PD5", category:"제품 모델", models:["PD series"], date:"2026.05.22", author:"Ellie", authorInitial:"E",
+  {id:6, title:"PD5", category:"제품 모델", models:["PD series"], date:"2026.05.22", author:"Ellie", authorInitial:"E", noThumb:true,
    credits:{PM:"Luke", PL:"Hoya", UX:"Ellie", UI:"Luna"},
    desc:"Octa-DAC 탑재 및 EnviroTune 기능 도입으로 사운드 퍼포먼스와 환경 적응형 음질을 동시에 구현한 PD series 신모델.",
    body:`■■ 1. DAC Mode
