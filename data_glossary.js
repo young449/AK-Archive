@@ -100,9 +100,12 @@ Hi-Fi 오디오 시스템은 소스기기 → 앰프 → 스피커 순으로 구
 ■ 한 줄 요약
 
 AMP는 오디오 신호를 증폭해 기기를 안정적으로 구동하게 만드는 장치입니다.`,
-   tags:["AMP","앰프","DAC","증폭","구동력"],links:[]},
+   tags:["AMP","앰프","DAC","증폭","구동력"],links:[],
+   images:[
+     {src:"images/glossary/hw-amp-1.jpg",caption:"Hi-Fi 기본 구성 — 소스기기 · 앰프 · 스피커"},
+   ]},
 
-  {id:214,title:"로컬 (Local)",category:"용어사전",glossTab:"로컬저장소",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:214,title:"로컬 (Local)",category:"용어사전",glossTab:"Local",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"사용자가 음원 파일을 기기에 직접 저장하여 재생하는 방식입니다.",
    body:`■ 개요
 
@@ -114,7 +117,7 @@ SD 카드, 내부 저장소, USB 등 물리적 저장 매체를 기반으로 동
 
 파일을 기기에 직접 넣어 재생하는 방식. 인터넷 불필요`,
    tags:["Local","로컬","내부저장소","SD카드","USB","오프라인"],links:[]},
-  {id:221,title:"로컬 메뉴 (Local Menu)",category:"용어사전",glossTab:"로컬저장소",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:221,title:"로컬 메뉴 (Local Menu)",category:"용어사전",glossTab:"Local",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"AK DAP·디바이스에서 기기에 직접 저장된 음원 파일을 탐색하고 재생하기 위한 메뉴 영역입니다.",
    body:`■ 개요
 
@@ -134,7 +137,7 @@ SD 카드, 내부 저장소, USB 등 물리적 저장 매체를 기반으로 동
      {label:"CD 라이브러리",url:"#search:CD 라이브러리"},
      {label:"HD 오디오",url:"#search:HD 오디오"},
    ]},
-  {id:218,title:"CUE 시트 (CUE Sheet)",category:"용어사전",glossTab:"로컬저장소",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:218,title:"CUE 시트 (CUE Sheet)",category:"용어사전",glossTab:"Local",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"앨범 단위로 묶인 오디오 파일의 트랙 정보를 담고 있는 메타데이터 텍스트 파일입니다.",
    body:`■ 개요
 
@@ -159,7 +162,7 @@ SD 카드, 내부 저장소, USB 등 물리적 저장 매체를 기반으로 동
 
 앨범 전체를 1개 파일로 관리하면서, CUE 파일로 각 트랙을 분리·탐색할 수 있게 해주는 방식`,
    tags:["CUE Sheet","CUE 시트","메타데이터","앨범단위","트랙분리",".cue"],links:[{label:"로컬 메뉴 (Local Menu)",url:"#open:221"}]},
-  {id:219,title:"CD 라이브러리 (CD Library)",category:"용어사전",glossTab:"로컬저장소",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:219,title:"CD 라이브러리 (CD Library)",category:"용어사전",glossTab:"Local",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"CD에 담긴 음원, 앨범 아트 등의 데이터를 디지털 파일로 복사해 기기에 저장하는 기능입니다.",
    body:`■ 개요
 
@@ -176,7 +179,7 @@ CD에 담긴 음원, 앨범 아트 등의 데이터를 디지털 파일로 복�
 
 CD를 DAP에 디지털 파일로 옮기는 과정. 이 복사 작업을 '리핑'이라고 함`,
    tags:["CD Library","CD 라이브러리","CDRipping","CD리핑","FLAC","WAV"],links:[{label:"로컬 메뉴 (Local Menu)",url:"#open:221"}]},
-  {id:220,title:"HD 오디오 (HD Audio)",category:"용어사전",glossTab:"로컬저장소",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:220,title:"HD 오디오 (HD Audio)",category:"용어사전",glossTab:"Local",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"로컬에 저장된 파일 중 고음질 파일만 필터링해서 보여주는 목록입니다. 이전 명칭: MQS.",
    body:`■ 개요
 
@@ -197,7 +200,7 @@ SMB와는 별개의 기능으로, 로컬에 저장된 파일 중 고음질 규�
 
 로컬 파일 중 고음질(HD) 파일만 모아서 보여주는 필터 뷰. 과거 명칭은 MQS`,
    tags:["HD Audio","HD 오디오","고음질","MQS"],links:[{label:"로컬 메뉴 (Local Menu)",url:"#open:221"}]},
-  {id:213,title:"리모트 (Remote)",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:213,title:"리모트 (Remote)",category:"용어사전",glossTab:"Service",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"DAP 및 디바이스를 원격으로 제어하는 기능으로, 앱을 통해 기기를 조작하는 방식입니다.",
    body:`■ 개요
 
@@ -218,7 +221,7 @@ DAP 및 디바이스를 원격으로 제어하는 기능으로, 앱을 통해 �
 
 기기를 앱으로 원격 조작하는 기능. 음원 저장(라이브러리)과 스트리밍(에어러블) 두 가지 방식을 지원`,
    tags:["Remote","리모트","원격제어","DAP","디바이스","라이브러리","에어러블"],links:[]},
-  {id:215,title:"에어러블 (airable)",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:215,title:"에어러블 (airable)",category:"용어사전",glossTab:"Service",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"오디오 기기 제조사를 위한 스트리밍·라디오·팟캐스트 콘텐츠 통합 연동 솔루션입니다.",
    body:`■■ 개요
 
@@ -252,7 +255,7 @@ TIDAL, Qobuz, Deezer 같은 여러 스트리밍 서비스를 API 형태로 묶�
 
 여러 스트리밍 서비스를 하나의 API로 묶어주는 B2B 미들웨어. 제조사가 개별 서비스와 직접 제휴·개발하는 수고를 덜어줌`,
    tags:["airable","에어러블","통합연동솔루션","내장인터페이스","B2B","TIDAL","타이달","Deezer","디저","Qobuz","코부즈","Amazon Music","아마존뮤직","HighRes Audio","하이레스오디오","Podcast","팟캐스트","InternetRadio","인터넷라디오"],links:[]},
-  {id:216,title:"스트리밍 앱 (Streaming App)",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:216,title:"스트리밍 앱 (Streaming App)",category:"용어사전",glossTab:"Service",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"에어러블에 포함되지 않은 스트리밍 서비스를 APK 설치나 자체 앱 스토어를 통해 직접 설치해 사용하는 방식입니다.",
    body:`■ 개요
 
@@ -271,7 +274,7 @@ TIDAL, Qobuz, Deezer 같은 여러 스트리밍 서비스를 API 형태로 묶�
 
 에어러블 미지원 서비스(Spotify 등)를 사용하기 위해 앱을 직접 설치하는 방식. 자유도는 높지만 기기 최적화는 낮을 수 있음`,
    tags:["Streaming App","스트리밍 앱","APK","Spotify","스포티파이","AppleMusic","애플뮤직","YouTubeMusic","유튜브뮤직"],links:[]},
-  {id:217,title:"SMB (Server Message Block)",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:217,title:"SMB (Server Message Block)",category:"용어사전",glossTab:"Service",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"네트워크를 통해 다른 기기의 폴더/파일에 접근할 수 있게 해주는 파일 공유 프로토콜입니다.",
    body:`■ 개요
 
@@ -292,7 +295,7 @@ DAP·디바이스에서 SMB를 사용하려면 서버 환경 구축이 먼저 �
 
 같은 와이파이 네트워크 안에서 PC·NAS 등의 폴더를 DAP에 연결해 음악을 재생하는 방식. 폴더가 안 보이면 SMB 스캔 실행`,
    tags:["SMB","삼바","NAS","나스","네트워크","와이파이","파일공유"],links:[]},
-  {id:229,title:"이퀄라이저 (EQ)",category:"용어사전",glossTab:"기능",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
+  {id:229,title:"이퀄라이저 (EQ)",category:"용어사전",glossTab:"Feature",models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
    desc:"특정 주파수 영역을 조절해 원하는 음색으로 바꾸는 기능 또는 설정입니다.",
    body:`■ 개요
 
@@ -336,7 +339,7 @@ EQ는 주파수 대역을 조절해 음악의 음색 밸런스를 바꾸는 기�
      {src:"images/glossary/feature-equalizer-1.jpg",caption:"GEQ — Graphic Equalizer (Main 탭)"},
      {src:"images/glossary/feature-equalizer-2.jpg",caption:"PEQ — Parametric Equalizer (Advanced 탭)"},
    ]},
-  {id:222,title:"컬렉션 (Collection)",category:"용어사전",glossTab:"기능",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:222,title:"컬렉션 (Collection)",category:"용어사전",glossTab:"Feature",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"기존 Favorite(즐겨찾기)을 재정의한 북마크형 저장 기능. 노래·앨범·아티스트·플레이리스트를 폴더별로 저장·관리할 수 있습니다.",
    body:`■■ 개요
 
@@ -370,7 +373,7 @@ EQ는 주파수 대역을 조절해 음악의 음색 밸런스를 바꾸는 기�
 
 노래·앨범·아티스트·플리를 폴더별로 즐겨찾기처럼 저장하는 기능. 기존 Favorite을 SP4000T부터 확장 재정의`,
    tags:["Collection","컬렉션","북마크","노래","앨범","아티스트","플레이리스트","최근추가된노래"],links:[{label:"기능 히스토리 보기",url:"#search:컬렉션 Favorite 확장"}]},
-  {id:223,title:"즐겨찾기 (Favorite)",category:"용어사전",glossTab:"기능",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:223,title:"즐겨찾기 (Favorite)",category:"용어사전",glossTab:"Feature",models:[],date:"2026.05.18",author:"Ellie",authorInitial:"E",
    desc:"SP4000T 이전 모델에서 사용하던 노래 단독 즐겨찾기 기능. SP4000T부터 '컬렉션'으로 재정의되었습니다.",
    body:`■ 개요
 
@@ -393,7 +396,7 @@ SP4000T 이전 구형 모델은 Favorite 명칭과 기능이 그대로 유지됩
 
 노래만 담는 단순 즐겨찾기. SP4000T부터 컬렉션으로 기능 확장되어 대체됨`,
    tags:["Favorite","즐겨찾기"],links:[{label:"컬렉션 용어사전 보기",url:"#search:컬렉션"}]},
-  {id:230,title:"개발단계",category:"용어사전",glossTab:"개발",models:[],date:"2026.06.01",author:"Ellie",authorInitial:"E",
+  {id:230,title:"개발단계",category:"용어사전",glossTab:"Dev",models:[],date:"2026.06.01",author:"Ellie",authorInitial:"E",
    desc:"AK 제품의 양산 전 개발 과정에서 거치는 이벤트 단계입니다. EVM → WS → ES → TP → MP 순으로 진행됩니다.",
    body:`■ 개요
 
@@ -445,6 +448,36 @@ EVM → WS → ES → TP → MP 순으로 진행되는 AK 내부 하드웨어 �
      {src:"images/glossary/dev-process-2.jpg",caption:"프로젝트 진행 Flow Chart"},
      {src:"images/glossary/dev-process-3.jpg",caption:"프로젝트 개발 프로세스 1"},
      {src:"images/glossary/dev-process-4.jpg",caption:"프로젝트 개발 프로세스 2"},
+   ]},
+
+  {id:245,title:"AK 커넥트 (AK Connect)",category:"용어사전",glossTab:"Service",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
+   desc:"동일 네트워크에 연결된 AK 기기 간 무선 통신으로 음악 재생 컨트롤이 가능한 기능입니다. DLNA 방식을 사용합니다.",
+   body:`■ 개요
+
+AK Connect는 DLNA(Digital Living Network Alliance) 방식으로, 동일 네트워크에 연결된 AK 기기 간 무선 통신으로 음악 재생 컨트롤이 가능한 기능입니다.
+
+■ 주요 개념
+
+| 역할 | 설명 |
+| --- | --- |
+| Library | 음원이 저장된 기기. 음원을 제공하는 소스 역할 |
+| Speaker | 음원을 재생하는 출력 기기 역할 |
+| Remote | 재생을 원격으로 컨트롤하는 기기 역할 |
+
+■ 사용 예시
+
+Case 1 — PD10(Library) → AK T1(Speaker)
+동일 네트워크에서 PD10에 저장된 음원을 AK T1 스피커로 재생
+
+Case 2 — AK500N(Library) → PD10(Remote) → AK T1(Speaker)
+AK500N의 음원을 PD10으로 컨트롤하며 AK T1으로 재생
+
+■ 한 줄 요약
+
+같은 네트워크 안에서 AK 기기끼리 음원을 공유하고 원격으로 재생을 제어하는 무선 연결 기능`,
+   tags:["AK Connect","DLNA","무선","네트워크","Library","Speaker","Remote"],links:[],
+   images:[
+     {src:"images/glossary/service-ak connect-1.jpg",caption:"AK Connect 개요 및 사용 예시"},
    ]},
 
   {id:241,title:"DAC (Digital-to-Analog Converter)",category:"용어사전",glossTab:"HW",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
@@ -537,7 +570,7 @@ Astell&Kern은 오디오 재생에 최적화된 환경을 제공하기 위해 �
 
 Bandroid는 일반 Android보다 앱 설치가 제한된 Astell&Kern 전용 안드로이드 운영체제입니다.`,
    tags:["Bandroid","Android","OS","운영체제","AK Open APP","소프트웨어"],links:[]},
-  {id:246,title:"크로스피드 (Crossfeed)",category:"용어사전",glossTab:"기능",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
+  {id:246,title:"크로스피드 (Crossfeed)",category:"용어사전",glossTab:"Feature",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
    desc:"헤드폰·이어폰 청취 시 L/R 채널을 인위적으로 섞어 스피커 청취와 같은 자연스러운 스테레오 공간감을 형성하는 기능입니다.",
    body:`■ 개요
 
@@ -563,34 +596,5 @@ Crossfeed는 인위적으로 반대편 소리를 섞어 스피커 청취와 같�
    tags:["Crossfeed","크로스피드","공간감","스테레오","헤드폰","이어폰","Shelf Cutoff","Shelf Gain"],links:[],
    images:[
      {src:"images/glossary/feature-crossfeed-1.jpg",caption:"Crossfeed 청음 환경 비교 및 설정"},
-   ]},
-  {id:245,title:"AK 커넥트 (AK Connect)",category:"용어사전",glossTab:"서비스 & 연결",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
-   desc:"동일 네트워크에 연결된 AK 기기 간 무선 통신으로 음악 재생 컨트롤이 가능한 기능입니다. DLNA 방식을 사용합니다.",
-   body:`■ 개요
-
-AK Connect는 DLNA(Digital Living Network Alliance) 방식으로, 동일 네트워크에 연결된 AK 기기 간 무선 통신으로 음악 재생 컨트롤이 가능한 기능입니다.
-
-■ 주요 개념
-
-| 역할 | 설명 |
-| --- | --- |
-| Library | 음원이 저장된 기기. 음원을 제공하는 소스 역할 |
-| Speaker | 음원을 재생하는 출력 기기 역할 |
-| Remote | 재생을 원격으로 컨트롤하는 기기 역할 |
-
-■ 사용 예시
-
-Case 1 — PD10(Library) → AK T1(Speaker)
-동일 네트워크에서 PD10에 저장된 음원을 AK T1 스피커로 재생
-
-Case 2 — AK500N(Library) → PD10(Remote) → AK T1(Speaker)
-AK500N의 음원을 PD10으로 컨트롤하며 AK T1으로 재생
-
-■ 한 줄 요약
-
-같은 네트워크 안에서 AK 기기끼리 음원을 공유하고 원격으로 재생을 제어하는 무선 연결 기능`,
-   tags:["AK Connect","DLNA","무선","네트워크","Library","Speaker","Remote"],links:[],
-   images:[
-     {src:"images/glossary/service-ak connect-1.jpg",caption:"AK Connect 개요 및 사용 예시"},
    ]},
 ];
