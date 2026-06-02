@@ -397,7 +397,7 @@ AK 제품의 개발은 양산(MP) 전까지 여러 이벤트 단계를 순차적
 - 세부 업무: 회로 설계, PCB 설계, PCB artwork(CAD), PCB 발주, PCB 입고, PCB SMT, PCB 검증 / 개선된 기구 자재와 양산 금형 등의 자재로 시료 조립 진행 및 검증 / 시스템과 어플리케이션 부분에 대한 S/W 개발 및 수정 진행 / 품질에서는 회로, 기구 관련 전반적인 검토를 진행 후 문제점 연구소 각 파트 담당자들에게 전달 / 회로, 기구 양산 발주를 위한 내부 품평회 진행
 - 결과물: TP 이벤트 시료 / TP BOM(Bill of Material) 도출 / TP 품질 리포트
 
-■ MP (Mass Production)
+■ MP (Mass Production) 이벤트
 
 - 양산 단계. TP까지의 검증을 마치고 본격적으로 제품을 생산하는 단계
 - 제품 출시 / 소비자 Feedback 검토 / 개발완료보고서 작성 / R/C 일정 수립, 진행
@@ -491,7 +491,7 @@ AK SE300 모델에 R-2R DAC이 적용되었습니다.
 
 저항 사다리(Ladder) 구조로 신호를 변환하는 최초의 DAC 방식. 현재는 Delta-Sigma에 밀려 일부 하이엔드 제품에만 사용`,
    tags:["R-2R","DAC","Ladder","SE300","하드웨어"],links:[{label:"DAC (Digital-to-Analog Converter)",url:"#open:241"},{label:"Delta-Sigma DAC",url:"#open:242"}]},
-  {id:244,title:"Bandroid",category:"용어사전",glossTab:"SW",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
+  {id:244,title:"반드로이드 (Bandroid)",category:"용어사전",glossTab:"SW",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
    desc:"Astell&Kern에서 사용하는 안드로이드 기반 운영체제입니다. Google Play Store를 제공하지 않으며, AK에서 허용한 앱만 설치할 수 있습니다.",
    body:`■ 개요
 
