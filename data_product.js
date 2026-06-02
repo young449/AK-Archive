@@ -191,36 +191,9 @@ A&futura 프리미엄 라인업의 Identity 연속성을 가지는 모델로, SE
 
 ■■ 4. 주요 사양
 
-■ DAP
+■ DAP — MTK8385 Octa-Core / AK4191EQ x2 & AK4498EX x4 / 5.5" FHD / 32bit·768kHz·DSD512 / BAL 6.3V · UNBAL 3.3V / 3.5mm(SPDIF)+4.4mm / 256GB / BT(LDAC·aptX HD) / Dual Wi-Fi / 5,050mAh(~10h) / Stainless Steel 316L
 
-| 항목 | 사양 | 비고 |
-| --- | --- | --- |
-| CPU | MTK8385 Octa-Core | Full Android 지원 |
-| DAC | AK4191EQ x2 & AK4498EX x4 | Dual & Dual 구조 |
-| Display | 5.5inch 1080x1920 | |
-| Bit / Sample rate | 32bit/768kHz, DSD512 | |
-| Audio Output | 3.5mm(SPDIF) x1, 4.4mm x1 | |
-| Output Level | Balanced 6.3V / Unbalanced 3.3V | |
-| Memory | 256GB | |
-| Bluetooth | LDAC, aptX HD | |
-| Wi-Fi | Dual Wi-Fi (2.4/5GHz) | |
-| Battery | 5,050mAh | 연속 재생 약 10시간 예상 |
-| USB | Type C | |
-| SD Card | micro SD card x1 | Max 1TB |
-| Charging | 5V 2A & PD 3.0 | |
-| Material | Stainless Steel 316L | |
-
-■ XLR 크래들
-
-| 항목 | 사양 | 비고 |
-| --- | --- | --- |
-| Audio Output | XLR Balanced L/R | NEUTRIK |
-| USB 1 | DAP 연결 | 내부 위치 |
-| USB 2 | 충전 연결 | 후면 위치 |
-| USB 3 | CD-Ripper 연결 | 후면 위치 |
-| Pogo Pin | DAP와 크래들 연결 | 내부 위치 |
-| Charging | 5V 2A & PD 3.0 | |
-| Material | Aluminum | |
+■ XLR 크래들 — XLR Balanced L/R 출력(NEUTRIK) / USB×3(DAP 연결·충전·CD-Ripper) / Pogo Pin 연결 / Aluminum
 `,
    tags:["PD10","PDseries","HexaDAC","FullAndroid","XLR","크래들","SE400"],
    files:[
@@ -268,21 +241,7 @@ New Sound Frontier SP3000.
 
 ■■ 4. 주요 사양
 
-| 항목 | 사양 | 비고 |
-| --- | --- | --- |
-| CPU | Qualcomm C6125 Octa-Core | 신규 |
-| DAC | AK4191 Dual & AK4499EX Quad | 디지털·아날로그 신호 처리 분리 |
-| Display | 5.46inch 1080x1920 | 신규 |
-| Bit / Sample rate | 32bit/768kHz, DSD512 | |
-| Output Level | Balanced 8V / Unbalanced 4V | Normal / High Gain mode |
-| Audio Output | 2.5mm, 3.5mm, 4.4mm | |
-| Memory | 256GB | |
-| Network | Dual Wi-Fi (2.4/5GHz), BT (LDAC, aptX HD) | |
-| Battery | 5,000mAh | 목표 재생시간 10hrs |
-| USB | Type-C | |
-| SD Card | micro SD card x1 | Max 1TB |
-| Charging | 고속 충전, 무선 충전, PD 충전 지원 | |
-| Material | Stainless Steel (904L, 316L), Copper | Silver / Copper / Black |
+Qualcomm C6125 Octa-Core / AK4191 x2 & AK4499EX x4(디지털·아날로그 분리) / AK4137(DAR) / 5.46" FHD / 32bit·768kHz·DSD512 / BAL 8V · UNBAL 4V / 2.5mm+3.5mm+4.4mm / 256GB / BT(LDAC·aptX HD) / Dual Wi-Fi / 5,000mAh(~10h) / 고속·무선·PD 충전 / Stainless Steel 904L·316L·Copper
 `,
    tags:["SP3000","A&ultima","HexaDAC","HEXADAC","StainlessSteel","904L","Complete separation for noise","NewSoundFrontier"],
    files:[
@@ -336,24 +295,7 @@ SP3000의 아날로그 / 디지털 신호 처리 분리에 아날로그 사운�
 
 ■■ 4. 주요 사양
 
-| 항목 | 사양 | 비고 |
-| --- | --- | --- |
-| CPU | MT8385 Octa-Core | |
-| DAC | AK4191 x2 & AK4499EQ x2 | |
-| AMP | OPAMP & Quad Tube | Raytheon JAN6418 x2 |
-| DAR | AK4137 | |
-| Display | 5.5inch 1080x1920 | |
-| Bit / Sample rate | 32bit/768kHz, DSD512 | 3세대 XMOS 적용 |
-| Audio Output | 2.5mm x1, 3.5mm x1, 4.4mm x1 | 3.5mm SPDIF 지원 |
-| Output Level | Balanced 6.3V / Unbalanced 3.3V | |
-| Memory | 256GB | |
-| Wi-Fi | 2.4/5GHz | |
-| Bluetooth | LDAC, aptX HD | |
-| Battery | 5,050mAh | |
-| USB | Type C | |
-| SD Card | micro SD card x1 | |
-| Charging | 9V 1.67A | |
-| Material | Aluminum | |
+MT8385 Octa-Core / AK4191 x2 & AK4499EQ x2 / OPAMP & Quad Tube(Raytheon JAN6418 x2) / AK4137(DAR) / 5.5" FHD / 32bit·768kHz·DSD512(3세대 XMOS) / BAL 6.3V · UNBAL 3.3V / 2.5mm+3.5mm(SPDIF)+4.4mm / 256GB / BT(LDAC·aptX HD) / Dual Wi-Fi / 5,050mAh / Aluminum
 `,
    tags:["SP3000T","A&ultima","RealTube","진공관","TripleAMP","HybridAMP","DualDAC"],
    files:[
@@ -414,22 +356,7 @@ SP3000 동일 Hexa DAC 구조에 휴대성을 더한 다른 매력의 플래그�
 
 ■■ 5. 주요 사양
 
-| 항목 | 사양 | 비고 |
-| --- | --- | --- |
-| CPU | Qualcomm 6125 Octa-Core | |
-| DAC | AK4191EQ x2 & AK4499EX x4 | 아날로그·디지털 신호 분리 처리 |
-| Display | 4.1inch 720x1280 | |
-| Bit / Sample rate | 32bit/768kHz, DSD256 | |
-| Audio Output | 3.5mm x1, 4.4mm x1 | |
-| Output Level | Balanced 6.3V / Unbalanced 3.3V | |
-| Memory | 256GB | |
-| Wi-Fi | Dual Wi-Fi (2.4/5GHz) | |
-| Bluetooth | LDAC, aptX HD | |
-| Battery | 3,600mAh | 최대 7시간 예상 |
-| USB | Type C | |
-| SD Card | micro SD card x1 | Max 1TB |
-| Charging | 고속 / 무선 충전 지원 | 9V 1.67A |
-| Material | Aluminum | |
+Qualcomm 6125 Octa-Core / AK4191EQ x2 & AK4499EX x4(아날로그·디지털 분리) / 4.1" 720×1280 / 32bit·768kHz·DSD256 / BAL 6.3V · UNBAL 3.3V / 3.5mm+4.4mm / 256GB / BT(LDAC·aptX HD) / Dual Wi-Fi / 3,600mAh(~7h) / 고속·무선 충전 / Aluminum
 `,
    tags:["SP3000M","A&ultima","HexaDAC","휴대성","PerfectBalance","소형","경량"],
    files:[
