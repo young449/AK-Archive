@@ -231,28 +231,153 @@ A&futura 프리미엄 라인업의 Identity 연속성을 가지는 모델로, SE
      {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=10316-25448&t=33he04t05HBedODK-1"},
    ],
    images:[]},
-  {id:29, title:"SP3000", category:"제품 모델", models:["A&ultima"], date:"", author:"", authorInitial:"",
-   credits:{PM:"", PL:"", UX:"", UI:""},
-   desc:"",
+  {id:29, title:"SP3000", category:"제품 모델", models:["A&ultima"], date:"2026.05.15", author:"Ellie", authorInitial:"E",
+   credits:{PM:"Jay", PL:"Kane", UX:"Lizzo", UI:"Luna"},
+   desc:"A&ultima 플래그십 DAP. Hexa DAC 구조(AK4191EQ x2 & AK4499EX x4)와 아날로그·디지털 신호 처리 분리로 최고 수준의 사운드를 구현한 모델.",
    body:``,
-   tags:["SP3000","A&ultima"],
+   tags:["SP3000","A&ultima","HexaDAC"],
    files:[],
    links:[],
    images:[]},
-  {id:30, title:"SP3000T", category:"제품 모델", models:["A&ultima"], date:"", author:"", authorInitial:"",
-   credits:{PM:"", PL:"", UX:"", UI:""},
-   desc:"",
-   body:``,
-   tags:["SP3000T","A&ultima"],
-   files:[],
+  {id:30, title:"SP3000T", category:"제품 모델", models:["A&ultima"], date:"2026.05.16", author:"Ellie", authorInitial:"E",
+   credits:{PM:"Luke", PL:"Ian", UX:"Lizzo", UI:"Luna"},
+   desc:"SP3000을 기반으로 Real Tube 앰프를 탑재한 A&ultima DAP. Triple AMP System과 Dual DAC 구조로 아날로그 사운드를 구현한 모델.",
+   body:`■■ 1. 라인업 상의 의미
+
+AK Flagship 라인업의 지속성을 확보하는 모델로, SP3000을 바탕으로 아날로그 오디오 기술을 접목해 새로움을 시도합니다.
+
+- AK DAP Flagship 라인업인 SP3000을 바탕으로 하는 모델
+- 기존 SP3000이 가지고 있는 장점에 아날로그 오디오 기술을 접목해 새로움을 시도하는 모델
+- A&ultima 라인업 모델만이 가질 수 있는 사운드 차별성으로 Market Leader 위치 유지 지속
+
+
+■■ 2. 상품기획 의도
+
+SP3000의 아날로그 / 디지털 신호 처리 분리에 아날로그 사운드를 더해 경쟁력 강화.
+
+- A&ultima USP의 본질인 최고 수준의 사운드 제공에 초점
+- SP3000의 최고 장점인 아날로그 / 디지털 신호 처리 분리 계승
+- 기존 변형된 진공관이 아닌 오리지널 진공관(Real Tube)을 사용해 뛰어난 아날로그 사운드 감성 구현
+- SP3000T에 적용된 Real Tube 기술은 향후 타 모델에도 적용해 기술 연계 및 개발 효율화 추진
+
+
+■■ 3. Key Concept : One step close to Analog Sound
+
+진짜 아날로그에 한발 더 가깝게.
+
+- SP2000T의 Triple AMP System과 SP3000의 아날로그·디지털 회로 분리의 장점을 모두 가지는 모델
+- Triple AMP System에서 아날로그 요소 강화를 위해 Real Tube 부품(Miniature Tube)을 Dual로 사용
+- SP2000T의 Single Tube에서 Dual Tube로 아날로그 사운드에 한발 더 접근
+- AKM社 Flagship AK4191 & AK4499를 Dual로 적용해 A&ultima 라인업 퀄리티 유지
+- 오리지널 SP3000과 차이 및 가격 경쟁력 확보를 위해 소재는 Aluminum 적용
+
+■ Triple AMP Mode
+
+| 모드 | 설명 |
+| --- | --- |
+| OP Mode | OPAMP 단독 구동 |
+| Tube Mode | 진공관 앰프 단독 구동 |
+| Hybrid Mode | OPAMP + Tube 혼합 구동 |
+
+
+■■ 4. 주요 사양
+
+| 항목 | 사양 | 비고 |
+| --- | --- | --- |
+| CPU | MT8385 Octa-Core | |
+| DAC | AK4191 x2 & AK4499EQ x2 | |
+| AMP | OPAMP & Quad Tube | Raytheon JAN6418 x2 |
+| DAR | AK4137 | |
+| Display | 5.5inch 1080x1920 | |
+| Bit / Sample rate | 32bit/768kHz, DSD512 | 3세대 XMOS 적용 |
+| Audio Output | 2.5mm x1, 3.5mm x1, 4.4mm x1 | 3.5mm SPDIF 지원 |
+| Output Level | Balanced 6.3V / Unbalanced 3.3V | |
+| Memory | 256GB | |
+| Wi-Fi | 2.4/5GHz | |
+| Bluetooth | LDAC, aptX HD | |
+| Battery | 5,050mAh | |
+| USB | Type C | |
+| SD Card | micro SD card x1 | |
+| Charging | 9V 1.67A | |
+| Material | Aluminum | |
+`,
+   tags:["SP3000T","A&ultima","RealTube","진공관","TripleAMP","HybridAMP","DualDAC"],
+   files:[
+     {label:"SP3000T_사업계획서.pdf", url:"files/SP3000T_BP.pdf"},
+   ],
    links:[],
    images:[]},
-  {id:31, title:"SP3000M", category:"제품 모델", models:["A&ultima"], date:"", author:"", authorInitial:"",
-   credits:{PM:"", PL:"", UX:"", UI:""},
-   desc:"",
-   body:``,
-   tags:["SP3000M","A&ultima"],
-   files:[],
+  {id:31, title:"SP3000M", category:"제품 모델", models:["A&ultima"], date:"2026.05.17", author:"Ellie", authorInitial:"E",
+   credits:{PM:"Jay", PL:"Kenny", UX:"Lizzo", UI:"Luna"},
+   desc:"SP3000 동일 Hexa DAC 구조에 휴대성을 극대화한 A&ultima DAP. 소형 사이즈(250g)로 Daily DAP를 지향하는 모델.",
+   body:`■■ 1. 라인업 상의 의미
+
+AK 플래그십 라인업의 연속성을 가지는 모델로, A&ultima SP3000의 파생 모델입니다.
+
+- 기존 SP3000의 뛰어난 사운드를 최대한 유지하면서 휴대성을 대폭 강화시킨 모델
+- SP3000의 가격, 무게, 크기로 구매를 망설였던 소비자들에게 어필할 수 있는 모델로 접근
+
+
+■■ 2. 상품기획 의도
+
+SP3000 동일 Hexa DAC 구조에 휴대성을 더한 다른 매력의 플래그십 DAP.
+
+- A&ultima USP의 본질인 최고 수준의 사운드 유지
+- SP3000의 최고 장점인 Hexa DAC(아날로그 / 디지털 신호 처리 분리) 동일 적용
+- 플래그십 DAP는 크고, 무겁다는 인식에서 벗어나, 휴대성을 극대화한 새로운 경험 제공
+- 타 중국 브랜드 플래그십과 충분히 경쟁할 수 있는 가격($2,300)으로 소비자들에게 어필
+
+
+■■ 3. 개발 방향
+
+최근 타사 플래그십 모델들은 6인치 LCD와 대용량 배터리로 인해 커지고 무거워지는 추세입니다.
+
+- 일상에서 가볍게 들고 다닐 수 있는 DAP가 점점 사라지는 추세, 소비자 피로감 증가
+- 휴대성 극대화 + 가격 경쟁력 + 고품질 사운드를 동시에 만족하는 SP3000M으로 접근
+- Sound Performance를 유지하면서 휴대성을 최대한 끌어올린 DAP로 개발 진행
+
+■ SP3000 vs SP3000M 사이즈 비교
+
+| 항목 | SP3000 | SP3000M |
+| --- | --- | --- |
+| Display | 5.5inch | 4.1inch |
+| 외관 크기 | 82.4 × 139.4mm | 61.7 × 128mm |
+| 무게 | 500g | 250g |
+| Material | Stainless Steel 904L | Aluminum |
+
+
+■■ 4. Key Concept : Perfect Balance
+
+뛰어난 음질과 휴대성의 절묘한 조화.
+
+- SP3000과 동일한 Hexa DAC 구조를 유지하면서 휴대성을 극대화
+- 성능과 소리가 좋으면 크고 무거워야 한다는 관점에서 벗어나, 새로운 매력 포인트 제시
+- SP3000 동급 수준의 사운드 및 주요 요소를 유지해 A&ultima 플래그십 매력도 유지
+
+
+■■ 5. 주요 사양
+
+| 항목 | 사양 | 비고 |
+| --- | --- | --- |
+| CPU | Qualcomm 6125 Octa-Core | |
+| DAC | AK4191EQ x2 & AK4499EX x4 | 아날로그·디지털 신호 분리 처리 |
+| Display | 4.1inch 720x1280 | |
+| Bit / Sample rate | 32bit/768kHz, DSD256 | |
+| Audio Output | 3.5mm x1, 4.4mm x1 | |
+| Output Level | Balanced 6.3V / Unbalanced 3.3V | |
+| Memory | 256GB | |
+| Wi-Fi | Dual Wi-Fi (2.4/5GHz) | |
+| Bluetooth | LDAC, aptX HD | |
+| Battery | 3,600mAh | 최대 7시간 예상 |
+| USB | Type C | |
+| SD Card | micro SD card x1 | Max 1TB |
+| Charging | 고속 / 무선 충전 지원 | 9V 1.67A |
+| Material | Aluminum | |
+`,
+   tags:["SP3000M","A&ultima","HexaDAC","휴대성","PerfectBalance","소형","경량"],
+   files:[
+     {label:"SP3000M_사업계획서.pdf", url:"files/SP3000M_BP.pdf"},
+   ],
    links:[],
    images:[]},
   {id:6, title:"PD5", category:"제품 모델", models:["PD series"], date:"2026.05.22", author:"Ellie", authorInitial:"E",
