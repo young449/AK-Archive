@@ -237,7 +237,10 @@ A&futura 프리미엄 라인업의 Identity 연속성을 가지는 모델로, SE
    body:``,
    tags:["SP3000","A&ultima","HexaDAC"],
    files:[],
-   links:[],
+   links:[
+     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=1376-6056&t=f24YMy1BBxKGLVBr-1"},
+     {label:"UI Figma", url:"https://www.figma.com/design/CZdIQpzaGRVJOXF7ml8b7f/UI_Crimson_Common-Design-2.0-?node-id=28-54118&t=5TCq9OF8pi5rx8Pa-1"},
+   ],
    images:[]},
   {id:30, title:"SP3000T", category:"제품 모델", models:["A&ultima"], date:"2026.05.16", author:"Ellie", authorInitial:"E",
    credits:{PM:"Luke", PL:"Ian", UX:"Lizzo", UI:"Luna"},
@@ -305,7 +308,10 @@ SP3000의 아날로그 / 디지털 신호 처리 분리에 아날로그 사운�
    files:[
      {label:"SP3000T_사업계획서.pdf", url:"files/SP3000T_BP.pdf"},
    ],
-   links:[],
+   links:[
+     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=1913-1516&t=f24YMy1BBxKGLVBr-1"},
+     {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=1620-10396&t=33he04t05HBedODK-1"},
+   ],
    images:[]},
   {id:31, title:"SP3000M", category:"제품 모델", models:["A&ultima"], date:"2026.05.17", author:"Ellie", authorInitial:"E",
    credits:{PM:"Jay", PL:"Kenny", UX:"Lizzo", UI:"Luna"},
@@ -378,7 +384,10 @@ SP3000 동일 Hexa DAC 구조에 휴대성을 더한 다른 매력의 플래그�
    files:[
      {label:"SP3000M_사업계획서.pdf", url:"files/SP3000M_BP.pdf"},
    ],
-   links:[],
+   links:[
+     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=3502-2&t=f24YMy1BBxKGLVBr-1"},
+     {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=3146-19766&t=33he04t05HBedODK-1"},
+   ],
    images:[]},
   {id:6, title:"PD5", category:"제품 모델", models:["PD series"], date:"2026.05.22", author:"Ellie", authorInitial:"E",
    credits:{PM:"Luke", PL:"Hoya", UX:"Ellie", UI:"Luna"},
