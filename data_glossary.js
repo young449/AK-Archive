@@ -348,7 +348,7 @@ AK 제품의 개발은 양산(MP) 전까지 여러 이벤트 단계를 순차적
 EVM → WS → ES → TP → MP 순으로 진행되는 AK 내부 하드웨어 개발 이벤트 단계`,
    tags:["개발이벤트","개발단계","WS","ES","TP","MP","양산"],links:[],
    images:[
-     {src:"images/glossary/dev-process-1.jpg",caption:"PM R\&R"},
+     {src:"images/glossary/dev-process-1.jpg",caption:"PM R&R"},
      {src:"images/glossary/dev-process-2.jpg",caption:"프로젝트 진행 Flow Chart"},
      {src:"images/glossary/dev-process-3.jpg",caption:"프로젝트 개발 프로세스 1"},
      {src:"images/glossary/dev-process-4.jpg",caption:"프로젝트 개발 프로세스 2"},
