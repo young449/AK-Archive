@@ -51,7 +51,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
    SECTION: css-top-btn
 ============================================= */
 #top-btn{
-  position:fixed;right:calc((100vw - 960px) / 2 - 56px);bottom:28px;z-index:500;
+  position:fixed;right:24px;bottom:80px;z-index:500;
   width:44px;height:44px;border-radius:50%;
   background:var(--n-700);border:1px solid var(--div-2);
   color:var(--text-2);
@@ -64,11 +64,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 #top-btn.show{opacity:1;pointer-events:auto;transform:translateY(0)}
 #top-btn:hover{background:var(--n-600);color:var(--text-1)}
 body.is-home #top-btn{display:none}
-@media(max-width:1120px){
-  #top-btn{right:16px}
-}
 @media(max-width:639px){
-  #top-btn{right:16px;bottom:20px;width:44px;height:44px}
+  #top-btn{right:16px;bottom:64px;width:44px;height:44px}
 }
 
 /* =============================================
