@@ -438,18 +438,9 @@ DAC이 소리의 모든 것을 결정하는 것은 아니지만, 중요한 부�
 어떤 DAC가 탑재되었는가에 따라 제품의 가격 차이가 발생합니다.
 DAC 제조사마다 소리 스타일이 다르고, 같은 회사의 DAC라도 성능에 따라 1,000원~6만원대까지 다양한 가격대가 존재합니다.
 
-■ 한 줄 요약
-
-디지털 음원을 아날로그 소리로 변환하는 장치. DAP 음질의 핵심 부품`,
-   tags:["DAC","Digital-to-Analog Converter","오디오신호","하드웨어","변환"],links:[]},
-
-  {id:242,title:"Delta-Sigma DAC",category:"용어사전",glossTab:"HW",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
-   desc:"현재 가장 일반적으로 사용되는 DAC 방식으로, 디지털 신호를 고속 오버샘플링으로 처리해 아날로그로 변환합니다.",
-   body:`■ 개요
+■ Delta-Sigma DAC
 
 현재 시장에서 가장 많이 사용되는 DAC 방식입니다. 1988년 등장 이후 R-2R DAC을 대체하며 주류가 되었습니다.
-
-■ 주요 제조사 및 특징
 
 | 제조사 | 특징 |
 | --- | --- |
@@ -458,39 +449,20 @@ DAC 제조사마다 소리 스타일이 다르고, 같은 회사의 DAC라도 �
 | Cirrus Logic | - |
 | ROHM Semiconductor | - |
 
-■ 한 줄 요약
+■ R-2R DAC
 
-현재 가장 널리 쓰이는 DAC 방식. 제조사별로 소리 성격이 다르며, AK는 AKM DAC을 플래그십에 탑재`,
-   tags:["Delta-Sigma","DAC","AKM","ESS","CirrusLogic","하드웨어"],links:[{label:"DAC (Digital-to-Analog Converter)",url:"#open:241"},{label:"R-2R DAC",url:"#open:243"}]},
-
-  {id:243,title:"R-2R DAC",category:"용어사전",glossTab:"HW",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
-   desc:"최초의 DAC 방식으로, 디지털 신호 각 Bit에 저항을 2개씩 붙여 만드는 Ladder 구조의 DAC입니다.",
-   body:`■ 개요
-
-R-2R DAC은 최초의 DAC 방식으로, 디지털 신호 각 Bit에 저항을 2개씩 붙여 만드는 방식입니다.
-
-■ Ladder 구조
-
+최초의 DAC 방식으로, 디지털 신호 각 Bit에 저항을 2개씩 붙여 만드는 방식입니다.
 일명 Ladder 구조라고 부르는데, 여러 개의 아날로그 저항을 연결한 모습이 사다리를 닮았다고 해서 붙여진 이름입니다.
-- 16bit: 저항 32개 필요
-- 24bit: 저항 48개 필요
-
-■ 특징 및 한계
-
-- 저항의 수준에 따라 품질이 천차만별
-- 저항을 하나하나 작업해야 하는 어려움
-- 저항 편차를 직접 판별해야 하는 비효율성
-- 높은 단가 문제
-- 1988년 Delta-Sigma DAC의 등장으로 점차 쇠퇴
-
-■ AK 적용 사례
-
-AK SE300 모델에 R-2R DAC이 적용되었습니다.
+- 16bit: 저항 32개 필요 / 24bit: 저항 48개 필요
+- 저항 수준에 따라 품질 천차만별, 높은 단가 문제
+- 1988년 Delta-Sigma DAC 등장으로 점차 쇠퇴
+- AK SE300 모델에 적용
 
 ■ 한 줄 요약
 
-저항 사다리(Ladder) 구조로 신호를 변환하는 최초의 DAC 방식. 현재는 Delta-Sigma에 밀려 일부 하이엔드 제품에만 사용`,
-   tags:["R-2R","DAC","Ladder","SE300","하드웨어"],links:[{label:"DAC (Digital-to-Analog Converter)",url:"#open:241"},{label:"Delta-Sigma DAC",url:"#open:242"}]},
+디지털 음원을 아날로그 소리로 변환하는 장치. DAP 음질의 핵심 부품`,
+   tags:["DAC","Digital-to-Analog Converter","Delta-Sigma","R-2R","AKM","ESS","SE300","오디오신호","HW"],links:[]},
+
   {id:244,title:"반드로이드 (Bandroid)",category:"용어사전",glossTab:"SW",models:[],date:"2026.06.02",author:"Ellie",authorInitial:"E",
    desc:"Astell&Kern에서 사용하는 안드로이드 기반 운영체제입니다. Google Play Store를 제공하지 않으며, AK에서 허용한 앱만 설치할 수 있습니다.",
    body:`■ 개요
