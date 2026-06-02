@@ -2,7 +2,7 @@
 // data_glossary.js
 // AK 용어 카테고리 데이터
 // 항목 추가 시 id는 고유한 숫자로 지정
-// glossTab: "하드웨어" | "로컬저장소" | "서비스 & 연결" | "기능"
+// glossTab: "하드웨어" | "로컬저장소" | "서비스 & 연결" | "기능" | "개발"
 // =============================================
 
 const DATA_glossary = [
@@ -300,4 +300,57 @@ SP4000T 이전 구형 모델은 Favorite 명칭과 기능이 그대로 유지됩
 
 노래만 담는 단순 즐겨찾기. SP4000T부터 컬렉션으로 기능 확장되어 대체됨`,
    tags:["Favorite","즐겨찾기"],links:[{label:"컬렉션 용어사전 보기",url:"#search:컬렉션"}]},
+  {id:30,title:"개발단계",category:"용어사전",glossTab:"개발",models:[],date:"2026.06.01",author:"Ellie",authorInitial:"E",
+   desc:"AK 제품의 양산 전 개발 과정에서 거치는 이벤트 단계입니다. EVM → WS → ES → TP → MP 순으로 진행됩니다.",
+   body:`■ 개요
+
+AK 제품의 개발은 양산(MP) 전까지 여러 이벤트 단계를 순차적으로 거칩니다.
+각 단계에서 시료를 제작하고 품질을 검증하며, 문제가 해결되면 다음 단계로 진행합니다.
+
+■ 단계별 요약
+
+| 단계 | 풀네임 | 핵심 내용 |
+| --- | --- | --- |
+| EVM | Evaluation Module | Real Size PCB가 아닌 훨씬 큰 크기의 간이 PCB를 만들어 주요 회로 구동을 선행적으로 파악 |
+| WS | Working Sample | 검증된 회로를 Real Size PCB로 처음 만들어서 동작을 확인하는 단계이며, 실제 기구와 첫 조립 진행 |
+| ES | Engineering Sample | WS 검증 및 수정 내용이 반영되어 50대 이상 조립하는 단계이며, 품질 1차 검토 진행 |
+| TP | Test Production | ES 검증 및 수정 내용이 반영되어 100대 이상 조립하는 단계이며, 품질 2차 검토 진행 |
+| MP | Mass Production | 양산. 제품 출시 및 소비자 피드백 검토, 개발완료보고서 작성, R/C 일정 수립 및 진행 |
+
+■ WS (Working Sample) 이벤트
+
+- 정의: 제품 기획 및 EVM 단계를 거쳐, 처음으로 Real size 회로를 구현하는 단계. 연구소 주관으로 진행하며 EVM 단계에서 검증된 기술적 부분의 최초 실현 단계
+- 주요 업무: 실제 양산 제품에 들어가는 PCB와 동일 사이즈로 PCB를 만들어 전반적인 동작 검증 진행 / 기구 역시 실제 양산과 동일한 소재의 금속으로 가공해 Real Size PCB와 조립 진행 및 검증
+- 세부 업무: 회로 설계, PCB 설계, PCB artwork(CAD), PCB 발주, PCB 입고, PCB SMT, PCB 검증 / 기본적인 회로 동작 구현을 위한 S/W bring-up 진행
+- 결과물: WS 이벤트 시료 / WS BOM(Bill of Material) 도출
+
+■ ES (Engineering Sample) 이벤트
+
+- 정의: WS 단계에서 수정, 보완, 검증된 부분을 바탕으로 진행되는 개발 단계. 연구소 주관으로 진행하며 품질 담당자들이 배정되어 품질 검토를 받는 단계
+- 주요 업무: WS에서 연구소 자체적으로 파악되었던 개발 이슈의 개선과 향상을 확인 / 기구는 양산에 필요한 금형을 실제 제작하여 적용
+- 세부 업무: 회로 설계, PCB 설계, PCB artwork(CAD), PCB 발주, PCB 입고, PCB SMT, PCB 검증 / 개선된 기구 자재와 양산 금형 등의 자재로 시료 조립 진행 및 검증 / 시스템과 어플리케이션 부분에 대한 S/W 개발 및 수정 진행 / 품질에서는 회로, 기구 관련 전반적인 검토를 진행 후 회로, 기구 TP 발주를 위한 내부 검토 회의 진행
+- 결과물: ES 이벤트 시료 / ES BOM(Bill of Material) 도출 / ES 품질 리포트
+
+■ TP (Test Production) 이벤트
+
+- 정의: ES 단계에서 수정, 보완, 검증된 부분을 바탕으로 진행되는 마지막 개발 단계. 연구소 주관으로 진행하며 본격적으로 디테일한 품질 검토를 받는 단계
+- 주요 업무: ES에서 연구소 자체적 및 품질 담당자로부터 파악되었던 개발 이슈의 개선과 향상을 확인
+- 세부 업무: 회로 설계, PCB 설계, PCB artwork(CAD), PCB 발주, PCB 입고, PCB SMT, PCB 검증 / 개선된 기구 자재와 양산 금형 등의 자재로 시료 조립 진행 및 검증 / 시스템과 어플리케이션 부분에 대한 S/W 개발 및 수정 진행 / 품질에서는 회로, 기구 관련 전반적인 검토를 진행 후 문제점 연구소 각 파트 담당자들에게 전달 / 회로, 기구 양산 발주를 위한 내부 품평회 진행
+- 결과물: TP 이벤트 시료 / TP BOM(Bill of Material) 도출 / TP 품질 리포트
+
+■ MP (Mass Production)
+
+- 양산 단계. TP까지의 검증을 마치고 본격적으로 제품을 생산하는 단계
+- 제품 출시 / 소비자 Feedback 검토 / 개발완료보고서 작성 / R/C 일정 수립, 진행
+
+■ 한 줄 요약
+
+EVM → WS → ES → TP → MP 순으로 진행되는 AK 내부 하드웨어 개발 이벤트 단계`,
+   tags:["개발이벤트","개발단계","WS","ES","TP","MP","양산"],links:[],
+   images:[
+     {src:"images/glossary/dev-process-1.jpg",caption:"PM R\&R"},
+     {src:"images/glossary/dev-process-2.jpg",caption:"프로젝트 진행 Flow Chart"},
+     {src:"images/glossary/dev-process-3.jpg",caption:"프로젝트 개발 프로세스 1"},
+     {src:"images/glossary/dev-process-4.jpg",caption:"프로젝트 개발 프로세스 2"},
+   ]},
 ];
