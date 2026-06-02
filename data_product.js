@@ -191,9 +191,9 @@ A&futura 프리미엄 라인업의 Identity 연속성을 가지는 모델로, SE
 
 ■■ 4. 주요 사양
 
-■ DAP — MTK8385 Octa-Core / AK4191EQ x2 & AK4498EX x4 / 5.5" FHD / 32bit·768kHz·DSD512 / BAL 6.3V · UNBAL 3.3V / 3.5mm(SPDIF)+4.4mm / 256GB / BT(LDAC·aptX HD) / Dual Wi-Fi / 5,050mAh(~10h) / Stainless Steel 316L
-
-■ XLR 크래들 — XLR Balanced L/R 출력(NEUTRIK) / USB×3(DAP 연결·충전·CD-Ripper) / Pogo Pin 연결 / Aluminum
+| DAP | XLR 크래들 |
+| --- | --- |
+| · MTK8385 Octa-Core<br>· AK4191EQ x2 & AK4498EX x4<br>· 5.5" 1080×1920<br>· 32bit / 768kHz / DSD512<br>· BAL 6.3V / UNBAL 3.3V<br>· 3.5mm(SPDIF) + 4.4mm<br>· 256GB / micro SD Max 1TB<br>· BT (LDAC · aptX HD)<br>· Dual Wi-Fi (2.4/5GHz)<br>· 5,050mAh (~10h)<br>· PD 3.0 충전<br>· Stainless Steel 316L | · XLR Balanced L/R 출력 (NEUTRIK)<br>· USB×3 — DAP 연결 / 충전 / CD-Ripper<br>· Pogo Pin 연결<br>· PD 3.0 충전<br>· Aluminum |
 `,
    tags:["PD10","PDseries","HexaDAC","FullAndroid","XLR","크래들","SE400"],
    files:[
@@ -237,11 +237,6 @@ New Sound Frontier SP3000.
 - R채널·L채널에 각각 AK4191(Dual)을 배치하고, AK4499EX를 채널당 2개씩 총 4개(Quad)로 구성
 - 기능뿐만 아니라 소재에서도 DAP 세계 최초 Stainless Steel 904L 적용으로 명품 DAP 포지셔닝
 - 기존 SP2000의 장점 유지 + All to DSD, 출력 상향, 무선 충전 탑재로 제품 경쟁력 강화
-
-
-■■ 4. 주요 사양
-
-Qualcomm C6125 Octa-Core / AK4191 x2 & AK4499EX x4(디지털·아날로그 분리) / AK4137(DAR) / 5.46" FHD / 32bit·768kHz·DSD512 / BAL 8V · UNBAL 4V / 2.5mm+3.5mm+4.4mm / 256GB / BT(LDAC·aptX HD) / Dual Wi-Fi / 5,000mAh(~10h) / 고속·무선·PD 충전 / Stainless Steel 904L·316L·Copper
 `,
    tags:["SP3000","A&ultima","HexaDAC","HEXADAC","StainlessSteel","904L","Complete separation for noise","NewSoundFrontier"],
    files:[
@@ -291,11 +286,6 @@ SP3000의 아날로그 / 디지털 신호 처리 분리에 아날로그 사운�
 | OP Mode | OPAMP 단독 구동 |
 | Tube Mode | 진공관 앰프 단독 구동 |
 | Hybrid Mode | OPAMP + Tube 혼합 구동 |
-
-
-■■ 4. 주요 사양
-
-MT8385 Octa-Core / AK4191 x2 & AK4499EQ x2 / OPAMP & Quad Tube(Raytheon JAN6418 x2) / AK4137(DAR) / 5.5" FHD / 32bit·768kHz·DSD512(3세대 XMOS) / BAL 6.3V · UNBAL 3.3V / 2.5mm+3.5mm(SPDIF)+4.4mm / 256GB / BT(LDAC·aptX HD) / Dual Wi-Fi / 5,050mAh / Aluminum
 `,
    tags:["SP3000T","A&ultima","RealTube","진공관","TripleAMP","HybridAMP","DualDAC"],
    files:[
@@ -352,11 +342,6 @@ SP3000 동일 Hexa DAC 구조에 휴대성을 더한 다른 매력의 플래그�
 - SP3000과 동일한 Hexa DAC 구조를 유지하면서 휴대성을 극대화
 - 성능과 소리가 좋으면 크고 무거워야 한다는 관점에서 벗어나, 새로운 매력 포인트 제시
 - SP3000 동급 수준의 사운드 및 주요 요소를 유지해 A&ultima 플래그십 매력도 유지
-
-
-■■ 5. 주요 사양
-
-Qualcomm 6125 Octa-Core / AK4191EQ x2 & AK4499EX x4(아날로그·디지털 분리) / 4.1" 720×1280 / 32bit·768kHz·DSD256 / BAL 6.3V · UNBAL 3.3V / 3.5mm+4.4mm / 256GB / BT(LDAC·aptX HD) / Dual Wi-Fi / 3,600mAh(~7h) / 고속·무선 충전 / Aluminum
 `,
    tags:["SP3000M","A&ultima","HexaDAC","휴대성","PerfectBalance","소형","경량"],
    files:[
