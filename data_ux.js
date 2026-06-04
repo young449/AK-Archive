@@ -391,6 +391,26 @@ AK 유지되는 강점: 원음 재생 철학과 음질 완성도 / 레퍼런스 
      {label:"AK_UXUI_Interview_260423.pdf",url:"files/AK_UXUI_Interview_260423.pdf"}
    ],
    links:[]},
+  {id:34,title:"Google Analytics (GA) 미탑재 배경",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["Others"],models:[],date:"2025.09.30",author:"Ellie",authorInitial:"E",
+   desc:"AK DAP에 Google Analytics를 탑재하지 못한 배경. 구글 공식 인증 업체 등록 미비 및 비용 이슈로 중간에 제거된 것으로 파악.",
+   body:`■■ 배경
+
+외주사 미팅 준비 과정에서 AK DAP에 GA(Google Analytics)가 탑재되어 있지 않은 이유를 확인.
+
+■■ 미탑재 사유 (Evan 확인)
+
+Google Analytics 탑재를 위해서는 구글 공식 인증 업체로 등록이 필요하나,
+AK와 같은 소규모 업체에는 해당 인증이 부여되지 않음.
+인증 없이 탑재할 경우 불법에 해당.
+
+과거에 GA를 탑재한 이력이 있으나, 사용료 발생으로 인해 중간에 제거된 것으로 파악됨.
+정확한 경위는 환(Hwan) 또는 에디(Eddie) — Jay·Luke에게 확인 필요.
+
+■■ 의사결정 구조
+
+최종 의사결정은 Jay 또는 Luke 쪽에서 이루어짐.`,
+   tags:["GA","GoogleAnalytics","구글애널리틱스","분석","Others"],
+   links:[]},
   {id:9,title:"버튼 컴포넌트 스펙 v3",category:"디자인 가이드",models:[],date:"2025.03.08",author:"Ellie",authorInitial:"E",desc:"Primary / Secondary / Ghost 3종 버튼 스펙. 상태별 컬러 토큰 정의.",body:`버튼 높이: 40px (기본) / 32px (소형)\n\nPrimary → Crimson 700 (#CC1B38)\nSecondary → Neutrals 600 (#3A3A3A)\nDisabled → Neutrals 600 (#3A3A3A)`,tags:["UI","컴포넌트"],links:[{label:"피그마 — Button v3",url:"https://figma.com"}]},
   {id:10,title:"컬러 토큰 시스템 — Semantic",category:"디자인 가이드",models:[],date:"2025.04.02",author:"Ellie",authorInitial:"E",desc:"AK Design System Semantic 컬러 토큰 전체 정의.",body:`Background\n  color/bg/primary → Black 100%\n  color/bg/secondary → Neutrals 800\n\nText\n  color/text/default → White 100%\n  color/text/primary → Crimson 700`,tags:["토큰","컬러"],links:[]},
 ];
