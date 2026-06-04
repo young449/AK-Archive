@@ -1615,7 +1615,12 @@ function filterData(){
     if(!q)return true;
     return[d.title,d.desc,d.body,d.author,...d.tags,...d.models,...(d.labels||[]),d.category].join(" ").toLowerCase().includes(q);
   }).sort((a,b)=>{
-    if(!q) return b.date.replace(/\./g,"").localeCompare(a.date.replace(/\./g,""));
+    const titleCmp = (x,y) => x.title.localeCompare(y.title, ["en","ko"], {sensitivity:"base",numeric:true});
+    if(!q){
+      const dateDiff = b.date.replace(/\./g,"").localeCompare(a.date.replace(/\./g,""));
+      if(dateDiff !== 0) return dateDiff;
+      return titleCmp(a,b);
+    }
     const score = d => {
       const lq = q;
       if(d.title.toLowerCase().includes(lq)) return 3;
@@ -1626,7 +1631,9 @@ function filterData(){
     };
     const diff = score(b) - score(a);
     if(diff !== 0) return diff;
-    return b.date.replace(/\./g,"").localeCompare(a.date.replace(/\./g,""));
+    const dateDiff = b.date.replace(/\./g,"").localeCompare(a.date.replace(/\./g,""));
+    if(dateDiff !== 0) return dateDiff;
+    return titleCmp(a,b);
   });
 }
 
