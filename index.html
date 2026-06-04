@@ -37,6 +37,7 @@
   --chip-pd-bg:rgba(55,138,221,0.12);--chip-pd:#378ADD;
   --chip-rc-bg:rgba(27,204,163,0.12);--chip-rc:#1BCCA3;
   --chip-research-bg:rgba(0,231,250,0.12);--chip-research:#00E7FA;
+  --chip-others-bg:rgba(160,160,160,0.12);--chip-others:#A0A0A0;
   --font:"Pretendard Variable","Pretendard",sans-serif;
   --mono:var(--font);
   --r-xs:4px;--r-sm:6px;--r-lg:16px;--r-xl:999px;
@@ -391,6 +392,7 @@ body.is-list #list-page{display:flex}
 .chip-btn.is-active[data-chip="PD series"]{background:var(--chip-pd-bg);border-color:var(--chip-pd);color:var(--chip-pd)}
 .chip-btn.is-active[data-chip="RC"]{background:var(--chip-rc-bg);border-color:var(--chip-rc);color:var(--chip-rc)}
 .chip-btn.is-active[data-chip="Research"]{background:var(--chip-research-bg);border-color:var(--chip-research);color:var(--chip-research)}
+.chip-btn.is-active[data-chip="Others"]{background:var(--chip-others-bg);border-color:var(--chip-others);color:var(--chip-others)}
 .chip-btn.is-active[data-chip="Heritage"]{background:var(--chip-her-bg);border-color:var(--chip-her);color:var(--chip-her)}
 .chip-btn.is-active[data-chip="Classic"]{background:var(--chip-cl-bg);border-color:var(--chip-cl);color:var(--chip-cl)}
 .chip-btn.is-active[data-chip="SP4000"]{background:var(--chip-sp4000t-bg);border-color:var(--chip-sp4000t);color:var(--chip-sp4000t)}
@@ -611,6 +613,7 @@ body.is-list #list-page{display:flex}
 .b-sp4000t,.b-sp4000{background:var(--chip-sp4000t-bg);color:var(--chip-sp4000t)}
 .b-rc{background:var(--chip-rc-bg);color:var(--chip-rc)}
 .b-research{background:var(--chip-research-bg);color:var(--chip-research)}
+.b-others{background:var(--chip-others-bg);color:var(--chip-others)}
 .b-more{background:var(--a-w06);color:var(--n-400);border:1px solid var(--div-1)}
 .badge-divider{display:inline-block;width:1px;height:12px;background:var(--div-1);margin:0 2px;flex-shrink:0}
 .tag{display:inline-flex;align-items:center;padding:3px 8px;border-radius:var(--r-xs);font-size:12px;color:var(--n-400);background:var(--a-w06);border:1px solid var(--div-1)}
@@ -1327,7 +1330,7 @@ body.is-tag #tag-page{display:block}
 <script src="data_glossary.js?v=20260602"></script>
 <script>
 const DAP_CLS = {"A&ultima":"b-ultima","PD series":"b-pd","Heritage":"b-her","Classic":"b-cl","SP3000":"b-sp3000","SP3000T":"b-sp3000","SP3000M":"b-sp3000","SP4000":"b-sp4000","SP4000T":"b-sp4000t","PD10":"b-pd","PD20":"b-pd","PD5":"b-pd"};
-const LABEL_CLS = {"A&ultima":"b-ultima","PD series":"b-pd","RC":"b-rc","Research":"b-research","Heritage":"b-her","Classic":"b-cl"};
+const LABEL_CLS = {"A&ultima":"b-ultima","PD series":"b-pd","RC":"b-rc","Research":"b-research","Others":"b-others","Heritage":"b-her","Classic":"b-cl"};
 const CAT_CLS = {"제품 모델":"b-model","기능 히스토리":"b-hist","디자인 가이드":"b-design","용어사전":"b-gloss"};
 const HERO = {
   "전체":{title:"전체",desc:"프로젝트 히스토리, 의사결정 배경, 사내 용어를 키워드 하나로 즉시 탐색"},
@@ -1497,7 +1500,8 @@ function getChips(cat) {
     {key:"A&ultima",label:"A&ultima"},
     {key:"PD series",label:"PD series"},
     {key:"RC",label:"RC"},
-    {key:"Research",label:"Research"}
+    {key:"Research",label:"Research"},
+    {key:"Others",label:"Others"}
   ];
   if(cat==="용어사전") return [
     {key:"전체",label:"전체"},
