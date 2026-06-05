@@ -409,8 +409,31 @@ AK와 같은 소규모 업체에는 해당 인증이 부여되지 않음.
 ■■ 의사결정 구조
 
 최종 의사결정은 Jay 또는 Luke 쪽에서 이루어짐.`,
-   tags:["GA","GoogleAnalytics","구글애널리틱스","분석","Others"],
+   tags:["Others","GA","GoogleAnalytics","구글애널리틱스","분석"],
    links:[]},
+  {id:35,title:"Lottie 애니메이션 미적용 배경",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["Others"],models:[],date:"2025.10.28",author:"Ellie",authorInitial:"E",
+   desc:"DAP 음악 재생단 부하 최소화 방침으로 애니메이션 작업을 제한. Lottie 포함 포맷 무관하게 애니메이션 자체가 CPU·메모리 부하 유발.",
+   body:`■■ 배경
+
+Lottie 도입 가능성 확인 과정에서 DAP 내 애니메이션 사용을
+최소화하는 내부 방침의 배경을 파악.
+
+
+■■ 미적용 사유
+
+애니메이션 동작에는 이미지 교체·타이머 등이 포함되어
+GIF·Lottie 포맷에 무관하게 CPU·메모리 부하가 발생함.
+음악 재생단 부하 최소화를 위해 애니메이션 작업을 줄이는 방향으로 운영 중.
+
+부하 크기는 케이스 바이 케이스로, 종류에 따라 상이함.
+
+
+■■ 참고
+
+앨범 영역에는 Lottie를 사용 중인 것으로 확인됨.
+정확한 적용 범위는 Hoya·Hwan에게 확인 필요.`,
+   tags:["Others","Lottie","애니메이션","GIF","CPU","메모리","부하"],
+   links:[{label:"Lottie Files",url:"https://lottiefiles.com/kr/"}]},
   {id:9,title:"버튼 컴포넌트 스펙 v3",category:"디자인 가이드",models:[],date:"2025.03.08",author:"Ellie",authorInitial:"E",desc:"Primary / Secondary / Ghost 3종 버튼 스펙. 상태별 컬러 토큰 정의.",body:`버튼 높이: 40px (기본) / 32px (소형)\n\nPrimary → Crimson 700 (#CC1B38)\nSecondary → Neutrals 600 (#3A3A3A)\nDisabled → Neutrals 600 (#3A3A3A)`,tags:["UI","컴포넌트"],links:[{label:"피그마 — Button v3",url:"https://figma.com"}]},
   {id:10,title:"컬러 토큰 시스템 — Semantic",category:"디자인 가이드",models:[],date:"2025.04.02",author:"Ellie",authorInitial:"E",desc:"AK Design System Semantic 컬러 토큰 전체 정의.",body:`Background\n  color/bg/primary → Black 100%\n  color/bg/secondary → Neutrals 800\n\nText\n  color/text/default → White 100%\n  color/text/primary → Crimson 700`,tags:["토큰","컬러"],links:[]},
 ];
