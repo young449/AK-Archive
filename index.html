@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K24PZTM7M4"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K24PZTM7M4');
+  </script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>AK Archive</title>
@@ -1539,6 +1547,9 @@ function renderChipBar() {
     btn.addEventListener("click",()=>{
       S.chip=c.key;
       if(S.cat==="용어사전") S.glossTab=c.key;
+      if(typeof gtag!=="undefined"){
+        gtag("event","select_filter",{filter_name:c.key,category:S.cat});
+      }
       updateChips();renderCards();
     });
     scroll.appendChild(btn);
@@ -1590,7 +1601,7 @@ function renderChipBar() {
   });
 
   const inp=document.getElementById("chip-search");
-  if(inp){inp.value=S.q||"";inp.addEventListener("input",()=>{S.q=inp.value;renderCards();});}
+  if(inp){inp.value=S.q||"";inp.addEventListener("input",()=>{S.q=inp.value;renderCards();if(S.q.length>=1&&typeof gtag!=="undefined"){gtag("event","search",{search_term:S.q,search_location:"category_"+S.cat});}});}
 
   // 재렌더링 후 검색 열린 상태 복원
   if(wasSearchOpen){
@@ -1647,7 +1658,7 @@ function renderCards(){
   list.innerHTML="";
   const items=filterData();
   document.getElementById("count-num").textContent=items.length;
-  if(items.length===0){empty.classList.add("show");return;}
+  if(items.length===0){empty.classList.add("show");if(S.q&&S.q.length>=1&&typeof gtag!=="undefined"){gtag("event","search_no_results",{search_term:S.q,category:S.cat});}return;}
   empty.classList.remove("show");
   const q=S.q.trim().toLowerCase();
   const MAX_MODELS=3;
@@ -1733,6 +1744,16 @@ function renderCards(){
 function openDetail(id, prevPage){ _openDetail(id, prevPage, true); }
 function _openDetail(id, prevPage, push){
   const d=DATA.find(x=>x.id===id);if(!d)return;
+  // GA4 문서 열람 이벤트 + 체류시간 측정 시작
+  window._docOpenTime = Date.now();
+  window._docOpenId = id;
+  if(typeof gtag !== 'undefined') {
+    gtag('event', 'view_document', {
+      document_id: id,
+      document_title: d.title,
+      document_category: d.category
+    });
+  }
   S.prevPage = prevPage !== undefined ? prevPage : document.body.className;
   if (push) pushHistory({page:"detail", id, prevPage: S.prevPage});
   S.openId=id;
@@ -1790,7 +1811,7 @@ function _openDetail(id, prevPage, push){
         const oid=Number(l.url.replace("#open:",""));
         return `<button class="dlink" onclick="closeDetail(false);openDetail(${oid})">${icon}${l.label}</button>`;
       }
-      return `<a class="dlink" href="${l.url}" target="_blank" rel="noopener">${icon}${l.label}</a>`;
+      return `<a class="dlink" href="${l.url}" target="_blank" rel="noopener" data-doc-id="${d.id}" data-label="${l.label}" onclick="if(typeof gtag!=='undefined'){gtag('event','click_reference_link',{link_label:this.dataset.label,document_id:this.dataset.docId});}">${icon}${l.label}</a>`;
     }).join("")
     :"";
   document.getElementById("d-links-wrap").style.display=links.length?"":"none";
@@ -1810,6 +1831,17 @@ function renderGlossSubtab(){
 
 function closeDetail(rerender=true){
   const dv=document.getElementById("detail");dv.classList.remove("show");dv.setAttribute("aria-hidden","true");
+  // GA4 체류시간 기록
+  if(window._docOpenTime && typeof gtag!=="undefined"){
+    const sec = Math.round((Date.now()-window._docOpenTime)/1000);
+    const d = DATA.find(x=>x.id===window._docOpenId);
+    gtag("event","document_read_time",{
+      document_id: window._docOpenId,
+      document_title: d?d.title:"",
+      seconds_spent: sec
+    });
+    window._docOpenTime=null;
+  }
   if(!rerender)return;
   S.openId=null;
   ["card-list","count-row","hero"].forEach(i=>document.getElementById(i).style.display="");
@@ -2192,6 +2224,9 @@ function renderBody(text) {
     hc.classList.toggle("show", !!v);
     if (v.length >= 1) {
       renderAC(v);
+      if(typeof gtag!=="undefined"){
+        gtag("event","search",{search_term:v,search_location:"home"});
+      }
     } else {
       renderHistory();
     }
@@ -2245,7 +2280,7 @@ function renderBody(text) {
 
 // GNB 탭
 document.querySelectorAll(".gnb-tab").forEach(tab=>{
-  tab.addEventListener("click",()=>{S.chip="전체";S.q="";goList(tab.dataset.cat,"");});
+  tab.addEventListener("click",()=>{S.chip="전체";S.q="";if(typeof gtag!=="undefined"){gtag("event","select_category",{category_name:tab.dataset.cat});}goList(tab.dataset.cat,"");});
 });
 
 // ── 드로어 ──
@@ -2303,6 +2338,10 @@ document.getElementById("gnb-logo").addEventListener("click",()=>{
 
 // 뒤로가기
 document.getElementById("detail-back").addEventListener("click",()=>{
+  if(typeof gtag!=="undefined"&&window._docOpenId){
+    const d=DATA.find(x=>x.id===window._docOpenId);
+    gtag("event","back_from_document",{document_id:window._docOpenId,document_title:d?d.title:"",prev_page:S.prevPage||"list"});
+  }
   if(document.body.classList.contains("is-tag")){
     // 태그 페이지에서 상세 진입한 경우 → 태그 페이지로
     document.body.className="is-tag";
