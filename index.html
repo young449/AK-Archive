@@ -266,6 +266,8 @@ body.is-home #home{display:flex}
   transition:border-color 0.15s,box-shadow 0.15s;
 }
 #home-search::placeholder{color:var(--n-500)}
+#home-search::-webkit-search-cancel-button{display:none;-webkit-appearance:none;appearance:none}
+#home-search::-ms-clear{display:none}
 #home-search:focus{border:2px solid rgba(204,27,56,0.5);box-shadow:0 0 12px rgba(204,27,56,0.10)}
 .home-si{position:absolute;left:17px;top:50%;transform:translateY(-50%);color:var(--n-500);pointer-events:none}
 #home-clear{
@@ -429,6 +431,22 @@ body.is-list #list-page{display:flex}
 .csi{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--n-500);pointer-events:none;transition:color 0.13s;}
 #chip-search-icon{display:none}
 #chip-search-close{display:none}
+
+/* 데스크톱: 네이티브 검색취소(파란 X) 숨기고 동그란 clear 버튼 사용 */
+#chip-search::-webkit-search-cancel-button{display:none;-webkit-appearance:none;appearance:none}
+#chip-search::-ms-clear{display:none}
+@media(min-width:640px){
+  #chip-search{padding-right:30px}
+  #chip-search-clear{
+    display:none;align-items:center;justify-content:center;
+    width:16px;height:16px;padding:2px;box-sizing:content-box;
+    background:var(--n-600);border:none;border-radius:50%;color:var(--n-300);
+    position:absolute;right:10px;top:50%;transform:translateY(-50%);
+    z-index:2;cursor:pointer;
+  }
+  #chip-search-clear svg{width:8px;height:8px}
+  #chip-search-clear.show{display:flex}
+}
 
 /* 모바일: 검색 input 숨기고 아이콘 버튼만 표시 */
 @media(max-width:639px){
@@ -1588,6 +1606,7 @@ function renderChipBar() {
     S.q="";
     const inp=document.getElementById("chip-search");
     if(inp){ inp.value=""; inp.focus(); }
+    clearBtn.classList.remove("show");
     renderCards();
   });
   // 밖 X — 검색 닫고 탭으로 복귀
@@ -1601,7 +1620,7 @@ function renderChipBar() {
   });
 
   const inp=document.getElementById("chip-search");
-  if(inp){inp.value=S.q||"";inp.addEventListener("input",()=>{S.q=inp.value;renderCards();if(S.q.length>=1&&typeof gtag!=="undefined"){gtag("event","search",{search_term:S.q,search_location:"category_"+S.cat});}});}
+  if(inp){inp.value=S.q||"";clearBtn.classList.toggle("show",!!inp.value);inp.addEventListener("input",()=>{S.q=inp.value;clearBtn.classList.toggle("show",!!inp.value);renderCards();if(S.q.length>=1&&typeof gtag!=="undefined"){gtag("event","search",{search_term:S.q,search_location:"category_"+S.cat});}});}
 
   // 재렌더링 후 검색 열린 상태 복원
   if(wasSearchOpen){
