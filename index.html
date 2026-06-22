@@ -1628,7 +1628,7 @@ function filterData(){
       if(!inModels && !inLabels) return false;
     }
     if(!q)return true;
-    return[d.title,d.desc,d.body,d.author,...d.tags,...d.models,...(d.labels||[]),d.category].join(" ").toLowerCase().includes(q);
+    return d.title.toLowerCase().includes(q);
   }).sort((a,b)=>{
     const titleCmp = (x,y) => x.title.localeCompare(y.title, ["en","ko"], {sensitivity:"base",numeric:true});
     if(!q){
@@ -2119,13 +2119,7 @@ function renderBody(text) {
     const lq = q.toLowerCase();
     const scored = DATA.map(d => {
       const title = d.title.toLowerCase();
-      const desc  = (d.desc||"").toLowerCase();
-      const body  = (d.body||"").toLowerCase();
       if (title.includes(lq))   return { d, score: 2 };
-      if (desc.includes(lq))    return { d, score: 1 };
-      if (body.includes(lq))    return { d, score: 0 };
-      const tags  = d.tags.join(" ").toLowerCase();
-      if (tags.includes(lq))    return { d, score: 0 };
       return null;
     }).filter(Boolean);
     scored.sort((a,b) => b.score - a.score || b.d.date.localeCompare(a.d.date));
@@ -2168,7 +2162,7 @@ function renderBody(text) {
     });
 
     const total = DATA.filter(d =>
-      [d.title, d.desc, d.body, d.author, ...d.tags, ...d.models, ...(d.labels||[])].join(" ").toLowerCase().includes(q.toLowerCase())
+      d.title.toLowerCase().includes(q.toLowerCase())
     ).length;
     if (total > 0) {
       const footer = document.createElement("div");
