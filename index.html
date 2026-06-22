@@ -124,6 +124,8 @@ body.is-home #gnb-wrap{
 }
 .gnb-tab:hover{color:var(--text-1)}
 .gnb-tab.is-active{color:var(--text-1)}
+/* 로고와 메뉴 사이 구분선 — 폰트 높이, 은은하게 */
+.gnb-divider{width:1px;height:14px;flex-shrink:0;margin:0 6px;align-self:center;background:var(--div-1)}
 
 /* 햄버거 버튼 — 모바일 전용, 데스크탑에서 숨김 */
 #gnb-hamburger{
@@ -239,6 +241,7 @@ body.is-home #gnb-wrap{
   #gnb-logo img{width:22px}
   #gnb-logo-text{font-size:14px}
   .gnb-tab{display:none}
+  .gnb-divider{display:none}
   #gnb-hamburger{display:flex}
   /* 드로어 열렸을 때 pill radius 축소 */
   #gnb-inner.drawer-open{
@@ -1125,6 +1128,7 @@ body.is-tag #tag-page{display:block}
         <img src="images/logo/logo-300.png" alt="AK"/>
         <span id="gnb-logo-text">AK Archive</span>
       </button>
+      <span class="gnb-divider" aria-hidden="true"></span>
       <button class="gnb-tab" data-cat="제품 모델">제품</button>
       <button class="gnb-tab" data-cat="기능 히스토리">UX 히스토리</button>
       <button class="gnb-tab" data-cat="용어사전">AK 용어</button>
