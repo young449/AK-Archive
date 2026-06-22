@@ -92,7 +92,7 @@ AK Connect로 추가된 곡은 컬렉션 추가 불가.
 | PD series | 순차 반영 예정 | 현재 RC 계획 없음 |`,
    tags:["RC","Collection","컬렉션","Favorite","즐겨찾기","UX개선"],
    links:[{label:"용어사전 — 컬렉션",url:"#search:컬렉션"},{label:"용어사전 — Favorite",url:"#search:Favorite"}]},
-  {id:30,title:"설정 레이블 추가 및 재배열",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["RC"],models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
+  {id:36,title:"설정 레이블 추가 및 재배열",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["RC"],models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
    desc:"기존 아이콘만으로 구분되던 설정 화면에 레이블을 추가하고, 각 그룹 성격에 맞게 항목 순서를 재배열한 UX 개선.",
    body:`■■ 기능 개요
 
@@ -132,7 +132,7 @@ AK Connect로 추가된 곡은 컬렉션 추가 불가.
    tags:["RC","Setting","설정","설정레이블","설정재배열","UX개선"],
    images:[],
    links:[]},
-  {id:31,title:"사용자 리서치: 리서치 배경 및 진행 개요",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["Research"],models:[],date:"2025.05.01",author:"Ellie",authorInitial:"E",
+  {id:37,title:"사용자 리서치: 리서치 배경 및 진행 개요",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["Research"],models:[],date:"2025.05.01",author:"Ellie",authorInitial:"E",
    desc:"Astell&Kern DAP 사용자의 UXUI 사용성 개선을 위한 데이터 수집 목적으로 설문조사 → 인터뷰 → UT 3단계 사용자 리서치를 기획·운영.",
    body:`■■ 개요
 
