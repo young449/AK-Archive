@@ -1399,6 +1399,12 @@ function _goTag(tag, push) {
   S.tag = tag;
   // 모든 페이지 숨김
   document.body.className = "is-tag";
+  // 상세 오버레이 흔적 제거 (상세→태그 복귀 시 깨끗하게)
+  const _dvt=document.getElementById("detail");
+  _dvt.classList.remove("show");_dvt.setAttribute("aria-hidden","true");
+  _dvt.style.display="";_dvt.style.maxWidth="";_dvt.style.margin="";_dvt.style.padding="";
+  const _tct=document.getElementById("tag-content");if(_tct)_tct.style.display="";
+  S.openId=null;
   document.getElementById("gnb-wrap").style.display = "";
   document.querySelectorAll(".gnb-tab").forEach(t=>t.classList.remove("is-active"));
   // 태그 히어로
@@ -1443,16 +1449,9 @@ function renderTagCards(items, tag) {
 }
 
 function openDetailFromTag(id) {
-  document.body.className = "is-tag is-tag-detail";
-  _openDetail(id, "is-tag", true);
-  // detail을 tag-content 위에 표시
-  const detail = document.getElementById("detail");
-  const tagContent = document.getElementById("tag-content");
-  tagContent.style.display = "none";
-  detail.style.display = "block";
-  detail.style.maxWidth = "960px";
-  detail.style.margin = "0 auto";
-  detail.style.padding = "";
+  // 상세는 list-page 컨테이너에서 표시하고, 직전 페이지를 태그로 기록.
+  // 목록으로/뒤로가기 시 history.back()이 태그 목록으로 복귀시킨다.
+  openDetail(id, "is-tag");
 }
 
 
@@ -1790,6 +1789,12 @@ function _openDetail(id, prevPage, push){
   S.prevPage = prevPage !== undefined ? prevPage : document.body.className;
   if (push) pushHistory({page:"detail", id, prevPage: S.prevPage});
   S.openId=id;
+  // 상세는 항상 list-page 컨테이너 안에서 표시 (오버레이 방식 일원화)
+  // "어디서 왔는지"는 브라우저 히스토리로만 관리 → 목록으로/뒤로가기 일관성 확보
+  document.body.className="is-list";
+  const _dv0=document.getElementById("detail");
+  _dv0.style.display="";_dv0.style.maxWidth="";_dv0.style.margin="";_dv0.style.padding="";
+  const _tc0=document.getElementById("tag-content");if(_tc0)_tc0.style.display="";
   ["card-list","chip-bar","count-row","hero"].forEach(i=>document.getElementById(i).style.display="none");
   document.getElementById("gloss-subtab-wrap").classList.remove("show");
   document.getElementById("empty").classList.remove("show");
@@ -2369,27 +2374,13 @@ document.getElementById("detail-back").addEventListener("click",()=>{
     const d=DATA.find(x=>x.id===window._docOpenId);
     gtag("event","back_from_document",{document_id:window._docOpenId,document_title:d?d.title:"",prev_page:S.prevPage||"list"});
   }
-  if(document.body.classList.contains("is-tag")){
-    // 태그 페이지에서 상세 진입한 경우 → 태그 페이지로
-    document.body.className="is-tag";
-    document.getElementById("detail").style.display="";
-    document.getElementById("detail").style.maxWidth="";
-    document.getElementById("detail").style.margin="";
-    document.getElementById("detail").style.padding="";
-    document.getElementById("tag-content").style.display="";
-    document.getElementById("detail").classList.remove("show");
-    document.getElementById("detail").setAttribute("aria-hidden","true");
-    S.openId=null;
-    window.scrollTo({top:0,behavior:"smooth"});
-  } else {
-    if(S.prevPage==="is-home") goHome();
-    else closeDetail();
-  }
+  // 직전 화면(카테고리 목록 / 태그 목록 / 홈)으로 복귀 — 히스토리 일원화
+  history.back();
 });
 
-// 태그 페이지 뒤로가기 → 기능 히스토리 첫 화면
+// 태그 페이지 뒤로가기 → 직전 화면으로
 document.getElementById("tag-back").addEventListener("click",()=>{
-  goList("기능 히스토리");
+  history.back();
 });
 
 // Top 버튼
