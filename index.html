@@ -259,7 +259,6 @@ body.is-home #home{display:flex}
 #home-copy{text-align:center;position:relative;z-index:1}
 #home-headline{font-size:32px;font-weight:600;color:var(--text-1);line-height:1.3;letter-spacing:-0.02em;margin-bottom:8px}
 #home-subline{font-size:16px;font-weight:400;color:var(--text-2);line-height:1.5}
-#home-scope{font-size:13px;font-weight:400;color:var(--text-3);line-height:1.5;margin-top:10px}
 
 #home-search-wrap{width:100%;max-width:480px;position:relative;z-index:1}
 #home-search{
@@ -360,6 +359,8 @@ body.is-list #list-page{display:flex}
 #hero{margin-bottom:34px}
 #hero-title{font-size:24px;font-weight:600;color:var(--text-1);margin-bottom:8px}
 #hero-desc{font-size:16px;color:var(--text-2)}
+#hero-scope{display:none;font-size:13px;color:var(--n-400);line-height:1.5;margin-top:10px}
+#hero-scope.show{display:block}
 
 /* =============================================
    SECTION: css-chip-bar
@@ -980,7 +981,6 @@ body.is-tag #detail[style*="block"] {
   #home-logo img { width: 52px }
   #home-headline { font-size: 21px; letter-spacing: -0.025em }
   #home-subline  { font-size: 14px }
-  #home-scope    { font-size: 12px }
   #home-search   {
     height: 46px;
     font-size: 15px;
@@ -1169,7 +1169,6 @@ body.is-tag #tag-page{display:block}
   <div id="home-copy">
     <p id="home-headline">AK 팀이 알아야 할 정보,<br>검색으로 바로 찾으세요.</p>
     <p id="home-subline">제품 스펙 · UX 히스토리 · 용어사전 통합 아카이브</p>
-    <p id="home-scope">SP3000 시리즈부터 적용된 Crimson UI 이후의 기록을 담고 있습니다.</p>
   </div>
   <div id="home-search-wrap">
     <svg class="home-si" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6">
@@ -1299,6 +1298,7 @@ body.is-tag #tag-page{display:block}
     <div id="hero">
       <h1 id="hero-title"></h1>
       <p id="hero-desc"></p>
+      <p id="hero-scope">SP3000 시리즈부터 적용된 Crimson UI 이후의 기록을 담고 있습니다.</p>
     </div>
     <div id="gloss-subtab-wrap"></div>
     <div id="chip-bar"></div>
@@ -1521,6 +1521,8 @@ function _goList(cat, q, push) {
   const h = HERO[cat]||{title:"검색 결과",desc:""};
   document.getElementById("hero-title").textContent = q ? `"${q}" 검색 결과` : h.title;
   document.getElementById("hero-desc").textContent  = q ? "" : h.desc;
+  // 범위 안내: 카테고리 목록일 때만 표시 (검색 결과 화면에서는 숨김)
+  document.getElementById("hero-scope").classList.toggle("show", !q && !!HERO[cat]);
   renderChipBar();
   renderCards();
   window.scrollTo({top:0,behavior:"smooth"});
