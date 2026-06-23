@@ -681,6 +681,19 @@ mark{background:transparent;color:var(--cr-200);border-radius:0;padding:0;font-w
   border:1px solid var(--div-2);
 }
 #d-credits:empty{display:none}
+#d-keyconcept{
+  display:none;margin:0 0 24px;padding:14px 16px;
+  background:var(--cat-hist-bg);border:1px solid rgba(204,27,56,0.30);
+  border-radius:var(--r-lg);
+}
+#d-keyconcept.show{display:block}
+#d-keyconcept .kc-label{
+  font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;
+  color:var(--cr-200);font-family:var(--mono);margin-bottom:6px;
+}
+#d-keyconcept .kc-title{font-size:16px;font-weight:600;color:var(--text-1);line-height:1.4}
+#d-keyconcept .kc-desc{font-size:14px;color:var(--text-2);line-height:1.5;margin-top:4px}
+#d-keyconcept .kc-empty{font-size:14px;color:var(--text-3);line-height:1.4}
 .credit-item{display:inline-flex;align-items:center;gap:6px;padding:0 10px}
 .credit-item:first-child{padding-left:0}
 .credit-item:last-child{padding-right:0}
@@ -1324,6 +1337,7 @@ body.is-tag #tag-page{display:block}
       <div id="d-author"><span id="d-name"></span><span class="d-author-sep">·</span><span id="d-date"></span></div>
       <hr class="dv"/>
       <div id="d-credits"></div>
+      <div id="d-keyconcept"><div class="kc-label">Key Concept</div><div id="kc-body"></div></div>
       <div id="d-body"></div>
       <div id="d-images"></div>
       <div id="d-files-wrap"><div id="d-files-label">첨부 파일</div><div id="d-files"></div></div>
@@ -1826,6 +1840,20 @@ function _openDetail(id, prevPage, push){
       `${i>0?'<span class="credit-sep"></span>':''}<span class="credit-item"><span class="credit-role">${role}</span><span class="credit-name">${name}</span></span>`
     )).join("");
   } else { credEl.innerHTML=""; }
+  // Key Concept 콜아웃 — 제품 상세에서만 노출, 없으면 추후 업데이트 예정
+  const kcWrap=document.getElementById("d-keyconcept");
+  if(d.category==="제품 모델"){
+    const kcBody=document.getElementById("kc-body");
+    if(d.keyConcept && d.keyConcept.title){
+      const t=d.keyConcept.title, ds=d.keyConcept.desc||"";
+      kcBody.innerHTML=`<div class="kc-title">${t}</div>`+(ds?`<div class="kc-desc">${ds}</div>`:"");
+    } else {
+      kcBody.innerHTML=`<div class="kc-empty">추후 업데이트 예정</div>`;
+    }
+    kcWrap.classList.add("show");
+  } else {
+    kcWrap.classList.remove("show");
+  }
   // 이미지 그리드
   const imgEl=document.getElementById("d-images");
   const detailImgs = d.images ? d.images.filter(img => !img.src.toLowerCase().includes('_thumb')) : [];

@@ -165,6 +165,7 @@ Sound Master 휠로 Gain 연동 조절 가능. 되돌리기(Flat Curve 복원) /
    ]},
   {id:28, title:"PD10", category:"제품 모델", models:["PD series"], date:"2026.05.18", author:"Ellie", authorInitial:"E",
    credits:{PM:"Jay", PL:"Kenny", UX:"Luna", UI:"Luna"},
+   keyConcept:{title:"Unlimited Music Life", desc:"뛰어난 음질과 제한 없는 확장을 핵심 컨셉으로 합니다."},
    desc:"A&futura SE400에서 PD10으로 재정의된 모델. 검증된 Hexa DAC 구조, Full Android, XLR 크래들을 핵심 컨셉으로 한 PD series DAP.",
    body:`■■ 1. 라인업 상의 의미
 
@@ -184,9 +185,7 @@ A&futura 프리미엄 라인업의 Identity 연속성을 가지는 모델로, SE
 - 기존 SE300의 느린 속도 개선을 위해 Octa-Core 적용
 
 
-■■ 3. Key Concept : Unlimited Music Life
-
-뛰어난 음질과 제한 없는 확장을 핵심 컨셉으로 합니다.
+■■ 3. 주요 특징
 
 ① 신형 DAC 세계 최초 사용 / 검증된 Hexa 구조 적용
 ② 고객 요구를 적극 반영한 Full Android 탑재
@@ -218,6 +217,7 @@ A&futura 프리미엄 라인업의 Identity 연속성을 가지는 모델로, SE
    ]},
   {id:29, title:"SP3000", category:"제품 모델", models:["A&ultima"], date:"2026.05.15", author:"Ellie", authorInitial:"E",
    credits:{PM:"Jay", PL:"Kane", UX:"Lizzo", UI:"Luna"},
+   keyConcept:{title:"Complete separation for noise", desc:"New Sound Frontier SP3000."},
    desc:"A&ultima 플래그십 DAP. Hexa DAC 구조(AK4191EQ x2 & AK4499EX x4)와 아날로그·디지털 신호 처리 분리로 최고 수준의 사운드를 구현한 모델.",
    body:`■■ 1. 라인업 상의 의미
 
@@ -239,9 +239,7 @@ AK Flagship 모델에 걸맞는 독보적인 기능 구현에 집중.
 - Dual Wi-Fi, 2way 블루투스, DSD512 재생 등 기존 모델의 장점은 유지
 
 
-■■ 3. Key Concept : Complete separation for noise
-
-New Sound Frontier SP3000.
+■■ 3. 주요 특징
 
 - SP2000 이후 출시되는 A&Ultima 3번째 제품으로 CPU를 비롯해 거의 모든 부분을 업그레이드
 - 일반적인 오디오 신호 구조에서 벗어나, 디지털과 아날로그 신호 처리를 물리적으로 분리하는 구조 적용
@@ -266,6 +264,7 @@ New Sound Frontier SP3000.
    ]},
   {id:30, title:"SP3000T", category:"제품 모델", models:["A&ultima"], date:"2026.05.16", author:"Ellie", authorInitial:"E",
    credits:{PM:"Luke", PL:"Ian", UX:"Lizzo", UI:"Luna"},
+   keyConcept:{title:"One step close to Analog Sound", desc:"진짜 아날로그에 한발 더 가깝게."},
    desc:"SP3000을 기반으로 Real Tube 앰프를 탑재한 A&ultima DAP. Triple AMP System과 Dual DAC 구조로 아날로그 사운드를 구현한 모델.",
    body:`■■ 1. 라인업 상의 의미
 
@@ -286,9 +285,7 @@ SP3000의 아날로그 / 디지털 신호 처리 분리에 아날로그 사운�
 - SP3000T에 적용된 Real Tube 기술은 향후 타 모델에도 적용해 기술 연계 및 개발 효율화 추진
 
 
-■■ 3. Key Concept : One step close to Analog Sound
-
-진짜 아날로그에 한발 더 가깝게.
+■■ 3. 주요 특징
 
 - SP2000T의 Triple AMP System과 SP3000의 아날로그·디지털 회로 분리의 장점을 모두 가지는 모델
 - Triple AMP System에서 아날로그 요소 강화를 위해 Real Tube 부품(Miniature Tube)을 Dual로 사용
@@ -321,6 +318,7 @@ SP3000의 아날로그 / 디지털 신호 처리 분리에 아날로그 사운�
    ]},
   {id:31, title:"SP3000M", category:"제품 모델", models:["A&ultima"], date:"2026.05.17", author:"Ellie", authorInitial:"E",
    credits:{PM:"Jay", PL:"Kenny", UX:"Lizzo", UI:"Luna"},
+   keyConcept:{title:"Perfect Balance", desc:"뛰어난 음질과 휴대성의 절묘한 조화."},
    desc:"SP3000 동일 Hexa DAC 구조에 휴대성을 극대화한 A&ultima DAP. 소형 사이즈(250g)로 Daily DAP를 지향하는 모델.",
    body:`■■ 1. 라인업 상의 의미
 
@@ -358,9 +356,7 @@ SP3000 동일 Hexa DAC 구조에 휴대성을 더한 다른 매력의 플래그�
 | Material | Stainless Steel 904L | Aluminum |
 
 
-■■ 4. Key Concept : Perfect Balance
-
-뛰어난 음질과 휴대성의 절묘한 조화.
+■■ 4. 주요 특징
 
 - SP3000과 동일한 Hexa DAC 구조를 유지하면서 휴대성을 극대화
 - 성능과 소리가 좋으면 크고 무거워야 한다는 관점에서 벗어나, 새로운 매력 포인트 제시
