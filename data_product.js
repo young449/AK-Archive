@@ -248,7 +248,7 @@ AK Flagship 모델에 걸맞는 독보적인 기능 구현에 집중.
 - 기능뿐만 아니라 소재에서도 DAP 세계 최초 Stainless Steel 904L 적용으로 명품 DAP 포지셔닝
 - 기존 SP2000의 장점 유지 + All to DSD, 출력 상향, 무선 충전 탑재로 제품 경쟁력 강화
 `,
-   tags:["SP3000","A&ultima","HexaDAC","HEXADAC","StainlessSteel","904L","Complete separation for noise","NewSoundFrontier"],
+   tags:["SP3000","A&ultima","HexaDAC","HEXADAC","StainlessSteel","904L","NoiseSeparation","노이즈분리","NewSoundFrontier"],
    files:[
      {label:"SP3000_사업계획서_0924.pdf", url:"files/SP3000_BP_0924.pdf"},
    ],
