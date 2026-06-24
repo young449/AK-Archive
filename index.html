@@ -1478,6 +1478,17 @@ function openDetailFromTag(id) {
    SECTION: js-history
    브라우저 뒤로가기/앞으로가기 지원
 ============================================= */
+// 카테고리 ↔ URL 슬러그 매핑 (주소창 링크를 깔끔한 영문으로)
+const CAT_SLUG = {
+  "제품 모델":    "product",
+  "기능 히스토리": "uxhistory",
+  "용어사전":     "akglossary",
+};
+const SLUG_CAT = Object.fromEntries(Object.entries(CAT_SLUG).map(([k,v])=>[v,k]));
+function catToSlug(cat){ return CAT_SLUG[cat] || encodeURIComponent(cat || ""); }
+// 신규 영문 슬러그 우선, 없으면 구 한글 링크(인코딩)도 그대로 해석 → 기존 공유 링크 호환
+function slugToCat(slug){ return SLUG_CAT[slug] || decodeURIComponent(slug); }
+
 // 상태 → 주소창에 표시할 해시 URL 변환 (항목/페이지별 고유 링크 생성)
 function hashForState(state) {
   if (!state) return location.pathname + location.search;
@@ -1486,7 +1497,7 @@ function hashForState(state) {
   if (state.page === "tag")    return "#/tag/" + encodeURIComponent(state.tag);
   if (state.page === "list")   return state.q
     ? "#/search/" + encodeURIComponent(state.q)
-    : "#/list/" + encodeURIComponent(state.cat || "");
+    : "#/list/" + catToSlug(state.cat);
   return location.pathname + location.search;
 }
 function pushHistory(state) {
@@ -2487,8 +2498,9 @@ function routeFromHash() {
     return true;
   }
   if (kind === "list") {
-    _goList(val, "", false);
-    replaceHistory({page:"list", cat:val, q:""});
+    const cat = slugToCat(val);
+    _goList(cat, "", false);
+    replaceHistory({page:"list", cat, q:""});
     return true;
   }
   if (kind === "search") {
