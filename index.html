@@ -1478,11 +1478,22 @@ function openDetailFromTag(id) {
    SECTION: js-history
    브라우저 뒤로가기/앞으로가기 지원
 ============================================= */
+// 상태 → 주소창에 표시할 해시 URL 변환 (항목/페이지별 고유 링크 생성)
+function hashForState(state) {
+  if (!state) return location.pathname + location.search;
+  if (state.page === "home")   return location.pathname + location.search; // 홈은 해시 없는 깔끔한 주소
+  if (state.page === "detail") return "#/doc/" + state.id;
+  if (state.page === "tag")    return "#/tag/" + encodeURIComponent(state.tag);
+  if (state.page === "list")   return state.q
+    ? "#/search/" + encodeURIComponent(state.q)
+    : "#/list/" + encodeURIComponent(state.cat || "");
+  return location.pathname + location.search;
+}
 function pushHistory(state) {
-  history.pushState(state, "");
+  history.pushState(state, "", hashForState(state));
 }
 function replaceHistory(state) {
-  history.replaceState(state, "");
+  history.replaceState(state, "", hashForState(state));
 }
 
 window.addEventListener("popstate", e => {
@@ -2448,6 +2459,47 @@ document.addEventListener("keydown",e=>{
     else if(document.body.classList.contains("is-tag")) document.getElementById("tag-back").click();
   }
 });
+
+/* =============================================
+   SECTION: js-deeplink-router
+   주소창 해시(#/doc/38 등)로 특정 항목 직접 진입/공유 지원
+============================================= */
+function routeFromHash() {
+  const h = location.hash || "";
+  const m = h.match(/^#\/(doc|tag|list|search)\/(.*)$/);
+  if (!m) return false;
+  const kind = m[1];
+  const val = decodeURIComponent(m[2]);
+
+  if (kind === "doc") {
+    const id = Number(val);
+    const d = DATA.find(x => x.id === id);
+    if (!d) return false;
+    // 뒤로가기 시 해당 카테고리 목록으로 복귀하도록 목록을 먼저 깔고 상세를 push
+    replaceHistory({page:"list", cat:d.category, q:""});
+    _goList(d.category, "", false);
+    openDetail(id, "is-list");
+    return true;
+  }
+  if (kind === "tag") {
+    _goTag(val, false);
+    replaceHistory({page:"tag", tag:val});
+    return true;
+  }
+  if (kind === "list") {
+    _goList(val, "", false);
+    replaceHistory({page:"list", cat:val, q:""});
+    return true;
+  }
+  if (kind === "search") {
+    _goList("", val, false);
+    replaceHistory({page:"list", cat:"", q:val});
+    return true;
+  }
+  return false;
+}
+// 최초 진입 시 공유된 해시 링크가 있으면 해당 화면으로 라우팅
+routeFromHash();
 </script>
 
 </body>
