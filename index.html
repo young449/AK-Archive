@@ -1495,8 +1495,11 @@ function hashForState(state) {
   if (state.page === "home")   return location.pathname + location.search; // 홈은 해시 없는 깔끔한 주소
   if (state.page === "detail") {
     const d = DATA.find(x => x.id === state.id);
-    const slug = (d && CAT_SLUG[d.category]) ? CAT_SLUG[d.category] : "doc";
-    return "#/" + slug + "/" + state.id;
+    if (!d || !CAT_SLUG[d.category]) return "#/doc/" + state.id; // 미매핑 카테고리는 기존 방식
+    const slug = CAT_SLUG[d.category];
+    // 제품은 제품명, 그 외(UX 히스토리·용어)는 번호 노출
+    const key = (d.category === "제품 모델") ? encodeURIComponent(d.title) : state.id;
+    return "#/" + slug + "/" + key;
   }
   if (state.page === "tag")    return "#/tag/" + encodeURIComponent(state.tag);
   if (state.page === "list")   return state.q
@@ -1907,8 +1910,17 @@ function _openDetail(id, prevPage, push){
         return `<button class="dlink" onclick="closeDetail();goList('용어사전','${q}')">${icon}${l.label}</button>`;
       }
       if(l.url.startsWith("#open:")){
-        const oid=Number(l.url.replace("#open:",""));
-        return `<button class="dlink" onclick="closeDetail(false);openDetail(${oid})">${icon}${l.label}</button>`;
+        const ref=l.url.slice(6); // "#open:" 이후
+        const parts=ref.split(":");
+        let tgt;
+        if(parts.length>=2 && SLUG_CAT[parts[0]]){            // 신형: #open:uxhistory:3
+          const cat=SLUG_CAT[parts[0]], key=parts.slice(1).join(":");
+          tgt=DATA.find(x=>x.category===cat && (String(x.id)===key || x.title===key));
+        }else{                                                // 구형: #open:24 (전역 id)
+          tgt=DATA.find(x=>String(x.id)===parts[0]);
+        }
+        if(tgt) return `<button class="dlink" onclick="closeDetail(false);openDetail(${tgt.id})">${icon}${l.label}</button>`;
+        return `<button class="dlink" disabled style="opacity:.5">${icon}${l.label}</button>`;
       }
       return `<a class="dlink" href="${l.url}" target="_blank" rel="noopener" data-doc-id="${d.id}" data-label="${l.label}" onclick="if(typeof gtag!=='undefined'){gtag('event','click_reference_link',{link_label:this.dataset.label,document_id:this.dataset.docId});}">${icon}${l.label}</a>`;
     }).join("")
@@ -2481,15 +2493,17 @@ document.addEventListener("keydown",e=>{
 ============================================= */
 function routeFromHash() {
   const h = location.hash || "";
-  // 상세: #/product/27 처럼 (카테고리 슬러그 + 숫자 id)
-  const dm = h.match(/^#\/([^\/]+)\/(\d+)\/?$/);
+  // 상세: #/product/SP4000 (제품명) 또는 #/uxhistory/3 (번호) — 카테고리 범위로 조회
+  const dm = h.match(/^#\/([^\/]+)\/(.+?)\/?$/);
   if (dm && SLUG_CAT[dm[1]]) {
-    const id = Number(dm[2]);
-    const d = DATA.find(x => x.id === id);
+    const cat = SLUG_CAT[dm[1]];
+    const key = decodeURIComponent(dm[2]);
+    let d = /^\d+$/.test(key) ? DATA.find(x => x.category === cat && String(x.id) === key) : null;
+    if (!d) d = DATA.find(x => x.category === cat && x.title === key); // 제품명 키
     if (!d) return false;
-    replaceHistory({page:"list", cat:d.category, q:""});
-    _goList(d.category, "", false);
-    openDetail(id, "is-list");
+    replaceHistory({page:"list", cat, q:""});
+    _goList(cat, "", false);
+    openDetail(d.id, "is-list");
     return true;
   }
   // 카테고리: #/product 처럼 단일 슬러그면 목록으로 (구 #/list/product 도 아래에서 호환 처리)
