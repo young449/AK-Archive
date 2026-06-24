@@ -435,7 +435,7 @@ GIF·Lottie 포맷에 무관하게 CPU·메모리 부하가 발생함.
    tags:["Others","Lottie","애니메이션","GIF","CPU","메모리","부하"],
    links:[{label:"Lottie Files",url:"https://lottiefiles.com/kr/"}]},
   {id:38,title:"펌웨어 업데이트 방법",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["Others"],models:[],date:"2026.06.24",author:"Ellie",authorInitial:"E",
-   desc:"펌웨어 업데이트를 위한 사전 프로그램 설치 안내. FileZilla(FTP) 및 Android 파일 전송(Mac) 설치 방법.",
+   desc:"펌웨어 업데이트 절차 안내. FileZilla(FTP)·Android 파일 전송(Mac) 설치 후, release 경로의 모델별 .hex 파일을 기기로 옮기는 방법.",
    body:`■■ 1. FileZilla 설치하기
 
 펌웨어 파일 전송을 위해 FTP 프로그램인 FileZilla를 설치합니다.
@@ -453,7 +453,18 @@ Mac에서 안드로이드 기기와 파일을 주고받기 위한 프로그램�
 
 !!img:images/history/firmware2.png|Android 파일 전송(Android File Transfer) 다운로드 페이지!!
 
-- 다운로드: https://www.softonic.kr/download/android-file-transfer/mac/post-download?dt=internalDownload`,
+- 다운로드: https://www.softonic.kr/download/android-file-transfer/mac/post-download?dt=internalDownload
+
+
+■■ 3. .hex 펌웨어 파일 옮기기
+
+FileZilla로 접속 후, 아래 경로에서 해당 모델의 .hex 파일을 Android 파일 전송으로 기기에 옮깁니다.
+
+!!img:images/history/firmware3.png|FileZilla — Astell&Kern 디렉터리!!
+
+- 경로: Astell&Kern > release > 해당 모델 폴더
+- 해당 모델의 .hex 파일을 선택
+- Android 파일 전송을 통해 기기로 복사`,
    tags:["Firmware","펌웨어","펌웨어업데이트","업데이트","filezilla","파일질라","AndroidFileTransfer","안드로이드파일전송","안드로이드"],
    links:[
      {label:"FileZilla 다운로드",url:"https://filezilla-project.org/download.php#close"},
