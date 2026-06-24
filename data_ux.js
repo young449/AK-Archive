@@ -434,6 +434,31 @@ GIF·Lottie 포맷에 무관하게 CPU·메모리 부하가 발생함.
 정확한 적용 범위는 Hoya·Hwan에게 확인 필요.`,
    tags:["Others","Lottie","애니메이션","GIF","CPU","메모리","부하"],
    links:[{label:"Lottie Files",url:"https://lottiefiles.com/kr/"}]},
+  {id:38,title:"펌웨어 업데이트 방법",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["Others"],models:[],date:"2026.06.24",author:"Ellie",authorInitial:"E",
+   desc:"펌웨어 업데이트를 위한 사전 프로그램 설치 안내. FileZilla(FTP) 및 Android 파일 전송(Mac) 설치 방법.",
+   body:`■■ 1. FileZilla 설치하기
+
+펌웨어 파일 전송을 위해 FTP 프로그램인 FileZilla를 설치합니다.
+
+!!img:images/history/firmware1.png|FileZilla 다운로드 페이지!!
+
+- 다운로드: https://filezilla-project.org/download.php#close
+- 반드시 FileZilla Client로 설치 (Server 아님)
+- 접속 아이디·비밀번호는 UXUI 팀에 문의
+
+
+■■ 2. Android 파일 전송 설치하기 (Mac)
+
+Mac에서 안드로이드 기기와 파일을 주고받기 위한 프로그램입니다.
+
+!!img:images/history/firmware2.png|Android 파일 전송(Android File Transfer) 다운로드 페이지!!
+
+- 다운로드: https://www.softonic.kr/download/android-file-transfer/mac/post-download?dt=internalDownload`,
+   tags:["Firmware","펌웨어","펌웨어업데이트","업데이트","filezilla","파일질라","AndroidFileTransfer","안드로이드파일전송","안드로이드"],
+   links:[
+     {label:"FileZilla 다운로드",url:"https://filezilla-project.org/download.php#close"},
+     {label:"Android 파일 전송 다운로드 (Mac)",url:"https://www.softonic.kr/download/android-file-transfer/mac/post-download?dt=internalDownload"},
+   ]},
   {id:9,title:"버튼 컴포넌트 스펙 v3",category:"디자인 가이드",models:[],date:"2025.03.08",author:"Ellie",authorInitial:"E",desc:"Primary / Secondary / Ghost 3종 버튼 스펙. 상태별 컬러 토큰 정의.",body:`버튼 높이: 40px (기본) / 32px (소형)\n\nPrimary → Crimson 700 (#CC1B38)\nSecondary → Neutrals 600 (#3A3A3A)\nDisabled → Neutrals 600 (#3A3A3A)`,tags:["UI","컴포넌트"],links:[{label:"피그마 — Button v3",url:"https://figma.com"}]},
   {id:10,title:"컬러 토큰 시스템 — Semantic",category:"디자인 가이드",models:[],date:"2025.04.02",author:"Ellie",authorInitial:"E",desc:"AK Design System Semantic 컬러 토큰 전체 정의.",body:`Background\n  color/bg/primary → Black 100%\n  color/bg/secondary → Neutrals 800\n\nText\n  color/text/default → White 100%\n  color/text/primary → Crimson 700`,tags:["토큰","컬러"],links:[]},
 ];
