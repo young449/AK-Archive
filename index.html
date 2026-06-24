@@ -1493,11 +1493,15 @@ function slugToCat(slug){ return SLUG_CAT[slug] || decodeURIComponent(slug); }
 function hashForState(state) {
   if (!state) return location.pathname + location.search;
   if (state.page === "home")   return location.pathname + location.search; // 홈은 해시 없는 깔끔한 주소
-  if (state.page === "detail") return "#/doc/" + state.id;
+  if (state.page === "detail") {
+    const d = DATA.find(x => x.id === state.id);
+    const slug = (d && CAT_SLUG[d.category]) ? CAT_SLUG[d.category] : "doc";
+    return "#/" + slug + "/" + state.id;
+  }
   if (state.page === "tag")    return "#/tag/" + encodeURIComponent(state.tag);
   if (state.page === "list")   return state.q
     ? "#/search/" + encodeURIComponent(state.q)
-    : "#/list/" + catToSlug(state.cat);
+    : "#/" + catToSlug(state.cat);
   return location.pathname + location.search;
 }
 function pushHistory(state) {
@@ -2477,6 +2481,25 @@ document.addEventListener("keydown",e=>{
 ============================================= */
 function routeFromHash() {
   const h = location.hash || "";
+  // 상세: #/product/27 처럼 (카테고리 슬러그 + 숫자 id)
+  const dm = h.match(/^#\/([^\/]+)\/(\d+)\/?$/);
+  if (dm && SLUG_CAT[dm[1]]) {
+    const id = Number(dm[2]);
+    const d = DATA.find(x => x.id === id);
+    if (!d) return false;
+    replaceHistory({page:"list", cat:d.category, q:""});
+    _goList(d.category, "", false);
+    openDetail(id, "is-list");
+    return true;
+  }
+  // 카테고리: #/product 처럼 단일 슬러그면 목록으로 (구 #/list/product 도 아래에서 호환 처리)
+  const cm = h.match(/^#\/([^\/]+)\/?$/);
+  if (cm && SLUG_CAT[cm[1]]) {
+    const cat = SLUG_CAT[cm[1]];
+    _goList(cat, "", false);
+    replaceHistory({page:"list", cat, q:""});
+    return true;
+  }
   const m = h.match(/^#\/(doc|tag|list|search)\/(.*)$/);
   if (!m) return false;
   const kind = m[1];
