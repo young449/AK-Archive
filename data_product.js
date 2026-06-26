@@ -15,7 +15,7 @@
 //  keyFeatures : ["...", ...]             주요 특징 (스캔용 3~5개)
 //  specs       : "..."                    주요 사양 (선택, 표 마크업)
 //
-// ※ SP4000T · PD20 의 keyConcept 는 BP 부재로 본문 기반 추정값 → 확정 시 교체 필요
+// ※ keyConcept 는 전 제품 BP(사업계획서) 기준으로 작성됨
 // =============================================
 
 const DATA_product = [
@@ -64,13 +64,28 @@ const DATA_product = [
    ]},
   {id:26, title:"SP4000T", category:"제품 모델", models:["A&ultima"], date:"2026.05.21", author:"Ellie", authorInitial:"E",
    credits:{PM:"Jay", PL:"Kane", UX:"Ellie", UI:"Luna"},
-   keyConcept:{title:"Shape your tube sound", desc:"진공관 음색을 단계별로 조율하는 A&ultima 플래그십. (BP 부재 — 추정값, 확정 필요)"},
-   desc:"A&ultima 라인의 플래그십 DAP.",
-   positioning:"Real Tube 기반 음색 조절과 사용성 개선을 적용한 A&ultima 플래그십 DAP입니다.",
+   keyConcept:{title:"Reimagine the analog sound", desc:"세 가지 진공관 모드로 완성한 아날로그 사운드."},
+   desc:"A&ultima 라인의 플래그십 DAP. DAP 최초 Real Quad Tube와 Triple Tube Mode, AK 최초 ROHM社 DAC을 탑재한 모델.",
+   positioning:"SP3000T의 Triple AMP System을 기본으로 아날로그 요소를 한층 강화한 A&ultima 플래그십. DAP 최초 Real Quad Tube와 Triple Tube Mode를 적용하고, AK 최초 ROHM社 DAC과 Titanium 소재를 채택한 모델입니다.",
    newFeatures:[
-     {name:"Tube Current", badge:"신규",
-      what:"진공관 내부 플레이트 전압을 3단계로 조절해 증폭률을 바꿔 음색을 변경. Triode(자연스럽고 따뜻함) / Pentode(힘있고 단단함) / Ultra Linear(균형).",
+     {name:"Quad Tube", badge:"신규",
+      what:"DAP 최초로 오리지널 Real Tube(Miniature Tube)를 Quad로 적용(Raytheon JAN6418 x4)해 아날로그 사운드를 강화.",
+      was:"SP3000T Dual Tube → SP4000T Quad Tube"},
+     {name:"Triple Tube Mode", badge:"신규",
+      what:"진공관을 3가지 모드로 전환해 음색 변경. Triode(자연스럽고 따뜻함) / Pentode(힘있고 단단함) / Ultra Linear(균형). SP3000T의 Tube Current Control 유지.",
       when:"곡·취향에 따라 음색을 바꾸고 싶을 때"},
+     {name:"Triple AMP Mode", badge:"신규",
+      what:"OPAMP·진공관을 조합한 3가지 앰프 모드 제공(SP3000T 계승).",
+      detail:`| 모드 | 설명 |
+| --- | --- |
+| OP Mode | OPAMP 단독 구동 |
+| Tube Mode | 진공관 앰프 단독 구동 |
+| Hybrid Mode | OPAMP + Tube 혼합 구동 |`},
+     {name:"ROHM社 DAC", badge:"신규",
+      what:"AK 최초로 ROHM BD34302EKV Dual DAC 탑재. AKM社 DAC에서 벗어나 새로운 사운드 캐릭터 확보.",
+      was:"기존 AKM社 DAC → ROHM社 DAC"},
+     {name:"Titanium 소재", badge:"신규",
+      what:"A&ultima의 럭셔리한 이미지 유지를 위해 Titanium 소재 적용."},
      {name:"배터리 보호 모드", badge:"개선",
       what:"충전 상한값을 사용자가 직접 선택할 수 있도록 개선.",
       was:"기존 85% 단일 고정값 → 80 / 85 / 90 / 95% 4단계 선택"},
@@ -86,12 +101,16 @@ const DATA_product = [
       when:"여러 곡을 주제별로 묶어 관리할 때"}
    ],
    keyFeatures:[
-     "Real Tube 기반 3단계 음색 조절(Tube Current)",
-     "사용자 지정 배터리 보호 충전 상한(80/85/90/95%)",
-     "USB 연결 방식 수동 선택 지원"
+     "DAP 최초 Real Quad Tube 탑재(JAN6418 x4)로 아날로그 사운드 강화",
+     "DAP 최초 Triple Tube Mode(Triode/Pentode/Ultra Linear) 제공",
+     "AK 최초 ROHM社 BD34302EKV Dual DAC 탑재",
+     "Triple AMP Mode·Tube Current Control 유지(SP3000T 계승)",
+     "고급 소재 Titanium 적용"
    ],
-   tags:["SP4000T","A&ultima","Tube","TubeCurrent","USB","USB설정","배터리보호모드","Collection","컬렉션","Favorite","즐겨찾기"],
-   files:[],
+   tags:["SP4000T","A&ultima","Tube","QuadTube","TripleTubeMode","TubeCurrent","TripleAMP","ROHM","Titanium","USB","배터리보호모드","Collection","컬렉션"],
+   files:[
+     {label:"SP4000T_사업계획서_0523.pdf", url:"files/SP4000T_BP_0523.pdf"},
+   ],
    links:[
      {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=9368-9568&t=f24YMy1BBxKGLVBr-1"},
      {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9751-56643&t=YVqta9mRIAIVw2Wd-1"},
@@ -105,9 +124,9 @@ const DATA_product = [
    ]},
   {id:2, title:"PD20", category:"제품 모델", models:["PD series"], date:"2026.05.20", author:"Ellie", authorInitial:"E",
    credits:{PM:"Luke", PL:"Evan", UX:"Luna", UI:"Luna"},
-   keyConcept:{title:"Sound tuned to your ears", desc:"청력 데이터로 맞추는 개인 맞춤 사운드. (BP 부재 — 추정값, 확정 필요)"},
-   desc:"PD series의 최신 모델.",
-   positioning:"물리 휠 조작과 청력 데이터 기반 개인 맞춤 사운드를 결합한 PD series 최신 모델입니다.",
+   keyConcept:{title:"Crafting your only one sound", desc:"Dual Wheel System으로 만드는 나만의 사운드."},
+   desc:"PD series의 최신 모델. 볼륨 휠과 별도의 Sound Master Wheel을 더한 Dual Wheel System 탑재.",
+   positioning:"볼륨 휠 외에 Sound Master Wheel을 더한 Dual Wheel System으로 나만의 사운드를 직접 만드는 PD series 모델입니다.",
    newFeatures:[
      {name:"Sound Master", badge:"신규",
       what:"디바이스 상단 물리 휠로 Bass / Mid / Treble을 독립 조절(160단계, −8.0~8.0). 휠을 누를 때마다 Bass→Mid→Treble 순환, 조작 종료 후 팝업 자동 소멸.",
@@ -136,8 +155,10 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
      "청력 측정 기반 퍼스널 사운드 제공",
      "Audiosphere 공간 음향 4종 모드"
    ],
-   tags:["PD20","PDseries","SoundMaster","사운드마스터","SoundStudio","사운드스튜디오","PersonalSound","퍼스널사운드","Equalizer","이퀄라이저","Audiosphere","오디오스피어"],
-   files:[],
+   tags:["PD20","PDseries","DualWheel","SoundMaster","사운드마스터","SoundStudio","사운드스튜디오","PersonalSound","퍼스널사운드","Equalizer","이퀄라이저","Audiosphere","오디오스피어"],
+   files:[
+     {label:"PD20_사업계획서_0324.pdf", url:"files/PD20_BP_0324.pdf"},
+   ],
    links:[
      {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=8627-2086&t=fhsxj64S8jwIqh1N-1"},
      {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9739-17741&t=YVqta9mRIAIVw2Wd-1"},
