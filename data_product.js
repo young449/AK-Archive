@@ -69,15 +69,14 @@ const DATA_product = [
    desc:"A&ultima 라인의 플래그십 DAP. DAP 최초 Real Quad Tube와 Triple Tube Mode, AK 최초 ROHM社 DAC을 탑재한 모델.",
    positioning:"SP3000T의 Triple AMP System을 기본으로 아날로그 요소를 한층 강화한 A&ultima 플래그십. DAP 최초 Real Quad Tube와 Triple Tube Mode를 적용하고, AK 최초 ROHM社 DAC과 Titanium 소재를 채택한 모델입니다.",
    newFeatures:[
-     {name:"Quad Tube", badge:"신규",
-      what:"DAP 최초로 오리지널 Real Tube(Miniature Tube)를 Quad로 적용(Raytheon JAN6418 x4)해 아날로그 사운드를 강화.",
-      was:"SP3000T Dual Tube → SP4000T Quad Tube"},
-     {name:"Triple Tube Mode", badge:"신규",
-      what:"진공관을 3가지 모드로 전환해 음색 변경. Triode(자연스럽고 따뜻함) / Pentode(힘있고 단단함) / Ultra Linear(균형). SP3000T의 Tube Current Control 유지.",
-      when:"곡·취향에 따라 음색을 바꾸고 싶을 때"},
-     {name:"Triple AMP Mode", badge:"신규",
-      what:"OPAMP·진공관을 조합한 3가지 앰프 모드 제공(SP3000T 계승).",
-      detail:`| 모드 | 설명 |
+     {name:"진공관 시스템", badge:"신규",
+      what:"DAP 최초 Real Quad Tube(Miniature Tube, Raytheon JAN6418 x4)에 진공관 3모드와 앰프 3모드를 결합한 아날로그 사운드 시스템.",
+      was:"SP3000T Dual Tube → SP4000T Quad Tube",
+      detail:`■ 진공관 모드 (Triple Tube Mode)
+Triode(자연스럽고 따뜻함) / Pentode(힘있고 단단함) / Ultra Linear(균형). SP3000T의 Tube Current Control 유지.
+
+■ 앰프 모드 (Triple AMP Mode)
+| 모드 | 설명 |
 | --- | --- |
 | OP Mode | OPAMP 단독 구동 |
 | Tube Mode | 진공관 앰프 단독 구동 |
@@ -252,12 +251,11 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
    desc:"SP3000을 기반으로 Real Tube 앰프를 탑재한 A&ultima DAP. Triple AMP System과 Dual DAC 구조로 아날로그 사운드를 구현한 모델.",
    positioning:"SP3000을 기반으로 오리지널 진공관(Real Tube)을 접목한 A&ultima DAP. 아날로그·디지털 신호 처리 분리에 아날로그 사운드 감성을 더해 A&ultima 라인업의 사운드 차별성을 잇는 모델입니다.",
    newFeatures:[
-     {name:"Real Tube (Dual)", badge:"신규",
-      what:"변형 진공관이 아닌 오리지널 진공관(Miniature Tube)을 Dual로 적용해 아날로그 사운드 감성 강화.",
-      was:"SP2000T Single Tube → SP3000T Dual Tube"},
-     {name:"Triple AMP System", badge:"신규",
-      what:"OPAMP·진공관을 조합한 3가지 앰프 모드로 음색 선택.",
-      detail:`| 모드 | 설명 |
+     {name:"진공관 시스템", badge:"신규",
+      what:"오리지널 Real Tube(Miniature Tube)를 Dual로 적용하고, OPAMP·진공관을 조합한 3가지 앰프 모드를 제공하는 아날로그 사운드 시스템.",
+      was:"SP2000T Single Tube → SP3000T Dual Tube",
+      detail:`■ 앰프 모드 (Triple AMP Mode)
+| 모드 | 설명 |
 | --- | --- |
 | OP Mode | OPAMP 단독 구동 |
 | Tube Mode | 진공관 앰프 단독 구동 |
@@ -327,12 +325,15 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
    positioning:"Octa DAC와 환경 적응형 EnviroTune을 탑재해 사운드 퍼포먼스와 휴대성을 함께 노린 PD series 신모델. A&norma 시리즈의 Pocket Hi-Fi 컨셉을 계승합니다.",
    newFeatures:[
      {name:"DAC Mode", badge:"신규",
-      what:"8개 DAC 중 구동 수를 직접 선택(Eco 4x / Performance 8x). On/Off가 아닌 모드 전환 방식이며, 알림 패널 빠른 설정으로 전환.",
-      when:"재생 시간을 아끼고 싶을 때(Eco) vs 최상의 음질이 필요할 때(Performance)",
+      what:"구동할 DAC 수를 직접 선택. Quad(4 DAC) ↔ Octa(8 DAC) 토글로 전환하며, On/Off가 아닌 모드 전환 방식. 활성화 시 전력 소모가 늘 수 있음.",
+      when:"재생 시간을 아끼고 싶을 때(Quad) vs 최상의 음질이 필요할 때(Octa)",
       detail:`| 모드 | 구동 DAC | 출력 (Unbal.) | 출력 (Bal.) |
 | --- | --- | --- | --- |
-| Eco Mode (4x DAC) | 4개 (Quad-DAC) | 3Vrms | 4Vrms |
-| Performance Mode (8x DAC) | 8개 (Octa-DAC) | 4Vrms | 8Vrms |`},
+| Quad (4x DAC) | 4개 (Quad-DAC) | 3Vrms | 4Vrms |
+| Octa (8x DAC) | 8개 (Octa-DAC) | 4Vrms | 8Vrms |`},
+     {name:"DAC Filter", badge:"신규",
+      what:"DAC 출력 필터를 4종 중 선택. Low Latency Fast / Low Latency Slow / Phase Compensated Fast / Phase Compensated Slow.",
+      when:"24bit / 192kHz 이하 PCM 포맷에서만 적용 (MQA · DSD 포맷 미적용)"},
      {name:"EnviroTune", badge:"신규",
       what:"마이크로 외부 노이즈를 측정해 최적의 사운드로 자동 조정하는 환경 적응형 기능.",
       when:"주변 소음 환경이 바뀔 때 자동 보정 (알림 패널 빠른 설정으로 접근)",
@@ -347,10 +348,10 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
    lineage:[
      {name:"EnviroTune", origin:"이번 신규 · DAP 최초", type:"최초"},
      {name:"Octa DAC", origin:"이번 신규", type:"최초"},
-     {name:"DAC Mode (Eco/Performance)", origin:"이번 신규", type:"최초"},
+     {name:"DAC Mode (Quad/Octa)", origin:"이번 신규", type:"최초"},
      {name:"Full Open Android", origin:"확인 필요", type:""}
    ],
-   tags:["PD5","PDseries","DAC","DACmode","EnviroTune"],
+   tags:["PD5","PDseries","DAC","DACmode","Quad","Octa","DACFilter","EnviroTune"],
    files:[
      {label:"PD5_사업계획서_0728.pdf", url:"files/PD5_BP_0728.pdf"},
    ],
