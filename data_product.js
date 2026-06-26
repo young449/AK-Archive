@@ -42,10 +42,11 @@ const DATA_product = [
       what:"스마트폰처럼 자유로운 APP 설치 지원. YouTube·스트리밍 등 소비자 불만 사항 해소.",
       was:"기존 AK DAP는 정해진 특정 APP만 설치 가능 → 자유 설치 지원"}
    ],
-   keyFeatures:[
-     "Real Quad 구성의 Octa DAC로 신호 처리 성능·사운드 향상",
-     "SP4000 독자 기술 High Driving Mode로 차별화",
-     "시장 요구를 반영한 Full Open Android 탑재"
+   lineage:[
+     {name:"Octa DAC", origin:"본 모델 최초", type:"최초"},
+     {name:"High Driving Mode", origin:"본 모델 최초 (SP4000 독자)", type:"최초"},
+     {name:"DAC 신호 분리 구조", origin:"SP3000 Hexa DAC부터", type:"계승"},
+     {name:"Full Open Android", origin:"A&ultima 최초", type:"최초"}
    ],
    tags:["SP4000","A&ultima","DAC","OctaDAC","HighDrivingMode","하이드라이빙모드","Android","FullOpenAndroid","풀안드로이드","안드로이드"],
    files:[
@@ -100,12 +101,12 @@ const DATA_product = [
       what:"기존 Favorite을 Collection으로 확장 재정의 (아래 참고 링크의 UX 히스토리 참조).",
       when:"여러 곡을 주제별로 묶어 관리할 때"}
    ],
-   keyFeatures:[
-     "DAP 최초 Real Quad Tube 탑재(JAN6418 x4)로 아날로그 사운드 강화",
-     "DAP 최초 Triple Tube Mode(Triode/Pentode/Ultra Linear) 제공",
-     "AK 최초 ROHM社 BD34302EKV Dual DAC 탑재",
-     "Triple AMP Mode·Tube Current Control 유지(SP3000T 계승)",
-     "고급 소재 Titanium 적용"
+   lineage:[
+     {name:"Real Tube", origin:"SP2000T부터 · 본 모델 Quad", type:"계승"},
+     {name:"Triple AMP Mode", origin:"SP2000T부터 계승", type:"계승"},
+     {name:"Triple Tube Mode", origin:"본 모델 최초", type:"최초"},
+     {name:"ROHM社 DAC", origin:"본 모델 최초 (AK 최초)", type:"최초"},
+     {name:"Titanium 소재", origin:"본 모델 최초", type:"최초"}
    ],
    tags:["SP4000T","A&ultima","Tube","QuadTube","TripleTubeMode","TubeCurrent","TripleAMP","ROHM","Titanium","USB","배터리보호모드","Collection","컬렉션"],
    files:[
@@ -150,10 +151,11 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
 | Immersive | 몰입감 있는 입체 음향 |
 | Echoic | 잔향감이 강한 공간 음향 |`}
    ],
-   keyFeatures:[
-     "물리 휠로 Bass/Mid/Treble을 직관적으로 조절(Sound Master)",
-     "청력 측정 기반 퍼스널 사운드 제공",
-     "Audiosphere 공간 음향 4종 모드"
+   lineage:[
+     {name:"Dual Wheel System", origin:"본 모델 최초", type:"최초"},
+     {name:"Sound Master (B/M/T 휠 조절)", origin:"본 모델 최초", type:"최초"},
+     {name:"청력 기반 퍼스널 사운드", origin:"확인 필요", type:""},
+     {name:"Audiosphere 공간 음향", origin:"확인 필요", type:""}
    ],
    tags:["PD20","PDseries","DualWheel","SoundMaster","사운드마스터","SoundStudio","사운드스튜디오","PersonalSound","퍼스널사운드","Equalizer","이퀄라이저","Audiosphere","오디오스피어"],
    files:[
@@ -188,15 +190,12 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
       what:"기존 SE300의 느린 속도 개선을 위해 Octa-Core 적용.",
       was:"SE300 대비 속도 개선"}
    ],
-   keyFeatures:[
-     "AKM 신형 DAC(AK4498EX) 세계 최초 적용 / 검증된 Hexa 구조",
-     "고객 요구를 반영한 Full Android 탑재",
-     "편리함과 확장성을 결합한 XLR 크래들 제공"
+   lineage:[
+     {name:"AK4498EX 신형 DAC", origin:"본 모델 최초 (세계 최초)", type:"최초"},
+     {name:"Hexa DAC 구조", origin:"SP3000부터 계승", type:"계승"},
+     {name:"XLR 크래들", origin:"본 모델 최초", type:"최초"},
+     {name:"Full Android", origin:"확인 필요", type:""}
    ],
-   specs:`!!table-equal!!
-| DAP | XLR 크래들 |
-| --- | --- |
-| · MTK8385 Octa-Core<br>· AK4191EQ x2 & AK4498EX x4<br>· 5.5" 1080×1920<br>· 32bit / 768kHz / DSD512<br>· BAL 6.3V / UNBAL 3.3V<br>· 3.5mm(SPDIF) + 4.4mm<br>· 256GB / micro SD Max 1TB<br>· BT (LDAC · aptX HD)<br>· Dual Wi-Fi (2.4/5GHz)<br>· 5,050mAh (~10h)<br>· PD 3.0 충전<br>· Stainless Steel 316L | · XLR Balanced L/R 출력 (NEUTRIK)<br>· USB×3 — DAP 연결 / 충전 / CD-Ripper<br>· Pogo Pin 연결<br>· PD 3.0 충전<br>· Aluminum |`,
    tags:["PD10","PDseries","HexaDAC","FullAndroid","XLR","크래들","SE400"],
    files:[
      {label:"PD10_사업계획서_0404.pdf", url:"files/PD10_BP_0404.pdf"},
@@ -227,11 +226,11 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
       what:"고속 충전 외 PD 충전과 무선 충전까지 적용해 차별화.",
       was:"기존 충전 방식 대비 PD·무선 충전 추가"}
    ],
-   keyFeatures:[
-     "디지털·아날로그 신호 처리를 물리적으로 분리한 HEXA DAC 구조",
-     "AK4191(Dual) + AK4499EX Quad 구성",
-     "DAP 세계 최초 Stainless Steel 904L 소재 적용",
-     "All to DSD·출력 상향·무선 충전으로 경쟁력 강화"
+   lineage:[
+     {name:"HEXA DAC 구조", origin:"본 모델 최초 (DAP 세계 최초)", type:"최초"},
+     {name:"AK4191(Dual) + AK4499EX Quad 구성", origin:"본 모델 최초", type:"최초"},
+     {name:"Stainless Steel 904L", origin:"본 모델 최초 (DAP 세계 최초)", type:"최초"},
+     {name:"All to DSD · 출력 상향 · 무선 충전", origin:"SP2000 대비 강화", type:"계승"}
    ],
    tags:["SP3000","A&ultima","HexaDAC","HEXADAC","StainlessSteel","904L","NoiseSeparation","노이즈분리","NewSoundFrontier"],
    files:[
@@ -264,11 +263,11 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
 | Tube Mode | 진공관 앰프 단독 구동 |
 | Hybrid Mode | OPAMP + Tube 혼합 구동 |`}
    ],
-   keyFeatures:[
-     "Triple AMP System(OP/Tube/Hybrid) 제공",
-     "오리지널 Real Tube를 Dual로 적용한 아날로그 사운드",
-     "AK4191 & AK4499 Dual 구성으로 A&ultima 퀄리티 유지",
-     "가격·차별화를 위해 Aluminum 소재 적용"
+   lineage:[
+     {name:"Real Tube", origin:"SP2000T부터 · 본 모델 Dual", type:"계승"},
+     {name:"Triple AMP System", origin:"SP2000T부터 계승", type:"계승"},
+     {name:"AK4191 & AK4499 Dual 구성", origin:"SP3000 계열", type:"계승"},
+     {name:"Aluminum 소재", origin:"본 모델 적용", type:""}
    ],
    tags:["SP3000T","A&ultima","RealTube","진공관","TripleAMP","HybridAMP","DualDAC"],
    files:[
@@ -301,10 +300,10 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
 | 무게 | 500g | 250g |
 | Material | Stainless Steel 904L | Aluminum |`}
    ],
-   keyFeatures:[
-     "SP3000 동일 Hexa DAC 구조 유지",
-     "4.1인치·250g 소형 경량 바디로 휴대성 극대화",
-     "가격 경쟁력($2,300)과 고품질 사운드 양립"
+   lineage:[
+     {name:"Hexa DAC 구조", origin:"SP3000부터 계승", type:"계승"},
+     {name:"소형·경량 설계 (250g)", origin:"본 모델 최초", type:"최초"},
+     {name:"Aluminum 소재", origin:"본 모델 적용", type:""}
    ],
    tags:["SP3000M","A&ultima","HexaDAC","휴대성","PerfectBalance","소형","경량"],
    files:[
@@ -345,10 +344,11 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
 
 ※ 기능 구현 진행 중(5월 개발 완료 예정). Manual 세부 설정 항목은 추후 업데이트 예정.`}
    ],
-   keyFeatures:[
-     "DAP 최초 마이크 기반 적응형 사운드(EnviroTune)",
-     "Octa DAC로 동급 최고 수준 음질",
-     "Eco / Performance DAC Mode 선택 가능"
+   lineage:[
+     {name:"EnviroTune", origin:"본 모델 최초 (DAP 최초)", type:"최초"},
+     {name:"Octa DAC", origin:"본 모델 최초", type:"최초"},
+     {name:"DAC Mode (Eco/Performance)", origin:"본 모델 최초", type:"최초"},
+     {name:"Full Open Android", origin:"확인 필요", type:""}
    ],
    tags:["PD5","PDseries","DAC","DACmode","EnviroTune"],
    files:[
