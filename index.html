@@ -865,6 +865,85 @@ hr.dv{border:none;border-top:1px solid var(--div-1);margin:20px 0}
 #d-body table.table-col-equal td{width:50%}
 
 /* =============================================
+   SECTION: css-unified-template
+   통합 제품 상세 템플릿 (포지셔닝 / 신기능 / 주요특징 / 주요사양)
+============================================= */
+/* 공통 섹션 라벨 */
+.tpl-label{
+  font-size:14px;font-family:var(--mono);
+  text-transform:uppercase;letter-spacing:0.12em;
+  color:var(--n-300);margin-bottom:12px;
+  display:flex;align-items:center;gap:8px;
+}
+.tpl-label .tpl-count{
+  font-size:12px;color:var(--text-3);letter-spacing:0;text-transform:none;
+}
+/* 라인업 포지셔닝 */
+#d-positioning{margin:0 0 32px}
+#d-positioning:empty{display:none}
+#d-positioning .pos-text{
+  font-size:16px;line-height:1.8;color:var(--text-2);
+}
+/* 신기능 */
+#d-newfeatures{margin:0 0 32px}
+#d-newfeatures:empty{display:none}
+.nf-list{display:flex;flex-direction:column;gap:10px}
+.nf-card{
+  background:var(--n-800);border:1px solid var(--div-2);
+  border-radius:12px;padding:16px 18px;
+}
+.nf-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.nf-name{font-size:16px;font-weight:600;color:var(--text-1)}
+.nf-badge{
+  font-size:11px;font-weight:700;letter-spacing:0.04em;
+  padding:2px 8px;border-radius:var(--r-xs);flex-shrink:0;
+}
+.nf-badge.nf-new{background:rgba(27,204,163,0.16);color:#3FE0BD}
+.nf-badge.nf-imp{background:rgba(255,187,0,0.14);color:#FFC83D}
+.nf-rows{display:flex;flex-direction:column;gap:6px}
+.nf-row{display:flex;gap:10px;font-size:14px;line-height:1.65}
+.nf-k{
+  flex-shrink:0;width:58px;
+  font-size:12px;font-weight:600;color:var(--n-300);
+  padding-top:1px;
+}
+.nf-v{color:var(--text-2)}
+.nf-row.nf-was .nf-v{color:#7DC0FF}
+.nf-detail{margin-top:12px;padding-top:4px}
+.nf-detail .body-h2{
+  display:block;font-size:15px;font-weight:500;color:var(--text-1);
+  margin:14px 0 4px;line-height:1.35;
+}
+.nf-detail .body-h2:first-child{margin-top:2px}
+.nf-detail .body-pre{display:block;white-space:pre-wrap;margin-bottom:2px;font-size:14px;color:var(--text-2);line-height:1.7}
+/* 주요 특징 */
+#d-keyfeatures{margin:0 0 32px}
+#d-keyfeatures:empty{display:none}
+.kf-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.kf-list li{
+  position:relative;padding-left:20px;
+  font-size:16px;line-height:1.6;color:var(--text-2);
+}
+.kf-list li::before{
+  content:"";position:absolute;left:4px;top:10px;
+  width:5px;height:5px;border-radius:50%;background:var(--cr-200);
+}
+/* 주요 사양 */
+#d-specs{margin:0 0 32px}
+#d-specs:empty{display:none}
+/* 신기능/사양 영역 내 표 — 본문 표와 동일 스타일 */
+.nf-detail table,#d-specs table{
+  width:100%;border-collapse:collapse;margin:10px 0 6px;font-size:14px;white-space:normal;
+}
+.nf-detail th,.nf-detail td,#d-specs th,#d-specs td{
+  padding:10px 14px;border:1px solid var(--div-2);text-align:left;vertical-align:top;color:var(--text-2);
+}
+.nf-detail th,#d-specs th{background:var(--n-700);color:var(--text-1);font-weight:600}
+.nf-detail tr:nth-child(even) td,#d-specs tr:nth-child(even) td{background:rgba(255,255,255,0.02)}
+#d-specs table.table-col-equal{table-layout:fixed}
+#d-specs table.table-col-equal th,#d-specs table.table-col-equal td{width:50%}
+
+/* =============================================
    SECTION: css-responsive
    브레이크포인트 설계
    ─ Desktop     : ≥ 960px  (기본값)
@@ -1338,6 +1417,10 @@ body.is-tag #tag-page{display:block}
       <hr class="dv"/>
       <div id="d-credits"></div>
       <div id="d-keyconcept"><div class="kc-label">Key Concept</div><div id="kc-body"></div></div>
+      <div id="d-positioning"></div>
+      <div id="d-newfeatures"></div>
+      <div id="d-keyfeatures"></div>
+      <div id="d-specs"></div>
       <div id="d-body"></div>
       <div id="d-images"></div>
       <div id="d-files-wrap"><div id="d-files-label">첨부 파일</div><div id="d-files"></div></div>
@@ -1860,7 +1943,7 @@ function _openDetail(id, prevPage, push){
   const fmtDate=dp.length===3?`${dp[0]}. ${parseInt(dp[1])}. ${parseInt(dp[2])}.`:d.date;
   document.getElementById("d-name").textContent=d.author;
   document.getElementById("d-date").textContent=fmtDate;
-  document.getElementById("d-body").innerHTML=renderBody(d.body);
+  document.getElementById("d-body").innerHTML=d.body?renderBody(d.body):"";
   // 담당자 크레딧
   const credEl=document.getElementById("d-credits");
   if(d.credits){
@@ -1883,7 +1966,38 @@ function _openDetail(id, prevPage, push){
   } else {
     kcWrap.classList.remove("show");
   }
-  // 이미지 그리드
+  // ── 통합 템플릿 섹션 (제품 전용 구조화 필드) ──
+  const _esc=s=>String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  // 라인업 포지셔닝
+  const posEl=document.getElementById("d-positioning");
+  posEl.innerHTML=d.positioning
+    ?`<div class="tpl-label">라인업 포지셔닝</div><div class="pos-text">${_esc(d.positioning)}</div>`
+    :"";
+  // 신기능
+  const nfEl=document.getElementById("d-newfeatures");
+  if(d.newFeatures && d.newFeatures.length){
+    const cards=d.newFeatures.map(f=>{
+      const badge=f.badge==="개선"
+        ?`<span class="nf-badge nf-imp">개선</span>`
+        :`<span class="nf-badge nf-new">신규</span>`;
+      let rows=`<div class="nf-row"><span class="nf-k">무엇</span><span class="nf-v">${_esc(f.what)}</span></div>`;
+      if(f.when) rows+=`<div class="nf-row"><span class="nf-k">언제</span><span class="nf-v">${_esc(f.when)}</span></div>`;
+      if(f.was)  rows+=`<div class="nf-row nf-was"><span class="nf-k">기존 대비</span><span class="nf-v">${_esc(f.was)}</span></div>`;
+      const detail=f.detail?`<div class="nf-detail">${renderBody(f.detail)}</div>`:"";
+      return `<div class="nf-card"><div class="nf-head"><span class="nf-name">${_esc(f.name)}</span>${badge}</div><div class="nf-rows">${rows}</div>${detail}</div>`;
+    }).join("");
+    nfEl.innerHTML=`<div class="tpl-label">신기능 <span class="tpl-count">이 모델에서 새로 추가·변경된 기능</span></div><div class="nf-list">${cards}</div>`;
+  } else { nfEl.innerHTML=""; }
+  // 주요 특징
+  const kfEl=document.getElementById("d-keyfeatures");
+  kfEl.innerHTML=(d.keyFeatures && d.keyFeatures.length)
+    ?`<div class="tpl-label">주요 특징</div><ul class="kf-list">${d.keyFeatures.map(k=>`<li>${_esc(k)}</li>`).join("")}</ul>`
+    :"";
+  // 주요 사양
+  const specEl=document.getElementById("d-specs");
+  specEl.innerHTML=d.specs
+    ?`<div class="tpl-label">주요 사양</div>${renderBody(d.specs)}`
+    :"";
   const imgEl=document.getElementById("d-images");
   const detailImgs = d.images ? d.images.filter(img => !img.src.toLowerCase().includes('_thumb')) : [];
   if(detailImgs.length){
