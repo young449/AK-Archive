@@ -43,18 +43,18 @@ const DATA_product = [
       was:"기존 AK DAP는 정해진 특정 APP만 설치 가능 → 자유 설치 지원"}
    ],
    lineage:[
-     {name:"Octa DAC", origin:"본 모델 최초", type:"최초"},
-     {name:"High Driving Mode", origin:"본 모델 최초 (SP4000 독자)", type:"최초"},
-     {name:"DAC 신호 분리 구조", origin:"SP3000 Hexa DAC부터", type:"계승"},
-     {name:"Full Open Android", origin:"A&ultima 최초", type:"최초"}
+     {name:"Octa DAC", origin:"이번 신규", type:"최초"},
+     {name:"High Driving Mode", origin:"이번 신규 · SP4000 독자", type:"최초"},
+     {name:"DAC 신호 분리 구조", origin:"SP3000부터", type:"계승"},
+     {name:"Full Open Android", origin:"이번 신규 · A&ultima 최초", type:"최초"}
    ],
    tags:["SP4000","A&ultima","DAC","OctaDAC","HighDrivingMode","하이드라이빙모드","Android","FullOpenAndroid","풀안드로이드","안드로이드"],
    files:[
      {label:"SP4000_사업계획서_0430.pdf", url:"files/SP4000_BP_0430.pdf"},
    ],
    links:[
-     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/BWddwuTWmaWdqacRZFGrsa/UX_Crimson_Common?node-id=520-14833&t=4AetULsfsg8ocbzt-1"},
-     {label:"UI Figma", url:"https://www.figma.com/design/CZdIQpzaGRVJOXF7ml8b7f/UI_Crimson_Common-Design-2.0-?node-id=28-54118&t=fRtVetOx6sLv1byy-1"},
+     {label:"Figma_UX", url:"https://www.figma.com/design/BWddwuTWmaWdqacRZFGrsa/UX_Crimson_Common?node-id=520-14833&t=4AetULsfsg8ocbzt-1"},
+     {label:"Figma_UI", url:"https://www.figma.com/design/CZdIQpzaGRVJOXF7ml8b7f/UI_Crimson_Common-Design-2.0-?node-id=28-54118&t=fRtVetOx6sLv1byy-1"},
    ],
    images:[
      {src:"images/SP4000/SP4000_thumb.png", alt:"SP4000 썸네일"},
@@ -103,19 +103,19 @@ const DATA_product = [
    ],
    lineage:[
      {name:"Real Tube", origin:"SP2000T부터 · 본 모델 Quad", type:"계승"},
-     {name:"Triple AMP Mode", origin:"SP2000T부터 계승", type:"계승"},
-     {name:"Triple Tube Mode", origin:"본 모델 최초", type:"최초"},
-     {name:"ROHM社 DAC", origin:"본 모델 최초 (AK 최초)", type:"최초"},
-     {name:"Titanium 소재", origin:"본 모델 최초", type:"최초"}
+     {name:"Triple AMP Mode", origin:"SP2000T부터", type:"계승"},
+     {name:"Triple Tube Mode", origin:"이번 신규", type:"최초"},
+     {name:"ROHM社 DAC", origin:"이번 신규 · AK 최초", type:"최초"},
+     {name:"Titanium 소재", origin:"이번 신규", type:"최초"}
    ],
    tags:["SP4000T","A&ultima","Tube","QuadTube","TripleTubeMode","TubeCurrent","TripleAMP","ROHM","Titanium","USB","배터리보호모드","Collection","컬렉션"],
    files:[
      {label:"SP4000T_사업계획서_0523.pdf", url:"files/SP4000T_BP_0523.pdf"},
    ],
    links:[
-     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=9368-9568&t=f24YMy1BBxKGLVBr-1"},
-     {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9751-56643&t=YVqta9mRIAIVw2Wd-1"},
-     {label:"UX 히스토리 Favorite에서 Collection으로(기능 확장 재정의)", url:"#open:24"},
+     {label:"Figma_UX", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=9368-9568&t=f24YMy1BBxKGLVBr-1"},
+     {label:"Figma_UI", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9751-56643&t=YVqta9mRIAIVw2Wd-1"},
+     {label:"UX 히스토리 · Collection", url:"#open:24"},
    ],
    images:[
      {src:"images/SP4000T/SP4000T_thumb.png", alt:"SP4000T 썸네일"},
@@ -152,8 +152,8 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
 | Echoic | 잔향감이 강한 공간 음향 |`}
    ],
    lineage:[
-     {name:"Dual Wheel System", origin:"본 모델 최초", type:"최초"},
-     {name:"Sound Master (B/M/T 휠 조절)", origin:"본 모델 최초", type:"최초"},
+     {name:"Dual Wheel System", origin:"이번 신규", type:"최초"},
+     {name:"Sound Master (B/M/T 휠 조절)", origin:"이번 신규", type:"최초"},
      {name:"청력 기반 퍼스널 사운드", origin:"확인 필요", type:""},
      {name:"Audiosphere 공간 음향", origin:"확인 필요", type:""}
    ],
@@ -162,8 +162,8 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
      {label:"PD20_사업계획서_0324.pdf", url:"files/PD20_BP_0324.pdf"},
    ],
    links:[
-     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=8627-2086&t=fhsxj64S8jwIqh1N-1"},
-     {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9739-17741&t=YVqta9mRIAIVw2Wd-1"},
+     {label:"Figma_UX", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=8627-2086&t=fhsxj64S8jwIqh1N-1"},
+     {label:"Figma_UI", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9739-17741&t=YVqta9mRIAIVw2Wd-1"},
    ],
    images:[
      {src:"images/PD20/PD20_thumb.png", alt:"PD20 썸네일"},
@@ -191,9 +191,9 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
       was:"SE300 대비 속도 개선"}
    ],
    lineage:[
-     {name:"AK4498EX 신형 DAC", origin:"본 모델 최초 (세계 최초)", type:"최초"},
-     {name:"Hexa DAC 구조", origin:"SP3000부터 계승", type:"계승"},
-     {name:"XLR 크래들", origin:"본 모델 최초", type:"최초"},
+     {name:"AK4498EX 신형 DAC", origin:"이번 신규 · 세계 최초", type:"최초"},
+     {name:"Hexa DAC 구조", origin:"SP3000부터", type:"계승"},
+     {name:"XLR 크래들", origin:"이번 신규", type:"최초"},
      {name:"Full Android", origin:"확인 필요", type:""}
    ],
    tags:["PD10","PDseries","HexaDAC","FullAndroid","XLR","크래들","SE400"],
@@ -201,8 +201,8 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
      {label:"PD10_사업계획서_0404.pdf", url:"files/PD10_BP_0404.pdf"},
    ],
    links:[
-     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=4115-1020&t=f24YMy1BBxKGLVBr-1"},
-     {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=10316-25448&t=33he04t05HBedODK-1"},
+     {label:"Figma_UX", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=4115-1020&t=f24YMy1BBxKGLVBr-1"},
+     {label:"Figma_UI", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=10316-25448&t=33he04t05HBedODK-1"},
    ],
    images:[
      {src:"images/PD10/PD10_thumb.png", alt:"PD10 썸네일"},
@@ -227,18 +227,18 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
       was:"기존 충전 방식 대비 PD·무선 충전 추가"}
    ],
    lineage:[
-     {name:"HEXA DAC 구조", origin:"본 모델 최초 (DAP 세계 최초)", type:"최초"},
-     {name:"AK4191(Dual) + AK4499EX Quad 구성", origin:"본 모델 최초", type:"최초"},
-     {name:"Stainless Steel 904L", origin:"본 모델 최초 (DAP 세계 최초)", type:"최초"},
-     {name:"All to DSD · 출력 상향 · 무선 충전", origin:"SP2000 대비 강화", type:"계승"}
+     {name:"HEXA DAC 구조", origin:"이번 신규 · 세계 최초", type:"최초"},
+     {name:"AK4191(Dual) + AK4499EX Quad 구성", origin:"이번 신규", type:"최초"},
+     {name:"Stainless Steel 904L", origin:"이번 신규 · 세계 최초", type:"최초"},
+     {name:"All to DSD · 출력 상향 · 무선 충전", origin:"SP2000부터", type:"계승"}
    ],
    tags:["SP3000","A&ultima","HexaDAC","HEXADAC","StainlessSteel","904L","NoiseSeparation","노이즈분리","NewSoundFrontier"],
    files:[
      {label:"SP3000_사업계획서_0924.pdf", url:"files/SP3000_BP_0924.pdf"},
    ],
    links:[
-     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=1376-6056&t=f24YMy1BBxKGLVBr-1"},
-     {label:"UI Figma", url:"https://www.figma.com/design/CZdIQpzaGRVJOXF7ml8b7f/UI_Crimson_Common-Design-2.0-?node-id=28-54118&t=5TCq9OF8pi5rx8Pa-1"},
+     {label:"Figma_UX", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=1376-6056&t=f24YMy1BBxKGLVBr-1"},
+     {label:"Figma_UI", url:"https://www.figma.com/design/CZdIQpzaGRVJOXF7ml8b7f/UI_Crimson_Common-Design-2.0-?node-id=28-54118&t=5TCq9OF8pi5rx8Pa-1"},
    ],
    images:[
      {src:"images/SP3000/SP3000_thumb.png", alt:"SP3000 썸네일"},
@@ -265,7 +265,7 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
    ],
    lineage:[
      {name:"Real Tube", origin:"SP2000T부터 · 본 모델 Dual", type:"계승"},
-     {name:"Triple AMP System", origin:"SP2000T부터 계승", type:"계승"},
+     {name:"Triple AMP System", origin:"SP2000T부터", type:"계승"},
      {name:"AK4191 & AK4499 Dual 구성", origin:"SP3000 계열", type:"계승"},
      {name:"Aluminum 소재", origin:"본 모델 적용", type:""}
    ],
@@ -274,8 +274,8 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
      {label:"SP3000T_사업계획서.pdf", url:"files/SP3000T_BP.pdf"},
    ],
    links:[
-     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=1913-1516&t=f24YMy1BBxKGLVBr-1"},
-     {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=1620-10396&t=33he04t05HBedODK-1"},
+     {label:"Figma_UX", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=1913-1516&t=f24YMy1BBxKGLVBr-1"},
+     {label:"Figma_UI", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=1620-10396&t=33he04t05HBedODK-1"},
    ],
    images:[
      {src:"images/SP3000T/SP3000T_thumb.png", alt:"SP3000T 썸네일"},
@@ -301,8 +301,8 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
 | Material | Stainless Steel 904L | Aluminum |`}
    ],
    lineage:[
-     {name:"Hexa DAC 구조", origin:"SP3000부터 계승", type:"계승"},
-     {name:"소형·경량 설계 (250g)", origin:"본 모델 최초", type:"최초"},
+     {name:"Hexa DAC 구조", origin:"SP3000부터", type:"계승"},
+     {name:"소형·경량 설계 (250g)", origin:"이번 신규", type:"최초"},
      {name:"Aluminum 소재", origin:"본 모델 적용", type:""}
    ],
    tags:["SP3000M","A&ultima","HexaDAC","휴대성","PerfectBalance","소형","경량"],
@@ -310,8 +310,8 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
      {label:"SP3000M_사업계획서.pdf", url:"files/SP3000M_BP.pdf"},
    ],
    links:[
-     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=3502-2&t=f24YMy1BBxKGLVBr-1"},
-     {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=3146-19766&t=33he04t05HBedODK-1"},
+     {label:"Figma_UX", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=3502-2&t=f24YMy1BBxKGLVBr-1"},
+     {label:"Figma_UI", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=3146-19766&t=33he04t05HBedODK-1"},
    ],
    images:[
      {src:"images/SP3000M/SP3000M_thumb.png", alt:"SP3000M 썸네일"},
@@ -345,9 +345,9 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
 ※ 기능 구현 진행 중(5월 개발 완료 예정). Manual 세부 설정 항목은 추후 업데이트 예정.`}
    ],
    lineage:[
-     {name:"EnviroTune", origin:"본 모델 최초 (DAP 최초)", type:"최초"},
-     {name:"Octa DAC", origin:"본 모델 최초", type:"최초"},
-     {name:"DAC Mode (Eco/Performance)", origin:"본 모델 최초", type:"최초"},
+     {name:"EnviroTune", origin:"이번 신규 · DAP 최초", type:"최초"},
+     {name:"Octa DAC", origin:"이번 신규", type:"최초"},
+     {name:"DAC Mode (Eco/Performance)", origin:"이번 신규", type:"최초"},
      {name:"Full Open Android", origin:"확인 필요", type:""}
    ],
    tags:["PD5","PDseries","DAC","DACmode","EnviroTune"],
@@ -355,8 +355,8 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
      {label:"PD5_사업계획서_0728.pdf", url:"files/PD5_BP_0728.pdf"},
    ],
    links:[
-     {label:"UX 시나리오 Figma", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=9368-9568&t=f24YMy1BBxKGLVBr-1"},
-     {label:"UI Figma", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=10316-25448&t=33he04t05HBedODK-1"},
+     {label:"Figma_UX", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=9368-9568&t=f24YMy1BBxKGLVBr-1"},
+     {label:"Figma_UI", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=10316-25448&t=33he04t05HBedODK-1"},
    ],
    images:[
      {src:"images/PD5/PD5_1.png", alt:"PD5 전면"},

@@ -723,67 +723,54 @@ mark{background:transparent;color:var(--cr-200);border-radius:0;padding:0;font-w
 }
 
 hr.dv{border:none;border-top:1px solid var(--div-1);margin:20px 0}
-/* 첨부 파일 */
-#d-files-wrap{
-  margin-top:20px;
-  padding-top:20px;
-  border-top:1px solid var(--div-1);
+/* 부가자료 묶음 (첨부 · 참고 링크 · 태그) */
+#d-resources{margin-top:34px;border-top:1px solid var(--div-2);padding-top:26px}
+#d-resources-box{
+  background:rgba(255,255,255,0.02);border-radius:var(--r-lg);
+  padding:18px 20px;display:flex;flex-direction:column;gap:18px;
 }
-#d-files-wrap:has(#d-files:empty){display:none}
-#d-files-label{
-  font-size:14px;font-family:var(--mono);
+/* 묶음 안 공통 라벨 — 본문 섹션보다 조용하게 */
+#d-files-label,#d-links-label,#d-chips-label{
+  font-size:12px;font-family:var(--mono);
   text-transform:uppercase;letter-spacing:0.12em;
-  color:var(--n-300);margin-bottom:10px;
+  color:var(--n-400);margin-bottom:10px;
 }
-#d-files{display:flex;flex-direction:column;gap:6px}
+/* 첨부 파일 */
+#d-files-wrap:has(#d-files:empty){display:none}
+#d-files{display:flex;flex-wrap:wrap;gap:8px}
 .dfile{
-  display:inline-flex;align-items:center;gap:8px;
-  padding:9px 14px;
-  background:var(--n-700);border:1px solid var(--div-2);
-  border-radius:var(--r-sm);
-  font-size:14px;color:var(--text-2);
+  display:inline-flex;align-items:center;gap:7px;
+  padding:8px 13px;
+  background:var(--n-800);border:1px solid var(--div-2);
+  border-radius:var(--r-xl);
+  font-size:13px;color:var(--text-2);
   font-family:var(--font);width:fit-content;
   text-decoration:none;
   transition:background 0.12s,color 0.12s,border-color 0.12s;
 }
-.dfile:hover{background:var(--n-600);color:var(--text-1);border-color:var(--n-500)}
-.dfile svg{flex-shrink:0;opacity:0.6}
-/* 참고링크 — Crimson 200, 밑줄 */
-#d-links-wrap{margin-top:20px;padding-top:20px;border-top:1px solid var(--div-1)}
+.dfile:hover{background:var(--n-700);color:var(--text-1);border-color:var(--n-500)}
+.dfile svg{flex-shrink:0;opacity:0.7}
+/* 참고 링크 — 칩 형태 */
 #d-links-head{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-#d-links-label{
-  font-size:14px;font-family:var(--mono);
-  text-transform:uppercase;letter-spacing:0.12em;
-  color:var(--n-300);
-}
 #d-links-note{
-  font-size:12px;font-family:var(--font);line-height:1.5;
+  font-size:11px;font-family:var(--font);line-height:1.5;
   color:var(--n-500);opacity:0.9;
 }
-#d-links{display:flex;flex-direction:column;gap:6px}
+#d-links{display:flex;flex-wrap:wrap;gap:8px}
 .dlink{
-  display:inline-flex;align-items:center;gap:7px;
-  font-size:16px;color:#E7727F;
-  text-decoration:underline;text-underline-offset:3px;
-  text-decoration-color:rgba(231,114,127,0.4);
-  background:none;border:none;cursor:pointer;
-  font-family:var(--font);padding:0;width:fit-content;
-  transition:color 0.12s,text-decoration-color 0.12s;
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:13px;color:#E7727F;
+  text-decoration:none;
+  background:var(--n-800);border:1px solid var(--div-2);
+  border-radius:var(--r-xl);cursor:pointer;
+  font-family:var(--font);padding:7px 12px;width:fit-content;
+  transition:background 0.12s,border-color 0.12s,color 0.12s;
 }
-.dlink:hover{color:#F09AA3;text-decoration-color:rgba(240,154,163,0.7)}
-.dlink svg{flex-shrink:0;opacity:0.7}
-/* 태그 — Sky Blue 200 */
-#d-chips-wrap{
-  margin-top:20px;
-  padding-top:20px;
-  border-top:1px solid var(--div-1);
-}
+.dlink:hover{background:var(--n-700);border-color:var(--n-500);color:#F09AA3}
+.dlink svg{flex-shrink:0;opacity:0.8}
+/* 태그 — 묶음 안에서 얇은 선으로 한 번 더 구분 */
 #d-chips-wrap:has(#d-chips:empty){display:none}
-#d-chips-label{
-  font-size:14px;font-family:var(--mono);
-  text-transform:uppercase;letter-spacing:0.12em;
-  color:var(--n-300);margin-bottom:10px;
-}
+#d-chips-wrap{border-top:1px solid rgba(255,255,255,0.06);padding-top:14px}
 #d-chips{display:flex;gap:0;flex-wrap:wrap}
 .tag{
   display:inline-flex;align-items:center;
@@ -1436,9 +1423,11 @@ body.is-tag #tag-page{display:block}
       <div id="d-lineage"></div>
       <div id="d-body"></div>
       <div id="d-images"></div>
-      <div id="d-files-wrap"><div id="d-files-label">첨부 파일</div><div id="d-files"></div></div>
-      <div id="d-links-wrap"><div id="d-links-head"><span id="d-links-label">참고 링크</span><span id="d-links-note">(접근 권한이 제한된 링크는 UX/UI 팀에 문의해 주세요.)</span></div><div id="d-links"></div></div>
-      <div id="d-chips-wrap"><div id="d-chips-label">Tag</div><div id="d-chips"></div></div>
+      <div id="d-resources"><div id="d-resources-box">
+        <div id="d-files-wrap"><div id="d-files-label">첨부 파일</div><div id="d-files"></div></div>
+        <div id="d-links-wrap"><div id="d-links-head"><span id="d-links-label">참고 링크</span><span id="d-links-note">(접근 권한이 제한된 링크는 UX/UI 팀에 문의해 주세요.)</span></div><div id="d-links"></div></div>
+        <div id="d-chips-wrap"><div id="d-chips-label">Tag</div><div id="d-chips"></div></div>
+      </div></div>
     </div>
   </div>
 </div>
