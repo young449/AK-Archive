@@ -44,9 +44,9 @@ const DATA_product = [
    ],
    lineage:[
      {name:"Octa DAC", origin:"이번 신규", type:"최초"},
-     {name:"High Driving Mode", origin:"이번 신규 · SP4000 독자", type:"최초"},
+     {name:"High Driving Mode", origin:"이번 신규", type:"최초"},
      {name:"DAC 신호 분리 구조", origin:"SP3000부터", type:"계승"},
-     {name:"Full Open Android", origin:"이번 신규 · A&ultima 최초", type:"최초"}
+     {name:"Full Open Android", origin:"이번 신규", type:"최초"}
    ],
    tags:["SP4000","A&ultima","DAC","OctaDAC","HighDrivingMode","하이드라이빙모드","Android","FullOpenAndroid","풀안드로이드","안드로이드"],
    files:[
@@ -67,7 +67,7 @@ const DATA_product = [
    credits:{PM:"Jay", PL:"Kane", UX:"Ellie", UI:"Luna"},
    keyConcept:{title:"Reimagine the analog sound", desc:"세 가지 진공관 모드로 완성한 아날로그 사운드."},
    desc:"A&ultima 라인의 플래그십 DAP. DAP 최초 Real Quad Tube와 Triple Tube Mode, AK 최초 ROHM社 DAC을 탑재한 모델.",
-   positioning:"SP3000T의 Triple AMP System을 기본으로 아날로그 요소를 한층 강화한 A&ultima 플래그십. DAP 최초 Real Quad Tube와 Triple Tube Mode를 적용하고, AK 최초 ROHM社 DAC과 Titanium 소재를 채택한 모델입니다.",
+   positioning:"SP3000T의 Triple AMP System을 기본으로 아날로그 요소를 한층 강화한 A&ultima 플래그십. DAP 최초 Real Quad Tube와 Triple Tube Mode를 적용하고, AK 최초 ROHM社 DAC을 채택한 모델입니다.",
    newFeatures:[
      {name:"진공관 시스템", badge:"신규",
       what:"DAP 최초 Real Quad Tube(Miniature Tube, Raytheon JAN6418 x4)에 진공관 3모드와 앰프 3모드를 결합한 아날로그 사운드 시스템.",
@@ -84,8 +84,6 @@ Triode(자연스럽고 따뜻함) / Pentode(힘있고 단단함) / Ultra Linear(
      {name:"ROHM社 DAC", badge:"신규",
       what:"AK 최초로 ROHM BD34302EKV Dual DAC 탑재. AKM社 DAC에서 벗어나 새로운 사운드 캐릭터 확보.",
       was:"기존 AKM社 DAC → ROHM社 DAC"},
-     {name:"Titanium 소재", badge:"신규",
-      what:"A&ultima의 럭셔리한 이미지 유지를 위해 Titanium 소재 적용."},
      {name:"배터리 보호 모드", badge:"개선",
       what:"충전 상한값을 사용자가 직접 선택할 수 있도록 개선.",
       was:"기존 85% 단일 고정값 → 80 / 85 / 90 / 95% 4단계 선택"},
@@ -104,10 +102,9 @@ Triode(자연스럽고 따뜻함) / Pentode(힘있고 단단함) / Ultra Linear(
      {name:"Real Tube", origin:"SP2000T부터 · 본 모델 Quad", type:"계승"},
      {name:"Triple AMP Mode", origin:"SP2000T부터", type:"계승"},
      {name:"Triple Tube Mode", origin:"이번 신규", type:"최초"},
-     {name:"ROHM社 DAC", origin:"이번 신규 · AK 최초", type:"최초"},
-     {name:"Titanium 소재", origin:"이번 신규", type:"최초"}
+     {name:"ROHM社 DAC", origin:"이번 신규 · AK 최초", type:"최초"}
    ],
-   tags:["SP4000T","A&ultima","Tube","QuadTube","TripleTubeMode","TubeCurrent","TripleAMP","ROHM","Titanium","USB","배터리보호모드","Collection","컬렉션"],
+   tags:["SP4000T","A&ultima","Tube","QuadTube","TripleTubeMode","TubeCurrent","TripleAMP","ROHM","USB","배터리보호모드","Collection","컬렉션"],
    files:[
      {label:"SP4000T_사업계획서_0523.pdf", url:"files/SP4000T_BP_0523.pdf"},
    ],
@@ -174,14 +171,11 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
   {id:28, title:"PD10", category:"제품 모델", models:["PD series"], date:"2026.05.18", author:"Ellie", authorInitial:"E",
    credits:{PM:"Jay", PL:"Kenny", UX:"Luna", UI:"Luna"},
    keyConcept:{title:"Unlimited Music Life", desc:"뛰어난 음질과 제한 없는 확장을 핵심 컨셉으로 합니다."},
-   desc:"A&futura SE400에서 PD10으로 재정의된 모델. 검증된 Hexa DAC 구조, Full Android, XLR 크래들을 핵심 컨셉으로 한 PD series DAP.",
-   positioning:"A&futura SE400을 PD10으로 재정의한 모델. 검증된 Hexa DAC, Full Android, XLR 크래들을 핵심으로 한 PD series DAP로, A&futura 프리미엄 라인업의 Identity 연속성을 가지는 OS 변경 기점 모델입니다.",
+   desc:"A&futura SE400에서 PD10으로 재정의된 모델. 검증된 Hexa DAC 구조와 XLR 크래들을 핵심 컨셉으로 한 PD series DAP.",
+   positioning:"A&futura SE400을 PD10으로 재정의한 모델. 검증된 Hexa DAC와 XLR 크래들을 핵심으로 한 PD series DAP로, A&futura 프리미엄 라인업의 Identity 연속성을 가지는 OS 변경 기점 모델입니다.",
    newFeatures:[
      {name:"AK4498EX 세계 최초 적용", badge:"신규",
       what:"SP3000에서 검증된 Hexa DAC 구조에 AKM社 신형 DAC(AK4498EX)를 세계 최초로 적용."},
-     {name:"Full Android", badge:"신규",
-      what:"꾸준한 시장 요구 사항인 Full Android 탑재.",
-      was:"기존 제한적 APP 설치 → Full Android"},
      {name:"XLR 크래들", badge:"신규",
       what:"XLR 출력 지원 충전 크래들을 기본 아이템으로 구성해 제품 활용도·확장성 확보.",
       when:"거치 환경에서 밸런스(XLR) 출력을 쓸 때"},
@@ -192,10 +186,9 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
    lineage:[
      {name:"AK4498EX 신형 DAC", origin:"이번 신규 · 세계 최초", type:"최초"},
      {name:"Hexa DAC 구조", origin:"SP3000부터", type:"계승"},
-     {name:"XLR 크래들", origin:"이번 신규", type:"최초"},
-     {name:"Full Android", origin:"확인 필요", type:""}
+     {name:"XLR 크래들", origin:"이번 신규", type:"최초"}
    ],
-   tags:["PD10","PDseries","HexaDAC","FullAndroid","XLR","크래들","SE400"],
+   tags:["PD10","PDseries","HexaDAC","XLR","크래들","SE400"],
    files:[
      {label:"PD10_사업계획서_0404.pdf", url:"files/PD10_BP_0404.pdf"},
    ],
@@ -219,8 +212,6 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
      {name:"HEXA DAC 구조", badge:"신규",
       what:"DAP 세계 최초로 디지털·아날로그 신호 처리를 물리적으로 분리. AK4191(Dual) + AK4499EX를 채널당 2개씩 총 4개(Quad)로 구성.",
       when:"노이즈를 최소화한 최고 음질이 필요할 때"},
-     {name:"Stainless Steel 904L", badge:"신규",
-      what:"DAP 세계 최초로 명품 시계에 사용되는 Stainless Steel 904L 소재를 적용해 명품 DAP로 포지셔닝."},
      {name:"무선·PD 충전", badge:"개선",
       what:"고속 충전 외 PD 충전과 무선 충전까지 적용해 차별화.",
       was:"기존 충전 방식 대비 PD·무선 충전 추가"}
@@ -228,10 +219,9 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
    lineage:[
      {name:"HEXA DAC 구조", origin:"이번 신규 · 세계 최초", type:"최초"},
      {name:"AK4191(Dual) + AK4499EX Quad 구성", origin:"이번 신규", type:"최초"},
-     {name:"Stainless Steel 904L", origin:"이번 신규 · 세계 최초", type:"최초"},
      {name:"All to DSD · 출력 상향 · 무선 충전", origin:"SP2000부터", type:"계승"}
    ],
-   tags:["SP3000","A&ultima","HexaDAC","HEXADAC","StainlessSteel","904L","NoiseSeparation","노이즈분리","NewSoundFrontier"],
+   tags:["SP3000","A&ultima","HexaDAC","HEXADAC","NoiseSeparation","노이즈분리","NewSoundFrontier"],
    files:[
      {label:"SP3000_사업계획서_0924.pdf", url:"files/SP3000_BP_0924.pdf"},
    ],
@@ -264,8 +254,7 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
    lineage:[
      {name:"Real Tube", origin:"SP2000T부터 · 본 모델 Dual", type:"계승"},
      {name:"Triple AMP System", origin:"SP2000T부터", type:"계승"},
-     {name:"AK4191 & AK4499 Dual 구성", origin:"SP3000 계열", type:"계승"},
-     {name:"Aluminum 소재", origin:"본 모델 적용", type:""}
+     {name:"AK4191 & AK4499 Dual 구성", origin:"SP3000 계열", type:"계승"}
    ],
    tags:["SP3000T","A&ultima","RealTube","진공관","TripleAMP","HybridAMP","DualDAC"],
    files:[
@@ -290,18 +279,16 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
    newFeatures:[
      {name:"휴대성 극대화 설계", badge:"개선",
       what:"SP3000 동급 사운드를 유지하면서 4.1인치·250g으로 소형 경량화. 플래그십은 크고 무겁다는 인식에서 벗어난 새로운 경험 제공.",
-      was:"SP3000 5.5인치/500g/904L → SP3000M 4.1인치/250g/Aluminum",
+      was:"SP3000 5.5인치 / 500g → SP3000M 4.1인치 / 250g",
       detail:`| 항목 | SP3000 | SP3000M |
 | --- | --- | --- |
 | Display | 5.5inch | 4.1inch |
 | 외관 크기 | 82.4 × 139.4mm | 61.7 × 128mm |
-| 무게 | 500g | 250g |
-| Material | Stainless Steel 904L | Aluminum |`}
+| 무게 | 500g | 250g |`}
    ],
    lineage:[
      {name:"Hexa DAC 구조", origin:"SP3000부터", type:"계승"},
-     {name:"소형·경량 설계 (250g)", origin:"이번 신규", type:"최초"},
-     {name:"Aluminum 소재", origin:"본 모델 적용", type:""}
+     {name:"소형·경량 설계 (250g)", origin:"이번 신규", type:"최초"}
    ],
    tags:["SP3000M","A&ultima","HexaDAC","휴대성","PerfectBalance","소형","경량"],
    files:[
@@ -348,8 +335,7 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
    lineage:[
      {name:"EnviroTune", origin:"이번 신규 · DAP 최초", type:"최초"},
      {name:"Octa DAC", origin:"이번 신규", type:"최초"},
-     {name:"DAC Mode (Quad/Octa)", origin:"이번 신규", type:"최초"},
-     {name:"Full Open Android", origin:"확인 필요", type:""}
+     {name:"DAC Mode (Quad/Octa)", origin:"이번 신규", type:"최초"}
    ],
    tags:["PD5","PDseries","DAC","DACmode","Quad","Octa","DACFilter","EnviroTune"],
    files:[
