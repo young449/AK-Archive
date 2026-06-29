@@ -102,7 +102,7 @@ Triode(자연스럽고 따뜻함) / Pentode(힘있고 단단함) / Ultra Linear(
      {name:"Real Tube", origin:"SP2000T부터 · 본 모델 Quad", type:"계승"},
      {name:"Triple AMP Mode", origin:"SP2000T부터", type:"계승"},
      {name:"Triple Tube Mode", origin:"이번 신규", type:"최초"},
-     {name:"ROHM社 DAC", origin:"이번 신규 · AK 최초", type:"최초"}
+     {name:"ROHM社 DAC", origin:"이번 신규", type:"최초"}
    ],
    tags:["SP4000T","A&ultima","Tube","QuadTube","TripleTubeMode","TubeCurrent","TripleAMP","ROHM","USB","배터리보호모드","Collection","컬렉션"],
    files:[
@@ -171,11 +171,14 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
   {id:28, title:"PD10", category:"제품 모델", models:["PD series"], date:"2026.05.18", author:"Ellie", authorInitial:"E",
    credits:{PM:"Jay", PL:"Kenny", UX:"Luna", UI:"Luna"},
    keyConcept:{title:"Unlimited Music Life", desc:"뛰어난 음질과 제한 없는 확장을 핵심 컨셉으로 합니다."},
-   desc:"A&futura SE400에서 PD10으로 재정의된 모델. 검증된 Hexa DAC 구조와 XLR 크래들을 핵심 컨셉으로 한 PD series DAP.",
-   positioning:"A&futura SE400을 PD10으로 재정의한 모델. 검증된 Hexa DAC와 XLR 크래들을 핵심으로 한 PD series DAP로, A&futura 프리미엄 라인업의 Identity 연속성을 가지는 OS 변경 기점 모델입니다.",
+   desc:"A&futura SE400에서 PD10으로 재정의된 모델. 검증된 Hexa DAC 구조, Full Android, XLR 크래들을 핵심 컨셉으로 한 PD series DAP.",
+   positioning:"A&futura SE400을 PD10으로 재정의한 모델. 검증된 Hexa DAC, Full Android, XLR 크래들을 핵심으로 한 PD series DAP로, A&futura 프리미엄 라인업의 Identity 연속성을 가지는 OS 변경 기점 모델입니다.",
    newFeatures:[
-     {name:"AK4498EX 세계 최초 적용", badge:"신규",
-      what:"SP3000에서 검증된 Hexa DAC 구조에 AKM社 신형 DAC(AK4498EX)를 세계 최초로 적용."},
+     {name:"AK4498EX 신형 DAC 적용", badge:"신규",
+      what:"SP3000에서 검증된 Hexa DAC 구조에 AKM社 신형 DAC(AK4498EX)를 적용."},
+     {name:"Full Android", badge:"신규",
+      what:"PD 시리즈 최초로 Full Android 탑재. 꾸준한 시장 요구 사항을 반영.",
+      was:"기존 제한적 APP 설치 → Full Android"},
      {name:"XLR 크래들", badge:"신규",
       what:"XLR 출력 지원 충전 크래들을 기본 아이템으로 구성해 제품 활용도·확장성 확보.",
       when:"거치 환경에서 밸런스(XLR) 출력을 쓸 때"},
@@ -184,11 +187,12 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
       was:"SE300 대비 속도 개선"}
    ],
    lineage:[
-     {name:"AK4498EX 신형 DAC", origin:"이번 신규 · 세계 최초", type:"최초"},
+     {name:"AK4498EX 신형 DAC", origin:"이번 신규", type:"최초"},
      {name:"Hexa DAC 구조", origin:"SP3000부터", type:"계승"},
-     {name:"XLR 크래들", origin:"이번 신규", type:"최초"}
+     {name:"XLR 크래들", origin:"이번 신규", type:"최초"},
+     {name:"Full Android", origin:"이번 신규", type:"최초"}
    ],
-   tags:["PD10","PDseries","HexaDAC","XLR","크래들","SE400"],
+   tags:["PD10","PDseries","HexaDAC","FullAndroid","XLR","크래들","SE400"],
    files:[
      {label:"PD10_사업계획서_0404.pdf", url:"files/PD10_BP_0404.pdf"},
    ],
@@ -207,17 +211,17 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
    credits:{PM:"Jay", PL:"Kane", UX:"Lizzo", UI:"Luna"},
    keyConcept:{title:"Complete separation for noise", desc:"New Sound Frontier SP3000."},
    desc:"A&ultima 플래그십 DAP. Hexa DAC 구조(AK4191EQ x2 & AK4499EX x4)와 아날로그·디지털 신호 처리 분리로 최고 수준의 사운드를 구현한 모델.",
-   positioning:"AK Flagship SP2000의 후속 A&ultima 플래그십 DAP. DAP 세계 최초로 디지털·아날로그 신호 처리를 물리적으로 분리한 Hexa DAC 구조로 최고 수준의 사운드를 구현하며, Market Leader 위치를 유지하는 모델입니다.",
+   positioning:"AK Flagship SP2000의 후속 A&ultima 플래그십 DAP. 디지털·아날로그 신호 처리를 물리적으로 분리한 Hexa DAC 구조로 최고 수준의 사운드를 구현하며, Market Leader 위치를 유지하는 모델입니다.",
    newFeatures:[
      {name:"HEXA DAC 구조", badge:"신규",
-      what:"DAP 세계 최초로 디지털·아날로그 신호 처리를 물리적으로 분리. AK4191(Dual) + AK4499EX를 채널당 2개씩 총 4개(Quad)로 구성.",
+      what:"디지털·아날로그 신호 처리를 물리적으로 분리. AK4191(Dual) + AK4499EX를 채널당 2개씩 총 4개(Quad)로 구성.",
       when:"노이즈를 최소화한 최고 음질이 필요할 때"},
      {name:"무선·PD 충전", badge:"개선",
       what:"고속 충전 외 PD 충전과 무선 충전까지 적용해 차별화.",
       was:"기존 충전 방식 대비 PD·무선 충전 추가"}
    ],
    lineage:[
-     {name:"HEXA DAC 구조", origin:"이번 신규 · 세계 최초", type:"최초"},
+     {name:"HEXA DAC 구조", origin:"이번 신규", type:"최초"},
      {name:"AK4191(Dual) + AK4499EX Quad 구성", origin:"이번 신규", type:"최초"},
      {name:"All to DSD · 출력 상향 · 무선 충전", origin:"SP2000부터", type:"계승"}
    ],
@@ -333,7 +337,7 @@ Dot 3개 드래그 + 컨트롤 바(Heavier ↔ Brighter)로 음색 조정(Gain �
 ※ 기능 구현 진행 중(5월 개발 완료 예정). Manual 세부 설정 항목은 추후 업데이트 예정.`}
    ],
    lineage:[
-     {name:"EnviroTune", origin:"이번 신규 · DAP 최초", type:"최초"},
+     {name:"EnviroTune", origin:"이번 신규", type:"최초"},
      {name:"Octa DAC", origin:"이번 신규", type:"최초"},
      {name:"DAC Mode (Quad/Octa)", origin:"이번 신규", type:"최초"}
    ],
