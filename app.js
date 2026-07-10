@@ -456,21 +456,22 @@ function _openDetail(id, prevPage, push){
   // 검수 상태 배지 (제목 옆) — d.status: "확인완료" | "검토중" | "초안"
   const stEl=document.getElementById("d-status");
   const stMap={"확인완료":"st-done","검토중":"st-review","초안":"st-draft"};
-  if(d.status && stMap[d.status]){
-    const chk=d.status==="확인완료"
-      ?'<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7.5l2.5 2.5L11 4"/></svg>':'';
-    stEl.className="d-status "+stMap[d.status];
-    stEl.innerHTML=chk+d.status;
-    stEl.style.display="";
-  } else { stEl.style.display="none"; stEl.innerHTML=""; }
+  const st=d.status||"초안";              // 값 없으면 기본 '초안'
+  const stCls=stMap[st]||"st-draft";
+  const chk=st==="확인완료"
+    ?'<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7.5l2.5 2.5L11 4"/></svg>':'';
+  stEl.className="d-status "+stCls;
+  stEl.innerHTML=chk+st;
+  stEl.style.display="";
   // 확인 세그먼트 (작성자 · 확인 · 날짜) — d.verifiedBy: ["기획파트", ...]
   const vEl=document.getElementById("d-verify");
+  const vSep=document.getElementById("d-sep-v");
   if(d.verifiedBy && d.verifiedBy.length){
     vEl.textContent="확인 "+d.verifiedBy.join(", ");
-    vEl.classList.remove("is-none");
+    vEl.style.display=""; if(vSep) vSep.style.display="";
   } else {
-    vEl.textContent="미확인";
-    vEl.classList.add("is-none");
+    // 미확인이면 '확인' 세그먼트와 앞 구분점을 숨김 (상태 배지 '초안'이 상태를 전달)
+    vEl.textContent=""; vEl.style.display="none"; if(vSep) vSep.style.display="none";
   }
   document.getElementById("d-body").innerHTML=d.body?renderBody(d.body):"";
   // 담당자 크레딧
@@ -572,7 +573,9 @@ function _openDetail(id, prevPage, push){
   document.getElementById("d-links-wrap").style.display=links.length?"":"none";
   // 변경 이력 — 최하단 접이식. d.history: [{date, text, by?}] (최신순 권장)
   const histEl=document.getElementById("d-history");
-  const hist=d.history||[];
+  let hist=d.history||[];
+  // 이력이 없으면 작성일 기준 '최초 등록' 한 줄을 자동 생성 (드롭다운 항상 표시)
+  if(!hist.length && d.date){ hist=[{date:d.date, text:"최초 등록", by:d.author}]; }
   if(hist.length){
     const items=hist.map(h=>
       `<div class="dh-item"><span class="dh-date">${_esc(h.date||"")}</span><span class="dh-text">${_esc(h.text||"")}${h.by?` <span class="dh-by">· ${_esc(h.by)}</span>`:""}</span></div>`
