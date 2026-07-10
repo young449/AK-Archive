@@ -457,8 +457,10 @@ function _openDetail(id, prevPage, push){
   //   d.status: "작성" | "검토중" | "확인완료"  (기본 '작성')
   //   d.statusTeam: "UX" | "PM" | "연구소" ...  (기본 'UX')
   const stEl=document.getElementById("d-status");
+  const wrapEl=document.getElementById("d-info-wrap");
   const infoEl=document.getElementById("d-status-info");
   const tipEl=document.getElementById("d-tip");
+  const tipBody=document.getElementById("d-tip-body");
   const stMap={"확인완료":"st-done","검토중":"st-review","작성":"st-draft"};
   const stage=d.status||"작성";
   const team=d.statusTeam||"UX";
@@ -469,18 +471,24 @@ function _openDetail(id, prevPage, push){
   stEl.className="d-status "+stCls;
   stEl.innerHTML=chk+badgeText;
   stEl.style.display="";
-  // ⓘ 툴팁 (배지 의미 + 작성/확인 주체 + 순서 아님 안내)
+  // ⓘ 툴팁 — 아이콘 바로 아래 팝오버 + 닫기 버튼
   const verifyLine=stage==="확인완료"?`확인 ${team} · `:(stage==="검토중"?`${team} 확인 진행 중 · `:"");
-  tipEl.innerHTML=`<span class="tip-title">${badgeText}</span><br>작성 ${d.author||""} · ${verifyLine}${fmtDate}`+
+  tipBody.innerHTML=`<span class="tip-title">${badgeText}</span><br>작성 ${d.author||""} · ${verifyLine}${fmtDate}`+
     `<span class="tip-note">※ 팀 표기는 이 항목의 담당일 뿐, UX→PM 같은 고정 순서가 아닙니다.</span>`;
-  infoEl.style.display="";
-  let _pin=false,_ht=null;
-  const _tipShow=()=>{clearTimeout(_ht);tipEl.style.display="block";};
-  const _tipHide=()=>{if(_pin)return;_ht=setTimeout(()=>{tipEl.style.display="none";},150);};
-  infoEl.onmouseenter=_tipShow; infoEl.onmouseleave=_tipHide;
-  infoEl.onfocus=_tipShow; infoEl.onblur=_tipHide;
-  tipEl.onmouseenter=_tipShow; tipEl.onmouseleave=_tipHide;
-  infoEl.onclick=()=>{_pin=!_pin; if(_pin){_tipShow();} else {tipEl.style.display="none";}};
+  wrapEl.style.display="";
+  tipEl.style.display="none";
+  infoEl.setAttribute("aria-expanded","false");
+  const _tipClose=()=>{tipEl.style.display="none";infoEl.setAttribute("aria-expanded","false");};
+  const _tipOpen=()=>{tipEl.style.display="block";infoEl.setAttribute("aria-expanded","true");};
+  infoEl.onclick=(e)=>{e.stopPropagation(); (tipEl.style.display==="block")?_tipClose():_tipOpen();};
+  infoEl.onkeydown=(e)=>{if(e.key==="Enter"||e.key===" "){e.preventDefault(); (tipEl.style.display==="block")?_tipClose():_tipOpen();}};
+  document.getElementById("d-tip-close").onclick=(e)=>{e.stopPropagation();_tipClose();};
+  tipEl.onclick=(e)=>e.stopPropagation();
+  // 바깥 클릭 시 닫기 (문서에 1회만 등록)
+  if(!window._akTipOutside){
+    window._akTipOutside=true;
+    document.addEventListener("click",()=>{const t=document.getElementById("d-tip");if(t)t.style.display="none";});
+  }
   // 확인 세그먼트 (작성자 · 확인 · 날짜) — d.verifiedBy: ["기획파트", ...]
   const vEl=document.getElementById("d-verify");
   const vSep=document.getElementById("d-sep-v");
