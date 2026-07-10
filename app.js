@@ -471,23 +471,31 @@ function _openDetail(id, prevPage, push){
   stEl.className="d-status "+stCls;
   stEl.innerHTML=chk+badgeText;
   stEl.style.display="";
-  // ⓘ 툴팁 — 아이콘 바로 아래 팝오버 + 닫기 버튼
-  const verifyLine=stage==="확인완료"?`확인 ${team} · `:(stage==="검토중"?`${team} 확인 진행 중 · `:"");
-  tipBody.innerHTML=`<span class="tip-title">${badgeText}</span><br>작성 ${d.author||""} · ${verifyLine}${fmtDate}`+
+  // ⓘ 툴팁 — 아이콘 바로 아래 팝오버 (배지 '뜻'만 설명 · 게시물 메타와 중복 제거)
+  const stageDesc={
+    "작성":"담당 부서 확인 전, 작성 단계입니다.",
+    "검토중":"담당 부서가 내용을 확인하는 중입니다.",
+    "확인완료":"담당 부서가 정확성을 확인한 정보입니다."
+  }[stage]||"";
+  tipBody.innerHTML=`<span class="tip-title">${badgeText}</span><br>${stageDesc}`+
     `<span class="tip-note">※ 팀 표기는 이 항목의 담당일 뿐, UX→PM 같은 고정 순서가 아닙니다.</span>`;
   wrapEl.style.display="";
-  tipEl.style.display="none";
-  infoEl.setAttribute("aria-expanded","false");
-  const _tipClose=()=>{tipEl.style.display="none";infoEl.setAttribute("aria-expanded","false");};
-  const _tipOpen=()=>{tipEl.style.display="block";infoEl.setAttribute("aria-expanded","true");};
-  infoEl.onclick=(e)=>{e.stopPropagation(); (tipEl.style.display==="block")?_tipClose():_tipOpen();};
-  infoEl.onkeydown=(e)=>{if(e.key==="Enter"||e.key===" "){e.preventDefault(); (tipEl.style.display==="block")?_tipClose():_tipOpen();}};
-  document.getElementById("d-tip-close").onclick=(e)=>{e.stopPropagation();_tipClose();};
-  tipEl.onclick=(e)=>e.stopPropagation();
-  // 바깥 클릭 시 닫기 (문서에 1회만 등록)
+  const _setTip=(o)=>{tipEl.style.display=o?"block":"none";infoEl.setAttribute("aria-expanded",o?"true":"false");};
+  _setTip(false);
+  infoEl.onclick=()=>_setTip(tipEl.style.display!=="block");
+  infoEl.onkeydown=(e)=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();_setTip(tipEl.style.display!=="block");}};
+  document.getElementById("d-tip-close").onclick=()=>_setTip(false);
+  // 바깥(아이콘·툴팁 영역 밖) 클릭 시 닫기 — 문서에 1회만 등록
   if(!window._akTipOutside){
     window._akTipOutside=true;
-    document.addEventListener("click",()=>{const t=document.getElementById("d-tip");if(t)t.style.display="none";});
+    document.addEventListener("click",(e)=>{
+      const w=document.getElementById("d-info-wrap");
+      const t=document.getElementById("d-tip");
+      const ic=document.getElementById("d-status-info");
+      if(t && w && t.style.display==="block" && !w.contains(e.target)){
+        t.style.display="none"; if(ic) ic.setAttribute("aria-expanded","false");
+      }
+    });
   }
   // 확인 세그먼트 (작성자 · 확인 · 날짜) — d.verifiedBy: ["기획파트", ...]
   const vEl=document.getElementById("d-verify");
