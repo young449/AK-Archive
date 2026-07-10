@@ -1194,8 +1194,6 @@ function closeBadgeModal(){ document.getElementById("badge-modal").classList.rem
 const REPORT_ACCESS_KEY = "6e75f25d-0509-49f8-9939-46805ef153d5";
 // ▲▲▲ (이 한 줄만 바꾸면 됩니다) ▲▲▲
 function openReportModal(){
-  const d=(typeof S!=="undefined" && S.openId!=null)?DATA.find(x=>x.id===S.openId):null;
-  document.getElementById("report-target").textContent=d?d.title:"전체 사이트";
   document.getElementById("report-text").value="";
   const st=document.getElementById("report-status"); st.textContent=""; st.className="rm-status";
   document.getElementById("report-send").disabled=false;

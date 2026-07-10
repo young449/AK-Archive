@@ -1283,6 +1283,7 @@ body.is-home #report-btn{display:none}
 .rm-title{font-size:16px;font-weight:600;color:var(--text-1);margin-bottom:5px}
 .rm-sub{font-size:12px;color:var(--n-300);margin-bottom:14px}
 .rm-sub::before{content:"항목: ";color:var(--n-500)}
+.rm-note{font-size:12px;color:var(--n-400);line-height:1.5;margin-bottom:14px}
 #report-text,#report-email{width:100%;background:var(--n-900);border:1px solid var(--div-2);border-radius:8px;color:var(--text-1);font-family:var(--font);font-size:14px;padding:10px 12px;outline:none;transition:border-color 0.13s;}
 #report-text{resize:vertical;min-height:96px;margin-bottom:10px;line-height:1.5}
 #report-email{height:40px;margin-bottom:14px}
