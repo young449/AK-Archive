@@ -453,16 +453,34 @@ function _openDetail(id, prevPage, push){
   const fmtDate=dp.length===3?`${dp[0]}. ${parseInt(dp[1])}. ${parseInt(dp[2])}.`:d.date;
   document.getElementById("d-name").textContent=d.author;
   document.getElementById("d-date").textContent=fmtDate;
-  // 검수 상태 배지 (제목 옆) — d.status: "확인완료" | "검토중" | "초안"
+  // 검수 상태 배지 (제목 옆) — 주체 중심: {담당팀} {단계} + ⓘ 툴팁
+  //   d.status: "작성" | "검토중" | "확인완료"  (기본 '작성')
+  //   d.statusTeam: "UX" | "PM" | "연구소" ...  (기본 'UX')
   const stEl=document.getElementById("d-status");
-  const stMap={"확인완료":"st-done","검토중":"st-review","초안":"st-draft"};
-  const st=d.status||"초안";              // 값 없으면 기본 '초안'
-  const stCls=stMap[st]||"st-draft";
-  const chk=st==="확인완료"
+  const infoEl=document.getElementById("d-status-info");
+  const tipEl=document.getElementById("d-tip");
+  const stMap={"확인완료":"st-done","검토중":"st-review","작성":"st-draft"};
+  const stage=d.status||"작성";
+  const team=d.statusTeam||"UX";
+  const stCls=stMap[stage]||"st-draft";
+  const chk=stage==="확인완료"
     ?'<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7.5l2.5 2.5L11 4"/></svg>':'';
+  const badgeText=team+" "+stage;      // 예: 'UX 작성', 'PM 확인완료'
   stEl.className="d-status "+stCls;
-  stEl.innerHTML=chk+st;
+  stEl.innerHTML=chk+badgeText;
   stEl.style.display="";
+  // ⓘ 툴팁 (배지 의미 + 작성/확인 주체 + 순서 아님 안내)
+  const verifyLine=stage==="확인완료"?`확인 ${team} · `:(stage==="검토중"?`${team} 확인 진행 중 · `:"");
+  tipEl.innerHTML=`<span class="tip-title">${badgeText}</span><br>작성 ${d.author||""} · ${verifyLine}${fmtDate}`+
+    `<span class="tip-note">※ 팀 표기는 이 항목의 담당일 뿐, UX→PM 같은 고정 순서가 아닙니다.</span>`;
+  infoEl.style.display="";
+  let _pin=false,_ht=null;
+  const _tipShow=()=>{clearTimeout(_ht);tipEl.style.display="block";};
+  const _tipHide=()=>{if(_pin)return;_ht=setTimeout(()=>{tipEl.style.display="none";},150);};
+  infoEl.onmouseenter=_tipShow; infoEl.onmouseleave=_tipHide;
+  infoEl.onfocus=_tipShow; infoEl.onblur=_tipHide;
+  tipEl.onmouseenter=_tipShow; tipEl.onmouseleave=_tipHide;
+  infoEl.onclick=()=>{_pin=!_pin; if(_pin){_tipShow();} else {tipEl.style.display="none";}};
   // 확인 세그먼트 (작성자 · 확인 · 날짜) — d.verifiedBy: ["기획파트", ...]
   const vEl=document.getElementById("d-verify");
   const vSep=document.getElementById("d-sep-v");
