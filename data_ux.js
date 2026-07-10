@@ -5,7 +5,7 @@
 // =============================================
 
 const DATA_ux = [
-  {id:24,title:"Favorite에서 Collection으로(기능 확장 재정의)",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["A&ultima"],models:["SP4000T"],date:"2026.05.18",author:"Ellie",authorInitial:"E",
+  {id:24,title:"Favorite에서 Collection으로(기능 확장 재정의)",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["A&ultima"],models:["SP4000T"],date:"2026.05.18",author:"Ellie",authorInitial:"E",status:"확인완료",
    desc:"기존 Favorite(즐겨찾기)의 노래 단독 저장을 확장, 노래·앨범·아티스트·플레이리스트를 폴더별로 저장·관리하는 컬렉션으로 재정의. SP4000T부터 적용.",
    body:`■■ 기능 개요
 
@@ -92,7 +92,7 @@ AK Connect로 추가된 곡은 컬렉션 추가 불가.
 | PD series | 순차 반영 예정 | 현재 RC 계획 없음 |`,
    tags:["RC","Collection","컬렉션","Favorite","즐겨찾기","UX개선"],
    links:[{label:"용어사전 — 컬렉션",url:"#search:컬렉션"},{label:"용어사전 — Favorite",url:"#search:Favorite"}]},
-  {id:36,title:"설정 레이블 추가 및 재배열",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["RC"],models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",
+  {id:36,title:"설정 레이블 추가 및 재배열",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["RC"],models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",status:"확인완료",
    desc:"기존 아이콘만으로 구분되던 설정 화면에 레이블을 추가하고, 각 그룹 성격에 맞게 항목 순서를 재배열한 UX 개선.",
    body:`■■ 기능 개요
 
@@ -132,7 +132,7 @@ AK Connect로 추가된 곡은 컬렉션 추가 불가.
    tags:["RC","Setting","설정","설정레이블","설정재배열","UX개선"],
    images:[],
    links:[]},
-  {id:37,title:"사용자 리서치: 리서치 배경 및 진행 개요",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["Research"],models:[],date:"2025.05.01",author:"Ellie",authorInitial:"E",
+  {id:37,title:"사용자 리서치: 리서치 배경 및 진행 개요",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["Research"],models:[],date:"2025.05.01",author:"Ellie",authorInitial:"E",status:"확인완료",
    desc:"Astell&Kern DAP 사용자의 UXUI 사용성 개선을 위한 데이터 수집 목적으로 설문조사 → 인터뷰 → UT 3단계 사용자 리서치를 기획·운영.",
    body:`■■ 개요
 
@@ -185,7 +185,7 @@ Astell&Kern DAP 사용자의 UXUI 사용성 개선을 위한 데이터 수집 �
      {label:"피그마 — 설문조사 PT",url:"https://www.figma.com/design/ZyJfraOa2ar1OzIxrnFtZT/PT?node-id=341-1377&t=UACsWYCME5cKHixO-1"},
      {label:"피그마 — 사용자 리서치",url:"https://www.figma.com/design/tLsh1eYPj5t4BKJMRl40uq/-25-%EC%82%AC%EC%9A%A9%EC%9E%90-%EB%A6%AC%EC%84%9C%EC%B9%98?node-id=126-79&t=ZfveNSGhru3yBWKR-1"}
    ]},
-  {id:32,title:"사용자 리서치: 설문조사 결과",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["Research"],models:[],date:"2025.09.30",author:"Ellie",authorInitial:"E",
+  {id:32,title:"사용자 리서치: 설문조사 결과",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["Research"],models:[],date:"2025.09.30",author:"Ellie",authorInitial:"E",status:"확인완료",
    desc:"AK DAP 사용 행태 조사·음질 설정 개선 2종 설문 결과. 주요 타겟 3~40대 남성, UX/UI 불편 경험 91.5%, 반응 속도 개선 1순위.",
    body:`■■ 설문 진행 개요
 
@@ -286,7 +286,7 @@ DAP에서 주로 이용하는 콘텐츠: 스트리밍 서비스(Spotify, Apple M
      {label:"AK_UXUI_Survey_251020.pdf",url:"files/AK_UXUI_Survey_251020.pdf"}
    ],
    links:[]},
-  {id:33,title:"사용자 리서치: 인터뷰·UT 결과 및 종합 인사이트",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["Research"],models:[],date:"2026.04.30",author:"Ellie",authorInitial:"E",
+  {id:33,title:"사용자 리서치: 인터뷰·UT 결과 및 종합 인사이트",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["Research"],models:[],date:"2026.04.30",author:"Ellie",authorInitial:"E",status:"확인완료",
    desc:"설문(210명) → 인터뷰(9명) → UT(9명) 3단계 리서치 종합. 알림패널 중심 사용 패턴, 설정 접근성, 경쟁사 UX 격차 등 핵심 인사이트 도출.",
    body:`■■ 리서치 개요
 
