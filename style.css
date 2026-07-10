@@ -1307,11 +1307,12 @@ body.is-home #report-btn{display:none}
 #badge-modal-close:hover{background:var(--a-w10);color:var(--text-1)}
 .bm-title{font-size:20px;font-weight:600;color:var(--text-1);margin-bottom:18px}
 .bm-desc{font-size:13px;color:var(--text-2);margin-bottom:16px}
-.bm-list{display:flex;flex-direction:column;gap:14px;margin-bottom:18px}
-.bm-item{display:flex;align-items:flex-start;gap:10px}
-.bm-item .d-status{flex-shrink:0;margin-top:1px}
-.bm-txt{font-size:14px;color:var(--text-2);line-height:1.6}
-.bm-note{font-size:12px;color:var(--n-400);line-height:1.7;border-top:1px solid var(--div-1);padding-top:14px}
+.bm-list{display:flex;flex-direction:column;gap:18px;margin-bottom:20px}
+.bm-item{display:flex;flex-direction:column;gap:7px}
+.bm-badges{display:flex;gap:6px;flex-wrap:wrap}
+.bm-item .d-status{flex-shrink:0}
+.bm-txt{font-size:16px;color:var(--text-2);line-height:1.55}
+.bm-note{font-size:14px;color:var(--n-400);line-height:1.7;border-top:1px solid var(--div-1);padding-top:14px}
 /* 툴팁 내 '전체 보기' 링크 */
 .tip-more{display:inline-block;margin-top:10px;font-size:14px;color:#E7727F;cursor:pointer}
 .tip-more:hover{color:#F09AA3;text-decoration:underline}

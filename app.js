@@ -480,7 +480,7 @@ function _openDetail(id, prevPage, push){
   }[stage]||"";
   tipBody.innerHTML=`<div class="tip-line"><span class="tip-b">*</span><span>${stageDesc}</span></div>`+
     `<div class="tip-line"><span class="tip-b">*</span><span>팀 표기는 이 항목의 담당일 뿐, UX→PM 같은 고정 순서가 아닙니다.</span></div>`+
-    `<a class="tip-more" id="tip-more" role="button" tabindex="0">배지 종류 전체 보기 →</a>`;
+    `<a class="tip-more" id="tip-more" role="button" tabindex="0">→ 배지 종류 전체 보기</a>`;
   wrapEl.style.display="";
   const _setTip=(o)=>{tipEl.style.display=o?"block":"none";infoEl.setAttribute("aria-expanded",o?"true":"false");};
   _setTip(false);
