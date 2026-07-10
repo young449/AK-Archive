@@ -478,8 +478,8 @@ function _openDetail(id, prevPage, push){
     "검토중":"담당 부서가 내용을 확인하는 중입니다.",
     "확인완료":"담당 부서가 정확성을 확인 완료한 상태입니다."
   }[stage]||"";
-  tipBody.innerHTML=`<span class="tip-title">${stage==="확인완료"?"✓ ":""}${badgeText}</span><br>${stageDesc}`+
-    `<span class="tip-note">※ 팀 표기는 이 항목의 담당일 뿐, UX→PM 같은 고정 순서가 아닙니다.</span>`+
+  tipBody.innerHTML=`<div class="tip-line"><span class="tip-b">*</span><span>${stageDesc}</span></div>`+
+    `<div class="tip-line"><span class="tip-b">*</span><span>팀 표기는 이 항목의 담당일 뿐, UX→PM 같은 고정 순서가 아닙니다.</span></div>`+
     `<a class="tip-more" id="tip-more" role="button" tabindex="0">배지 종류 전체 보기 →</a>`;
   wrapEl.style.display="";
   const _setTip=(o)=>{tipEl.style.display=o?"block":"none";infoEl.setAttribute("aria-expanded",o?"true":"false");};
