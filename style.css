@@ -667,10 +667,10 @@ mark{background:transparent;color:var(--cr-200);border-radius:0;padding:0;font-w
 #d-info-wrap{position:relative;display:inline-flex;align-items:center}
 .d-tip{
   position:absolute;top:calc(100% + 10px);left:-6px;z-index:50;
-  width:max-content;max-width:280px;padding:12px 36px 12px 14px;
+  width:max-content;max-width:300px;padding:14px 38px 14px 16px;
   background:var(--n-900);border:1px solid var(--div-2);
   border-radius:10px;
-  font-size:12px;line-height:1.6;color:var(--text-2);
+  font-size:14px;line-height:1.6;color:var(--text-2);
   box-shadow:0 8px 24px rgba(0,0,0,0.55);
   white-space:normal;
 }
@@ -690,7 +690,7 @@ mark{background:transparent;color:var(--cr-200);border-radius:0;padding:0;font-w
 }
 .d-tip-close:hover{background:var(--a-w10);color:var(--text-1)}
 .d-tip .tip-title{font-weight:600;color:var(--text-1);font-family:var(--mono)}
-.d-tip .tip-note{display:block;margin-top:6px;color:var(--n-400);font-size:11px}
+.d-tip .tip-note{display:block;margin-top:8px;color:var(--n-400);font-size:12px}
 @media(max-width:479px){.d-tip{max-width:calc(100vw - 56px)}}
 /* 작성자 · 확인 · 날짜 */
 #d-author{display:flex;align-items:center;flex-wrap:wrap;margin-bottom:0}
@@ -1302,7 +1302,7 @@ body.is-home #report-btn{display:none}
 #badge-modal-box{position:relative;width:100%;max-width:420px;background:var(--n-800);border:1px solid var(--div-2);border-radius:14px;padding:22px 22px 20px;box-shadow:0 12px 48px rgba(0,0,0,0.6);}
 #badge-modal-close{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;background:none;border:none;color:var(--n-400);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.12s,color 0.12s;}
 #badge-modal-close:hover{background:var(--a-w10);color:var(--text-1)}
-.bm-title{font-size:16px;font-weight:600;color:var(--text-1);margin-bottom:4px}
+.bm-title{font-size:18px;font-weight:600;color:var(--text-1);margin-bottom:16px}
 .bm-desc{font-size:13px;color:var(--text-2);margin-bottom:16px}
 .bm-list{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
 .bm-item{display:flex;align-items:flex-start;gap:10px}
@@ -1310,5 +1310,5 @@ body.is-home #report-btn{display:none}
 .bm-txt{font-size:13px;color:var(--text-2);line-height:1.5}
 .bm-note{font-size:11px;color:var(--n-400);line-height:1.6;border-top:1px solid var(--div-1);padding-top:12px}
 /* 툴팁 내 '전체 보기' 링크 */
-.tip-more{display:inline-block;margin-top:8px;font-size:11px;color:#E7727F;cursor:pointer}
+.tip-more{display:inline-block;margin-top:10px;font-size:13px;color:#E7727F;cursor:pointer}
 .tip-more:hover{color:#F09AA3;text-decoration:underline}
