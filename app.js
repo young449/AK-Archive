@@ -478,13 +478,20 @@ function _openDetail(id, prevPage, push){
     "확인완료":"담당 부서가 정확성을 확인한 정보입니다."
   }[stage]||"";
   tipBody.innerHTML=`<span class="tip-title">${badgeText}</span><br>${stageDesc}`+
-    `<span class="tip-note">※ 팀 표기는 이 항목의 담당일 뿐, UX→PM 같은 고정 순서가 아닙니다.</span>`;
+    `<span class="tip-note">※ 팀 표기는 이 항목의 담당일 뿐, UX→PM 같은 고정 순서가 아닙니다.</span>`+
+    `<a class="tip-more" id="tip-more" role="button" tabindex="0">배지 종류 전체 보기 →</a>`;
   wrapEl.style.display="";
   const _setTip=(o)=>{tipEl.style.display=o?"block":"none";infoEl.setAttribute("aria-expanded",o?"true":"false");};
   _setTip(false);
   infoEl.onclick=()=>_setTip(tipEl.style.display!=="block");
   infoEl.onkeydown=(e)=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();_setTip(tipEl.style.display!=="block");}};
   document.getElementById("d-tip-close").onclick=()=>_setTip(false);
+  const moreEl=document.getElementById("tip-more");
+  if(moreEl){
+    const _openGuide=()=>{_setTip(false);openBadgeModal();};
+    moreEl.onclick=_openGuide;
+    moreEl.onkeydown=(e)=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();_openGuide();}};
+  }
   // 바깥(아이콘·툴팁 영역 밖) 클릭 시 닫기 — 문서에 1회만 등록
   if(!window._akTipOutside){
     window._akTipOutside=true;
@@ -1178,9 +1185,29 @@ function closeImgModal(){
   document.body.style.overflow="";
 }
 
+// 배지 안내 모달
+function openBadgeModal(){ document.getElementById("badge-modal").classList.add("show"); document.body.style.overflow="hidden"; }
+function closeBadgeModal(){ document.getElementById("badge-modal").classList.remove("show"); document.body.style.overflow=""; }
+
+// 오류 신고 (메일: young@meewang.kr)
+(function(){
+  const rb=document.getElementById("report-btn");
+  if(!rb) return;
+  rb.addEventListener("click",()=>{
+    const d=(typeof S!=="undefined" && S.openId!=null)?DATA.find(x=>x.id===S.openId):null;
+    const subject="[AK Archive] 오류 신고"+(d?` - ${d.title}`:"");
+    let body="";
+    if(d) body+=`항목: ${d.title} (id ${d.id})\n`;
+    body+=`페이지: ${location.href}\n\n오류 내용을 적어주세요:\n`;
+    location.href=`mailto:young@meewang.kr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+})();
+
 // ESC
 document.addEventListener("keydown",e=>{
   if(e.key==="Escape"){
+    const _bm=document.getElementById("badge-modal");
+    if(_bm && _bm.classList.contains("show")){closeBadgeModal();return;}
     if(document.getElementById("img-modal").classList.contains("show")){closeImgModal();return;}
     if(S.openId!==null) document.getElementById("detail-back").click();
     else if(document.body.classList.contains("is-tag")) document.getElementById("tag-back").click();

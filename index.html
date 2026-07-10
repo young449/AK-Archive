@@ -283,6 +283,31 @@
   </svg>
 </button>
 
+<!-- 오류 신고 플로팅 버튼 -->
+<button id="report-btn" aria-label="오류 신고" title="오류 신고">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+    <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+  </svg>
+</button>
+
+<!-- 배지 안내 모달 -->
+<div id="badge-modal" onclick="closeBadgeModal()">
+  <div id="badge-modal-box" onclick="event.stopPropagation()">
+    <button id="badge-modal-close" onclick="closeBadgeModal()" aria-label="닫기">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l10 10M11 1L1 11"/></svg>
+    </button>
+    <div class="bm-title">배지 안내</div>
+    <div class="bm-desc">각 항목의 검수 상태를 나타냅니다.</div>
+    <div class="bm-list">
+      <div class="bm-item"><span class="d-status st-draft">UX 작성</span><span class="bm-txt">담당 부서 확인 전, 작성 단계입니다.</span></div>
+      <div class="bm-item"><span class="d-status st-review">PM 검토중</span><span class="bm-txt">담당 부서가 내용을 확인하는 중입니다.</span></div>
+      <div class="bm-item"><span class="d-status st-done">✓ PM 확인완료</span><span class="bm-txt">담당 부서가 정확성을 확인한 정보입니다.</span></div>
+    </div>
+    <div class="bm-note">※ 앞의 팀 이름은 이 항목의 담당일 뿐, UX→PM 같은 고정 순서가 아닙니다. 정보 성격에 따라 UX·PM·연구소 등 확인 담당이 달라집니다.</div>
+  </div>
+</div>
+
 <!-- =============================================
    SECTION: js-data
 ============================================= -->

@@ -1260,3 +1260,33 @@ body.is-tag #tag-page{display:block}
 #img-modal-img{max-width:92vw;max-height:90vh;border-radius:8px;object-fit:contain;box-shadow:0 8px 48px rgba(0,0,0,0.6);pointer-events:none;}
 #img-modal-close{position:fixed;top:20px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--n-700);border:1px solid var(--div-2);color:var(--text-2);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:1001;transition:background 0.13s,color 0.13s;}
 #img-modal-close:hover{background:var(--n-600);color:var(--text-1)}
+/* 오류 신고 플로팅 버튼 */
+#report-btn{
+  position:fixed;right:36px;bottom:144px;z-index:500;
+  width:52px;height:52px;border-radius:50%;
+  background:var(--n-700);border:1px solid var(--div-2);color:var(--text-2);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(0,0,0,0.4);
+  transition:background 0.13s,color 0.13s;
+}
+#report-btn:hover{background:var(--n-600);color:var(--text-1)}
+body.is-home #report-btn{display:none}
+@media(max-width:639px){
+  #report-btn{right:16px;bottom:116px;width:44px;height:44px}
+}
+/* 배지 안내 모달 */
+#badge-modal{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.72);align-items:center;justify-content:center;padding:24px;}
+#badge-modal.show{display:flex}
+#badge-modal-box{position:relative;width:100%;max-width:420px;background:var(--n-800);border:1px solid var(--div-2);border-radius:14px;padding:22px 22px 20px;box-shadow:0 12px 48px rgba(0,0,0,0.6);}
+#badge-modal-close{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;background:none;border:none;color:var(--n-400);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.12s,color 0.12s;}
+#badge-modal-close:hover{background:var(--a-w10);color:var(--text-1)}
+.bm-title{font-size:16px;font-weight:600;color:var(--text-1);margin-bottom:4px}
+.bm-desc{font-size:13px;color:var(--text-2);margin-bottom:16px}
+.bm-list{display:flex;flex-direction:column;gap:12px;margin-bottom:16px}
+.bm-item{display:flex;align-items:flex-start;gap:10px}
+.bm-item .d-status{flex-shrink:0;margin-top:1px}
+.bm-txt{font-size:13px;color:var(--text-2);line-height:1.5}
+.bm-note{font-size:11px;color:var(--n-400);line-height:1.6;border-top:1px solid var(--div-1);padding-top:12px}
+/* 툴팁 내 '전체 보기' 링크 */
+.tip-more{display:inline-block;margin-top:8px;font-size:11px;color:#E7727F;cursor:pointer}
+.tip-more:hover{color:#F09AA3;text-decoration:underline}
