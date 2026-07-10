@@ -1216,18 +1216,20 @@ async function _sendReport(){
   const d=(typeof S!=="undefined" && S.openId!=null)?DATA.find(x=>x.id===S.openId):null;
   sendBtn.disabled=true; st.className="rm-status"; st.textContent="전송 중…";
   const subject="[AK Archive] 오류 신고"+(d?` - ${d.title}`:"");
-  const fd=new FormData();
-  fd.append("access_key", REPORT_ACCESS_KEY);
-  fd.append("subject", subject);
-  fd.append("from_name", "AK Archive 제보");
-  fd.append("항목", d?`${d.title} (id ${d.id})`:"전체 사이트");
-  fd.append("페이지", location.href);
-  fd.append("내용", text);
+  // JSON(UTF-8) 전송 — 한글 필드명이 깨지지 않도록 (multipart 대신)
+  const payload={
+    access_key: REPORT_ACCESS_KEY,
+    subject: subject,
+    from_name: "AK Archive 제보",
+    "항목": d?`${d.title} (id ${d.id})`:"전체 사이트",
+    "페이지": location.href,
+    "내용": text
+  };
   try{
     const res=await fetch("https://api.web3forms.com/submit",{
       method:"POST",
-      headers:{"Accept":"application/json"},
-      body:fd
+      headers:{"Content-Type":"application/json","Accept":"application/json"},
+      body:JSON.stringify(payload)
     });
     const data=await res.json().catch(()=>({}));
     if(!res.ok || (data.success!==undefined && String(data.success)!=="true")){
