@@ -1194,7 +1194,6 @@ function openReportModal(){
   const d=(typeof S!=="undefined" && S.openId!=null)?DATA.find(x=>x.id===S.openId):null;
   document.getElementById("report-target").textContent=d?d.title:"전체 사이트";
   document.getElementById("report-text").value="";
-  document.getElementById("report-email").value="";
   const st=document.getElementById("report-status"); st.textContent=""; st.className="rm-status";
   document.getElementById("report-send").disabled=false;
   document.getElementById("report-modal").classList.add("show");
@@ -1207,7 +1206,6 @@ function closeReportModal(){
 }
 async function _sendReport(){
   const textEl=document.getElementById("report-text");
-  const emailEl=document.getElementById("report-email");
   const st=document.getElementById("report-status");
   const sendBtn=document.getElementById("report-send");
   const text=textEl.value.trim();
@@ -1223,14 +1221,13 @@ async function _sendReport(){
         항목: d?`${d.title} (id ${d.id})`:"전체 사이트",
         페이지: location.href,
         내용: text,
-        회신이메일: emailEl.value.trim()||"(미입력)",
         _captcha:"false",
         _template:"table"
       })
     });
     if(!res.ok) throw new Error("bad response");
     st.className="rm-status ok"; st.textContent="전송되었습니다. 감사합니다!";
-    textEl.value=""; emailEl.value="";
+    textEl.value="";
     setTimeout(closeReportModal,1500);
   }catch(err){
     st.className="rm-status err"; st.textContent="전송에 실패했어요. 잠시 후 다시 시도해주세요.";
