@@ -1212,25 +1212,34 @@ async function _sendReport(){
   if(!text){ st.className="rm-status err"; st.textContent="내용을 입력해주세요."; textEl.focus(); return; }
   const d=(typeof S!=="undefined" && S.openId!=null)?DATA.find(x=>x.id===S.openId):null;
   sendBtn.disabled=true; st.className="rm-status"; st.textContent="전송 중…";
+  const subject="[AK Archive] 오류 신고"+(d?` - ${d.title}`:"");
+  // JSON 대신 FormData 사용 → CORS 사전확인(preflight) 회피로 전송 안정성 ↑
+  const fd=new FormData();
+  fd.append("_subject",subject);
+  fd.append("항목", d?`${d.title} (id ${d.id})`:"전체 사이트");
+  fd.append("페이지", location.href);
+  fd.append("내용", text);
+  fd.append("_captcha","false");
+  fd.append("_template","table");
   try{
     const res=await fetch("https://formsubmit.co/ajax/young@meewang.kr",{
       method:"POST",
-      headers:{"Content-Type":"application/json","Accept":"application/json"},
-      body:JSON.stringify({
-        _subject:"[AK Archive] 오류 신고"+(d?` - ${d.title}`:""),
-        항목: d?`${d.title} (id ${d.id})`:"전체 사이트",
-        페이지: location.href,
-        내용: text,
-        _captcha:"false",
-        _template:"table"
-      })
+      headers:{"Accept":"application/json"},
+      body:fd
     });
-    if(!res.ok) throw new Error("bad response");
+    const data=await res.json().catch(()=>({}));
+    if(!res.ok || (data.success!==undefined && String(data.success)!=="true")){
+      throw new Error(data.message||("HTTP "+res.status));
+    }
     st.className="rm-status ok"; st.textContent="전송되었습니다. 감사합니다!";
     textEl.value="";
     setTimeout(closeReportModal,1500);
   }catch(err){
-    st.className="rm-status err"; st.textContent="전송에 실패했어요. 잠시 후 다시 시도해주세요.";
+    console.error("[report] 전송 실패:", err);
+    // 실패 시 메일 작성으로 대체 (막다른 길 방지)
+    const mail="mailto:young@meewang.kr?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent((d?`항목: ${d.title} (id ${d.id})\n`:"")+`페이지: ${location.href}\n\n${text}`);
+    st.className="rm-status err";
+    st.innerHTML=`전송이 안 됐어요. <a href="${mail}" style="color:#F09AA3;text-decoration:underline">메일로 보내기</a>`;
     sendBtn.disabled=false;
   }
 }
