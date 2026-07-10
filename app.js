@@ -1189,7 +1189,10 @@ function closeImgModal(){
 function openBadgeModal(){ document.getElementById("badge-modal").classList.add("show"); document.body.style.overflow="hidden"; }
 function closeBadgeModal(){ document.getElementById("badge-modal").classList.remove("show"); document.body.style.overflow=""; }
 
-// 오류 신고 폼 모달 (제출 → formsubmit.co → young@meewang.kr 메일 수신)
+// 오류 신고 폼 모달 (제출 → Web3Forms → young@meewang.kr 메일 수신)
+// ▼▼▼ web3forms.com 에서 young@meewang.kr 로 발급받은 Access Key를 아래 따옴표 안에 붙여넣으세요 ▼▼▼
+const REPORT_ACCESS_KEY = "6e75f25d-0509-49f8-9939-46805ef153d5";
+// ▲▲▲ (이 한 줄만 바꾸면 됩니다) ▲▲▲
 function openReportModal(){
   const d=(typeof S!=="undefined" && S.openId!=null)?DATA.find(x=>x.id===S.openId):null;
   document.getElementById("report-target").textContent=d?d.title:"전체 사이트";
@@ -1213,16 +1216,15 @@ async function _sendReport(){
   const d=(typeof S!=="undefined" && S.openId!=null)?DATA.find(x=>x.id===S.openId):null;
   sendBtn.disabled=true; st.className="rm-status"; st.textContent="전송 중…";
   const subject="[AK Archive] 오류 신고"+(d?` - ${d.title}`:"");
-  // JSON 대신 FormData 사용 → CORS 사전확인(preflight) 회피로 전송 안정성 ↑
   const fd=new FormData();
-  fd.append("_subject",subject);
+  fd.append("access_key", REPORT_ACCESS_KEY);
+  fd.append("subject", subject);
+  fd.append("from_name", "AK Archive 제보");
   fd.append("항목", d?`${d.title} (id ${d.id})`:"전체 사이트");
   fd.append("페이지", location.href);
   fd.append("내용", text);
-  fd.append("_captcha","false");
-  fd.append("_template","table");
   try{
-    const res=await fetch("https://formsubmit.co/ajax/young@meewang.kr",{
+    const res=await fetch("https://api.web3forms.com/submit",{
       method:"POST",
       headers:{"Accept":"application/json"},
       body:fd
