@@ -467,17 +467,18 @@ function _openDetail(id, prevPage, push){
   const stCls=stMap[stage]||"st-draft";
   const chk=stage==="확인완료"
     ?'<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7.5l2.5 2.5L11 4"/></svg>':'';
-  const badgeText=team+" "+stage;      // 예: 'UX 작성', 'PM 확인완료'
+  const stageLabel=(stage==="확인완료")?"확인":stage;   // '확인완료' → '확인'
+  const badgeText=team+" "+stageLabel;                  // 예: 'UX 작성', 'PM 확인'
   stEl.className="d-status "+stCls;
   stEl.innerHTML=chk+badgeText;
   stEl.style.display="";
-  // ⓘ 툴팁 — 아이콘 바로 아래 팝오버 (배지 '뜻'만 설명 · 게시물 메타와 중복 제거)
+  // ⓘ 툴팁 — 아이콘 바로 아래 팝오버 (배지 뜻만 설명 · 팝업과 문구 동일)
   const stageDesc={
-    "작성":"담당 부서 확인 전, 작성 단계입니다.",
+    "작성":"작성만 되고 아직 검수를 시작하지 않은 상태입니다.",
     "검토중":"담당 부서가 내용을 확인하는 중입니다.",
-    "확인완료":"담당 부서가 정확성을 확인한 정보입니다."
+    "확인완료":"담당 부서가 정확성을 확인 완료한 상태입니다."
   }[stage]||"";
-  tipBody.innerHTML=`<span class="tip-title">${badgeText}</span><br>${stageDesc}`+
+  tipBody.innerHTML=`<span class="tip-title">${stage==="확인완료"?"✓ ":""}${badgeText}</span><br>${stageDesc}`+
     `<span class="tip-note">※ 팀 표기는 이 항목의 담당일 뿐, UX→PM 같은 고정 순서가 아닙니다.</span>`+
     `<a class="tip-more" id="tip-more" role="button" tabindex="0">배지 종류 전체 보기 →</a>`;
   wrapEl.style.display="";
