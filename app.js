@@ -1189,23 +1189,64 @@ function closeImgModal(){
 function openBadgeModal(){ document.getElementById("badge-modal").classList.add("show"); document.body.style.overflow="hidden"; }
 function closeBadgeModal(){ document.getElementById("badge-modal").classList.remove("show"); document.body.style.overflow=""; }
 
-// 오류 신고 (메일: young@meewang.kr)
+// 오류 신고 폼 모달 (제출 → formsubmit.co → young@meewang.kr 메일 수신)
+function openReportModal(){
+  const d=(typeof S!=="undefined" && S.openId!=null)?DATA.find(x=>x.id===S.openId):null;
+  document.getElementById("report-target").textContent=d?d.title:"전체 사이트";
+  document.getElementById("report-text").value="";
+  document.getElementById("report-email").value="";
+  const st=document.getElementById("report-status"); st.textContent=""; st.className="rm-status";
+  document.getElementById("report-send").disabled=false;
+  document.getElementById("report-modal").classList.add("show");
+  document.body.style.overflow="hidden";
+  setTimeout(()=>document.getElementById("report-text").focus(),50);
+}
+function closeReportModal(){
+  document.getElementById("report-modal").classList.remove("show");
+  document.body.style.overflow="";
+}
+async function _sendReport(){
+  const textEl=document.getElementById("report-text");
+  const emailEl=document.getElementById("report-email");
+  const st=document.getElementById("report-status");
+  const sendBtn=document.getElementById("report-send");
+  const text=textEl.value.trim();
+  if(!text){ st.className="rm-status err"; st.textContent="내용을 입력해주세요."; textEl.focus(); return; }
+  const d=(typeof S!=="undefined" && S.openId!=null)?DATA.find(x=>x.id===S.openId):null;
+  sendBtn.disabled=true; st.className="rm-status"; st.textContent="전송 중…";
+  try{
+    const res=await fetch("https://formsubmit.co/ajax/young@meewang.kr",{
+      method:"POST",
+      headers:{"Content-Type":"application/json","Accept":"application/json"},
+      body:JSON.stringify({
+        _subject:"[AK Archive] 오류 신고"+(d?` - ${d.title}`:""),
+        항목: d?`${d.title} (id ${d.id})`:"전체 사이트",
+        페이지: location.href,
+        내용: text,
+        회신이메일: emailEl.value.trim()||"(미입력)",
+        _captcha:"false",
+        _template:"table"
+      })
+    });
+    if(!res.ok) throw new Error("bad response");
+    st.className="rm-status ok"; st.textContent="전송되었습니다. 감사합니다!";
+    textEl.value=""; emailEl.value="";
+    setTimeout(closeReportModal,1500);
+  }catch(err){
+    st.className="rm-status err"; st.textContent="전송에 실패했어요. 잠시 후 다시 시도해주세요.";
+    sendBtn.disabled=false;
+  }
+}
 (function(){
-  const rb=document.getElementById("report-btn");
-  if(!rb) return;
-  rb.addEventListener("click",()=>{
-    const d=(typeof S!=="undefined" && S.openId!=null)?DATA.find(x=>x.id===S.openId):null;
-    const subject="[AK Archive] 오류 신고"+(d?` - ${d.title}`:"");
-    let body="";
-    if(d) body+=`항목: ${d.title} (id ${d.id})\n`;
-    body+=`페이지: ${location.href}\n\n오류 내용을 적어주세요:\n`;
-    location.href=`mailto:young@meewang.kr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  });
+  const rb=document.getElementById("report-btn"); if(rb) rb.addEventListener("click",openReportModal);
+  const sb=document.getElementById("report-send"); if(sb) sb.addEventListener("click",_sendReport);
 })();
 
 // ESC
 document.addEventListener("keydown",e=>{
   if(e.key==="Escape"){
+    const _rm=document.getElementById("report-modal");
+    if(_rm && _rm.classList.contains("show")){closeReportModal();return;}
     const _bm=document.getElementById("badge-modal");
     if(_bm && _bm.classList.contains("show")){closeBadgeModal();return;}
     if(document.getElementById("img-modal").classList.contains("show")){closeImgModal();return;}

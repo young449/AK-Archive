@@ -308,6 +308,21 @@
   </div>
 </div>
 
+<!-- 오류 신고 폼 모달 -->
+<div id="report-modal" onclick="closeReportModal()">
+  <div id="report-modal-box" onclick="event.stopPropagation()">
+    <button id="report-modal-close" onclick="closeReportModal()" aria-label="닫기">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l10 10M11 1L1 11"/></svg>
+    </button>
+    <div class="rm-title">오류 신고 · 제보</div>
+    <div class="rm-sub" id="report-target">전체 사이트</div>
+    <textarea id="report-text" rows="5" placeholder="어떤 정보가 잘못되었는지, 올바른 내용은 무엇인지 적어주세요."></textarea>
+    <input id="report-email" type="email" placeholder="회신받을 이메일 (선택)"/>
+    <button id="report-send" type="button">전송</button>
+    <div id="report-status" class="rm-status"></div>
+  </div>
+</div>
+
 <!-- =============================================
    SECTION: js-data
 ============================================= -->
