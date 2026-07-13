@@ -388,13 +388,15 @@ function renderCards(){
     const labelBadges = d.labels
       ? d.labels.map(l=>`<span class="badge ${LABEL_CLS[l]||'b-more'}">${l}</span>`).join("")
       : "";
+    const glossBadge = d.glossTab ? `<span class="badge b-gloss">${d.glossTab}</span>` : "";  // AK 용어 분류 칩
     const vis=d.models.slice(0,MAX_MODELS);
     const hid=d.models.length-vis.length;
     const divider=(labelBadges&&vis.length>0)?`<span class="badge-divider"></span>`:"";
     const modelBadges=labelBadges+divider+vis.map(m=>`<span class="badge ${DAP_CLS[m]||'b-more'}">${m}</span>`).join("")
       +(hid>0?`<span class="badge b-more">+${hid}</span>`:"");
-    const topRow=(vis.length>0||labelBadges||!S.cat)
-      ?`<div class="card-top"><div class="card-models-row">${!S.cat?`<span class="badge ${CAT_CLS[d.category]||'b-more'}">${d.category}</span>${(vis.length>0||labelBadges)?'<span class="badge-divider"></span>':''}`:''  }${modelBadges}</div></div>`
+    const hasBadge=(vis.length>0||labelBadges||glossBadge);
+    const topRow=(hasBadge||!S.cat)
+      ?`<div class="card-top"><div class="card-models-row">${!S.cat?`<span class="badge ${CAT_CLS[d.category]||'b-more'}">${d.category}</span>${hasBadge?'<span class="badge-divider"></span>':''}`:''}${glossBadge}${modelBadges}</div></div>`
       :"";
     const dp=d.date.split(".");
     const fmtDate=dp.length===3?`${dp[0]}. ${parseInt(dp[1])}. ${parseInt(dp[2])}.`:d.date;
