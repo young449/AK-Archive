@@ -1253,9 +1253,8 @@ async function _sendReport(){
 })();
 
 // ===== 배지 상태를 구글 시트에서 불러오기 (코드 수정 없이 시트만 고치면 반영) =====
-// ▼▼▼ 구글 시트 '웹에 게시(CSV)' 주소를 아래 따옴표 안에 붙여넣으세요 ▼▼▼
-const STATUS_SHEET_CSV_URL = "PASTE_PUBLISHED_CSV_URL_HERE";
-// ▲▲▲ (이 한 줄만 채우면 됩니다. 시트 열: id / 단계 / 담당팀) ▲▲▲
+// 구글 시트 '웹에 게시(CSV)' 주소 (시트 열 이름으로 읽음: id / 단계 / 담당팀, 그 외 열은 무시)
+const STATUS_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT_9qWb_gx1jZdEqpAImkoTKKjDEMFe0sfrt6QVCrA8bJNEBS50VQndVHNHpPVVxH2mKFvmKtSw7YjW/pub?output=csv";
 window.STATUS_OVERRIDES = {};
 async function loadStatusSheet(){
   if(!STATUS_SHEET_CSV_URL || STATUS_SHEET_CSV_URL.indexOf("http")!==0) return;  // 미설정 시 JS 기본값 사용
@@ -1263,18 +1262,23 @@ async function loadStatusSheet(){
     const res = await fetch(STATUS_SHEET_CSV_URL);
     if(!res.ok) return;
     const text = await res.text();
+    const lines = text.trim().split(/\r?\n/);
+    if(!lines.length) return;
+    const headers = lines[0].split(",").map(h=>h.trim().replace(/^﻿/,"").replace(/^"|"$/g,""));
+    const iId=headers.indexOf("id"), iStage=headers.indexOf("단계"), iTeam=headers.indexOf("담당팀");
+    if(iId<0) return;                       // id 열이 없으면 중단
     const map = {};
-    text.trim().split(/\r?\n/).forEach(line=>{
-      const cols = line.split(",").map(c=>c.trim().replace(/^"|"$/g,""));
-      const id = parseInt(cols[0],10);
-      if(isNaN(id)) return;                 // 헤더/빈 줄 건너뜀
-      let stage = (cols[1]||"").trim();
+    for(let r=1;r<lines.length;r++){
+      const cols = lines[r].split(",").map(c=>c.trim().replace(/^"|"$/g,""));
+      const id = parseInt(cols[iId],10);
+      if(isNaN(id)) continue;               // 빈 줄 건너뜀
+      let stage = (iStage>=0 ? (cols[iStage]||"") : "").trim();
       if(stage==="확인") stage="확인완료";   // 시트엔 '확인'으로 적어도 됨
-      const team = (cols[2]||"").trim();
+      const team = (iTeam>=0 ? (cols[iTeam]||"") : "").trim();
       map[id] = {};
       if(stage) map[id].status = stage;
       if(team)  map[id].team   = team;
-    });
+    }
     window.STATUS_OVERRIDES = map;
     // 이미 상세가 열려 있으면 새 값으로 다시 그림
     if(typeof S!=="undefined" && S.openId!=null && document.getElementById("detail").classList.contains("show")){
