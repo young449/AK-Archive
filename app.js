@@ -462,14 +462,19 @@ function _openDetail(id, prevPage, push){
   const tipEl=document.getElementById("d-tip");
   const tipBody=document.getElementById("d-tip-body");
   const stMap={"확인완료":"st-done","검토중":"st-review","작성":"st-draft"};
-  const _ov=(window.STATUS_OVERRIDES||{})[d.id]||{};   // 구글 시트 값 우선
-  const stage=_ov.status||d.status||"작성";
-  const team=_ov.team||d.statusTeam||"UX";
-  const stCls=stMap[stage]||"st-draft";
-  const chk=stage==="확인완료"
+  const ovText=(window.STATUS_OVERRIDES||{})[d.id];    // 시트 '상태' 문자열 (예: 'UX 확인')
+  let badgeText, stageKey;
+  if(ovText){                                          // 시트 값이 있으면 그대로 사용
+    badgeText = ovText;
+    stageKey  = /확인/.test(ovText) ? "확인완료" : (/검토중/.test(ovText) ? "검토중" : "작성");
+  } else {                                             // 없으면 data_*.js 기본값
+    const stage=d.status||"작성", team=d.statusTeam||"UX";
+    stageKey  = stage;
+    badgeText = team + " " + ((stage==="확인완료")?"확인":stage);
+  }
+  const stCls=stMap[stageKey]||"st-draft";
+  const chk=(stageKey==="확인완료")
     ?'<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7.5l2.5 2.5L11 4"/></svg>':'';
-  const stageLabel=(stage==="확인완료")?"확인":stage;   // '확인완료' → '확인'
-  const badgeText=team+" "+stageLabel;                  // 예: 'UX 작성', 'PM 확인'
   stEl.className="d-status "+stCls;
   stEl.innerHTML=chk+badgeText;
   stEl.style.display="";
@@ -478,7 +483,7 @@ function _openDetail(id, prevPage, push){
     "작성":"작성만 되고 아직 검수를 시작하지 않은 상태입니다.",
     "검토중":"담당 부서가 내용을 확인하는 중입니다.",
     "확인완료":"담당 부서가 정확성을 확인 완료한 상태입니다."
-  }[stage]||"";
+  }[stageKey]||"";
   tipBody.innerHTML=`<div class="tip-line"><span class="tip-b">*</span><span>${stageDesc}</span></div>`+
     `<div class="tip-line"><span class="tip-b">*</span><span>팀 표기는 이 항목의 담당일 뿐, UX→PM 같은 고정 순서가 아닙니다.</span></div>`+
     `<a class="tip-more" id="tip-more" role="button" tabindex="0">→ 배지 종류 전체 보기</a>`;
@@ -1266,19 +1271,15 @@ function _parseStatusCsv(text){
   const lines = (text||"").trim().split(/\r?\n/);
   if(lines.length < 2) return {};
   const headers = lines[0].split(",").map(h=>h.trim().replace(/^﻿/,"").replace(/^"|"$/g,""));
-  const iId=headers.indexOf("id"), iStage=headers.indexOf("단계"), iTeam=headers.indexOf("담당팀");
-  if(iId<0) return {};                      // id 열이 없으면 무시
+  const iId=headers.indexOf("id"), iStatus=headers.indexOf("상태");
+  if(iId<0 || iStatus<0) return {};         // id·상태 열 없으면 무시
   const m={};
   for(let r=1;r<lines.length;r++){
     const cols = lines[r].split(",").map(c=>c.trim().replace(/^"|"$/g,""));
     const id = parseInt(cols[iId],10);
     if(isNaN(id)) continue;                 // 빈 줄 건너뜀
-    let stage = (iStage>=0 ? (cols[iStage]||"") : "").trim();
-    if(stage==="확인") stage="확인완료";     // 시트엔 '확인'으로 적어도 됨
-    const team = (iTeam>=0 ? (cols[iTeam]||"") : "").trim();
-    m[id]={};
-    if(stage) m[id].status = stage;
-    if(team)  m[id].team   = team;
+    const status = (cols[iStatus]||"").trim();
+    if(status) m[id]=status;                // '상태' 문자열 그대로 (예: 'UX 확인')
   }
   return m;
 }
