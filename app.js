@@ -1253,36 +1253,47 @@ async function _sendReport(){
 })();
 
 // ===== 배지 상태를 구글 시트에서 불러오기 (코드 수정 없이 시트만 고치면 반영) =====
-// 구글 시트 '웹에 게시(CSV)' 주소 (시트 열 이름으로 읽음: id / 단계 / 담당팀, 그 외 열은 무시)
-const STATUS_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT_9qWb_gx1jZdEqpAImkoTKKjDEMFe0sfrt6QVCrA8bJNEBS50VQndVHNHpPVVxH2mKFvmKtSw7YjW/pub?output=csv";
+// GNB별 시트(제품 / UX 히스토리 / AK 용어)를 각각 'CSV로 웹에 게시'한 주소를 넣으세요.
+// 시트 열 이름으로 읽습니다: id / 단계 / 담당팀 (그 외 열은 무시)
+const STATUS_SHEET_CSV_BASE = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT8rJLj2cGMgEJbZRj1dn-0yZAuoFqn_7YCTA6-57EpQzOk8ZrnSWY0Q64TcKBk6OhXxELtslOLpE2h/pub";
+const STATUS_SHEET_CSV_URLS = [
+  STATUS_SHEET_CSV_BASE + "?gid=0&single=true&output=csv",          // 제품
+  STATUS_SHEET_CSV_BASE + "?gid=910290463&single=true&output=csv",  // UX 히스토리
+  STATUS_SHEET_CSV_BASE + "?gid=357135067&single=true&output=csv"   // AK 용어
+];
 window.STATUS_OVERRIDES = {};
+function _parseStatusCsv(text){
+  const lines = (text||"").trim().split(/\r?\n/);
+  if(lines.length < 2) return {};
+  const headers = lines[0].split(",").map(h=>h.trim().replace(/^﻿/,"").replace(/^"|"$/g,""));
+  const iId=headers.indexOf("id"), iStage=headers.indexOf("단계"), iTeam=headers.indexOf("담당팀");
+  if(iId<0) return {};                      // id 열이 없으면 무시
+  const m={};
+  for(let r=1;r<lines.length;r++){
+    const cols = lines[r].split(",").map(c=>c.trim().replace(/^"|"$/g,""));
+    const id = parseInt(cols[iId],10);
+    if(isNaN(id)) continue;                 // 빈 줄 건너뜀
+    let stage = (iStage>=0 ? (cols[iStage]||"") : "").trim();
+    if(stage==="확인") stage="확인완료";     // 시트엔 '확인'으로 적어도 됨
+    const team = (iTeam>=0 ? (cols[iTeam]||"") : "").trim();
+    m[id]={};
+    if(stage) m[id].status = stage;
+    if(team)  m[id].team   = team;
+  }
+  return m;
+}
 async function loadStatusSheet(){
-  if(!STATUS_SHEET_CSV_URL || STATUS_SHEET_CSV_URL.indexOf("http")!==0) return;  // 미설정 시 JS 기본값 사용
+  const urls = STATUS_SHEET_CSV_URLS.filter(u=>u && u.indexOf("http")===0);
+  if(!urls.length) return;
   try{
-    const res = await fetch(STATUS_SHEET_CSV_URL);
-    if(!res.ok) return;
-    const text = await res.text();
-    const lines = text.trim().split(/\r?\n/);
-    if(!lines.length) return;
-    const headers = lines[0].split(",").map(h=>h.trim().replace(/^﻿/,"").replace(/^"|"$/g,""));
-    const iId=headers.indexOf("id"), iStage=headers.indexOf("단계"), iTeam=headers.indexOf("담당팀");
-    if(iId<0) return;                       // id 열이 없으면 중단
-    const map = {};
-    for(let r=1;r<lines.length;r++){
-      const cols = lines[r].split(",").map(c=>c.trim().replace(/^"|"$/g,""));
-      const id = parseInt(cols[iId],10);
-      if(isNaN(id)) continue;               // 빈 줄 건너뜀
-      let stage = (iStage>=0 ? (cols[iStage]||"") : "").trim();
-      if(stage==="확인") stage="확인완료";   // 시트엔 '확인'으로 적어도 됨
-      const team = (iTeam>=0 ? (cols[iTeam]||"") : "").trim();
-      map[id] = {};
-      if(stage) map[id].status = stage;
-      if(team)  map[id].team   = team;
-    }
-    window.STATUS_OVERRIDES = map;
-    // 이미 상세가 열려 있으면 새 값으로 다시 그림
-    if(typeof S!=="undefined" && S.openId!=null && document.getElementById("detail").classList.contains("show")){
-      _openDetail(S.openId, undefined, false);
+    const texts = await Promise.all(urls.map(u=>fetch(u).then(r=>r.ok?r.text():"").catch(()=>"")));
+    const merged = {};
+    texts.forEach(t=>Object.assign(merged, _parseStatusCsv(t)));   // 3개 시트 병합
+    if(Object.keys(merged).length){
+      window.STATUS_OVERRIDES = merged;
+      if(typeof S!=="undefined" && S.openId!=null && document.getElementById("detail").classList.contains("show")){
+        _openDetail(S.openId, undefined, false);
+      }
     }
   }catch(e){ /* 실패 시 조용히 JS 기본값 유지 */ }
 }
