@@ -462,8 +462,9 @@ function _openDetail(id, prevPage, push){
   const tipEl=document.getElementById("d-tip");
   const tipBody=document.getElementById("d-tip-body");
   const stMap={"확인완료":"st-done","검토중":"st-review","작성":"st-draft"};
-  const stage=d.status||"작성";
-  const team=d.statusTeam||"UX";
+  const _ov=(window.STATUS_OVERRIDES||{})[d.id]||{};   // 구글 시트 값 우선
+  const stage=_ov.status||d.status||"작성";
+  const team=_ov.team||d.statusTeam||"UX";
   const stCls=stMap[stage]||"st-draft";
   const chk=stage==="확인완료"
     ?'<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7.5l2.5 2.5L11 4"/></svg>':'';
@@ -1250,6 +1251,38 @@ async function _sendReport(){
   const rb=document.getElementById("report-btn"); if(rb) rb.addEventListener("click",openReportModal);
   const sb=document.getElementById("report-send"); if(sb) sb.addEventListener("click",_sendReport);
 })();
+
+// ===== 배지 상태를 구글 시트에서 불러오기 (코드 수정 없이 시트만 고치면 반영) =====
+// ▼▼▼ 구글 시트 '웹에 게시(CSV)' 주소를 아래 따옴표 안에 붙여넣으세요 ▼▼▼
+const STATUS_SHEET_CSV_URL = "PASTE_PUBLISHED_CSV_URL_HERE";
+// ▲▲▲ (이 한 줄만 채우면 됩니다. 시트 열: id / 단계 / 담당팀) ▲▲▲
+window.STATUS_OVERRIDES = {};
+async function loadStatusSheet(){
+  if(!STATUS_SHEET_CSV_URL || STATUS_SHEET_CSV_URL.indexOf("http")!==0) return;  // 미설정 시 JS 기본값 사용
+  try{
+    const res = await fetch(STATUS_SHEET_CSV_URL);
+    if(!res.ok) return;
+    const text = await res.text();
+    const map = {};
+    text.trim().split(/\r?\n/).forEach(line=>{
+      const cols = line.split(",").map(c=>c.trim().replace(/^"|"$/g,""));
+      const id = parseInt(cols[0],10);
+      if(isNaN(id)) return;                 // 헤더/빈 줄 건너뜀
+      let stage = (cols[1]||"").trim();
+      if(stage==="확인") stage="확인완료";   // 시트엔 '확인'으로 적어도 됨
+      const team = (cols[2]||"").trim();
+      map[id] = {};
+      if(stage) map[id].status = stage;
+      if(team)  map[id].team   = team;
+    });
+    window.STATUS_OVERRIDES = map;
+    // 이미 상세가 열려 있으면 새 값으로 다시 그림
+    if(typeof S!=="undefined" && S.openId!=null && document.getElementById("detail").classList.contains("show")){
+      _openDetail(S.openId, undefined, false);
+    }
+  }catch(e){ /* 실패 시 조용히 JS 기본값 유지 */ }
+}
+loadStatusSheet();
 
 // ESC
 document.addEventListener("keydown",e=>{
