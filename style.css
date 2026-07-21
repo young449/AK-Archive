@@ -1317,3 +1317,4 @@ body.is-home #report-btn{display:none}
 .tip-more{display:block;width:fit-content;margin-top:10px;font-size:14px;color:#E7727F;cursor:pointer;text-decoration:none}
 .tip-more:hover{color:#F09AA3;text-decoration:underline}
 .tip-more + .tip-more{margin-top:6px}
+.tip-ext{color:var(--n-400);font-size:12px}

@@ -489,7 +489,7 @@ function _openDetail(id, prevPage, push){
   tipBody.innerHTML=`<div class="tip-line"><span class="tip-b">*</span><span>${stageDesc}</span></div>`+
     `<div class="tip-line"><span class="tip-b">*</span><span>팀 표기는 이 항목의 담당일 뿐, UX→PM 같은 고정 순서가 아닙니다.</span></div>`+
     `<a class="tip-more" id="tip-more" role="button" tabindex="0">→ 배지 종류 전체 보기</a>`+
-    `<a class="tip-more tip-sheet" id="tip-sheet" href="https://docs.google.com/spreadsheets/d/1R7KvLTtX3PIViM10hCu0tiqol1krZOrOx-D7xZMmMUo/edit" target="_blank" rel="noopener">→ 상태 수정하기</a>`;
+    `<a class="tip-more tip-sheet" id="tip-sheet" href="https://docs.google.com/spreadsheets/d/1R7KvLTtX3PIViM10hCu0tiqol1krZOrOx-D7xZMmMUo/edit" target="_blank" rel="noopener">→ 상태 수정하기 <span class="tip-ext">(구글 시트)</span></a>`;
   wrapEl.style.display="";
   const _setTip=(o)=>{tipEl.style.display=o?"block":"none";infoEl.setAttribute("aria-expanded",o?"true":"false");};
   _setTip(false);
