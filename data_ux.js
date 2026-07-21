@@ -492,14 +492,6 @@ PD5·SP4000T·PD20 모두 [설정 → 외부 조작 잠금] 기능이 있으나,
 - 물리 버튼·스위치 제품은 잠긴 상태에서 조작을 시도하면 하단에 '잠겨있다'는 토스트가 표시됩니다.
 
 
-■■ 제품별 잠금 화면
-
-!!img:images/history/Lock_pd20.png|Lock_pd20.png!!
-!!img:images/history/Lock_sp4000t.png|Lock_sp4000t.png!!
-!!img:images/history/Lock_pd5.png|Lock_pd5.png!!
-!!img:images/history/Lock_pd5_quick.png|Lock_pd5_quick.png!!
-
-
 ■■■ 논의 경과
 
 ■■ Luke(PM) 의견 — HW 기기 문구 동일 사용 제안
@@ -527,5 +519,11 @@ PD20 문구에는 '기기 측면의 Hold 스위치'라고 위치가 명시돼 �
 | SP4000T | ON으로 설정한 항목은 Lock 버튼을 누르면 잠깁니다. |
 | PD20 | ON으로 설정한 항목은 기기 측면의 Hold 스위치를 켰을 때만 잠깁니다. AMP/Current 물리 조작은 잠금 대상에서 제외됩니다. |`,
    tags:["RC","외부조작잠금","잠금","Lock","안내문구","UXWriting","PD5","SP4000T","PD20"],
+   images:[
+     {src:"images/history/Lock_pd20.png",caption:"Lock_pd20.png"},
+     {src:"images/history/Lock_sp4000t.png",caption:"Lock_sp4000t.png"},
+     {src:"images/history/Lock_pd5.png",caption:"Lock_pd5.png"},
+     {src:"images/history/Lock_pd5_quick.png",caption:"Lock_pd5_quick.png"}
+   ],
    links:[{label:"Figma_UX",url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=9368-9568&t=nQHmOPn112ZLgran-1"}]},
 ];

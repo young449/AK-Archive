@@ -582,7 +582,7 @@ function _openDetail(id, prevPage, push){
   const imgEl=document.getElementById("d-images");
   const detailImgs = d.images ? d.images.filter(img => !img.src.toLowerCase().includes('_thumb')) : [];
   if(detailImgs.length){
-    imgEl.innerHTML=`<div class="d-img-grid">${detailImgs.map(img=>`<img src="${img.src}" alt="${(img.alt||img.caption||"").replace(/"/g,"&quot;")}" loading="lazy" style="cursor:pointer" onclick="openImgModal(this.src)"/>`).join("")}</div>`;
+    imgEl.innerHTML=`<div class="d-img-grid">${detailImgs.map(img=>{const cap=img.caption?`<span class="body-img-caption" style="margin-top:6px">${img.caption}</span>`:"";return `<div class="d-img-cell" style="display:flex;flex-direction:column">`+`<img src="${img.src}" alt="${(img.alt||img.caption||"").replace(/"/g,"&quot;")}" loading="lazy" style="cursor:pointer" onclick="openImgModal(this.src)"/>`+cap+`</div>`;}).join("")}</div>`;
   } else { imgEl.innerHTML=""; }
   // 첨부 파일
   const filesEl=document.getElementById("d-files");
@@ -758,8 +758,7 @@ function renderBody(text) {
         i += 2;
       } else {
         const {src, alt} = parseImg(trimmed);
-        const cap = alt ? `<span class="body-img-caption" style="display:block;text-align:left;margin-top:6px;">${alt}</span>` : '';
-        result.push(`<div class="body-img-single" style="margin:16px 0;"><img src="${src}" alt="${alt}" loading="lazy" style="max-width:100%;height:auto;border-radius:8px;display:block;border:1px solid var(--div-1);background:#000;cursor:pointer" onclick="openImgModal(this.src)"/>${cap}</div>`);
+        result.push(`<div class="body-img-wrap"><img src="${src}" alt="${alt}" loading="lazy" style="max-width:100%;border-radius:8px;margin:12px 0;display:block;"/></div>`);
         i++;
       }
       continue;
