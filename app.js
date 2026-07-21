@@ -758,7 +758,8 @@ function renderBody(text) {
         i += 2;
       } else {
         const {src, alt} = parseImg(trimmed);
-        result.push(`<div class="body-img-wrap"><img src="${src}" alt="${alt}" loading="lazy" style="max-width:100%;border-radius:8px;margin:12px 0;display:block;"/></div>`);
+        const cap = alt ? `<span class="body-img-caption" style="display:block;text-align:left;margin-top:6px;">${alt}</span>` : '';
+        result.push(`<div class="body-img-single" style="margin:16px 0;"><img src="${src}" alt="${alt}" loading="lazy" style="max-width:100%;height:auto;border-radius:8px;display:block;border:1px solid var(--div-1);background:#000;cursor:pointer" onclick="openImgModal(this.src)"/>${cap}</div>`);
         i++;
       }
       continue;
