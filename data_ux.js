@@ -92,7 +92,7 @@ AK Connect로 추가된 곡은 컬렉션 추가 불가.
 | PD series | 순차 반영 예정 | 현재 RC 계획 없음 |`,
    tags:["RC","Collection","컬렉션","Favorite","즐겨찾기","UX개선"],
    links:[{label:"용어사전 — 컬렉션",url:"#search:컬렉션"},{label:"용어사전 — Favorite",url:"#search:Favorite"}]},
-  {id:202,title:"설정 레이블 추가 및 재배열",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["RC"],models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",status:"확인완료",
+  {id:202,title:"설정 - 레이블 추가 및 재배열",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["RC"],models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",status:"확인완료",statusText:"UX 확인, PM 확인",
    desc:"기존 아이콘만으로 구분되던 설정 화면에 레이블을 추가하고, 각 그룹 성격에 맞게 항목 순서를 재배열한 UX 개선.",
    body:`■■ 기능 개요
 
@@ -472,7 +472,7 @@ FileZilla로 접속 후, 아래 경로에서 해당 모델의 .hex 파일을 And
    ]},
   {id:209,title:"버튼 컴포넌트 스펙 v3",category:"디자인 가이드",models:[],date:"2025.03.08",author:"Ellie",authorInitial:"E",desc:"Primary / Secondary / Ghost 3종 버튼 스펙. 상태별 컬러 토큰 정의.",body:`버튼 높이: 40px (기본) / 32px (소형)\n\nPrimary → Crimson 700 (#CC1B38)\nSecondary → Neutrals 600 (#3A3A3A)\nDisabled → Neutrals 600 (#3A3A3A)`,tags:["UI","컴포넌트"],links:[{label:"피그마 — Button v3",url:"https://figma.com"}]},
   {id:210,title:"컬러 토큰 시스템 — Semantic",category:"디자인 가이드",models:[],date:"2025.04.02",author:"Ellie",authorInitial:"E",desc:"AK Design System Semantic 컬러 토큰 전체 정의.",body:`Background\n  color/bg/primary → Black 100%\n  color/bg/secondary → Neutrals 800\n\nText\n  color/text/default → White 100%\n  color/text/primary → Crimson 700`,tags:["토큰","컬러"],links:[]},
-  {id:211,title:"설정 - 외부 조작 잠금 문구",credits:{PM:"Luke",PL:"Kane",UX:"Ellie"},category:"기능 히스토리",labels:["RC"],models:["PD20","SP4000T","PD5"],date:"2026.07.21",author:"Ellie",authorInitial:"E",status:"작성",
+  {id:211,title:"설정 - 외부 조작 잠금 문구",credits:{PM:"Luke",PL:"Kane",UX:"Ellie"},category:"기능 히스토리",labels:["RC"],models:["PD20","SP4000T","PD5"],date:"2026.07.21",author:"Ellie",authorInitial:"E",status:"작성",statusText:"UX 확인, PM 확인",
    desc:"PD5·SP4000T·PD20의 '외부 조작 잠금' 안내 문구가 제품별 잠금 방식(SW/HW·스위치 위치) 차이로 상이. SP4000T는 화면상태·위치 표현을 빼고 'Lock 버튼을 누르면 잠깁니다'로 확정.",
    body:`■■■ 배경
 

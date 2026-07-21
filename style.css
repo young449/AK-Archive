@@ -645,6 +645,7 @@ mark{background:transparent;color:var(--cr-200);border-radius:0;padding:0;font-w
 /* 제목 + 검수 상태 배지 행 */
 #d-title-row{position:relative;display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}
 #d-title-row #d-title{margin-bottom:0}
+.d-status-wrap{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}
 .d-status{
   display:inline-flex;align-items:center;gap:5px;
   padding:4px 10px;border-radius:var(--r-xl);

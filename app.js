@@ -464,21 +464,31 @@ function _openDetail(id, prevPage, push){
   const tipEl=document.getElementById("d-tip");
   const tipBody=document.getElementById("d-tip-body");
   const stMap={"확인완료":"st-done","검토중":"st-review","작성":"st-draft"};
-  const ovText=(window.STATUS_OVERRIDES||{})[d.id];    // 시트 '상태' 문자열 (예: 'UX 확인')
-  let badgeText, stageKey;
-  if(ovText){                                          // 시트 값이 있으면 그대로 사용
-    badgeText = ovText;
-    stageKey  = /확인/.test(ovText) ? "확인완료" : (/검토중/.test(ovText) ? "검토중" : "작성");
-  } else {                                             // 없으면 data_*.js 기본값
+  const stageOrder={"작성":0,"검토중":1,"확인완료":2};
+  const _stageOf=(s)=>/확인/.test(s)?"확인완료":(/검토중/.test(s)?"검토중":"작성");
+  // 상태 원본 문자열: 시트값 > data_*.js statusText(다중) > team+stage 기본값
+  // 콤마로 여러 개 지정 가능 (예: 'UX 확인, PM 확인') → 배지 여러 개 표시
+  const ovText=(window.STATUS_OVERRIDES||{})[d.id];
+  let rawStatus;
+  if(ovText){
+    rawStatus = ovText;
+  } else if(d.statusText){
+    rawStatus = d.statusText;
+  } else {
     const stage=d.status||"작성", team=d.statusTeam||"UX";
-    stageKey  = stage;
-    badgeText = team + " " + ((stage==="확인완료")?"확인":stage);
+    rawStatus = team + " " + ((stage==="확인완료")?"확인":stage);
   }
-  const stCls=stMap[stageKey]||"st-draft";
-  const chk=(stageKey==="확인완료")
-    ?'<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7.5l2.5 2.5L11 4"/></svg>':'';
-  stEl.className="d-status "+stCls;
-  stEl.innerHTML=chk+badgeText;
+  const segs=rawStatus.split(/\s*,\s*/).filter(Boolean);
+  const chkSvg='<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7.5l2.5 2.5L11 4"/></svg>';
+  let stageKey="확인완료";   // 툴팁 설명용: 여러 개면 가장 덜 완료된 단계 기준
+  stEl.className="d-status-wrap";
+  stEl.innerHTML=segs.map(seg=>{
+    const key=_stageOf(seg);
+    if(stageOrder[key]<stageOrder[stageKey]) stageKey=key;
+    const cls=stMap[key]||"st-draft";
+    const chk=(key==="확인완료")?chkSvg:"";
+    return `<span class="d-status ${cls}">${chk}${seg}</span>`;
+  }).join("");
   stEl.style.display="";
   // ⓘ 툴팁 — 아이콘 바로 아래 팝오버 (배지 뜻만 설명 · 팝업과 문구 동일)
   const stageDesc={
