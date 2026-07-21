@@ -472,4 +472,60 @@ FileZilla로 접속 후, 아래 경로에서 해당 모델의 .hex 파일을 And
    ]},
   {id:209,title:"버튼 컴포넌트 스펙 v3",category:"디자인 가이드",models:[],date:"2025.03.08",author:"Ellie",authorInitial:"E",desc:"Primary / Secondary / Ghost 3종 버튼 스펙. 상태별 컬러 토큰 정의.",body:`버튼 높이: 40px (기본) / 32px (소형)\n\nPrimary → Crimson 700 (#CC1B38)\nSecondary → Neutrals 600 (#3A3A3A)\nDisabled → Neutrals 600 (#3A3A3A)`,tags:["UI","컴포넌트"],links:[{label:"피그마 — Button v3",url:"https://figma.com"}]},
   {id:210,title:"컬러 토큰 시스템 — Semantic",category:"디자인 가이드",models:[],date:"2025.04.02",author:"Ellie",authorInitial:"E",desc:"AK Design System Semantic 컬러 토큰 전체 정의.",body:`Background\n  color/bg/primary → Black 100%\n  color/bg/secondary → Neutrals 800\n\nText\n  color/text/default → White 100%\n  color/text/primary → Crimson 700`,tags:["토큰","컬러"],links:[]},
+  {id:211,title:"설정 - 외부 조작 잠금 문구",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["RC"],models:["PD20","SP4000T","PD5"],date:"2026.07.21",author:"Ellie",authorInitial:"E",status:"작성",
+   desc:"PD5·SP4000T·PD20의 '외부 조작 잠금' 안내 문구가 제품별 잠금 방식(SW/HW·스위치 위치) 차이로 상이. SP4000T는 위치 표현 없이 기존 문구로 확정.",
+   body:`■■■ 배경
+
+PD5·SP4000T·PD20 모두 [설정 → 외부 조작 잠금] 기능이 있으나, 잠금 방식이 제품마다 달라 안내 문구도 제각각이었습니다.
+SP4000T 락 문구를 확정하는 과정에서, 세 제품의 문구를 나란히 비교하며 문구 결정 기준을 정리했습니다.
+
+
+■■ 제품별 잠금 방식 차이
+
+| 제품 | 잠금 수단 | 퀵패널 | 잠기는 조건 |
+| --- | --- | --- | --- |
+| PD5 | 알림패널 퀵패널의 SW Lock 버튼 | 있음 | 화면 꺼진 상태에서만 |
+| SP4000T | 상단 물리(HW) Lock 버튼 | 없음 | 화면 켜짐·꺼짐 모두 |
+| PD20 | 기기 측면 Hold 스위치 | 없음 | Hold 스위치 ON일 때만 (AMP/Current 물리 조작 제외) |
+
+- SP4000T는 HW Lock 기능 제품이라 퀵패널에 Lock 항목이 없습니다.
+- 물리 버튼·스위치 제품은 잠긴 상태에서 조작을 시도하면 하단에 '잠겨있다'는 토스트가 표시됩니다.
+
+
+■■ 제품별 안내 문구 (현행)
+
+| 제품 | 안내 문구 |
+| --- | --- |
+| PD5 | 알림 패널의 빠른 설정에서 Lock 버튼을 켜면, 화면이 꺼진 상태에서만 선택한 항목이 잠깁니다. |
+| SP4000T | ON으로 설정한 항목은 Lock 버튼이 활성화되고, 화면이 켜진 상태와 꺼진 상태 모두에서 잠깁니다. |
+| PD20 | ON으로 설정한 항목은 기기 측면의 Hold 스위치를 켰을 때만 잠깁니다. AMP/Current 물리 조작은 잠금 대상에서 제외됩니다. |
+
+
+■■■ 논의 경과
+
+■■ Luke 의견 — PD20 문구 재사용 제안
+
+물리 버튼이 있는 제품(PD20·SP4000T)은 잠긴 상태에서 조작하려 하면 토스트가 뜨므로, PD5처럼 화면 상태를 상세히 적지 않아도 됩니다.
+'화면이 켜진 상태와 꺼진 상태 모두에서 잠깁니다'라는 설명이 오히려 부자연스러워, PD20 문구를 그대로 쓰자고 건의했습니다.
+
+■■ Kane 의견 — 스위치 위치 표현 문제
+
+PD20 문구에는 '기기 측면의 Hold 스위치'라고 위치가 명시돼 있는데, SP4000T는 스위치가 상단에 있어 위치 표현이 맞지 않아 그대로 쓸 수 없다는 의견이었습니다.
+
+
+■■■ 결정 사항
+
+- 위치(측면/상단) 표현 없이 기존 SP4000T 문구를 그대로 확정합니다.
+- 위치 표현을 빼면, 향후 물리 스위치·버튼이 있는 제품에 공통으로 재사용할 수 있습니다.
+
+■■ 최종 확정 문구 (SP4000T)
+
+ON으로 설정한 항목은 Lock 버튼이 활성화되고, 화면이 켜진 상태와 꺼진 상태 모두에서 잠깁니다.`,
+   tags:["RC","외부조작잠금","외부조작","잠금","Lock","안내문구","UXWriting","문구","PD5","SP4000T","PD20"],
+   images:[
+     {src:"images/history/Lock_pd5.png",alt:"PD5 — 외부 조작 잠금 (알림패널 퀵패널 SW Lock)"},
+     {src:"images/history/Lock_sp4000t.png",alt:"SP4000T — 외부 조작 잠금 (상단 물리 Lock 버튼)"},
+     {src:"images/history/Lock_pd20.png",alt:"PD20 — 외부 조작 잠금 (측면 Hold 스위치)"}
+   ],
+   links:[{label:"Figma_UX",url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=9368-9568&t=nQHmOPn112ZLgran-1"}]},
 ];
