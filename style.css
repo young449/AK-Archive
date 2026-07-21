@@ -1314,5 +1314,6 @@ body.is-home #report-btn{display:none}
 .bm-txt{font-size:16px;color:var(--text-2);line-height:1.55}
 .bm-note{font-size:14px;color:var(--n-400);line-height:1.7;border-top:1px solid var(--div-1);padding-top:14px}
 /* 툴팁 내 '전체 보기' 링크 */
-.tip-more{display:inline-block;margin-top:10px;font-size:14px;color:#E7727F;cursor:pointer}
+.tip-more{display:block;width:fit-content;margin-top:10px;font-size:14px;color:#E7727F;cursor:pointer;text-decoration:none}
 .tip-more:hover{color:#F09AA3;text-decoration:underline}
+.tip-more + .tip-more{margin-top:6px}
