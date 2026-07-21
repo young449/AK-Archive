@@ -5,7 +5,7 @@
 // =============================================
 
 const DATA_ux = [
-  {id:201,title:"Favorite에서 Collection으로(기능 확장 재정의)",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["A&ultima"],models:["SP4000T"],date:"2026.05.18",author:"Ellie",authorInitial:"E",status:"확인완료",
+  {id:206,title:"Favorite에서 Collection으로(기능 확장 재정의)",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["A&ultima"],models:["SP4000T"],date:"2026.05.18",author:"Ellie",authorInitial:"E",status:"확인완료",
    desc:"기존 Favorite(즐겨찾기)의 노래 단독 저장을 확장, 노래·앨범·아티스트·플레이리스트를 폴더별로 저장·관리하는 컬렉션으로 재정의. SP4000T부터 적용.",
    body:`■■ 기능 개요
 
@@ -92,7 +92,7 @@ AK Connect로 추가된 곡은 컬렉션 추가 불가.
 | PD series | 순차 반영 예정 | 현재 RC 계획 없음 |`,
    tags:["RC","Collection","컬렉션","Favorite","즐겨찾기","UX개선"],
    links:[{label:"용어사전 — 컬렉션",url:"#search:컬렉션"},{label:"용어사전 — Favorite",url:"#search:Favorite"}]},
-  {id:202,title:"설정 - 레이블 추가 및 재배열",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["RC"],models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",status:"확인완료",statusText:"UX 확인, PM 확인",
+  {id:207,title:"설정 - 레이블 추가 및 재배열",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["RC"],models:[],date:"2026.05.26",author:"Ellie",authorInitial:"E",status:"확인완료",statusText:"UX/PM 확인",
    desc:"기존 아이콘만으로 구분되던 설정 화면에 레이블을 추가하고, 각 그룹 성격에 맞게 항목 순서를 재배열한 UX 개선.",
    body:`■■ 기능 개요
 
@@ -132,7 +132,7 @@ AK Connect로 추가된 곡은 컬렉션 추가 불가.
    tags:["RC","Setting","설정","설정레이블","설정재배열","UX개선"],
    images:[],
    links:[]},
-  {id:203,title:"사용자 리서치: 리서치 배경 및 진행 개요",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["Research"],models:[],date:"2025.05.01",author:"Ellie",authorInitial:"E",status:"확인완료",
+  {id:201,title:"사용자 리서치: 리서치 배경 및 진행 개요",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["Research"],models:[],date:"2025.05.01",author:"Ellie",authorInitial:"E",status:"확인완료",
    desc:"Astell&Kern DAP 사용자의 UXUI 사용성 개선을 위한 데이터 수집 목적으로 설문조사 → 인터뷰 → UT 3단계 사용자 리서치를 기획·운영.",
    body:`■■ 개요
 
@@ -185,7 +185,7 @@ Astell&Kern DAP 사용자의 UXUI 사용성 개선을 위한 데이터 수집 �
      {label:"피그마 — 설문조사 PT",url:"https://www.figma.com/design/ZyJfraOa2ar1OzIxrnFtZT/PT?node-id=341-1377&t=UACsWYCME5cKHixO-1"},
      {label:"피그마 — 사용자 리서치",url:"https://www.figma.com/design/tLsh1eYPj5t4BKJMRl40uq/-25-%EC%82%AC%EC%9A%A9%EC%9E%90-%EB%A6%AC%EC%84%9C%EC%B9%98?node-id=126-79&t=ZfveNSGhru3yBWKR-1"}
    ]},
-  {id:204,title:"사용자 리서치: 설문조사 결과",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["Research"],models:[],date:"2025.09.30",author:"Ellie",authorInitial:"E",status:"확인완료",
+  {id:203,title:"사용자 리서치: 설문조사 결과",credits:{UX:"Ellie, Luna"},category:"기능 히스토리",labels:["Research"],models:[],date:"2025.09.30",author:"Ellie",authorInitial:"E",status:"확인완료",
    desc:"AK DAP 사용 행태 조사·음질 설정 개선 2종 설문 결과. 주요 타겟 3~40대 남성, UX/UI 불편 경험 91.5%, 반응 속도 개선 1순위.",
    body:`■■ 설문 진행 개요
 
@@ -391,7 +391,7 @@ AK 유지되는 강점: 원음 재생 철학과 음질 완성도 / 레퍼런스 
      {label:"AK_UXUI_Interview_260423.pdf",url:"files/AK_UXUI_Interview_260423.pdf"}
    ],
    links:[]},
-  {id:206,title:"Google Analytics (GA) 미탑재 배경",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["Others"],models:[],date:"2025.09.30",author:"Ellie",authorInitial:"E",
+  {id:202,title:"Google Analytics (GA) 미탑재 배경",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["Others"],models:[],date:"2025.09.30",author:"Ellie",authorInitial:"E",
    desc:"AK DAP에 Google Analytics를 탑재하지 못한 배경. 구글 공식 인증 업체 등록 미비 및 비용 이슈로 중간에 제거된 것으로 파악.",
    body:`■■ 배경
 
@@ -411,7 +411,7 @@ AK와 같은 소규모 업체에는 해당 인증이 부여되지 않음.
 최종 의사결정은 Jay 또는 Luke 쪽에서 이루어짐.`,
    tags:["Others","GA","GoogleAnalytics","구글애널리틱스","분석"],
    links:[]},
-  {id:207,title:"Lottie 애니메이션 미적용 배경",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["Others"],models:[],date:"2025.10.28",author:"Ellie",authorInitial:"E",
+  {id:204,title:"Lottie 애니메이션 미적용 배경",credits:{UX:"Ellie"},category:"기능 히스토리",labels:["Others"],models:[],date:"2025.10.28",author:"Ellie",authorInitial:"E",
    desc:"DAP 음악 재생단 부하 최소화 방침으로 애니메이션 작업을 제한. Lottie 포함 포맷 무관하게 애니메이션 자체가 CPU·메모리 부하 유발.",
    body:`■■ 배경
 
@@ -470,9 +470,7 @@ FileZilla로 접속 후, 아래 경로에서 해당 모델의 .hex 파일을 And
      {label:"FileZilla 다운로드",url:"https://filezilla-project.org/download.php#close"},
      {label:"Android 파일 전송 다운로드 (Mac)",url:"https://www.softonic.kr/download/android-file-transfer/mac/post-download?dt=internalDownload"},
    ]},
-  {id:209,title:"버튼 컴포넌트 스펙 v3",category:"디자인 가이드",models:[],date:"2025.03.08",author:"Ellie",authorInitial:"E",desc:"Primary / Secondary / Ghost 3종 버튼 스펙. 상태별 컬러 토큰 정의.",body:`버튼 높이: 40px (기본) / 32px (소형)\n\nPrimary → Crimson 700 (#CC1B38)\nSecondary → Neutrals 600 (#3A3A3A)\nDisabled → Neutrals 600 (#3A3A3A)`,tags:["UI","컴포넌트"],links:[{label:"피그마 — Button v3",url:"https://figma.com"}]},
-  {id:210,title:"컬러 토큰 시스템 — Semantic",category:"디자인 가이드",models:[],date:"2025.04.02",author:"Ellie",authorInitial:"E",desc:"AK Design System Semantic 컬러 토큰 전체 정의.",body:`Background\n  color/bg/primary → Black 100%\n  color/bg/secondary → Neutrals 800\n\nText\n  color/text/default → White 100%\n  color/text/primary → Crimson 700`,tags:["토큰","컬러"],links:[]},
-  {id:211,title:"설정 - 외부 조작 잠금 문구",credits:{PM:"Luke",PL:"Kane",UX:"Ellie"},category:"기능 히스토리",labels:["RC"],models:["PD20","SP4000T","PD5"],date:"2026.07.21",author:"Ellie",authorInitial:"E",status:"작성",statusText:"UX 확인, PM 확인",
+  {id:209,title:"설정 - 외부 조작 잠금 문구",credits:{PM:"Luke",PL:"Kane",UX:"Ellie"},category:"기능 히스토리",labels:["RC"],models:["PD20","SP4000T","PD5"],date:"2026.07.21",author:"Ellie",authorInitial:"E",status:"작성",statusText:"UX/PM 확인",
    desc:"PD5·SP4000T·PD20의 '외부 조작 잠금' 안내 문구가 제품별 잠금 방식(SW/HW·스위치 위치) 차이로 상이. SP4000T는 화면상태·위치 표현을 빼고 'Lock 버튼을 누르면 잠깁니다'로 확정.",
    body:`■■■ 배경
 

@@ -111,7 +111,7 @@ Triode(자연스럽고 따뜻함) / Pentode(힘있고 단단함) / Ultra Linear(
    links:[
      {label:"Figma_UX", url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=9368-9568&t=f24YMy1BBxKGLVBr-1"},
      {label:"Figma_UI", url:"https://www.figma.com/design/iURsNWDWbdEOvnjSZzq3vj/UI_Crimson_F_U?node-id=9751-56643&t=YVqta9mRIAIVw2Wd-1"},
-     {label:"UX 히스토리 · Collection", url:"#open:201"},
+     {label:"UX 히스토리 · Collection", url:"#open:206"},
    ],
    images:[
      {src:"images/SP4000T/SP4000T_thumb.png", alt:"SP4000T 썸네일"},
