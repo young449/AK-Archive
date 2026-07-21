@@ -501,6 +501,14 @@ SP4000T 락 문구를 확정하는 과정에서, 세 제품의 문구를 나란�
 | PD20 | ON으로 설정한 항목은 기기 측면의 Hold 스위치를 켰을 때만 잠깁니다. AMP/Current 물리 조작은 잠금 대상에서 제외됩니다. |
 
 
+■■ 제품별 잠금 화면
+
+!!img:images/history/Lock_pd20.png|PD20 — 외부 조작 잠금 (측면 Hold 스위치) · Lock_pd20.png!!
+!!img:images/history/Lock_sp4000t.png|SP4000T — 외부 조작 잠금 (상단 물리 Lock 버튼) · Lock_sp4000t.png!!
+!!img:images/history/Lock_pd5.png|PD5 — 외부 조작 잠금 (퀵패널 SW Lock) · Lock_pd5.png!!
+!!img:images/history/Lock_pd5_quick.png|PD5 — 알림패널 퀵패널 Lock 항목 · Lock_pd5_quick.png!!
+
+
 ■■■ 논의 경과
 
 ■■ Luke(PM) 의견 — HW 기기 문구 동일 사용 제안
@@ -520,11 +528,5 @@ PD20 문구에는 '기기 측면의 Hold 스위치'라고 위치가 명시돼 �
 - 위치(측면/상단) 표현 없이 기존 SP4000T 문구를 그대로 확정합니다.
 - 위치 표현을 빼면, 향후 물리 스위치·버튼이 있는 제품에 공통으로 재사용할 수 있습니다.`,
    tags:["RC","외부조작잠금","외부조작","잠금","Lock","안내문구","UXWriting","문구","PD5","SP4000T","PD20"],
-   images:[
-     {src:"images/history/Lock_pd20.png",alt:"PD20 — 외부 조작 잠금 (측면 Hold 스위치)"},
-     {src:"images/history/Lock_sp4000t.png",alt:"SP4000T — 외부 조작 잠금 (상단 물리 Lock 버튼)"},
-     {src:"images/history/Lock_pd5.png",alt:"PD5 — 외부 조작 잠금 (알림패널 퀵패널 SW Lock)"},
-     {src:"images/history/Lock_pd5_quick.png",alt:"PD5 — 알림패널 퀵패널 Lock 항목"}
-   ],
    links:[{label:"Figma_UX",url:"https://www.figma.com/design/pat4EALAOO9XW7Hynp30Md/UX_Crimson_F_U?node-id=9368-9568&t=nQHmOPn112ZLgran-1"}]},
 ];
