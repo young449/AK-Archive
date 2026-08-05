@@ -3,10 +3,25 @@ const S = {cat:"",chip:"전체",q:"",openId:null,tag:"",glossTab:"전체"};
 history.replaceState({page:"home"}, "");
 
 /* =============================================
+   SECTION: ga-pageview (SPA 화면별 page_view)
+   해시(#) 라우팅을 경로로 합성해 전송 → GA가 화면별로 구분해 집계
+   (해시는 GA가 잘라내므로, 경로(path) 자리에 넣어 보냄)
+============================================= */
+function gaPage(path, title){
+  if(typeof gtag!=="undefined"){
+    gtag('event','page_view',{
+      page_title: title,
+      page_location: location.origin + location.pathname.replace(/\/+$/,'') + path
+    });
+  }
+}
+
+/* =============================================
    SECTION: js-tag-page
 ============================================= */
 function goTag(tag) { _goTag(tag, true); }
 function _goTag(tag, push) {
+  gaPage('/tag/' + encodeURIComponent(tag), 'AK Archive – #' + tag);
   if (push) pushHistory({page:"tag", tag});
   S.tag = tag;
   // 모든 페이지 숨김
@@ -122,6 +137,7 @@ window.addEventListener("popstate", e => {
 ============================================= */
 function goHome() { _goHome(true); }
 function _goHome(push) {
+  gaPage('/home', 'AK Archive – 홈');
   if (push) pushHistory({page:"home"});
   document.body.className = "is-home";
   document.getElementById("home-search").value = "";
@@ -133,6 +149,7 @@ function _goHome(push) {
 
 function goList(cat, q) { _goList(cat, q, true); }
 function _goList(cat, q, push) {
+  gaPage(cat ? '/list/' + catToSlug(cat) : '/search', 'AK Archive – ' + (cat || '검색'));
   if (push) pushHistory({page:"list", cat, q:q||""});
   document.body.className = "is-list";
   S.prevCat=S.cat; S.cat=cat; S.chip="전체"; S.q=q||""; S.openId=null;
@@ -421,6 +438,7 @@ function renderCards(){
 function openDetail(id, prevPage){ _openDetail(id, prevPage, true); }
 function _openDetail(id, prevPage, push){
   const d=DATA.find(x=>x.id===id);if(!d)return;
+  gaPage('/doc/' + id, 'AK Archive – ' + d.title);
   // GA4 문서 열람 이벤트 + 체류시간 측정 시작
   window._docOpenTime = Date.now();
   window._docOpenId = id;
